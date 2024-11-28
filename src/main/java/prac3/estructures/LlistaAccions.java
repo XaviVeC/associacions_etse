@@ -1,5 +1,5 @@
 package prac3.estructures;
 
-public class Llista {
+public class LlistaAccions {
     
 }

@@ -11,7 +11,10 @@ public class MainConsola {
         } catch(ArithmeticException e) {
             System.out.println("No s'ha pogut dividir entre 0");
         }
-        
-        
+     }
     }
-}
+
+        
+    
+        
+        
