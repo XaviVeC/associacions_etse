@@ -1,5 +1,5 @@
 package prac3.accions;
 
-public class Xerrada {
+public class Xerrada extends Accio{
     
 }
