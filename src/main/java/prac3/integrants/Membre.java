@@ -36,6 +36,7 @@ public abstract class Membre {
         this.mesBaixa = mesBaixa;
         this.anyBaixa = anyBaixa;
 
+        
     }
 
     /**
