@@ -1,5 +1,4 @@
 package prac3.integrants;
-import prac3.integrants.Data;
 //Clase base 
 public abstract class Membre {
 
@@ -17,12 +16,8 @@ public abstract class Membre {
      * @param nom - Nombre del miembro
      * @param alias - Alias del nombre del miembro
      * @param correu - Correo del miembro
-     * @param diaAlta - Dia en el que se dio de alta
-     * @param mesALta - Mes en el que se dio de alta
-     * @param anyAlta - Año en el que se dio de alta
-     * @param diaBaixa - Dia en el que se dio de baja
-     * @param mesBaixa - Mes en el que se dio de baja
-     * @param anyBaixa - Año en el que se dio de baja
+     * @param dataAlta - Fecha en la que se dio de alta
+     * @param dataBaixa - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
     public Membre (String nom, String alias, String correu, Data dataAlta, Data dataBaixa){

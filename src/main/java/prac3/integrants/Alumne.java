@@ -11,18 +11,14 @@ public class Alumne extends Membre {
      * @param nom - nombre del alumno
      * @param alias - alias del alumno
      * @param correu - correo del alumno
-     * @param diaAlta - dia que se dio de baja el alumno
-     * @param mesALta - mes que se dio de alta el alumno
-     * @param anyAlta - año que se dio de alta el alumno
-     * @param diaBaixa - dia que se dio de baja el alumno
-     * @param mesBaixa - mes que se dio de baja el alumno
-     * @param anyBaixa - año que se dio de baja el alumno 
+     * @param ataAlta - fecha en la que se dio de alta
+     * @param dataBaixa - fecha en la que se dio de baja
      * @param curs - curso del alumno
      * @param anysEtse - anyos cursados en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumne (String nom, String alias, String correu, int diaAlta, int mesALta, int anyAlta, int diaBaixa, int mesBaixa, int anyBaixa, String curs, int anysEtse){
-        super(nom, alias, correu, diaAlta, mesALta, anyAlta, diaBaixa, mesBaixa, anyBaixa);
+    public Alumne (String nom, String alias, String correu, Data dataAlta, Data dataBaixa, String curs, int anysEtse){
+        super(nom, alias, correu, dataAlta, dataBaixa);
         this.graduat = false;
         this.curs = curs;
         this.anysEtse = anysEtse;
@@ -78,7 +74,7 @@ public class Alumne extends Membre {
      * @return - copia de alumno en concreto
      */
     public Alumne copiaAlumne(){
-        Alumne a = new Alumne(getNom(),getAlias(), getCorreu(), getDiaAlta(),getMesAlta(), getAnyAlta(), getDiaBaixa(), getMesBaixa(), getAnyBaixa(), curs, anysEtse);
+        Alumne a = new Alumne(getNom(),getAlias(), getCorreu(), getDataAlta(), getDataBaixa(), curs, anysEtse);
         return a;
     }
 }

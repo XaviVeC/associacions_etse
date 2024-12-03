@@ -11,18 +11,14 @@ public class Professor extends Membre {
      * @param nom - Nombre del profesor
      * @param alies - Alias del profesor
      * @param correu - Correo del profesor
-     * @param diaAlta - Dia en que se dio de alta el profesor
-     * @param mesALta - Mes en que se dio de alta el profesor
-     * @param anyAlta - Año en que se dio de alta el profesor
-     * @param diaBaixa - Dia en que se dio de baja el profesor
-     * @param mesBaixa - Mes en que se dio de baja el profesor
-     * @param anyBaixa - Año en que se dio de baja el profesor
+     * @param dataAlta - Fecha en la que se dio de alta
+     * @param dataBaixa - Fecha en la que se dio de baja
      * @param departament - Si es DEIM o DEEEA
      * @param numeroDespatx - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Professor (String nom, String alies, String correu, int diaAlta, int mesALta, int anyAlta, int diaBaixa, int mesBaixa, int anyBaixa,String departament, int numeroDespatx){
-        super(nom, alies, correu, diaAlta, mesALta, anyAlta, diaBaixa, mesBaixa, anyBaixa);
+    public Professor (String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departament, int numeroDespatx){
+        super(nom, alies, correu, dataAlta, dataBaixa);
         this.departament = departament;
         this.numeroDespatx = numeroDespatx;
       
@@ -62,7 +58,7 @@ public class Professor extends Membre {
      * @return - copia de un profesor
      */
     public Professor copiaProfessor(){
-        Professor p = new Professor(getNom(), getAlias(),getCorreu(), getDiaAlta(), getMesAlta(), getAnyAlta(), getDiaBaixa(), getMesBaixa(), getAnyBaixa(),departament,numeroDespatx);
+        Professor p = new Professor(getNom(), getAlias(),getCorreu(), getDataAlta(), getDataBaixa(),departament,numeroDespatx);
         return p;
     }
 }
