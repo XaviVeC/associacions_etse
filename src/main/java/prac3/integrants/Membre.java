@@ -1,5 +1,5 @@
 package prac3.integrants;
-
+import prac3.integrants.Data;
 //Clase base 
 public abstract class Membre {
 
@@ -7,8 +7,8 @@ public abstract class Membre {
     private String nom; // Nombre del miembro 
     private String alias;// Alias del membre 
     private String correu;// Correo electronico del miembro 
-    private int diaAlta, mesALta, anyAlta; // Fecha en la que se da de alta 
-    private int diaBaixa, mesBaixa, anyBaixa; // Fecha en la que se da de baja 
+    private Data dataAlta; // Fecha en la que se da de alta 
+    private Data dataBaixa; // Fecha en la que se da de baja
 
     //MÉTODES
     
@@ -25,18 +25,13 @@ public abstract class Membre {
      * @param anyBaixa - Año en el que se dio de baja
      * @return - Constructor Membre
      */
-    public Membre (String nom, String alias, String correu, int diaAlta, int mesALta, int anyAlta, int diaBaixa, int mesBaixa, int anyBaixa){
+    public Membre (String nom, String alias, String correu, Data dataAlta, Data dataBaixa){
         this.nom = nom;
         this.alias = alias;
         this.correu = correu;
-        this.diaAlta = diaAlta;
-        this.mesALta = mesALta;
-        this.anyAlta = anyAlta;
-        this.diaBaixa = diaBaixa;
-        this.mesBaixa = mesBaixa;
-        this.anyBaixa = anyBaixa;
+        this.dataAlta = dataAlta;
+        this.dataBaixa = dataBaixa;
 
-        
     }
 
     /**
@@ -67,64 +62,16 @@ public abstract class Membre {
      * Getter de la fecha exacta en la que se dio de alta
      * @return - dia, mes y año en el que se dio de alta
      */
-    public String getDataAlta(){
-        return diaAlta+ "/" +mesALta+ "/" +anyAlta;
+    public Data getDataAlta(){
+        return dataAlta;
     }
 
     /**
      * Getter de la fecha exacta en la que se dio de baja
      * @return - dia, mes y año en el que se dio de baja
      */
-    public String getDataBaixa(){
-        return diaBaixa+ "/" +mesBaixa+ "/" +anyBaixa;
-    }
-
-    /**
-     * Getter del dia que se dio de alta
-     * @return - variable diaAlta
-     */
-    public int getDiaAlta(){
-        return diaAlta;
-    }
-
-    /**
-     * Getter del mes en el que se dio de alta
-     * @return - variable mesAlta
-     */
-    public int getMesAlta(){
-        return mesALta;
-    }
-
-    /**
-     * Getter del año en el que se dio de alta
-     * @return - variable anyAlta
-     */
-    public int getAnyAlta(){
-        return anyAlta;
-    }
-
-    /**
-     * Getter del dia que se dio de baja
-     * @return - variable diaBaixa
-     */
-    public int getDiaBaixa(){
-        return diaBaixa;
-    }
-
-    /**
-     * Getter del mes en el que se dio de baja
-     * @return - variable mesBaixa
-     */
-    public int getMesBaixa(){
-        return mesBaixa;
-    }
-
-    /**
-     * Getter del año en el que se dio de baja
-     * @return - variable anyBaixa
-     */
-    public int getAnyBaixa(){
-        return anyBaixa;
+    public Data getDataBaixa(){
+        return dataBaixa;
     }
 
     /**
@@ -133,12 +80,10 @@ public abstract class Membre {
      * @param mesALta - mes en el que se quiere dar de alta
      * @param anyAlta - año en el que se quiere dar de alta
      */
-    public void DonarDeAlta(int diaAlta, int mesALta, int anyAlta){
+    public void DonarDeAlta(Data dataAlta){
         //Comprobar que el membre no esta ja donat de alta
-        if (this.diaAlta == 0 && this.mesALta == 0 && this.anyAlta == 0){
-            this.diaAlta = diaAlta;
-            this.mesALta = mesALta;
-            this.anyAlta = anyAlta;
+        if (this.dataAlta == null){
+            this.dataAlta = dataAlta;
         }
     }
 
@@ -148,15 +93,11 @@ public abstract class Membre {
      * @param mesBaixa - mes en que se quiere dar de baja
      * @param anyBaixa - año en que se quiere dar de baja
      */
-    public void DonarDeBaixa(int diaBaixa, int mesBaixa, int anyBaixa){
+    public void DonarDeBaixa(Data dataBaixa){
         //Comprobar que el membre esta donat de Alta 
-        if (this.diaAlta != 0 && this.mesALta != 0 && this.anyAlta != 0){
+        if ((this.dataAlta != null) && (this.dataBaixa == null)){
             //Comprobar que no estiga donat de baixa 
-            if(this.diaBaixa == 0 && this.mesBaixa == 0 && this.anyBaixa == 0){
-                this.diaBaixa = diaBaixa;
-                this.mesBaixa = mesBaixa;
-                this.anyBaixa = anyBaixa;
-            }  
+            this.dataBaixa = dataBaixa;  
         }
     }
 
