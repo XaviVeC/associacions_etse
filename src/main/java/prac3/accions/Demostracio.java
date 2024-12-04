@@ -104,6 +104,10 @@ public class Demostracio extends Accio {
                 "Es una demostracion valida? " +this.getDemostracionValida()+ "\n");
     }
 
+    /**
+     * Metodo copia
+     * @return - copia de la instancia
+     */
     public Demostracio copia() {
         return (new Demostracio(this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable, this.indiceLista, 
                                 this.fechaDisenio, this.costoDemostracion));

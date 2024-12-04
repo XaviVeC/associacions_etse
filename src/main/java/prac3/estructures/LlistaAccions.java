@@ -5,8 +5,6 @@ public class LlistaAccions {
     private Accio [] listaAcciones;     // lista de acciones
     private int nElem;                  // numero de eelementos de la lista acciones
 
-
-
     /**
      * Constructor de la clase LlistaAccions
      * @param numeroAcciones - numero total de acciones para saber de que tamaño hacer la lista
@@ -14,7 +12,7 @@ public class LlistaAccions {
      */
     public LlistaAccions (int numeroAcciones){
         this.listaAcciones = new Accio[numeroAcciones];
-        nElem = numeroAcciones;
+        nElem = 0;
     }
 
     /**
@@ -36,10 +34,19 @@ public class LlistaAccions {
     }
 
     /**
+     * 
+     * @param indice
+     * @return
+     */
+    public Accio getAccionEnXIndice(int indice){
+        return this.listaAcciones[indice].copia();
+    }
+
+    /**
      * Metodo que hace una copia de una lista de acciones
      * @return - variable nuevaLista, que es esta copia de la lista
      */
-    public LlistaAccions copiaLlistaAccions () {
+    public LlistaAccions copia () {
         int tamanioLista = this.listaAcciones.length;
         LlistaAccions nuevaLista = new LlistaAccions(tamanioLista);
 
@@ -49,12 +56,11 @@ public class LlistaAccions {
         return nuevaLista;
     }
 
-
     /**
      * Metodo ToString de la llista de acciones
      * @return - lista con todas las acciones
      */
-    public String ToStringLlistaAccions() {
+    public String toString() {
         String stringDeLaLista = "";
 
         for (int i = 0; i < this.nElem; i++) {
@@ -63,6 +69,4 @@ public class LlistaAccions {
 
         return stringDeLaLista;
     }
-
-
 }

@@ -70,4 +70,5 @@ public abstract class Accio {
     }
 
     public abstract Accio copia(); // Lo dejamos vacio
+    public abstract String toString(); // Lo dejamos vacio
 }

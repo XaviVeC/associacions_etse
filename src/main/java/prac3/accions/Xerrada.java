@@ -46,7 +46,35 @@ public class Xerrada extends Accio {
         }
     }
 
+    /**
+     * Metodo toString 
+     * @return texto con los datos de la charla
+     */
     public String toString(){
-        return 
+        String aux = "Nombre de la charla: " + this.getNombreAccion() + "\n" +
+                     "Asociaciones involucradas: " + this.getAsociacionesInvolucradas().toString() + "\n" +
+                     "Organizador responsable: " + this.getOrganizadorResponsable() + "\n" +
+                     "Fecha de la celebracion: " + fechaRealizacion.toString() + "\n" + "Numero de asistentes: " + this.numeroDeAsistentes + "\n";
+
+        for(int i = 0; i < this.instructoresCharla.length; i++)
+        {
+            aux = aux + "El instructor "+ (i+1) +"es" + this.instructoresCharla[i].toString() + "\n";
+        }
+        
+        for(int i = 0; i < this.valoraciones.length; i++)
+        {
+            aux = aux + "La valoracion numero "+ (i+1) +" es " + this.valoraciones[i] + "\n";
+        }
+        
+        return aux;     
+    }
+
+    /**
+     * Metodo copia
+     * @return - copia de la instancia
+     */
+    public Xerrada copia() {
+        return (new Xerrada(this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable, this.indiceLista,
+                            this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes));
     }
 }

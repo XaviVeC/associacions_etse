@@ -71,7 +71,7 @@ public class Associacio {
      * Metodo que realiza una copia de una associacion en concreto
      * @return - variable asociacionCopia
      */
-    public Associacio copiaAsociacion(){
+    public Associacio copia(){
         Associacio asociacionCopia = new Associacio(nombreAsociacion, correoContactoAsociacion, titulacionesAsociacion, listaMiembrosAsociacion, personasEnCargos);
         return asociacionCopia;
     }

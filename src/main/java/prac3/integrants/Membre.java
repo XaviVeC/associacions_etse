@@ -1,6 +1,6 @@
 package prac3.integrants;
 //Clase base 
-public class Membre {
+public abstract class Membre {
 
     //DADES
     private String nombreMiembro; // nombreMiembrobre del miembro 
@@ -93,11 +93,8 @@ public class Membre {
     }
     
 
-    public Membre copia(){
-        Membre membreCopiat = new Membre(getnombreMiembro(),getAlias(),getCorreoMiembro(),getFechaAlta(),getFechaBaja());
-        return membreCopiat;
-    }
-
+    public abstract Membre copia();
+    public abstract String toString();
 
 
     
