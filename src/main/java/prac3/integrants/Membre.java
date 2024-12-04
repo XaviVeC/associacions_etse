@@ -1,6 +1,6 @@
 package prac3.integrants;
 //Clase base 
-public abstract class Membre {
+public class Membre {
 
     //DADES
     private String nom; // Nombre del miembro 
@@ -95,6 +95,7 @@ public abstract class Membre {
             this.dataBaixa = dataBaixa;  
         }
     }
+    
 
     public Membre copiaMembre(){
         Membre membreCopiat = new Membre(getNom(),getAlias(),getCorreu(),getDataAlta(),getDataBaixa());

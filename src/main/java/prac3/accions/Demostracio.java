@@ -10,6 +10,15 @@ public class Demostracio extends Accio {
     private int contadorVecesOfrecida; // Contador de veces que se ha ofrecido una demostracion
     private double costoDemostracion; // Valor de dinero que ha costado crear la demostracion
 
+    /**
+     * Constructor de la classe demostracion
+     * @param nombreDemostracion - nombre/titulo de la demostracion
+     * @param asociacionesInvolucradas - asociaciones que estan involucradas en la demostracion
+     * @param organizadorResponsable - miembro organizador de la demostracion
+     * @param indiceLista - indice de la lista total de demostraciones existentes
+     * @param fecha - fecha en la que se creo el disenio de la asociacion
+     * @param costoDemostracion - costo de crear la asociacion
+     */
     public Demostracio(String nombreDemostracion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, 
                        int indiceLista, Data fecha, double costoDemostracion) {
         // Atributos de la superclase
@@ -28,23 +37,56 @@ public class Demostracio extends Accio {
         }
     }
 
+    /**
+     * Getter de si la demostracion es valida o no
+     * @return - variable demostracionValida
+     */
     public boolean getDemostracionValida() {
         return demostracionValida;
     }
 
+    /**
+     * Getter del contador de veces que se ha ofrecido la demostracion
+     * @return - variable contadorVecesOfrecida
+     */
     public int getContadorVecesOfrecida() {
         return contadorVecesOfrecida;
     }
 
+    /**
+     * Getter del costo de la demostracion
+     * @return - variable costoDemostracion
+     */
     public double getCostoDemostracion() {
         return costoDemostracion;
     }
 
+    /**
+     * Getter de la fecha en la que se disenio la demostracion
+     * @return - variable fechaDisenio
+     */
     public Data getFechaDisenio() {
         return fechaDisenio;
     }
+   
+    /**
+     * Metodo que inhabilita una demostracion
+     */
+    public void inhabilitarDemostracion() {
+        demostracionValida = false;;
+    }
 
-    public void setDemostracionValida(boolean valida) {
-        demostracionValida = valida;
+    /**
+     * Metodo que rehabilita una demostracion que ha sido inhabilitada anteriormente
+     */
+    public void rehabilitarDemostracion() {
+        demostracionValida = true;
+    }
+
+    /**
+     * Metodo que aumenta el contador de veces que se ha ofrecido una demostracion
+     */
+    public void aumentarContador() {
+        contadorVecesOfrecida++;
     }
 }

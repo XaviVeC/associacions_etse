@@ -18,6 +18,7 @@ public abstract class Accio {
      * @param nombreAccion - Nombre que identifica la accion
      * @param asociacionesInvolucradas - Lista de asociaciones involucradas en la accion
      * @param organizadorResponsable - Responsable de la organizacion de la accion
+     * @param indiceLista - Numero para generar el codigo
      */
     public Accio (String nombreAccion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, int indiceLista){
         this.nombreAccion = nombreAccion;
