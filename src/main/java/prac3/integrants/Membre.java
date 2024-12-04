@@ -96,7 +96,10 @@ public abstract class Membre {
         }
     }
 
-
+    public Membre copiaMembre(){
+        Membre membreCopiat = new Membre(getNom(),getAlias(),getCorreu(),getDataAlta(),getDataBaixa());
+        return membreCopiat;
+    }
 
 
 
