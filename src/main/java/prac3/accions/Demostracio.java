@@ -11,7 +11,7 @@ public class Demostracio extends Accio {
     private double costoDemostracion; // Valor de dinero que ha costado crear la demostracion
 
     /**
-     * Constructor de la classe demostracion
+     * Constructor de la classe Demostracio
      * @param nombreDemostracion - nombre/titulo de la demostracion
      * @param asociacionesInvolucradas - asociaciones que estan involucradas en la demostracion
      * @param organizadorResponsable - miembro organizador de la demostracion
@@ -19,15 +19,15 @@ public class Demostracio extends Accio {
      * @param fecha - fecha en la que se creo el disenio de la asociacion
      * @param costoDemostracion - costo de crear la asociacion
      */
-    public Demostracio(String nombreDemostracion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, 
+    public Demostracio(String nombreAccion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, 
                        int indiceLista, Data fecha, double costoDemostracion) {
         // Atributos de la superclase
-        super(nombreDemostracion, asociacionesInvolucradas, organizadorResponsable, indiceLista);
+        super(nombreAccion, asociacionesInvolucradas, organizadorResponsable, indiceLista);
         
         // Atributos de esta subclase
         demostracionValida = true; // Cuando se crea una demostracion, se considera que se empieza a ofrecer en este instante
         contadorVecesOfrecida = 0; // Todavia no se ha ofrecido, ya que se acaba de crear
-        this.fechaDisenio = new Data(fecha.getDia(), fecha.getMes(), fecha.getAny()); // Hay que crear una nueva clase Data
+        this.fechaDisenio = new Data(fecha.getDia(), fecha.getMes(), fecha.getAnio()); // Hay que crear una nueva clase Data
 
         if (costoDemostracion < 0) { 
             this.costoDemostracion = -999; // Si el costo introducido es negativo, se asigna un costo que indica error
@@ -88,5 +88,24 @@ public class Demostracio extends Accio {
      */
     public void aumentarContador() {
         contadorVecesOfrecida++;
+    }
+
+    /**
+     * Metodo toString 
+     * @return - Texto con los datos de la demostracion
+     */
+    public String toString() {
+        return ("Nombre de la demostracion: " +this.getNombreAccion()+ "\n" +
+                "Asociaciones involucradas: " +this.getAsociacionesInvolucradas().toString()+ "\n" +
+                "Organizador responsable: " +this.getOrganizadorResponsable()+ "\n" +
+                "Fecha del disenio: " +fechaDisenio.toString()+ "\n" +
+                "Costo de la demostracion: " +this.getCostoDemostracion()+ "\n" +
+                "Veces que se ha ofrecido la demostracion: " +this.getContadorVecesOfrecida()+ "\n" +
+                "Es una demostracion valida? " +this.getDemostracionValida()+ "\n");
+    }
+
+    public Demostracio copia() {
+        return (new Demostracio(this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable, this.indiceLista, 
+                                this.fechaDisenio, this.costoDemostracion));
     }
 }

@@ -2,8 +2,8 @@ package prac3.integrants;
 
 public class Professor extends Membre {
 
-    private String departament; // si es DEIM o DEEEA
-    private int numeroDespatx; // numero de su despacho
+    private String departamento; // si es DEIM o DEEEA
+    private int numeroDespacho; // numero de su despacho
 
 
     /**
@@ -17,48 +17,48 @@ public class Professor extends Membre {
      * @param numeroDespatx - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Professor (String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departament, int numeroDespatx){
+    public Professor (String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departamento, int numeroDespacho){
         super(nom, alies, correu, dataAlta, dataBaixa);
-        this.departament = departament;
-        this.numeroDespatx = numeroDespatx;
+        this.departamento = departamento;
+        this.numeroDespacho = numeroDespacho;
       
     }
 
     /**
-     * Getter de la variable departament
-     * @return - variable departament
+     * Getter de la variable departamento
+     * @return - variable departamento
      */
-    public String getDepartament() {
-        return departament;
+    public String getDepartamento() {
+        return departamento;
     }
 
     /**
-     * Getter de la variable numeroDespatx
-     * @return - variable numeroDespatx
+     * Getter de la variable numeroDespacho
+     * @return - variable numeroDespacho
      */
-    public int getNumeroDespatx (){
-        return numeroDespatx;
+    public int getNumeroDespacho (){
+        return numeroDespacho;
     }
    
     /**
      * Metodo String que imprime todos los datos del objeto profesor
      */
-    public String toString(){
-        return ("Nom:" + getNom()+ "\n" +
-               "Alias:" + getAlias() +  "\n" +
-               "Correu Electrònic:" + getCorreu() + "\n" +
-               "Data de Alta:" + getDataAlta() + "\n" +
-               "Data de Baixa:" + getDataBaixa() + "\n" +
-               "Departament:" + getDepartament() + "\n" +
-               "Numero del despatx:" +getNumeroDespatx());
+    public String toString (){
+        return ("Nom:" + this.getnombreMiembro()+ "\n" +
+               "Alias:" + this.getAlias() +  "\n" +
+               "Correu Electrònic:" + this.getCorreoMiembro() + "\n" +
+               "Fecha de Alta:" + this.getFechaAlta() + "\n" +
+               "Fecha de Baja:" + this.getFechaBaja() + "\n" +
+               "Departamento:" + this.getDepartamento() + "\n" +
+               "Numero del despacho:" + this.getNumeroDespacho());
     }
 
     /**
      * Metodo que crea una copia de un profesor
      * @return - copia de un profesor
      */
-    public Professor copiaProfessor(){
-        Professor p = new Professor(getNom(), getAlias(),getCorreu(), getDataAlta(), getDataBaixa(),departament,numeroDespatx);
+    public Professor copia(){
+        Professor p = new Professor(getnombreMiembro(), getAlias(),getCorreoMiembro(), getFechaAlta(), getFechaBaja(),getDepartamento(),getNumeroDespacho());
         return p;
     }
 }

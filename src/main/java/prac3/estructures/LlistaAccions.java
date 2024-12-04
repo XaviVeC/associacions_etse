@@ -19,11 +19,11 @@ public class LlistaAccions {
 
     /**
      * Metodo que añade una accion que se pase por parametro en la ultima posicion de la lista
-     * @param accionQueAñadir - accion que hay que añadir
+     * @param accionQueAniadir - accion que hay que añadir
      * @return - la lista modificada
      */
-    public void añadirAccion (Accio accionQueAñadir){
-        listaAcciones[nElem] = accionQueAñadir;
+    public void aniadirAccion (Accio accionQueAniadir){
+        listaAcciones[nElem] = accionQueAniadir;
         nElem++;
     }
 
@@ -40,10 +40,10 @@ public class LlistaAccions {
      * @return - variable nuevaLista, que es esta copia de la lista
      */
     public LlistaAccions copiaLlistaAccions () {
-        int tamañoLista = this.listaAcciones.length;
-        LlistaAccions nuevaLista = new LlistaAccions(tamañoLista);
+        int tamanioLista = this.listaAcciones.length;
+        LlistaAccions nuevaLista = new LlistaAccions(tamanioLista);
 
-        for (int i = 0; i < tamañoLista; i++) {
+        for (int i = 0; i < tamanioLista; i++) {
             nuevaLista.listaAcciones[i] = listaAcciones[i].copia();
         }
         return nuevaLista;

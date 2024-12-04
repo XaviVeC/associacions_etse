@@ -4,7 +4,7 @@ public class Data {
     
     private int dia;
     private int mes;
-    private int any;
+    private int anio;
 
     /**
      * Metodo constructor de la clase Data
@@ -14,19 +14,19 @@ public class Data {
      * bien la diferencia respecto las que esten correctas.
      * @param dia - variable que tiene el dia
      * @param mes - variable que contiene el mes
-     * @param any - variable que contiene el año
+     * @param anio - variable que contiene el anio
      * @return - constructor Data
      */
-    public Data (int dia, int mes, int any){
-        if (diaValido(dia) && mesValido(mes) && anyValido(any)){
+    public Data (int dia, int mes, int anio){
+        if (diaValido(dia) && mesValido(mes) && anioValido(anio)){
             this.dia = dia;
             this.mes = mes;
-            this.any = any;
+            this.anio = anio;
         }
         else{
             this.dia = 99;
             this.mes = 99;
-            this.any = 9999;
+            this.anio = 9999;
         }
     }
 
@@ -47,11 +47,11 @@ public class Data {
     }
 
     /**
-     * Getter de la variable any
-     * @return - variable any
+     * Getter de la variable anio
+     * @return - variable anio
      */
-    public int getAny(){
-        return any;
+    public int getAnio(){
+        return anio;
     }
 
     /**
@@ -75,12 +75,12 @@ public class Data {
     }
 
     /**
-     * Setter de la variable any
-     * @param any - variable any
+     * Setter de la variable anio
+     * @param anio - variable anio
      */
-    public void setAny(int any){
-        if (anyValido(any)) {
-            this.any = any;
+    public void setanio(int anio){
+        if (anioValido(anio)) {
+            this.anio = anio;
         }
     }
 
@@ -111,15 +111,34 @@ public class Data {
     }
 
     /**
-     * Metodo que comprueba que el año este entre 1900 y 2030
-     * @param dia - variable año
+     * Metodo que comprueba que el anio este entre 1900 y 2030
+     * @param dia - variable anio
      * @return - true = esValida, false = no esValida
      */
-    public boolean anyValido(int any){
+    public boolean anioValido(int anio){
         boolean esValido = true;
-        if ((any > 2030) || (any < 1900)){
+        if ((anio > 2030) || (anio < 1900)){
             esValido = false;
         }
         return esValido;
     }
+
+    /**
+     * Metodo String que imprime la fecha
+     * @return - Fecha completa
+     */
+    public String toString (){
+        return(+this.getDia()+ "/" +this.getMes()+ "/" +this.getAnio());
+
+    }
+
+    /**
+     * Metodo que copia una fecha en concreto 
+     * @return - variable fechita
+     */
+    public Data copia(){
+        Data fechita = new Data(dia, mes, anio);
+        return fechita;
+    }
+    
 }

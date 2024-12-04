@@ -3,38 +3,38 @@ package prac3.integrants;
 public class Membre {
 
     //DADES
-    private String nom; // Nombre del miembro 
+    private String nombreMiembro; // nombreMiembrobre del miembro 
     private String alias;// Alias del membre 
-    private String correu;// Correo electronico del miembro 
-    private Data dataAlta; // Fecha en la que se da de alta 
-    private Data dataBaixa; // Fecha en la que se da de baja
+    private String correoMiembro;// Correo electronico del miembro 
+    private Data fechaAlta; // Fecha en la que se da de alta 
+    private Data fechaBaixa; // Fecha en la que se da de baja
 
     //MÉTODES
     
     /**
      * Metodo constructor de la clase Membre
-     * @param nom - Nombre del miembro
-     * @param alias - Alias del nombre del miembro
-     * @param correu - Correo del miembro
-     * @param dataAlta - Fecha en la que se dio de alta
-     * @param dataBaixa - Fecha en la que se dio de baja
+     * @param nombreMiembro - nombreMiembrobre del miembro
+     * @param alias - Alias del nombreMiembrobre del miembro
+     * @param correoMiembro - Correo del miembro
+     * @param fechaAlta - Fecha en la que se dio de alta
+     * @param fechaBaixa - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
-    public Membre (String nom, String alias, String correu, Data dataAlta, Data dataBaixa){
-        this.nom = nom;
+    public Membre (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaixa){
+        this.nombreMiembro = nombreMiembro;
         this.alias = alias;
-        this.correu = correu;
-        this.dataAlta = dataAlta;
-        this.dataBaixa = dataBaixa;
+        this.correoMiembro = correoMiembro;
+        this.fechaAlta = fechaAlta;
+        this.fechaBaixa = fechaBaixa;
 
     }
 
     /**
-     * Getter de la variable nom
-     * @return - variable nom
+     * Getter de la variable nombreMiembro
+     * @return - variable nombreMiembro
      */
-    public String getNom() {
-        return nom;
+    public String getnombreMiembro() {
+        return nombreMiembro;
     }
 
     /**
@@ -46,59 +46,55 @@ public class Membre {
     }
 
     /**
-     * Getter de la variable correu
-     * @return - variable correu
+     * Getter de la variable correoMiembro
+     * @return - variable correoMiembro
      */
-    public String getCorreu(){
-        return correu;
+    public String getCorreoMiembro(){
+        return correoMiembro;
     }
 
     /**
      * Getter de la fecha exacta en la que se dio de alta
      * @return - dia, mes y año en el que se dio de alta
      */
-    public Data getDataAlta(){
-        return dataAlta;
+    public Data getFechaAlta(){
+        return fechaAlta;
     }
 
     /**
      * Getter de la fecha exacta en la que se dio de baja
      * @return - dia, mes y año en el que se dio de baja
      */
-    public Data getDataBaixa(){
-        return dataBaixa;
+    public Data getFechaBaja(){
+        return fechaBaixa;
     }
 
     /**
      * Metodo que da de alta a un miembro, lo unico que hace es guardar la fecha que se le pasa en los parametros del alta
-     * @param diaAlta - dia en el que se quiere dar de alta
-     * @param mesALta - mes en el que se quiere dar de alta
-     * @param anyAlta - año en el que se quiere dar de alta
+     * @param fechaAlta - variable fechaAlta
      */
-    public void DonarDeAlta(Data dataAlta){
+    public void donarDeAlta(Data fechaAlta){
         //Comprobar que el membre no esta ja donat de alta
-        if (this.dataAlta == null){
-            this.dataAlta = dataAlta;
+        if (this.fechaAlta == null){
+            this.fechaAlta = fechaAlta;
         }
     }
 
     /**
      * Metodo que da de baja a un miembro, lo unico que hace es guardar la fecha que se le pasa en los parametros de la baja
-     * @param diaBaixa - dia en que se quiere dar de baja
-     * @param mesBaixa - mes en que se quiere dar de baja
-     * @param anyBaixa - año en que se quiere dar de baja
+     * @param fechaBaixa - variable fechaBaixa
      */
-    public void DonarDeBaixa(Data dataBaixa){
+    public void donarDeBaixa(Data fechaBaixa){
         //Comprobar que el membre esta donat de Alta 
-        if ((this.dataAlta != null) && (this.dataBaixa == null)){
+        if ((this.fechaAlta != null) && (this.fechaBaixa == null)){
             //Comprobar que no estiga donat de baixa 
-            this.dataBaixa = dataBaixa;  
+            this.fechaBaixa = fechaBaixa;  
         }
     }
     
 
-    public Membre copiaMembre(){
-        Membre membreCopiat = new Membre(getNom(),getAlias(),getCorreu(),getDataAlta(),getDataBaixa());
+    public Membre copia(){
+        Membre membreCopiat = new Membre(getnombreMiembro(),getAlias(),getCorreoMiembro(),getFechaAlta(),getFechaBaja());
         return membreCopiat;
     }
 

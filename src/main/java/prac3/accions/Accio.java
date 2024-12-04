@@ -6,11 +6,12 @@ public abstract class Accio {
     //3 primeras letras asociacion, seguidas de tres numeros a partir del 100.
     protected String codigoAccion;
 
-    private String nombreAccion;
+    protected String nombreAccion;
     //Asociaciones organizadoras de la accion
-    private LlistaAssociacions asociacionesInvolucradas;
+    protected LlistaAssociacions asociacionesInvolucradas;
     //Miembro organizador de la accion
-    private Membre organizadorResponsable;
+    protected Membre organizadorResponsable;
+    protected int indiceLista;
 
     /**
      * Metodo del constructor de la clase accion
@@ -68,4 +69,5 @@ public abstract class Accio {
         return asociacionesInvolucradas;
     }
 
+    public abstract Accio copia(); // Lo dejamos vacio
 }

@@ -2,79 +2,79 @@ package prac3.integrants;
 
 public class Alumne extends Membre {
 
-    private String curs;
-    private int anysEtse;
-    private boolean graduat; // Variable que indica si el alumno se ha graduado ya o no 
+    private String curso;
+    private int aniosEtse;
+    private boolean graduado; // Variable que indica si el alumno se ha graduado ya o no 
 
     /**
      * Constructor de la clase Alumne.
-     * @param nom - nombre del alumno
+     * @param nombreMiembro - nombreMiembrobre del alumno
      * @param alias - alias del alumno
-     * @param correu - correo del alumno
-     * @param ataAlta - fecha en la que se dio de alta
-     * @param dataBaixa - fecha en la que se dio de baja
-     * @param curs - curso del alumno
-     * @param anysEtse - anyos cursados en la ETSE
+     * @param correoMiembro - correo del alumno
+     * @param fechaAlta - fecha en la que se dio de alta
+     * @param fechaBaja - fecha en la que se dio de baja
+     * @param curso - cursoo del alumno
+     * @param aniosEtse - anyos cursoados en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumne (String nom, String alias, String correu, Data dataAlta, Data dataBaixa, String curs, int anysEtse){
-        super(nom, alias, correu, dataAlta, dataBaixa);
-        this.graduat = false;
-        this.curs = curs;
-        this.anysEtse = anysEtse;
+    public Alumne (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaja, String curso, int aniosEtse, boolean graduado){
+        super(nombreMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
+        this.graduado = graduado;
+        this.curso = curso;
+        this.aniosEtse = aniosEtse;
     }
 
     /**
      * Metodo String que imprime los datos de la clase alumno
      */
-    public String toString (){
-        return("Nom:" + getNom()+ "\n" +
+    public String toString(){
+        return("nombreMiembro:" + getnombreMiembro()+ "\n" +
                "Alias:" + getAlias() +  "\n" +
-               "Correu Electrònic:" + getCorreu() + "\n" +
-               "Data de Alta:" + getDataAlta() + "\n" +
-               "Data de Baixa:" + getDataBaixa() + "\n" +
-               "Curs:" + getCurs() + "\n" +
-               "Anys a l'Etse:" + getAnysEtse() + "\n" +
-               "Graduat:" + getGraduat());
+               "correoMiembro Electrònic:" + getCorreoMiembro() + "\n" +
+               "Data de Alta:" + getFechaAlta() + "\n" +
+               "Data de Baixa:" + getFechaBaja() + "\n" +
+               "curso:" + getCurso() + "\n" +
+               "Anys a l'Etse:" + getAniosEtse() + "\n" +
+               "graduado:" + getGraduado());
     }
     
     /**
-     * Getter de la variable curs
-     * @return - variable curs
+     * Getter de la variable curso
+     * @return - variable curso
      */
-    public String getCurs (){
-        return curs;
+    public String getCurso (){
+        return curso;
     }
 
     /**
      * Getter de la variable anyEtse
-     * @return - variable anysEtse
+     * @return - variable aniosEtse
      */
-    public int getAnysEtse (){
-        return anysEtse;
+    public int getAniosEtse (){
+        return aniosEtse;
     }
 
     /**
-     * Modificador de la variable graduat
+     * Modificador de la variable graduado
      */
-    public void JaGraduat(){
-        graduat = true;
+    public void jaGraduado(){
+        graduado = true;
     }
 
     /**
-     * Getter de la variable graduat
-     * @return - variable graduat
+     * Getter de la variable graduado
+     * @return - variable graduado
      */
-    public boolean getGraduat(){
-        return graduat;
+    public boolean getGraduado(){
+        return graduado;
     }
 
     /**
      * Metodo que hace una copia de un alumno en concreto
      * @return - copia de alumno en concreto
      */
-    public Alumne copiaAlumne(){
-        Alumne a = new Alumne(getNom(),getAlias(), getCorreu(), getDataAlta(), getDataBaixa(), curs, anysEtse);
+    public Alumne copia(){
+        Alumne a = new Alumne(getnombreMiembro(),getAlias(), getCorreoMiembro(), getFechaAlta(), getFechaBaja(), curso, aniosEtse, graduado);
         return a;
     }
 }
