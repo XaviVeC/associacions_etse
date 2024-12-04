@@ -1,4 +1,5 @@
 package prac3.integrants;
+import prac3.estructures.Data;
 
 public class Professor extends Membre {
 

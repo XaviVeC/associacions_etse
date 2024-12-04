@@ -1,5 +1,5 @@
 package prac3.integrants;
-
+import prac3.estructures.Data;
 public class Alumne extends Membre {
 
     private String curso;

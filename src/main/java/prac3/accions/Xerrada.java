@@ -1,7 +1,7 @@
 package prac3.accions;
 
 import prac3.integrants.Membre;
-import prac3.integrants.Data;
+import prac3.estructures.Data;
 import prac3.estructures.LlistaAssociacions;
 
 public class Xerrada extends Accio {

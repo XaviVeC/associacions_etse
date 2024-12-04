@@ -1,7 +1,7 @@
 package prac3.accions;
 
 import prac3.integrants.Membre;
-import prac3.integrants.Data;
+import prac3.estructures.Data;
 import prac3.estructures.LlistaAssociacions;
 
 public class Demostracio extends Accio {
@@ -95,13 +95,13 @@ public class Demostracio extends Accio {
      * @return - Texto con los datos de la demostracion
      */
     public String toString() {
-        return ("Nombre de la demostracion: " +this.getNombreAccion()+ "\n" +
-                "Asociaciones involucradas: " +this.getAsociacionesInvolucradas().toString()+ "\n" +
-                "Organizador responsable: " +this.getOrganizadorResponsable()+ "\n" +
+        return ("Nombre de la demostracion: " + this.nombreAccion + "\n" +
+                //"Asociaciones involucradas: " + this.asociacionesInvolucradas.toString() + "\n" +
+                "Organizador responsable: " +this.organizadorResponsable.toString() + "\n" +
                 "Fecha del disenio: " +fechaDisenio.toString()+ "\n" +
-                "Costo de la demostracion: " +this.getCostoDemostracion()+ "\n" +
-                "Veces que se ha ofrecido la demostracion: " +this.getContadorVecesOfrecida()+ "\n" +
-                "Es una demostracion valida? " +this.getDemostracionValida()+ "\n");
+                "Costo de la demostracion: " +this.costoDemostracion+ "\n" +
+                "Veces que se ha ofrecido la demostracion: " +this.contadorVecesOfrecida+ "\n" +
+                "Es una demostracion valida? " +this.demostracionValida+ "\n");
     }
 
     /**

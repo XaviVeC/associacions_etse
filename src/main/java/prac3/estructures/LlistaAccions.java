@@ -24,7 +24,7 @@ public class LlistaAccions {
         listaAcciones[nElem] = accionQueAniadir;
         nElem++;
     }
-
+    
     /**
      * Getter de la variable nElem
      * @return - numero de acciones que tenemos en la lista

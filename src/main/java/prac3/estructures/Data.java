@@ -1,4 +1,4 @@
-package prac3.integrants;
+package prac3.estructures;
 
 public class Data {
     
@@ -139,6 +139,5 @@ public class Data {
     public Data copia(){
         Data fechita = new Data(dia, mes, anio);
         return fechita;
-    }
-    
+    } 
 }

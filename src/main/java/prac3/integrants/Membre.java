@@ -1,4 +1,5 @@
 package prac3.integrants;
+import prac3.estructures.Data;
 //Clase base 
 public abstract class Membre {
 
