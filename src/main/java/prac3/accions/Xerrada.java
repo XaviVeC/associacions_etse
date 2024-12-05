@@ -1,18 +1,27 @@
 package prac3.accions;
-
-import prac3.integrants.Membre;
 import prac3.estructures.Data;
-import prac3.estructures.LlistaAssociacions;
 
 public class Xerrada extends Accio {
     private final int MAXIMO_INSTRUCTORES = 3; // Limite maximo de las personas que imparten la charla
     private Data fechaRealizacion; // Fecha en la que se imparte la charla
-    private Membre[] instructoresCharla = new Membre[MAXIMO_INSTRUCTORES]; // Instructores de la charla
+    private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES]; // Instructores de la charla
     private int[] valoraciones; // Vector de valoraciones de la charla
     private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
 
-    public Xerrada(String nombreAccion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, int indiceLista, Data fechaRealizacion, Membre[] instructoresCharla, int[] valoraciones, int numeroDeAsistentes) {
-        super(nombreAccion, asociacionesInvolucradas, organizadorResponsable, indiceLista);
+    /**
+     * 
+     * @param indiceFichero 
+     * @param tipoAccion
+     * @param nombreAccion
+     * @param asociacionesInvolucradas
+     * @param organizadorResponsable
+     * @param fechaRealizacion
+     * @param instructoresCharla
+     * @param valoraciones
+     * @param numeroDeAsistentes
+     */
+    public Xerrada(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas, String organizadorResponsable, Data fechaRealizacion, String[] instructoresCharla, int[] valoraciones, int numeroDeAsistentes) {
+        super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
         this.valoraciones = valoraciones;
@@ -24,22 +33,43 @@ public class Xerrada extends Accio {
         }
     }
 
+    /**
+     * 
+     * @return
+     */
     public Data getFechaRealizacion() {
         return fechaRealizacion;
     }
 
-    public Membre[] getInstructoresCharla() {
+    /**
+     * 
+     * @return
+     */
+    public String[] getInstructoresCharla() {
         return instructoresCharla;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int[] getValoraciones() {
         return valoraciones;
     }
 
+    /**
+     * 
+     * @return
+     */
     public int getNumeroAsistentes() {
         return numeroDeAsistentes;
     }
 
+    /**
+     * 
+     * @param valoracion
+     * @param indiceAsistente
+     */
     public void aniadirValoracion(int valoracion, int indiceAsistente) {
         if (valoraciones.length < this.numeroDeAsistentes) {
             this.valoraciones[indiceAsistente] = valoracion;
@@ -74,7 +104,7 @@ public class Xerrada extends Accio {
      * @return - copia de la instancia
      */
     public Xerrada copia() {
-        return (new Xerrada(this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable, this.indiceLista,
+        return (new Xerrada(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable,
                             this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes));
     }
 }

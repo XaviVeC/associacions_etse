@@ -1,40 +1,40 @@
 package prac3.accions;
-import prac3.integrants.Membre;
-import prac3.estructures.LlistaAssociacions;
+
 
 public abstract class Accio {
     //3 primeras letras asociacion, seguidas de tres numeros a partir del 100.
     protected String codigoAccion;
-
+    protected String tipoAccion;
     protected String nombreAccion;
     //Asociaciones organizadoras de la accion
-    protected LlistaAssociacions asociacionesInvolucradas;
+    protected String[] asociacionesInvolucradas;
     //Miembro organizador de la accion
-    protected Membre organizadorResponsable;
-    protected int indiceLista;
+    protected String organizadorResponsable;
+    protected int indiceFichero;
 
     /**
      * Metodo del constructor de la clase accion
-     * @param codigoAccion - Codigo que identifica la accion, 3 primeras letras nombre y 3 numeros
+     * @param tipoAccion - Si es Demostracio o Xerrada
      * @param nombreAccion - Nombre que identifica la accion
      * @param asociacionesInvolucradas - Lista de asociaciones involucradas en la accion
      * @param organizadorResponsable - Responsable de la organizacion de la accion
-     * @param indiceLista - Numero para generar el codigo
+     * @param indiceFichero - Numero para generar el codigo
      */
-    public Accio (String nombreAccion, LlistaAssociacions asociacionesInvolucradas, Membre organizadorResponsable, int indiceLista){
+    public Accio (int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas, String organizadorResponsable){
         this.nombreAccion = nombreAccion;
+        this.tipoAccion = tipoAccion;
         this.asociacionesInvolucradas = asociacionesInvolucradas;
         this.organizadorResponsable = organizadorResponsable;
-        codigoAccion = generarCodigoAccion(nombreAccion, indiceLista);
+        codigoAccion = generarCodigoAccion(asociacionesInvolucradas[0], indiceFichero);
     }
 
     /**
      * Metodo que crea el codigo a partir del indice de la lista y el nombre
-     * @param codigoAccion - Codigo que identifica la accion, 3 primeras letras nombre y 3 numeros
-     * @param nombreAccion - Nombre que identifica la accion
+     * @param numero - Codigo que identifica la accion, 3 primeras letras nombre y 3 numeros
+     * @param nombreAsociacion - Nombre que identifica la accion
      */
-    private static String generarCodigoAccion(String nombreAccion, int numero){
-        return nombreAccion.substring(0, 3) + (numero + 100);
+    private static String generarCodigoAccion(String nombreAsociacion, int numero){
+        return nombreAsociacion.substring(0, 3) + (numero + 100);
     }
 
     /**
@@ -57,7 +57,7 @@ public abstract class Accio {
      * Getter de la variable organizadorResponsable
      * @return - variable organizadorResponsable
      */
-    public Membre getOrganizadorResponsable() {
+    public String getOrganizadorResponsable() {
         return organizadorResponsable;
     }
 
@@ -65,7 +65,7 @@ public abstract class Accio {
      * Getter de la variable asociacionesInvolucradas
      * @return - variable asociacionesInvolucradas
      */
-    public LlistaAssociacions getAsociacionesInvolucradas() {
+    public String[] getAsociacionesInvolucradas() {
         return asociacionesInvolucradas;
     }
 

@@ -17,8 +17,8 @@ public class Alumne extends Membre {
      * @param yearsEtse - anyos cursados en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumne (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaja, String curso, int yearsEtse, boolean graduado){
-        super(nombreMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
+    public Alumne (int indiceFichero, String tipoMiembro, String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaja, String curso, int yearsEtse, boolean graduado){
+        super(indiceFichero, tipoMiembro, nombreMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
         this.graduado = graduado;
         this.curso = curso;
         this.yearsEtse = yearsEtse;
@@ -28,7 +28,7 @@ public class Alumne extends Membre {
      * Metodo String que imprime los datos de la clase alumno
      */
     public String toString(){
-        return("nombreMiembro:" + getnombreMiembro()+ "\n" +
+        return("nombreMiembro:" + getnombreMiembro() + "\n" +
                "Alias:" + getAlias() +  "\n" +
                "correoMiembro Electrònic:" + getCorreoMiembro() + "\n" +
                "Data de Alta:" + getFechaAlta() + "\n" +
@@ -74,7 +74,7 @@ public class Alumne extends Membre {
      * @return - copia de alumno en concreto
      */
     public Alumne copia(){
-        Alumne a = new Alumne(getnombreMiembro(),getAlias(), getCorreoMiembro(), getFechaAlta(), getFechaBaja(), curso, yearsEtse, graduado);
+        Alumne a = new Alumne(getIndiceFichero(), getTipoMiembro(), getnombreMiembro(),getAlias(), getCorreoMiembro(), getFechaAlta(), getFechaBaja(), curso, yearsEtse, graduado);
         return a;
     }
 }

@@ -9,6 +9,8 @@ public class Professor extends Membre {
 
     /**
      * Metodo Constructor de la clase Professor
+     * @param indiceFichero - Indice en el que esta el Profesor dentro del fichero
+     * @param tipoMiembro - En este caso solo seria profesor
      * @param nom - Nombre del profesor
      * @param alies - Alias del profesor
      * @param correu - Correo del profesor
@@ -18,8 +20,8 @@ public class Professor extends Membre {
      * @param numeroDespachp - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Professor (String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departamento, int numeroDespacho){
-        super(nom, alies, correu, dataAlta, dataBaixa);
+    public Professor (int indiceFichero, String tipoMiembro, String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departamento, int numeroDespacho){
+        super(indiceFichero, tipoMiembro, nom, alies, correu, dataAlta, dataBaixa);
         this.departamento = departamento;
         this.numeroDespacho = numeroDespacho;
       
@@ -59,7 +61,7 @@ public class Professor extends Membre {
      * @return - copia de un profesor
      */
     public Professor copia(){
-        Professor p = new Professor(getnombreMiembro(), getAlias(),getCorreoMiembro(), getFechaAlta(), getFechaBaja(),getDepartamento(),getNumeroDespacho());
+        Professor p = new Professor(getIndiceFichero(), getTipoMiembro(), getnombreMiembro(), getAlias(),getCorreoMiembro(), getFechaAlta(), getFechaBaja(),getDepartamento(),getNumeroDespacho());
         return p;
     }
 }

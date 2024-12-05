@@ -4,16 +4,18 @@ import prac3.estructures.Data;
 public abstract class Membre {
 
     //DADES
+    private String tipoMiembro;
     private String nombreMiembro; // nombreMiembrobre del miembro 
     private String alias;// Alias del membre 
     private String correoMiembro;// Correo electronico del miembro 
     private Data fechaAlta; // Fecha en la que se da de alta 
     private Data fechaBaixa; // Fecha en la que se da de baja
-
+    private int indiceFichero; // Identificador dentro del fichero
     //MÉTODES
     
     /**
      * Metodo constructor de la clase Membre
+     * @param tipoMiembro - si es Alumne o Professor
      * @param nombreMiembro - nombreMiembrobre del miembro
      * @param alias - Alias del nombreMiembrobre del miembro
      * @param correoMiembro - Correo del miembro
@@ -21,13 +23,31 @@ public abstract class Membre {
      * @param fechaBaixa - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
-    public Membre (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaixa){
+    public Membre (int indiceFichero, String tipoMiembro, String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaixa){
+        this.indiceFichero = indiceFichero;
+        this.tipoMiembro = tipoMiembro;
         this.nombreMiembro = nombreMiembro;
         this.alias = alias;
         this.correoMiembro = correoMiembro;
         this.fechaAlta = fechaAlta;
         this.fechaBaixa = fechaBaixa;
 
+    }
+
+    /**
+     * Getter de la variable indiceFiechero
+     * @return - variable indiceFichero
+     */
+    public int getIndiceFichero() {
+        return indiceFichero;
+    }
+
+    /**
+     * Getter de la variable tipoMiembro
+     * @return - variable tipoMiembro
+     */
+    public String getTipoMiembro() {
+        return tipoMiembro;
     }
 
     /**
