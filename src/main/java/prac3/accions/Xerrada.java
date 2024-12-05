@@ -70,7 +70,7 @@ public class Xerrada extends Accio {
      * @param valoracion
      * @param indiceAsistente
      */
-    public void aniadirValoracion(int valoracion, int indiceAsistente) {
+    public void addValoracion(int valoracion, int indiceAsistente) {
         if (valoraciones.length < this.numeroDeAsistentes) {
             this.valoraciones[indiceAsistente] = valoracion;
         }
@@ -78,25 +78,27 @@ public class Xerrada extends Accio {
 
     /**
      * Metodo toString 
-     * @return texto con los datos de la charla
+     * @return - Texto con los datos de la charla
      */
-    public String toString(){
-        String aux = "Nombre de la charla: " + this.getNombreAccion() + "\n" +
-                     "Asociaciones involucradas: " + this.getAsociacionesInvolucradas().toString() + "\n" +
-                     "Organizador responsable: " + this.getOrganizadorResponsable() + "\n" +
-                     "Fecha de la celebracion: " + fechaRealizacion.toString() + "\n" + "Numero de asistentes: " + this.numeroDeAsistentes + "\n";
+    public String toString() {
+        String aux = "Nombre de la charla: " + this.nombreAccion + "\n" +
+        "Codigo de la charla: " + this.getCodigoAccion() + "\n" +
+        "Fecha de la charla: " + this.fechaRealizacion.toString() + "\n" + 
+        "Organizador responsable: " + this.organizadorResponsable +"\n" +
+        "el resto de involucrados fueron: ";
+        for (int index = 0; index < instructoresCharla.length; index++) {
+            aux = aux + "Instructor " + (index + 1) + ": " + instructoresCharla[index] + "\n";
+        }
+        aux = aux + "Las asociaciones que organizaron la charla fueron:\n";
+        for (int index = 0; index < asociacionesInvolucradas.length; index++) {
+            aux = aux + "Asociacion involucrada "+ (index + 1)+ ": " + this.asociacionesInvolucradas[index] + "\n";
+        }
 
-        for(int i = 0; i < this.instructoresCharla.length; i++)
-        {
-            aux = aux + "El instructor "+ (i+1) +"es" + this.instructoresCharla[i].toString() + "\n";
+        aux = aux + "Asistieron un total de " + this.numeroDeAsistentes + " personas, y las valoraciones fueron\n";
+        for (int index = 0; index < valoraciones.length; index++) {
+            aux = aux + "Valoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
         }
-        
-        for(int i = 0; i < this.valoraciones.length; i++)
-        {
-            aux = aux + "La valoracion numero "+ (i+1) +" es " + this.valoraciones[i] + "\n";
-        }
-        
-        return aux;     
+        return aux;
     }
 
     /**

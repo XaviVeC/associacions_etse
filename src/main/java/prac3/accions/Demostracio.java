@@ -96,7 +96,8 @@ public class Demostracio extends Accio {
      */
     public String toString() {
         String aux = "Nombre de la demostracion: " + this.nombreAccion + "\n" +
-        "Fecha del disenio: " + fechaDesign.toString() + "\n" + 
+        "Codigo de la demostracion: " + this.getCodigoAccion() + "\n" +
+        "Fecha del design: " + fechaDesign.toString() + "\n" + 
         "Costo de la demostracion: " +this.costoDemostracion+ "\n" +
         "Veces que se ha ofrecido la demostracion: " +this.contadorVecesOfrecida+ "\n";
 

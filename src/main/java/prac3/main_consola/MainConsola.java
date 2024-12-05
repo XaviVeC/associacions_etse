@@ -29,6 +29,7 @@ public class MainConsola {
          * 5. Obtener y Mostrar lista de Acciones de una asociacion en concreto.
          * 
          * 6. Obtener y Mostrar lista de Xerrades que se hacen en una franja de fechas que nos pasan por teclado.
+         * EXCEPCION EN LAS FECHAS!!!!!
          * 
          * 7. Add nueva Asociacion.
          * 

@@ -7,8 +7,8 @@ public class LlistaAccions {
 
     /**
      * Constructor de la clase LlistaAccions
-     * @param numeroAcciones - numero total de acciones para saber de que tamaño hacer la lista
-     * @return - lista de acciones del tamaño que entra por parametro
+     * @param numeroAcciones - numero total de acciones para saber de que size hacer la lista
+     * @return - lista de acciones del size que entra por parametro
      */
     public LlistaAccions (int numeroAcciones){
         this.listaAcciones = new Accio[numeroAcciones];
@@ -16,13 +16,15 @@ public class LlistaAccions {
     }
 
     /**
-     * Metodo que añade una accion que se pase por parametro en la ultima posicion de la lista
-     * @param accionQueAniadir - accion que hay que añadir
+     * Metodo que ingresa una accion que se pase por parametro en la ultima posicion de la lista
+     * @param accion - accion que hay que add
      * @return - la lista modificada
      */
-    public void addAccion (Accio accionQueAniadir){
-        listaAcciones[nElem] = accionQueAniadir;
-        nElem++;
+    public void addAccion (Accio accion){
+        if (nElem < listaAcciones.length) {
+            listaAcciones[nElem] = accion;
+            nElem++;
+        }
     }
     
     /**
@@ -47,10 +49,10 @@ public class LlistaAccions {
      * @return - variable nuevaLista, que es esta copia de la lista
      */
     public LlistaAccions copia () {
-        int tamanioLista = this.listaAcciones.length;
-        LlistaAccions nuevaLista = new LlistaAccions(tamanioLista);
+        int sizeLista = this.listaAcciones.length;
+        LlistaAccions nuevaLista = new LlistaAccions(sizeLista);
 
-        for (int i = 0; i < tamanioLista; i++) {
+        for (int i = 0; i < sizeLista; i++) {
             nuevaLista.listaAcciones[i] = listaAcciones[i].copia();
         }
         return nuevaLista;
@@ -69,4 +71,38 @@ public class LlistaAccions {
 
         return stringDeLaLista;
     }
+
+
+
+    public LlistaAccions cargarListaDelFichero(){
+        LlistaAccions listaAccionesFichero = new LlistaAccions(100); //ya veremos como manejamos el size de la lista
+
+
+
+
+        return listaAccionesFichero;
+    }
+
+
+
+
+    private static String[] llegirLiniesFitxer(int nLinies) throws FileNotFoundException {
+		String[] result;
+		if (nLinies < 0)
+			nLinies = 0;
+		if (nLinies > 21694)
+			nLinies = 21694;
+		result = new String[nLinies];
+		Scanner f = new Scanner(new File("acciones.csv"));
+
+		String capcalera = f.nextLine();
+		System.out.println("El format de les dades en cada línia és el següent\n" + capcalera);
+		for (int i = 0; i < nLinies; i++) {
+			result[i] = f.nextLine();
+		}
+		f.close();
+		return result;
+	}
+
+
 }

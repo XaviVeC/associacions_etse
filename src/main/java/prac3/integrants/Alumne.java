@@ -8,6 +8,8 @@ public class Alumne extends Membre {
 
     /**
      * Constructor de la clase Alumne.
+     * @param indiceFichero - identificador del Alumno dentro del fichero
+     * @param tipoMiembro - en este caso solo deberia ser Alumne
      * @param nombreMiembro - nombreMiembrobre del alumno
      * @param alias - alias del alumno
      * @param correoMiembro - correo del alumno

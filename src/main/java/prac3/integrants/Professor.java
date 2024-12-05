@@ -17,7 +17,7 @@ public class Professor extends Membre {
      * @param dataAlta - Fecha en la que se dio de alta
      * @param dataBaixa - Fecha en la que se dio de baja
      * @param departament - Si es DEIM o DEEEA
-     * @param numeroDespachp - Numero de despacho del profesor
+     * @param numeroDespacho - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
     public Professor (int indiceFichero, String tipoMiembro, String nom, String alies, String correu, Data dataAlta, Data dataBaixa,String departamento, int numeroDespacho){

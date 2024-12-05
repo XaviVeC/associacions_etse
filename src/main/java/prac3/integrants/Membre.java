@@ -4,17 +4,18 @@ import prac3.estructures.Data;
 public abstract class Membre {
 
     //DADES
-    private String tipoMiembro;
-    private String nombreMiembro; // nombreMiembrobre del miembro 
+    private int indiceFichero; // Identificador dentro del fichero
+    private String tipoMiembro; // indica si es Professor o Alumne
+    private String nombreMiembro; // nombre del miembro 
     private String alias;// Alias del membre 
     private String correoMiembro;// Correo electronico del miembro 
     private Data fechaAlta; // Fecha en la que se da de alta 
     private Data fechaBaixa; // Fecha en la que se da de baja
-    private int indiceFichero; // Identificador dentro del fichero
     //MÉTODES
     
     /**
      * Metodo constructor de la clase Membre
+     * @param indiceFichero - identificador dentro del fichero
      * @param tipoMiembro - si es Alumne o Professor
      * @param nombreMiembro - nombreMiembrobre del miembro
      * @param alias - Alias del nombreMiembrobre del miembro
