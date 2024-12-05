@@ -19,7 +19,7 @@ public class LlistaAssociacions {
      * @param asociacionQueAniadir - asociacion que hay que añadir
      * @return - la lista modificada
      */
-    public void aniadirAsociacion (Associacio asociacionQueAniadir){
+    public void addAsociacion (Associacio asociacionQueAniadir){
         if (nElem < listaAsociaciones.length) {
             listaAsociaciones[nElem] = asociacionQueAniadir.copia();
             nElem++;

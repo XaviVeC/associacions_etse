@@ -59,14 +59,14 @@ public class UsaAccio {
                 System.out.println("¿Que asociaciones participan?");
                 String nombreAsoc = teclat.nextLine();
                 Associacio asocAuxiliar = new Associacio(nombreAsoc, null, null, null, null);
-                listaAsoc.aniadirAsociacion(asocAuxiliar);
+                listaAsoc.addAsociacion(asocAuxiliar);
             }
             System.out.println("¿Que miembro es?");
             String nombreResponsable = teclat.nextLine();
             Professor miembroAux = new Professor(nombreResponsable, null, null, aux, aux,null, 0);
 
             Demostracio demo = new Demostracio(nombre, null, miembroAux, 1, aux, 1000);
-            lista.aniadirAccion(demo);
+            lista.addAccion(demo);
         }
         else
         {
@@ -81,7 +81,7 @@ public class UsaAccio {
                 System.out.println("¿Que asociaciones participan?");
                 String nombreAsoc = teclat.nextLine();
                 Associacio asocAuxiliar = new Associacio(nombreAsoc, null, null, null, null);
-                listaAsoc.aniadirAsociacion(asocAuxiliar);
+                listaAsoc.addAsociacion(asocAuxiliar);
                 i++;
             } while (i < cantidadAsociaciones);
            
@@ -91,7 +91,7 @@ public class UsaAccio {
             Professor miembroAux = new Professor(nombreResponsable, null, null, aux, aux,null, 0);
             
             Xerrada xerra = new Xerrada(nombreAccion, listaAsoc, miembroAux, 12, aux, null, null, 1);
-            lista.aniadirAccion(xerra);
+            lista.addAccion(xerra);
         }
         
         

@@ -3,7 +3,7 @@ import prac3.accions.Accio;
 
 public class LlistaAccions {
     private Accio [] listaAcciones;     // lista de acciones
-    private int nElem;                  // numero de eelementos de la lista acciones
+    private int nElem;                  // numero de elementos de la lista acciones
 
     /**
      * Constructor de la clase LlistaAccions
@@ -20,7 +20,7 @@ public class LlistaAccions {
      * @param accionQueAniadir - accion que hay que añadir
      * @return - la lista modificada
      */
-    public void aniadirAccion (Accio accionQueAniadir){
+    public void addAccion (Accio accionQueAniadir){
         listaAcciones[nElem] = accionQueAniadir;
         nElem++;
     }

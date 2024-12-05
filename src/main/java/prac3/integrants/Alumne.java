@@ -3,7 +3,7 @@ import prac3.estructures.Data;
 public class Alumne extends Membre {
 
     private String curso;
-    private int aniosEtse;
+    private int yearsEtse;
     private boolean graduado; // Variable que indica si el alumno se ha graduado ya o no 
 
     /**
@@ -13,15 +13,15 @@ public class Alumne extends Membre {
      * @param correoMiembro - correo del alumno
      * @param fechaAlta - fecha en la que se dio de alta
      * @param fechaBaja - fecha en la que se dio de baja
-     * @param curso - cursoo del alumno
-     * @param aniosEtse - anyos cursoados en la ETSE
+     * @param curso - curso del alumno
+     * @param yearsEtse - anyos cursados en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumne (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaja, String curso, int aniosEtse, boolean graduado){
+    public Alumne (String nombreMiembro, String alias, String correoMiembro, Data fechaAlta, Data fechaBaja, String curso, int yearsEtse, boolean graduado){
         super(nombreMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
         this.graduado = graduado;
         this.curso = curso;
-        this.aniosEtse = aniosEtse;
+        this.yearsEtse = yearsEtse;
     }
 
     /**
@@ -34,7 +34,7 @@ public class Alumne extends Membre {
                "Data de Alta:" + getFechaAlta() + "\n" +
                "Data de Baixa:" + getFechaBaja() + "\n" +
                "curso:" + getCurso() + "\n" +
-               "Anys a l'Etse:" + getAniosEtse() + "\n" +
+               "Anys a l'Etse:" + getYearsEtse() + "\n" +
                "graduado:" + getGraduado());
     }
     
@@ -48,10 +48,10 @@ public class Alumne extends Membre {
 
     /**
      * Getter de la variable anyEtse
-     * @return - variable aniosEtse
+     * @return - variable yearsEtse
      */
-    public int getAniosEtse (){
-        return aniosEtse;
+    public int getYearsEtse (){
+        return yearsEtse;
     }
 
     /**
@@ -74,7 +74,7 @@ public class Alumne extends Membre {
      * @return - copia de alumno en concreto
      */
     public Alumne copia(){
-        Alumne a = new Alumne(getnombreMiembro(),getAlias(), getCorreoMiembro(), getFechaAlta(), getFechaBaja(), curso, aniosEtse, graduado);
+        Alumne a = new Alumne(getnombreMiembro(),getAlias(), getCorreoMiembro(), getFechaAlta(), getFechaBaja(), curso, yearsEtse, graduado);
         return a;
     }
 }

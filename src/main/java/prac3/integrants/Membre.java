@@ -56,7 +56,7 @@ public abstract class Membre {
 
     /**
      * Getter de la fecha exacta en la que se dio de alta
-     * @return - dia, mes y año en el que se dio de alta
+     * @return - fecha en el que se dio de alta
      */
     public Data getFechaAlta(){
         return fechaAlta;
@@ -64,7 +64,7 @@ public abstract class Membre {
 
     /**
      * Getter de la fecha exacta en la que se dio de baja
-     * @return - dia, mes y año en el que se dio de baja
+     * @return - fecha en el que se dio de baja
      */
     public Data getFechaBaja(){
         return fechaBaixa;
@@ -93,8 +93,16 @@ public abstract class Membre {
         }
     }
     
-
+    /**
+     * Metodo que hace una copia de un miembro
+     * @return - miembro copiado
+     */
     public abstract Membre copia();
+
+    /**
+     * Metodo imprime los datos de un miembro en concreto
+     * @return - datos de un miembro en concreto por pantalla
+     */
     public abstract String toString();
 
 
