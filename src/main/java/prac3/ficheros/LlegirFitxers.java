@@ -17,19 +17,33 @@ import prac3.integrants.Professor;
 public class LlegirFitxers {
 
     public void LeerficheroMiembros(String nombreFichero, LlistaMembres listaM){
-        try(BufferedReader f = new BufferedReader(new FileReader (nombreFichero))){
+        try(BufferedReader lectura = new BufferedReader(new FileReader (nombreFichero))){
             
-            String frase = "";
+            String linia = "";
             int indiceFichero, numeroDespacho, yearsEtse;
             String tipoMiembro, nombreMiembro, alias, correoMiembro, departamento, curso;
+            String[] trozos, trozosFechaAlta, trozosFechaBaja;
             boolean graduado;
             Data fechaAlta;
             Data fechaBaja;
             
-            frase = f.readLine();
-            while (frase != null) {
+            linia = lectura.readLine();
+            while (linia != null) {
 
-                StringTokenizer st = new StringTokenizer(frase,";");
+                trozos = linia.split(";");
+                indiceFichero = Integer.parseInt(trozos[0]);
+                tipoMiembro = trozos[1];
+                nombreMiembro = trozos [2];
+                alias = trozos [3];
+                correoMiembro = trozos[4];
+                trozosFechaAlta = trozos[5].split("-");
+                trozosFechaBaja = trozos[6].split("-");
+                
+                
+                /*
+                 * 
+                
+                StringTokenizer st = new StringTokenizer(linia,";");
                 indiceFichero = Integer.parseInt(st.nextToken());
                 tipoMiembro = st.nextToken();
                 nombreMiembro = st.nextToken();
@@ -37,6 +51,7 @@ public class LlegirFitxers {
                 correoMiembro = st.nextToken();
                 //fechaAlta = - falta mirar como leerlo 
                 //fechaBaja = -falta mirar como leerlo 
+                */
 
                 switch(tipoMiembro){
                     case "Alumno":
@@ -53,9 +68,9 @@ public class LlegirFitxers {
                         listaM.addmiembro(p);
                         break;
                 }
-                frase = f.readLine();
+                linia = lectura.readLine();
             }
-            f.close();
+            lectura.close();
         }catch(FileNotFoundException e){
              System.out.println("el fichero actividades no se ha encontrado" + e.toString());
         }catch(IOException ex){
@@ -64,16 +79,16 @@ public class LlegirFitxers {
     }
 
     public void LeerFicheroAsociaciones(String nombreFichero, LlistaAssociacions listaAso, LlistaMembres listaM){
-        try(BufferedReader f = new BufferedReader(new FileReader(nombreFichero))){
-            String frase = "";
+        try(BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))){
+            String linia = "";
             String nombreAsociacion, correoContactoAsociacion;
             String[] titulacionesAsociacion;
             Membre[] listaMiembrosAsociacion, personasEnCargos;
 
-            frase = f.readLine();
-            while (frase != null){
-                StringTokenizer st = new StringTokenizer(frase,";");
-                StringTokenizer st2 = new StringTokenizer(frase,"/");
+            linia = lectura.readLine();
+            while (linia != null){
+                StringTokenizer st = new StringTokenizer(linia,";");
+                StringTokenizer st2 = new StringTokenizer(linia,"/");
                 nombreAsociacion = st.nextToken();
                 correoContactoAsociacion = st.nextToken();
                 //titulacionesAsociacion = falta mirar como leerlo 

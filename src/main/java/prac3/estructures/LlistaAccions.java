@@ -84,25 +84,4 @@ public class LlistaAccions {
     }
 
 
-
-
-    private static String[] llegirLiniesFitxer(int nLinies) throws FileNotFoundException {
-		String[] result;
-		if (nLinies < 0)
-			nLinies = 0;
-		if (nLinies > 21694)
-			nLinies = 21694;
-		result = new String[nLinies];
-		Scanner f = new Scanner(new File("acciones.csv"));
-
-		String capcalera = f.nextLine();
-		System.out.println("El format de les dades en cada línia és el següent\n" + capcalera);
-		for (int i = 0; i < nLinies; i++) {
-			result[i] = f.nextLine();
-		}
-		f.close();
-		return result;
-	}
-
-
 }
