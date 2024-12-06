@@ -17,9 +17,8 @@ public class LlistaAssociacions {
     /**
      * Metodo que añade una asociacion que se pase por parametro en la ultima posicion de la lista
      * @param asociacionQueAniadir - asociacion que hay que añadir
-     * @return - la lista modificada
      */
-    public void addAsociacion (Associacio asociacionQueAniadir){
+    public void addAsociacion (Associacio asociacionQueAniadir){ // 7 - Menu
         if (nElem < listaAsociaciones.length) {
             listaAsociaciones[nElem] = asociacionQueAniadir.copia();
             nElem++;
@@ -32,6 +31,14 @@ public class LlistaAssociacions {
      */
     public int getIndiceAsociaciones() {
         return this.nElem;
+    }
+
+    /**
+     * Getter de la lista de asociaciones
+     * @return - variable listaAsociaciones
+     */
+    public Associacio[] getLlistaAssociacions() { // 1 - Menu
+        return this.listaAsociaciones;
     }
 
 

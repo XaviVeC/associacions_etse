@@ -1,7 +1,10 @@
 package prac3.estructures;
 
+import prac3.integrants.Alumne;
 import prac3.integrants.Membre;
 // import prac3.associacions.Associacio;
+import prac3.integrants.Professor;
+import prac3.estructures.LlistaAssociacions;
 
 public class LlistaMembres {
     private Membre[] listaMembres; // lista de miembros

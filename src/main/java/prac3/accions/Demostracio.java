@@ -73,7 +73,7 @@ public class Demostracio extends Accio {
      * Metodo que inhabilita una demostracion
      */
     public void deshabilitarDemostracion() {
-        this.demostracionValida = false;;
+        this.demostracionValida = false;
     }
 
     /**
