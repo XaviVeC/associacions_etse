@@ -5,6 +5,7 @@ import prac3.integrants.Membre;
 // import prac3.associacions.Associacio;
 import prac3.integrants.Professor;
 import prac3.estructures.LlistaAssociacions;
+import prac3.ficheros.LlegirFitxers;
 
 public class LlistaMembres {
     private Membre[] listaMembres; // lista de miembros
@@ -84,9 +85,17 @@ public class LlistaMembres {
      * @return - lista de miembros de la asociacion con ese nombre
      */
     public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
-        int j = 20;
-        LlistaMembres listaAux = new LlistaMembres(j);
-        /*LlistaAssociacions listaAsoc = new LlistaAssociacions(j);
+        LlegirFitxers.leerficheroMiembros("Membres.csv", listaAux);
+        
+       
+       
+       
+       
+        LlistaMembres listaAux = new LlistaMembres();
+        return listaAux;
+
+        /*
+        LlistaAssociacions listaAsoc = new LlistaAssociacions(j);
         for (int i = 0; i < listaAsoc.getIndiceAsociaciones(); i++){
             if (nombreAsociacion.equalsIgnoreCase(listaAsoc.getNombreAsociacion())){
 
@@ -95,8 +104,6 @@ public class LlistaMembres {
         */
 
 
-
-        return listaAux;
     }
 
     

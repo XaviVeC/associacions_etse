@@ -83,13 +83,5 @@ public class LlistaAccions {
         return listaAccionesFichero;
     }
 
-    public LlistaAccions getAccionesAsociacionConcreta(String asociacion) {
-        LlistaAccions aux = new LlistaAccions(nElem);
-
-        
-
-        return aux;
-    }
-
 
 }

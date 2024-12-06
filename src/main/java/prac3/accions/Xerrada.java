@@ -9,7 +9,7 @@ public class Xerrada extends Accio {
     private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
 
     /**
-     * 
+     * Constructor de la classe Xerrada
      * @param indiceFichero 
      * @param tipoAccion
      * @param nombreAccion
