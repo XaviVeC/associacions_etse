@@ -22,7 +22,7 @@ public class LlistaAccions {
      */
     public void addAccion (Accio accion){
         if (nElem < listaAcciones.length) {
-            listaAcciones[nElem] = accion;
+            listaAcciones[nElem] = accion.copia();
             nElem++;
         }
     }
@@ -66,7 +66,7 @@ public class LlistaAccions {
         String stringDeLaLista = "";
 
         for (int i = 0; i < this.nElem; i++) {
-            stringDeLaLista = stringDeLaLista + listaAcciones[i].toString() + "\n";
+            stringDeLaLista = stringDeLaLista + "La accion"  + (i+1) + "es: "+listaAcciones[i].toString() + "\n";
         }
 
         return stringDeLaLista;

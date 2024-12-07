@@ -4,7 +4,7 @@ import prac3.estructures.Data;
 
 
 public class Demostracio extends Accio {
-    private Data fechaDesign; // Fecha en la que se creo el disenio de la demostracion
+    private Data fechaCreacion; // Fecha en la que se creo el disenio de la demostracion
     private boolean demostracionValida; // Da la informacion de si una demostracion que se continua ofreciendo
     private int contadorVecesOfrecida; // Contador de veces que se ha ofrecido una demostracion
     private double costoDemostracion; // Valor de dinero que ha costado crear la demostracion
@@ -16,18 +16,20 @@ public class Demostracio extends Accio {
      * @param nombreAccion - nombre/titulo de la demostracion
      * @param asociacionesInvolucradas - asociaciones que estan involucradas en la demostracion
      * @param organizadorResponsable - miembro organizador de la demostracion
-     * @param fechaDesign - fecha en la que se creo el disenio de la asociacion
+     * @param fechaCreacion - fecha en la que se creo la demostracion
      * @param costoDemostracion - costo de crear la asociacion
+     * @param estadoDemostracion - demostracion activa o no activa
+     * @param vecesOfrecida - Cuantas veces se ofrecio la demostracion
      */
     public Demostracio(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas, String organizadorResponsable, 
-                       Data fechaDesign, double costoDemostracion) {
+                       Data fechaCreacion, double costoDemostracion, boolean estadoDemostracion, int vecesOfrecida) {
         // Atributos de la superclase
         super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         
         // Atributos de esta subclase
-        this.demostracionValida = true; // Cuando se crea una demostracion, se considera que se empieza a ofrecer en este instante
-        this.contadorVecesOfrecida = 0; // Todavia no se ha ofrecido, ya que se acaba de crear
-        this.fechaDesign = new Data(fechaDesign.getDia(), fechaDesign.getMes(), fechaDesign.getAnio()); // Hay que crear una nueva clase Data
+        this.demostracionValida = estadoDemostracion; // Cuando se crea una demostracion, se considera que se empieza a ofrecer en este instante
+        this.contadorVecesOfrecida = vecesOfrecida; // Todavia no se ha ofrecido, ya que se acaba de crear
+        this.fechaCreacion = new Data(fechaCreacion.getDia(), fechaCreacion.getMes(), fechaCreacion.getAnio()); // Hay que crear una nueva clase Data
 
         if (this.costoDemostracion < 0) { 
             this.costoDemostracion = -999; // Si el costo introducido es negativo, se asigna un costo que indica error
@@ -65,8 +67,8 @@ public class Demostracio extends Accio {
      * Getter de la fecha en la que se disenio la demostracion
      * @return - variable fechaDisenio
      */
-    public Data getFechaDesign() {
-        return this.fechaDesign;
+    public Data getFechaCreacion() {
+        return this.fechaCreacion;
     }
    
     /**
@@ -97,7 +99,7 @@ public class Demostracio extends Accio {
     public String toString() {
         String aux = "Nombre de la demostracion: " + this.nombreAccion + "\n" +
         "Codigo de la demostracion: " + this.getCodigoAccion() + "\n" +
-        "Fecha del design: " + fechaDesign.toString() + "\n" + 
+        "Fecha del design: " + fechaCreacion.toString() + "\n" + 
         "Costo de la demostracion: " +this.costoDemostracion+ "\n" +
         "Veces que se ha ofrecido la demostracion: " +this.contadorVecesOfrecida+ "\n";
 
@@ -124,6 +126,6 @@ public class Demostracio extends Accio {
      */
     public Demostracio copia() {
         return (new Demostracio(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable, 
-                                this.fechaDesign, this.costoDemostracion));
+                                this.fechaCreacion, this.costoDemostracion, this.demostracionValida, this.contadorVecesOfrecida));
     }
 }

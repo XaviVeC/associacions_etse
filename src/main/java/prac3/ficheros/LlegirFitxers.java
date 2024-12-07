@@ -5,8 +5,11 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import prac3.accions.Demostracio;
+import prac3.accions.Xerrada;
 import prac3.associacions.Associacio;
 import prac3.estructures.Data;
+import prac3.estructures.LlistaAccions;
 import prac3.estructures.LlistaAssociacions;
 import prac3.estructures.LlistaMembres;
 import prac3.integrants.Alumne;
@@ -14,7 +17,60 @@ import prac3.integrants.Professor;
 
 public class LlegirFitxers {
 
-    public static void leerficheroMiembros(String nombreFichero, LlistaMembres listaMiembros, int cantidadMiembros) {
+    public static void LeerFicheroAcciones(String nombreFichero, LlistaAccions nombreListaAcciones,
+            int cantidadDeAcciones) {
+
+        try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
+            String informacionUnaAccion;
+            String[] campos, campoFecha, camposAsociacionesInvolucradas;
+
+            informacionUnaAccion = lectura.readLine();
+            campos = informacionUnaAccion.split(";");
+            campoFecha = campos[5].split("-");
+            Data auxiliarFecha = new Data(Integer.parseInt(campoFecha[0]), Integer.parseInt(campoFecha[1]),
+                    Integer.parseInt(campoFecha[2]));
+            camposAsociacionesInvolucradas = campos[3].split("-");
+
+            switch (campos[2]) {
+                case "Demostracion":
+                    Demostracio demostracion = new Demostracio(Integer.parseInt(campos[0]), campos[1], campos[2],
+                            camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Integer.parseInt(campos[6]),
+                            Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8].trim()));
+                    nombreListaAcciones.addAccion(demostracion);
+                    break;
+                case "Charla":
+                    String[] intructoresCharla = campos[6].split("-");
+                    String[] valoraciones = campos[7].split("-");
+                    int[] valoracionesEnEntero = new int[valoraciones.length];
+                    for (int i = 0; i < valoracionesEnEntero.length; i++) {
+                        valoracionesEnEntero[i] = Integer.parseInt(valoraciones[i]);
+                    }
+                    Xerrada charla = new Xerrada(Integer.parseInt(campos[0]), campos[1], campos[2],
+                            camposAsociacionesInvolucradas, campos[4], auxiliarFecha, intructoresCharla,
+                            valoracionesEnEntero, Integer.parseInt(campos[8]));
+                    nombreListaAcciones.addAccion(charla);
+                    break;
+                default:
+                    break;
+            }
+            lectura.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("El fichero actividades no se ha encontrado" + e.toString());
+        } catch (IOException ex) {
+            System.err.println("Error en la lectura " + ex.toString());
+        }
+    }
+
+    /**
+     * Metodo apra leer los datos del fichero miembros y guardarlos en una lista
+     * 
+     * @param nombreFichero    - nombre del fichero que contiene a los miembros
+     * @param listaMiembros    - nombre de la lista donde queremos guardar los
+     *                         miembros
+     * @param cantidadMiembros - cantidad de miembros que vamos a leer
+     */
+    public static void LeerFicheroMiembros(String nombreFichero, LlistaMembres nombreListaMiembros,
+            int cantidadMiembros) {
         try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
 
             String informacionUnMiembro;
@@ -39,13 +95,13 @@ public class LlegirFitxers {
                         Alumne alumno = new Alumne(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3], campo[4],
                                 fechaAlta, fechaBaja, campo[7], Integer.parseInt(campo[8]),
                                 Boolean.parseBoolean(campo[9]));
-                        listaMiembros.addmiembro(alumno);
+                        nombreListaMiembros.addmiembro(alumno);
                         break;
                     case "Professor":
                         Professor profesor = new Professor(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3],
                                 campo[4],
                                 fechaAlta, fechaBaja, campo[7], Integer.parseInt(campo[8].trim()));
-                        listaMiembros.addmiembro(profesor);
+                        nombreListaMiembros.addmiembro(profesor);
                         break;
                 }
                 indiceLectura++;
@@ -59,8 +115,16 @@ public class LlegirFitxers {
         }
     }
 
-
-    public static void leerFicheroAsociaciones(String nombreFichero, LlistaAssociacions listaARellenar,
+    /**
+     * Metodo para leer las asociaciones que hay guardadas dentro del fichero
+     * 
+     * @param nombreFichero        - Nombre del fichero que contiene las
+     *                             asociaciones
+     * @param listaARellenar       - Nombre de la lista donde almacenaremos las
+     *                             distintas asociaciones
+     * @param cantidadAsociaciones - Cantidad de asociaciones que debemos leer
+     */
+    public static void LeerFicheroAsociaciones(String nombreFichero, LlistaAssociacions listaARellenar,
             int cantidadAsociaciones) {
 
         try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
@@ -91,7 +155,14 @@ public class LlegirFitxers {
         }
     }
 
-    public static int contarEntidadesFichero(String nombreFichero) {
+    /**
+     * Metodo para contar las entidades de un fichero
+     * 
+     * @param nombreFichero - Nombre del fichero del cual queremos contar las
+     *                      entidades
+     * @return - Total de entidads dentro de un fichero
+     */
+    public static int ContarEntidadesFichero(String nombreFichero) {
         int contador = 0;
 
         try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
