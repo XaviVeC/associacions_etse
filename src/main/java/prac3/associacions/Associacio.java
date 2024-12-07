@@ -81,18 +81,18 @@ public class Associacio {
      */
     public String toString()
     {
-        String aux = "Nombre de la asociacion: " + nombreAsociacion +"\n" +
-            "Correo de la asociacion: " + correoContactoAsociacion +"\n"+
-            "Las titulaciones involucradas son:\n";
+        String aux = "\t\t\tNombre de la asociacion: " + nombreAsociacion +"\n" +
+            "\t\t\tCorreo de la asociacion: " + correoContactoAsociacion +"\n"+
+            "\t\t\tLas titulaciones involucradas son:\n";
 
         for (int i = 0; i < titulacionesAsociacion.length; i++) {
-            aux = aux + "\tTitulacion " + (i + 1)+ ": "+ titulacionesAsociacion[i] + "\n";
+            aux = aux + "\t\t\t\tTitulacion " + (i + 1)+ ": "+ titulacionesAsociacion[i] + "\n";
         }
-        aux = aux + "Los miembros son:\n";
+        aux = aux + "\t\t\tLos miembros son:\n";
         for (int i = 0; i < listaMiembrosAsociacion.length; i++) {
-            aux = aux + "\tMiembro " + (i + 1)+ ": "+ listaMiembrosAsociacion[i] + "\n";
+            aux = aux + "\t\t\t\tMiembro " + (i + 1)+ ": "+ listaMiembrosAsociacion[i] + "\n";
         }
-        aux = aux + "Los cargos son:\n\tPresidente --> " + personasEnCargos[0] +"\n\tSecretario --> " + personasEnCargos[1] +"\n\tTesorero --> " + personasEnCargos[2];
+        aux = aux + "\t\t\tLos cargos son:\n\t\t\t\tPresidente --> " + personasEnCargos[0] +"\n\t\t\t\tSecretario --> " + personasEnCargos[1] +"\n\t\t\t\tTesorero --> " + personasEnCargos[2] + "\n";
         
         return aux;
     }

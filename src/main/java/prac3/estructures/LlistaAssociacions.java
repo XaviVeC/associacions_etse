@@ -46,9 +46,9 @@ public class LlistaAssociacions {
      * @return Un String con toda la informacion de todas las asociaciones
      */
     public String toString(){
-        String aux = "";
+        String aux = "\n";
         for (int i = 0; i < listaAsociaciones.length; i++) {
-            aux = aux + "Datos de la asociacion " + (i + 1) + ": " + listaAsociaciones[i].toString() + "\n";
+            aux = aux + "Datos de la asociacion " + (i + 1) + ":\n" + listaAsociaciones[i].toString() + "\n";
         }
         return aux;
     }

@@ -100,7 +100,7 @@ public class LlegirFitxers {
             // Leer línea por línea
             while ((informacionUnaEntidad = lectura.readLine()) != null) {
                 // Comprobar si la línea contiene información relevante
-                if (!informacionUnaEntidad.isBlank() && informacionUnaEntidad.split(";").length >= 9) {
+                if (!informacionUnaEntidad.isBlank()) {
                     contador++;
                 }
             }
