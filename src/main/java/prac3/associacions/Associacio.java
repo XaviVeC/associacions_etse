@@ -1,13 +1,12 @@
 package prac3.associacions;
 
-import prac3.integrants.Membre;
 
 public class Associacio {
     private String nombreAsociacion; // Nombre de la asociacion
     private String correoContactoAsociacion; // Correo de contacto de la asociacion
     private String[] titulacionesAsociacion; // Informacion de las titulaciones de la ETSE de la asociacion (GEB, GEI, GESST...)
-    private Membre[] listaMiembrosAsociacion; // Listado de miembros de la asociacion
-    private Membre[] personasEnCargos = new Membre[3]; // Nombre de las personas en los cargos correspondientes de la aasociacion
+    private String[] listaMiembrosAsociacion; // Listado de miembros de la asociacion
+    private String[] personasEnCargos; // Nombre de las personas en los cargos correspondientes de la aasociacion
                                                        // 0-> President; 1 -> Secretario; 2 -> Tesorero
 
     /**
@@ -18,7 +17,7 @@ public class Associacio {
      * @param listaMiembros - Listado de los miembros de la asociacion
      * @param persCargos - Nombre de las personas en los cargos correspondientes
      */
-    public Associacio(String nombre, String correo, String[] titulaciones, Membre[] listaMiembros, Membre[] persCargos) {
+    public Associacio(String nombre, String correo, String[] titulaciones, String[] listaMiembros, String[] persCargos) {
         nombreAsociacion = nombre;
         correoContactoAsociacion = correo;
         titulacionesAsociacion = titulaciones;
@@ -55,7 +54,7 @@ public class Associacio {
      * Getter de la lista de los miembros de la asociacion
      * @return - variable listaMiembrosAsociacion
      */
-    public Membre[] getListaMiembrosAsociacion(){
+    public String[] getListaMiembrosAsociacion(){
         return listaMiembrosAsociacion;
     }
 
@@ -63,7 +62,7 @@ public class Associacio {
      * Getter de la lista de personas que ocupan los cargos altos.
      * @return - variable personasEnCargos
      */
-    public Membre[] getPersonasEnCargo(){
+    public String[] getPersonasEnCargo(){
         return personasEnCargos;
     }
 
@@ -74,5 +73,27 @@ public class Associacio {
     public Associacio copia(){
         Associacio asociacionCopia = new Associacio(nombreAsociacion, correoContactoAsociacion, titulacionesAsociacion, listaMiembrosAsociacion, personasEnCargos);
         return asociacionCopia;
+    }
+
+    /**
+     * toString del contenido de una asociacion
+     * @return retorna el contenido de una asociacion en String
+     */
+    public String toString()
+    {
+        String aux = "Nombre de la asociacion: " + nombreAsociacion +"\n" +
+            "Correo de la asociacion: " + correoContactoAsociacion +"\n"+
+            "Las titulaciones involucradas son:\n";
+
+        for (int i = 0; i < titulacionesAsociacion.length; i++) {
+            aux = aux + "\tTitulacion " + (i + 1)+ ": "+ titulacionesAsociacion[i] + "\n";
+        }
+        aux = aux + "Los miembros son:\n";
+        for (int i = 0; i < listaMiembrosAsociacion.length; i++) {
+            aux = aux + "\tMiembro " + (i + 1)+ ": "+ listaMiembrosAsociacion[i] + "\n";
+        }
+        aux = aux + "Los cargos son:\n\tPresidente --> " + personasEnCargos[0] +"\n\tSecretario --> " + personasEnCargos[1] +"\n\tTesorero --> " + personasEnCargos[2];
+        
+        return aux;
     }
 }

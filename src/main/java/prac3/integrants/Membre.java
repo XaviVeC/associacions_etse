@@ -4,13 +4,13 @@ import prac3.estructures.Data;
 public abstract class Membre {
 
     //DADES
-    private int indiceFichero; // Identificador dentro del fichero
-    private String tipoMiembro; // indica si es Professor o Alumne
-    private String nombreMiembro; // nombre del miembro 
-    private String alias;// Alias del membre 
-    private String correoMiembro;// Correo electronico del miembro 
-    private Data fechaAlta; // Fecha en la que se da de alta 
-    private Data fechaBaixa; // Fecha en la que se da de baja
+    protected int indiceFichero; // Identificador dentro del fichero
+    protected String tipoMiembro; // indica si es Professor o Alumne
+    protected String nombreMiembro; // nombre del miembro 
+    protected String alias;// Alias del membre 
+    protected String correoMiembro;// Correo electronico del miembro 
+    protected Data fechaAlta; // Fecha en la que se da de alta 
+    protected Data fechaBaixa; // Fecha en la que se da de baja
     //MÉTODES
     
     /**

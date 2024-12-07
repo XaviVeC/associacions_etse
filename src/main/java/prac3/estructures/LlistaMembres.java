@@ -68,10 +68,10 @@ public class LlistaMembres {
      * @return - lista con todos las miembros
      */
     public String toString() {
-        String stringDeLaLista = "";
+        String stringDeLaLista = "\n";
 
         for (int i = 0; i < this.nElem; i++) {
-            stringDeLaLista = stringDeLaLista + listaMembres[i].toString() + "\n";
+            stringDeLaLista = stringDeLaLista + "Los datos del miembro "+ (i + 1) + " son:\n"+listaMembres[i].toString() + "\n";
         }
 
         return stringDeLaLista;
@@ -84,15 +84,15 @@ public class LlistaMembres {
      * @param nombreAsociacion - variable que indica el nombre de la asociacion sobre la que hacer su lista de miembros
      * @return - lista de miembros de la asociacion con ese nombre
      */
-    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
-        LlegirFitxers.leerficheroMiembros("Membres.csv", listaAux);
+    //public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
+        //LlegirFitxers.leerficheroMiembros("Membres.csv", listaAux);
         
        
        
        
        
-        LlistaMembres listaAux = new LlistaMembres();
-        return listaAux;
+        //LlistaMembres listaAux = new LlistaMembres();
+        //return listaAux;
 
         /*
         LlistaAssociacions listaAsoc = new LlistaAssociacions(j);
@@ -104,7 +104,7 @@ public class LlistaMembres {
         */
 
 
-    }
+}
 
     
-}
+

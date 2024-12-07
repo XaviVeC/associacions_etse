@@ -47,13 +47,13 @@ public class Professor extends Membre {
      * Metodo String que imprime todos los datos del objeto profesor
      */
     public String toString (){
-        return ("Nom:" + this.getnombreMiembro()+ "\n" +
-               "Alias:" + this.getAlias() +  "\n" +
-               "Correu Electrònic:" + this.getCorreoMiembro() + "\n" +
-               "Fecha de Alta:" + this.getFechaAlta() + "\n" +
-               "Fecha de Baja:" + this.getFechaBaja() + "\n" +
-               "Departamento:" + this.getDepartamento() + "\n" +
-               "Numero del despacho:" + this.getNumeroDespacho());
+        return ("\t\t\tNombre profesor: " + nombreMiembro+ "\n" +
+               "\t\t\tAlias: " + alias +  "\n" +
+               "\t\t\tCorro electronico : " + correoMiembro + "\n" +
+               "\t\t\tFecha de Alta: " + fechaAlta.toString() + "\n" +
+               "\t\t\tFecha de Baja: " + fechaBaixa.toString() + "\n" +
+               "\t\t\tDepartamento: " + departamento + "\n" +
+               "\t\t\tNumero del despacho: " + numeroDespacho);
     }
 
     /**

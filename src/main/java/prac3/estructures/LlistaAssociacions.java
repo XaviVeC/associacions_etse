@@ -18,7 +18,7 @@ public class LlistaAssociacions {
      * Metodo que añade una asociacion que se pase por parametro en la ultima posicion de la lista
      * @param asociacionQueAniadir - asociacion que hay que añadir
      */
-    public void addAsociacion (Associacio asociacionQueAniadir){ // 7 - Menu
+    public void addAsociacion (Associacio asociacionQueAniadir){
         if (nElem < listaAsociaciones.length) {
             listaAsociaciones[nElem] = asociacionQueAniadir.copia();
             nElem++;
@@ -37,10 +37,21 @@ public class LlistaAssociacions {
      * Getter de la lista de asociaciones
      * @return - variable listaAsociaciones
      */
-    public Associacio[] getLlistaAssociacions() { // 1 - Menu
+    public Associacio[] getLlistaAssociacions() { 
         return this.listaAsociaciones;
     }
 
+    /**
+     * toString de la list de asociaciones
+     * @return Un String con toda la informacion de todas las asociaciones
+     */
+    public String toString(){
+        String aux = "";
+        for (int i = 0; i < listaAsociaciones.length; i++) {
+            aux = aux + "Datos de la asociacion " + (i + 1) + ": " + listaAsociaciones[i].toString() + "\n";
+        }
+        return aux;
+    }
 
     
 }
