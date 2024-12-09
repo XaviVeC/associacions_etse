@@ -5,6 +5,7 @@ import prac3.integrants.Membre;
 // import prac3.associacions.Associacio;
 import prac3.integrants.Professor;
 import prac3.estructures.LlistaAssociacions;
+import prac3.associacions.Associacio;
 import prac3.ficheros.LlegirFitxers;
 
 public class LlistaMembres {
@@ -84,25 +85,27 @@ public class LlistaMembres {
      * @param nombreAsociacion - variable que indica el nombre de la asociacion sobre la que hacer su lista de miembros
      * @return - lista de miembros de la asociacion con ese nombre
      */
-    //public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
-        //LlegirFitxers.leerficheroMiembros("Membres.csv", listaAux);
-        
-       
-       
-       
-       
-        //LlistaMembres listaAux = new LlistaMembres();
-        //return listaAux;
 
-        /*
-        LlistaAssociacions listaAsoc = new LlistaAssociacions(j);
-        for (int i = 0; i < listaAsoc.getIndiceAsociaciones(); i++){
-            if (nombreAsociacion.equalsIgnoreCase(listaAsoc.getNombreAsociacion())){
-
+     // Me dan el nombre de la asociacion
+     // He de mirar en a lista de asociaciones la que tenga el mismo nombre
+     // He de mirar la lista de miembros de esa asociacion
+    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
+        LlistaAssociacions listaAsociacionesTotal = new LlistaAssociacions(nElem);
+        LlegirFitxers.LeerFicheroAsociaciones("Asociaciones.csv", listaAsociacionesTotal, nElem);
+        LlistaMembres listaDeTodosMiembros = new LlistaMembres(100);
+        LlegirFitxers.LeerFicheroMiembros("Membres.csv", listaDeTodosMiembros, 100);
+        LlistaMembres listaDefinitiva = new LlistaMembres(nElem);
+        int  j = 0; 
+        int x = 0;
+        for (int i = 0; i < listaAsociacionesTotal.getIndiceAsociaciones(); i++) {
+            if (listaAsociacionesTotal.listaAsociciones[i].getNombreAsociacion().equalsIgnoreCase(nombreAsociacion)){
+                while (){//quiero separar por guiones, el guion indica cambio de indice
+                    listaDefinitiva.listaMembres[x].nombreMiembro = listaAsociacionesTotal.listaAsociaciones[i].getnombreMiembro();
+                }
             }
         }
-        */
-
+       
+    }
 
 }
 
