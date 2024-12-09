@@ -89,28 +89,33 @@ public class LlistaMembres {
      // Me dan el nombre de la asociacion
      // He de mirar en a lista de asociaciones la que tenga el mismo nombre
      // He de mirar la lista de miembros de esa asociacion
-    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion, LlistaAssociacions listaDeLasAsociaciones, LlistaMembres listaDeLosMiembros){
+    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion, LlistaAssociacions listaDeLasAsociaciones, LlistaMembres listaDeLosMiembros, String filtro){
         LlistaMembres listaDeMiembrosDeXAsociacion = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
         int i = 0;
         boolean asociacionEncontrada = false, nombreMiembroEncontrado = false;
+        String nombreTemporalAsociacion;
         while ((i < listaDeLasAsociaciones.getIndiceAsociaciones()) && !(asociacionEncontrada)) {
-            if (listaDeLasAsociaciones.getLlistaAssociacions()[i].getNombreAsociacion().equalsIgnoreCase(nombreAsociacion)){    // podemos usar el metodo getElementoListaAsociacion   
+            nombreTemporalAsociacion = listaDeLasAsociaciones.getLlistaAssociacions()[i].getNombreAsociacion();
+            if (nombreTemporalAsociacion.equals(nombreAsociacion)){    
                 String nombreMiembro;
                 for (int x = 0; x < listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion().length; x++){
                     nombreMiembro = listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion()[x];
                     int j = 0;
-                    while ((!(nombreMiembroEncontrado)) && (j < this.nElem))
+                    while ((!(nombreMiembroEncontrado)) && (j < listaDeLosMiembros.nElem))
                     {
-                        if(listaDeLosMiembros.listaMembres[j].getnombreMiembro().equalsIgnoreCase(nombreMiembro))
+                        if(listaDeLosMiembros.listaMembres[j].getnombreMiembro().equals(nombreMiembro))
                         {
                             nombreMiembroEncontrado = true;
                             listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
+                            System.out.println("Se ha integrado un nuevo miembro");
                         }
                         else
                         {
+                            
                             j++;
                         }
                     }
+                    nombreMiembroEncontrado = false;
                 }
                 asociacionEncontrada = true;
             }
@@ -119,7 +124,7 @@ public class LlistaMembres {
                 i++;
             }
         }
-        return listaDeMiembrosDeXAsociacion.copia();
+        return listaDeMiembrosDeXAsociacion;
     }
 
 }

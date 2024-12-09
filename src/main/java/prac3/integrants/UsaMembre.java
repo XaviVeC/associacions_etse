@@ -10,7 +10,7 @@ import prac3.ficheros.LlegirFitxers;
 public class UsaMembre {
 
     public static Scanner teclat = new Scanner(System.in);
-    
+
     public static void main(String[] args) {
         int opcion, cantidadAsociaciones;
         LlistaMembres auxiliarOpcion7 = new LlistaMembres(20);
@@ -30,12 +30,16 @@ public class UsaMembre {
             System.out.println("Elige la opcion.");
             mostraMenu();
             opcion = Integer.parseInt(teclat.nextLine());
-
+            opcion1(listaDeTodosLosMiembros,
+            "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\ficheros\\Membres.csv",
+            cantidadMiembros);
+            opcion3(listadeLasAsociaciones,
+                            "C:\\\\Users\\\\bllad\\\\OneDrive\\\\Escritorio\\\\associacions_etse\\\\src\\\\main\\\\java\\\\prac3\\\\ficheros\\\\asociaciones.csv",
+                            cantidadAsociaciones);
+            opcion5(listaAcciones, "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\ficheros\\Acciones.csv", cantidadAcciones);
             switch (opcion) {
                 case 1:
-                    opcion1(listaDeTodosLosMiembros,
-                            "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\ficheros\\Membres.csv",
-                            cantidadMiembros);
+
                     break;
 
                 case 2:
@@ -44,16 +48,14 @@ public class UsaMembre {
                     break;
 
                 case 3:
-                    opcion3(listadeLasAsociaciones,
-                            "C:\\\\Users\\\\bllad\\\\OneDrive\\\\Escritorio\\\\associacions_etse\\\\src\\\\main\\\\java\\\\prac3\\\\ficheros\\\\asociaciones.csv",
-                            cantidadAsociaciones);
+
                     break;
 
                 case 4:
                     opcion4(listadeLasAsociaciones, cantidadAsociaciones);
                     break;
                 case 5:
-                    opcion5(listaAcciones, "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\ficheros\\Acciones.csv", cantidadAcciones);
+                    
                     break;
                 case 6:
                     opcion6(listaAcciones, cantidadAcciones);
@@ -75,8 +77,8 @@ public class UsaMembre {
 
     public static void opcion2(LlistaMembres listaDeTodosLosMiembros, int cantidadMiembros) {
 
-            System.out.println(listaDeTodosLosMiembros.toString());
-    
+        System.out.println(listaDeTodosLosMiembros.toString());
+
     }
 
     public static void opcion3(LlistaAssociacions listaARellenar, String nombreFichero, int cantidadAsociaciones) {
@@ -85,21 +87,25 @@ public class UsaMembre {
 
     public static void opcion4(LlistaAssociacions listaAMostrar, int cantidadAsociaciones) {
 
-            System.out.println(listaAMostrar.toString());
-        
+        System.out.println(listaAMostrar.toString());
+
     }
+
     public static void opcion5(LlistaAccions listaARellenar, String nombreFichero, int cantidadAcciones) {
         LlegirFitxers.LeerFicheroAcciones(nombreFichero, listaARellenar, cantidadAcciones);
     }
 
     public static void opcion6(LlistaAccions listaAMostrar, int cantidadAcciones) {
-       
-            System.out.println(listaAMostrar.toString());
-        
+
+        System.out.println(listaAMostrar.toString());
+
     }
 
-    public static void opcion7(LlistaMembres lista,String nombreAsociacion,LlistaAssociacions listaTodasLasAsociaciones, LlistaMembres listaTodosMiembros){
-           System.out.println(lista.miembrosDeAsociacionConcreta(nombreAsociacion, listaTodasLasAsociaciones,listaTodosMiembros).toString());      
+    public static void opcion7(LlistaMembres lista, String nombreAsociacion,
+            LlistaAssociacions listaTodasLasAsociaciones, LlistaMembres listaTodosMiembros) {
+        System.out.println(
+                lista.miembrosDeAsociacionConcreta(nombreAsociacion, listaTodasLasAsociaciones, listaTodosMiembros)
+                        .toString());
     }
 
     public static void mostraMenu() {
