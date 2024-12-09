@@ -1,12 +1,5 @@
 package prac3.estructures;
-
-import prac3.integrants.Alumne;
 import prac3.integrants.Membre;
-// import prac3.associacions.Associacio;
-import prac3.integrants.Professor;
-import prac3.estructures.LlistaAssociacions;
-import prac3.associacions.Associacio;
-import prac3.ficheros.LlegirFitxers;
 
 public class LlistaMembres {
     private Membre[] listaMembres; // lista de miembros
@@ -146,35 +139,38 @@ public class LlistaMembres {
         return listaDeMiembrosDeXAsociacion;
     }
 
-
-
-
-
-
-
-    public LlistaMembres miembrosActivos (LlistaMembres listaDeLosMiembros, String filtro){
+    public static LlistaMembres miembrosActivos(LlistaMembres listaDeLosMiembros, String filtro) {
         LlistaMembres sublistaSegunFiltro = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
-        int i = 0;
-        while (i < listaDeLosMiembros.getNumeroMembres()){
-            if (listaDeLosMiembros.get[i])
 
-
-            i++;
-        }
-
-
-
-
-
-
+        for (int i = 0; i < listaDeLosMiembros.getNumeroMembres(); i++) {
+            if (listaDeLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getAnio() == 9999) {
+                if (filtro.equals("Ambos")) {
+                    sublistaSegunFiltro.addMiembro(listaDeLosMiembros.getMiembroEnXIndice(i).copia());
+                } else {
+                    if (listaDeLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
+                        sublistaSegunFiltro.addMiembro(listaDeLosMiembros.getMiembroEnXIndice(i).copia());
+                    }
+                }
+            }
+        }   
         return sublistaSegunFiltro;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-
-
-
-
-
-
-
 }
