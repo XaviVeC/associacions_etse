@@ -10,10 +10,10 @@ import prac3.ficheros.LlegirFitxers;
 public class UsaMembre {
 
     public static Scanner teclat = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
         int opcion, cantidadAsociaciones;
-
+        LlistaMembres auxiliarOpcion7 = new LlistaMembres(20);
         int cantidadMiembros = LlegirFitxers.ContarEntidadesFichero(
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\ficheros\\Membres.csv");
         LlistaMembres listaDeTodosLosMiembros = new LlistaMembres(cantidadMiembros);
@@ -58,12 +58,14 @@ public class UsaMembre {
                 case 6:
                     opcion6(listaAcciones, cantidadAcciones);
                     break;
-
+                case 7:
+                    opcion7(auxiliarOpcion7, "Beta", listadeLasAsociaciones, listaDeTodosLosMiembros);
+                    break;
                 default:
                     break;
             }
 
-        } while (opcion != 7);
+        } while (opcion != 8);
 
     }
 
@@ -96,6 +98,10 @@ public class UsaMembre {
         
     }
 
+    public static void opcion7(LlistaMembres lista,String nombreAsociacion,LlistaAssociacions listaTodasLasAsociaciones, LlistaMembres listaTodosMiembros){
+           System.out.println(lista.miembrosDeAsociacionConcreta(nombreAsociacion, listaTodasLasAsociaciones,listaTodosMiembros).toString());      
+    }
+
     public static void mostraMenu() {
         System.out.println("1. Rellenar la lista de miembros");
         System.out.println("2. Imprimr la lista de miembros");
@@ -103,7 +109,8 @@ public class UsaMembre {
         System.out.println("4. Imprimr la lista de asociaciones");
         System.out.println("5. Rellenar acciones");
         System.out.println("6. Printear acciones");
-        System.out.println("7. Salir");
+        System.out.println("7. Miemros X asociacion");
+        System.out.println("8. Salir");
 
     }
 }

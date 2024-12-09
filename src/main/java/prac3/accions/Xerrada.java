@@ -81,22 +81,22 @@ public class Xerrada extends Accio {
      * @return - Texto con los datos de la charla
      */
     public String toString() {
-        String aux = "Nombre de la charla: " + this.nombreAccion + "\n" +
-        "Codigo de la charla: " + this.getCodigoAccion() + "\n" +
-        "Fecha de la charla: " + this.fechaRealizacion.toString() + "\n" + 
-        "Organizador responsable: " + this.organizadorResponsable +"\n" +
-        "el resto de involucrados fueron: ";
+        String aux = "\t\t\tNombre de la charla: " + this.nombreAccion + "\n" +
+        "\t\t\tCodigo de la charla: " + this.codigoAccion + "\n" +
+        "\t\t\tFecha de la charla: " + this.fechaRealizacion.toString() + "\n" + 
+        "\t\t\tOrganizador responsable: " + this.organizadorResponsable +"\n" +
+        "\t\t\tLos instructores de la charla son:\n";
         for (int index = 0; index < instructoresCharla.length; index++) {
-            aux = aux + "Instructor " + (index + 1) + ": " + instructoresCharla[index] + "\n";
+            aux = aux + "\t\t\t\tInstructor " + (index + 1) + ": " + instructoresCharla[index] + "\n";
         }
-        aux = aux + "Las asociaciones que organizaron la charla fueron:\n";
+        aux = aux + "\t\t\tLas asociaciones que organizaron la charla fueron:\n";
         for (int index = 0; index < asociacionesInvolucradas.length; index++) {
-            aux = aux + "Asociacion involucrada "+ (index + 1)+ ": " + this.asociacionesInvolucradas[index] + "\n";
+            aux = aux + "\t\t\t\tAsociacion involucrada "+ (index + 1)+ ": " + this.asociacionesInvolucradas[index] + "\n";
         }
 
-        aux = aux + "Asistieron un total de " + this.numeroDeAsistentes + " personas, y las valoraciones fueron\n";
+        aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes + " personas.\n\t\t\tLas valoraciones fueron\n";
         for (int index = 0; index < valoraciones.length; index++) {
-            aux = aux + "Valoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
+            aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
         }
         return aux;
     }

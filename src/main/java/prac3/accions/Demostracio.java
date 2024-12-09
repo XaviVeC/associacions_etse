@@ -97,24 +97,25 @@ public class Demostracio extends Accio {
      * @return - Texto con los datos de la demostracion
      */
     public String toString() {
-        String aux = "Nombre de la demostracion: " + this.nombreAccion + "\n" +
-        "Codigo de la demostracion: " + this.getCodigoAccion() + "\n" +
-        "Fecha del design: " + fechaCreacion.toString() + "\n" + 
-        "Costo de la demostracion: " +this.costoDemostracion+ "\n" +
-        "Veces que se ha ofrecido la demostracion: " +this.contadorVecesOfrecida+ "\n";
+        String aux = "\t\t\tNombre de la demostracion: " + this.nombreAccion + "\n" +
+        "\t\t\tCodigo de la demostracion: " + this.codigoAccion + "\n" +
+        "\t\t\tFecha de la creacion: " + fechaCreacion.toString() + "\n" + 
+        "\t\t\tCosto de la demostracion: " +this.costoDemostracion+ "\n" +
+        "\t\t\tVeces que se ha ofrecido la demostracion: " +this.contadorVecesOfrecida+ "\n";
 
         if(this.demostracionValida == true)
         {
-            aux = aux + "Estado demostracion: Disponible\n";
+            aux = aux + "\t\t\tEstado demostracion: Disponible\n";
         }
         else{
-            aux = aux + "Estado demostracion: No disponible\n";
+            aux = aux + "\t\t\tEstado demostracion: No disponible\n";
         }
 
-        aux = aux + "Organizador responsable: " + this.organizadorResponsable +"\n";
+        aux = aux + "\t\t\tOrganizador responsable: " + this.organizadorResponsable +"\n"+
+        "\t\t\tLas asociaciones involucradas son:\n";
         
         for (int index = 0; index < asociacionesInvolucradas.length; index++) {
-            aux = aux + "Asociacion involucrada "+ (index + 1)+ ": " + this.asociacionesInvolucradas[index] + "\n";
+            aux = aux + "\t\t\t\tAsociacion "+ (index + 1)+ " --> " + this.asociacionesInvolucradas[index] + "\n";
         }
 
         return aux;

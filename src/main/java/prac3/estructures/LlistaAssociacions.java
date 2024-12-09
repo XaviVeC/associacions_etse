@@ -33,6 +33,12 @@ public class LlistaAssociacions {
         return this.nElem;
     }
 
+
+
+public Associacio getElementoListaAsociacion(int indice)
+{
+    return this.listaAsociaciones[indice];
+}
     /**
      * Getter de la lista de asociaciones
      * @return - variable listaAsociaciones

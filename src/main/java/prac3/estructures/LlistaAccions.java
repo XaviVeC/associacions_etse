@@ -21,7 +21,7 @@ public class LlistaAccions {
      * @return - la lista modificada
      */
     public void addAccion (Accio accion){
-        if (nElem < listaAcciones.length) {
+        if (nElem < this.listaAcciones.length) {
             listaAcciones[nElem] = accion.copia();
             nElem++;
         }
@@ -32,7 +32,7 @@ public class LlistaAccions {
      * @return - numero de acciones que tenemos en la lista
      */
     public int getNumeroAcciones (){
-        return nElem;
+        return this.nElem;
     }
 
     /**
@@ -65,8 +65,8 @@ public class LlistaAccions {
     public String toString() {
         String stringDeLaLista = "";
 
-        for (int i = 0; i < this.nElem; i++) {
-            stringDeLaLista = stringDeLaLista + "La accion"  + (i+1) + "es: "+listaAcciones[i].toString() + "\n";
+        for (int i = 0; i < this.listaAcciones.length; i++) {
+            stringDeLaLista = stringDeLaLista + "La accion "  + (i+1) + " es:\n"+listaAcciones[i].toString() + "\n";
         }
 
         return stringDeLaLista;
@@ -74,14 +74,6 @@ public class LlistaAccions {
 
 
 
-    public LlistaAccions cargarListaDelFichero(){
-        LlistaAccions listaAccionesFichero = new LlistaAccions(100); //ya veremos como manejamos el size de la lista
-
-
-
-
-        return listaAccionesFichero;
-    }
 
 
 }

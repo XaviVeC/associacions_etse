@@ -17,42 +17,52 @@ import prac3.integrants.Professor;
 
 public class LlegirFitxers {
 
+
+    /**
+     * Metodo que lee los datos del fichero de acciones y lo guarda en una lista
+     * @param nombreFichero - Nombre del fichero que contiene los datos de las acciones
+     * @param nombreListaAcciones - Nombre de la lista donde guardamos las acciones
+     * @param cantidadDeAcciones - Cantidad de acciones a leer
+     */
     public static void LeerFicheroAcciones(String nombreFichero, LlistaAccions nombreListaAcciones,
             int cantidadDeAcciones) {
 
         try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
             String informacionUnaAccion;
             String[] campos, campoFecha, camposAsociacionesInvolucradas;
+            int indiceLectura = 0;
+            Data auxiliarFecha;
 
-            informacionUnaAccion = lectura.readLine();
-            campos = informacionUnaAccion.split(";");
-            campoFecha = campos[5].split("-");
-            Data auxiliarFecha = new Data(Integer.parseInt(campoFecha[0]), Integer.parseInt(campoFecha[1]),
-                    Integer.parseInt(campoFecha[2]));
-            camposAsociacionesInvolucradas = campos[3].split("-");
+            do {
+                informacionUnaAccion = lectura.readLine();
+                campos = informacionUnaAccion.split(";");
+                campoFecha = campos[5].split("-");
+                auxiliarFecha = new Data(Integer.parseInt(campoFecha[0]), Integer.parseInt(campoFecha[1]),
+                        Integer.parseInt(campoFecha[2]));
+                camposAsociacionesInvolucradas = campos[3].split("-");
+                switch (campos[1]) {
+                    case "Demostracion":
+                        Demostracio demostracion = new Demostracio(Integer.parseInt(campos[0]), campos[1], campos[2],
+                                camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Integer.parseInt(campos[6]),
+                                Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8].trim()));
+                        nombreListaAcciones.addAccion(demostracion);
+                        break;
+                    case "Charla":
+                        String[] intructoresCharla = campos[6].split("-");
+                        String[] valoraciones = campos[7].split("-");
+                        int[] valoracionesEnEntero = new int[valoraciones.length];
+                        for (int i = 0; i < valoracionesEnEntero.length; i++) {
+                            valoracionesEnEntero[i] = Integer.parseInt(valoraciones[i]);
+                        }
+                        Xerrada charla = new Xerrada(Integer.parseInt(campos[0]), campos[1], campos[2],
+                                camposAsociacionesInvolucradas, campos[4], auxiliarFecha, intructoresCharla,
+                                valoracionesEnEntero, Integer.parseInt(campos[8]));
+                        nombreListaAcciones.addAccion(charla);
+                        break;
+                }
+                indiceLectura++;
+            } while (indiceLectura < cantidadDeAcciones);
 
-            switch (campos[2]) {
-                case "Demostracion":
-                    Demostracio demostracion = new Demostracio(Integer.parseInt(campos[0]), campos[1], campos[2],
-                            camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Integer.parseInt(campos[6]),
-                            Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8].trim()));
-                    nombreListaAcciones.addAccion(demostracion);
-                    break;
-                case "Charla":
-                    String[] intructoresCharla = campos[6].split("-");
-                    String[] valoraciones = campos[7].split("-");
-                    int[] valoracionesEnEntero = new int[valoraciones.length];
-                    for (int i = 0; i < valoracionesEnEntero.length; i++) {
-                        valoracionesEnEntero[i] = Integer.parseInt(valoraciones[i]);
-                    }
-                    Xerrada charla = new Xerrada(Integer.parseInt(campos[0]), campos[1], campos[2],
-                            camposAsociacionesInvolucradas, campos[4], auxiliarFecha, intructoresCharla,
-                            valoracionesEnEntero, Integer.parseInt(campos[8]));
-                    nombreListaAcciones.addAccion(charla);
-                    break;
-                default:
-                    break;
-            }
             lectura.close();
         } catch (FileNotFoundException e) {
             System.out.println("El fichero actividades no se ha encontrado" + e.toString());
@@ -62,7 +72,7 @@ public class LlegirFitxers {
     }
 
     /**
-     * Metodo apra leer los datos del fichero miembros y guardarlos en una lista
+     * Metodo para leer los datos del fichero miembros y guardarlos en una lista
      * 
      * @param nombreFichero    - nombre del fichero que contiene a los miembros
      * @param listaMiembros    - nombre de la lista donde queremos guardar los
@@ -95,13 +105,13 @@ public class LlegirFitxers {
                         Alumne alumno = new Alumne(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3], campo[4],
                                 fechaAlta, fechaBaja, campo[7], Integer.parseInt(campo[8]),
                                 Boolean.parseBoolean(campo[9]));
-                        nombreListaMiembros.addmiembro(alumno);
+                        nombreListaMiembros.addMiembro(alumno);
                         break;
                     case "Professor":
                         Professor profesor = new Professor(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3],
                                 campo[4],
                                 fechaAlta, fechaBaja, campo[7], Integer.parseInt(campo[8].trim()));
-                        nombreListaMiembros.addmiembro(profesor);
+                        nombreListaMiembros.addMiembro(profesor);
                         break;
                 }
                 indiceLectura++;

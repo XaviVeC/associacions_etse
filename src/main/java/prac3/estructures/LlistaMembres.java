@@ -28,7 +28,7 @@ public class LlistaMembres {
      * @param miembroQueAniadir - miembro que hay que añadir
      * @return - la lista modificada
      */
-    public void addmiembro(Membre miembroQueAniadir) {
+    public void addMiembro(Membre miembroQueAniadir) {
         listaMembres[nElem] = miembroQueAniadir;
         nElem++;
     }
@@ -37,7 +37,7 @@ public class LlistaMembres {
      * Getter de la variable nElem
      * @return - numero de miembros que tenemos en la lista
      */
-    public int getnumeroMembres() {
+    public int getNumeroMembres() {
         return nElem;
     }
 
@@ -46,7 +46,7 @@ public class LlistaMembres {
      * @param indice - posicion de la lista que queremos obtener
      * @return - miembro que esta en la posicion indice
      */
-    public Membre getmiembroEnXIndice(int indice) {
+    public Membre getMiembroEnXIndice(int indice) {
         return this.listaMembres[indice].copia();
     }
 
@@ -89,22 +89,37 @@ public class LlistaMembres {
      // Me dan el nombre de la asociacion
      // He de mirar en a lista de asociaciones la que tenga el mismo nombre
      // He de mirar la lista de miembros de esa asociacion
-    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion){
-        LlistaAssociacions listaAsociacionesTotal = new LlistaAssociacions(nElem);
-        LlegirFitxers.LeerFicheroAsociaciones("Asociaciones.csv", listaAsociacionesTotal, nElem);
-        LlistaMembres listaDeTodosMiembros = new LlistaMembres(100);
-        LlegirFitxers.LeerFicheroMiembros("Membres.csv", listaDeTodosMiembros, 100);
-        LlistaMembres listaDefinitiva = new LlistaMembres(nElem);
-        int  j = 0; 
-        int x = 0;
-        for (int i = 0; i < listaAsociacionesTotal.getIndiceAsociaciones(); i++) {
-            if (listaAsociacionesTotal.listaAsociciones[i].getNombreAsociacion().equalsIgnoreCase(nombreAsociacion)){
-                while (){//quiero separar por guiones, el guion indica cambio de indice
-                    listaDefinitiva.listaMembres[x].nombreMiembro = listaAsociacionesTotal.listaAsociaciones[i].getnombreMiembro();
+    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion, LlistaAssociacions listaDeLasAsociaciones, LlistaMembres listaDeLosMiembros){
+        LlistaMembres listaDeMiembrosDeXAsociacion = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
+        int i = 0;
+        boolean asociacionEncontrada = false, nombreMiembroEncontrado = false;
+        while ((i < listaDeLasAsociaciones.getIndiceAsociaciones()) && !(asociacionEncontrada)) {
+            if (listaDeLasAsociaciones.getLlistaAssociacions()[i].getNombreAsociacion().equalsIgnoreCase(nombreAsociacion)){    // podemos usar el metodo getElementoListaAsociacion   
+                String nombreMiembro;
+                for (int x = 0; x < listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion().length; x++){
+                    nombreMiembro = listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion()[x];
+                    int j = 0;
+                    while ((!(nombreMiembroEncontrado)) && (j < this.nElem))
+                    {
+                        if(listaDeLosMiembros.listaMembres[j].getnombreMiembro().equalsIgnoreCase(nombreMiembro))
+                        {
+                            nombreMiembroEncontrado = true;
+                            listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
                 }
+                asociacionEncontrada = true;
+            }
+            else
+            {
+                i++;
             }
         }
-       
+        return listaDeMiembrosDeXAsociacion.copia();
     }
 
 }
