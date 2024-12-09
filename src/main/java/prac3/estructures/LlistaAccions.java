@@ -72,8 +72,47 @@ public class LlistaAccions {
         return stringDeLaLista;
     }
 
+    public static LlistaAccions accionesSegunTipo(LlistaAccions listaTodasAcciones, String tipoAccion) {
+        LlistaAccions sublistaSegunTipoAccion = new LlistaAccions(listaTodasAcciones.getNumeroAcciones());
+
+        for (int i = 0; i < listaTodasAcciones.getNumeroAcciones(); i++) {
+            if (listaTodasAcciones.getAccionEnXIndice(i).getTipoAccion().equals(tipoAccion)) {
+                sublistaSegunTipoAccion.addAccion(listaTodasAcciones.getAccionEnXIndice(i).copia()); 
+            }
+        }
+
+        return sublistaSegunTipoAccion;
+    }
 
 
 
+    
+    
+    
+    
+    
+    
+    
 
+    
+
+    // me falta pasar a negativo la asociacion encontrada AAAAAAAA
+
+    public static LlistaAccions accionesDeXAsociacion (LlistaAccions listaTodasAcciones, String asociacionConcreta){
+        LlistaAccions listaAccionesFinal = new LlistaAccions(listaTodasAcciones.getNumeroAcciones());
+        boolean asociacionEncontrada = false;
+        for (int i = 0; i < listaTodasAcciones.nElem; i++){
+            int x = 0;
+            while ((!(asociacionEncontrada)) && (x < listaTodasAcciones.getAccionEnXIndice(i).getAsociacionesInvolucradas().length)) {
+                if (listaTodasAcciones.getAccionEnXIndice(i).getAsociacionesInvolucradas()[x].equals(asociacionConcreta)){
+                    asociacionEncontrada = true;
+                    listaAccionesFinal.addAccion(listaTodasAcciones.getAccionEnXIndice(i).copia());
+                }
+                x++;
+            }
+        }
+
+
+        return listaAccionesFinal;
+    }
 }

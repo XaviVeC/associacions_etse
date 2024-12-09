@@ -60,7 +60,8 @@ public class UsaMembre {
                 case 5:
                     opcion5(listaDeTodosLosMiembros, "Ambos");
                     break;
-
+                case 6:
+                    opcion6(listaAcciones, "Demostracio");
                 default:
                     break;
             }
@@ -100,13 +101,18 @@ public class UsaMembre {
         System.out.println(LlistaMembres.miembrosActivos(listaTodosMiembros, filtro).toString());
     }
 
+    public static void opcion6(LlistaAccions listaTodasAcciones, String filtro) {
+        System.out.println(LlistaAccions.accionesSegunTipo(listaTodasAcciones, filtro));;
+    }
+
     public static void mostraMenu() {
         System.out.println("1. Imprimr la lista de miembros");
         System.out.println("2. Imprimr la lista de asociaciones");
         System.out.println("3. Imprimr la lista de acciones");
         System.out.println("4. Miemros X asociacion");
         System.out.println("5. Miembros activos con filtro");
-        System.out.println("6. Salir");
+        System.out.println("6. Acciones segun demostracion o charla");
+        System.out.println("7. Salir");
 
     }
 }

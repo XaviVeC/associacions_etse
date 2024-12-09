@@ -53,8 +53,12 @@ public abstract class Accio {
         return nombreAccion;
     }
 
-    /**
-     * Getter de la variable organizadorResponsable
+    public String getTipoAccion(){
+        return tipoAccion;
+    }
+
+
+    /** Getter de la variable organizadorResponsable
      * @return - variable organizadorResponsable
      */
     public String getOrganizadorResponsable() {
