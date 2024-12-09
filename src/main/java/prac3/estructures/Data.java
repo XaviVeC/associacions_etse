@@ -117,7 +117,7 @@ public class Data {
      */
     public boolean anioValido(int anio){
         boolean esValido = true;
-        if ((anio > 2030) || (anio < 1900)){
+        if ((anio > 2030) || (anio < 1)){
             esValido = false;
         }
         return esValido;

@@ -26,6 +26,8 @@ public class UsaMembre {
         System.out.println("Hay un total de: " + cantidadMiembros + " miembros");
         System.out.println("Hay un total de: " + cantidadAsociaciones + " asociaciones");
         System.out.println("Hay un total de: " + cantidadAcciones + " acciones");
+        
+        System.out.println(listaAuxiliarMiembros.toString());
         do {
             System.out.println("Elige la opcion.");
             mostraMenu();
@@ -61,7 +63,7 @@ public class UsaMembre {
                     opcion6(listaAcciones, cantidadAcciones);
                     break;
                 case 7:
-                    opcion7(auxiliarOpcion7, "Beta", listadeLasAsociaciones, listaDeTodosLosMiembros);
+                    opcion7(auxiliarOpcion7, "Beta", listadeLasAsociaciones, listaDeTodosLosMiembros,"Professor" );
                     break;
                 default:
                     break;
@@ -102,9 +104,9 @@ public class UsaMembre {
     }
 
     public static void opcion7(LlistaMembres lista, String nombreAsociacion,
-            LlistaAssociacions listaTodasLasAsociaciones, LlistaMembres listaTodosMiembros) {
+            LlistaAssociacions listaTodasLasAsociaciones, LlistaMembres listaTodosMiembros, String filtro) {
         System.out.println(
-                lista.miembrosDeAsociacionConcreta(nombreAsociacion, listaTodasLasAsociaciones, listaTodosMiembros)
+                LlistaMembres.miembrosDeAsociacionConcreta(nombreAsociacion, listaTodasLasAsociaciones, listaTodosMiembros, filtro)
                         .toString());
     }
 

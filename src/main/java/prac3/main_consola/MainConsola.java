@@ -18,9 +18,9 @@ public class MainConsola {
         /**
          * --------------------------------------------------MENU--------------------------------------------
          * 
-         * 1. Mostrar lista Asociaciones.
+         * 1. Mostrar lista Asociaciones. DONE
          * 
-         * 2. Mostrar lista Miembros de una asociacion concreta, con filtro para profes/alumnos/los dos.
+         * 2. Mostrar lista Miembros de una asociacion concreta, con filtro para profes/alumnos/los dos. DONE
          * 
          * 3. Mostrar lista Miembros activos de cualquier asociacion, con filtro para profes/alumnos/los dos.
          * 

@@ -14,7 +14,9 @@ public class LlistaMembres {
 
     /**
      * Constructor de la clase LlistaMembres
-     * @param numeroMembres - numero total de miembros para saber de que tamaño hacer la lista
+     * 
+     * @param numeroMembres - numero total de miembros para saber de que tamaño
+     *                      hacer la lista
      * @return - lista de miembros del tamaño que entra por parametro
      */
     public LlistaMembres(int numeroMembres) {
@@ -25,6 +27,7 @@ public class LlistaMembres {
     /**
      * Metodo que añade una miembro que se pase por parametro en la ultima posicion
      * de la lista
+     * 
      * @param miembroQueAniadir - miembro que hay que añadir
      * @return - la lista modificada
      */
@@ -35,6 +38,7 @@ public class LlistaMembres {
 
     /**
      * Getter de la variable nElem
+     * 
      * @return - numero de miembros que tenemos en la lista
      */
     public int getNumeroMembres() {
@@ -42,7 +46,9 @@ public class LlistaMembres {
     }
 
     /**
-     * Metodo que obtiene el Miembro de una posicion en especifico de la lista pasada por parametro
+     * Metodo que obtiene el Miembro de una posicion en especifico de la lista
+     * pasada por parametro
+     * 
      * @param indice - posicion de la lista que queremos obtener
      * @return - miembro que esta en la posicion indice
      */
@@ -52,6 +58,7 @@ public class LlistaMembres {
 
     /**
      * Metodo que hace una copia de una lista de miembros
+     * 
      * @return - variable nuevaLista, que es esta copia de la lista
      */
     public LlistaMembres copia() {
@@ -66,68 +73,108 @@ public class LlistaMembres {
 
     /**
      * Metodo ToString de la lista de miembros
+     * 
      * @return - lista con todos las miembros
      */
     public String toString() {
         String stringDeLaLista = "\n";
 
         for (int i = 0; i < this.nElem; i++) {
-            stringDeLaLista = stringDeLaLista + "Los datos del miembro "+ (i + 1) + " son:\n"+listaMembres[i].toString() + "\n";
+            stringDeLaLista = stringDeLaLista + "Los datos del miembro " + (i + 1) + " son:\n"
+                    + listaMembres[i].toString() + "\n";
         }
 
         return stringDeLaLista;
     }
 
-    /** FALTA ACABAR PORQUE NO SE COMO HACERLO !!!!!!!!!!!!!!!!
+    /**
+     * FALTA ACABAR PORQUE NO SE COMO HACERLO !!!!!!!!!!!!!!!!
      * 
      * 
      * Metodo que crea una lista de miembros de una asociacion concreta
-     * @param nombreAsociacion - variable que indica el nombre de la asociacion sobre la que hacer su lista de miembros
+     * 
+     * @param nombreAsociacion - variable que indica el nombre de la asociacion
+     *                         sobre la que hacer su lista de miembros
      * @return - lista de miembros de la asociacion con ese nombre
      */
 
-     // Me dan el nombre de la asociacion
-     // He de mirar en a lista de asociaciones la que tenga el mismo nombre
-     // He de mirar la lista de miembros de esa asociacion
-    public LlistaMembres miembrosDeAsociacionConcreta (String nombreAsociacion, LlistaAssociacions listaDeLasAsociaciones, LlistaMembres listaDeLosMiembros, String filtro){
+    // Me dan el nombre de la asociacion
+    // He de mirar en a lista de asociaciones la que tenga el mismo nombre
+    // He de mirar la lista de miembros de esa asociacion
+    public static LlistaMembres miembrosDeAsociacionConcreta(String nombreAsociacion,
+            LlistaAssociacions listaDeLasAsociaciones, LlistaMembres listaDeLosMiembros, String filtro) {
         LlistaMembres listaDeMiembrosDeXAsociacion = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
         int i = 0;
-        boolean asociacionEncontrada = false, nombreMiembroEncontrado = false;
+        boolean asociacionEncontrada = false, miembroDeTipoCorrectoEncontrado = false;
         String nombreTemporalAsociacion;
         while ((i < listaDeLasAsociaciones.getIndiceAsociaciones()) && !(asociacionEncontrada)) {
             nombreTemporalAsociacion = listaDeLasAsociaciones.getLlistaAssociacions()[i].getNombreAsociacion();
-            if (nombreTemporalAsociacion.equals(nombreAsociacion)){    
+            if (nombreTemporalAsociacion.equals(nombreAsociacion)) {
                 String nombreMiembro;
-                for (int x = 0; x < listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion().length; x++){
+                int numeroElementosAsociacion = listaDeLasAsociaciones.getLlistaAssociacions()[i]
+                        .getListaMiembrosAsociacion().length;
+                for (int x = 0; x < numeroElementosAsociacion; x++) {
                     nombreMiembro = listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion()[x];
                     int j = 0;
-                    while ((!(nombreMiembroEncontrado)) && (j < listaDeLosMiembros.nElem))
-                    {
-                        if(listaDeLosMiembros.listaMembres[j].getnombreMiembro().equals(nombreMiembro))
-                        {
-                            nombreMiembroEncontrado = true;
-                            listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
-                            System.out.println("Se ha integrado un nuevo miembro");
-                        }
-                        else
-                        {
-                            
+                    while ((!(miembroDeTipoCorrectoEncontrado)) && (j < listaDeLosMiembros.nElem)) {
+
+                        if (listaDeLosMiembros.listaMembres[j].getnombreMiembro().equals(nombreMiembro)) {
+                            if (filtro.equals("Ambos")) {
+                                listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
+                                miembroDeTipoCorrectoEncontrado = true;
+                            } else {
+                                if (listaDeLosMiembros.listaMembres[j].getTipoMiembro().equals(filtro)) {
+                                    listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
+                                    miembroDeTipoCorrectoEncontrado = true;
+                                } else {
+                                    j++;
+                                }
+                            }
+
+                        } else {
+
                             j++;
                         }
                     }
-                    nombreMiembroEncontrado = false;
+                    miembroDeTipoCorrectoEncontrado = false;
                 }
                 asociacionEncontrada = true;
-            }
-            else
-            {
+            } else {
                 i++;
             }
         }
         return listaDeMiembrosDeXAsociacion;
     }
 
-}
 
+
+
+
+
+
+    public LlistaMembres miembrosActivos (LlistaMembres listaDeLosMiembros, String filtro){
+        LlistaMembres sublistaSegunFiltro = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
+        int i = 0;
+        while (i < listaDeLosMiembros.getNumeroMembres()){
+            if (listaDeLosMiembros.get[i])
+
+
+            i++;
+        }
+
+
+
+
+
+
+        return sublistaSegunFiltro;
+    }
     
 
+
+
+
+
+
+
+}
