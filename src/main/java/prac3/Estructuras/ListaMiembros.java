@@ -101,15 +101,15 @@ public class ListaMiembros {
         while ((i < listaDeLasAsociaciones.getIndiceAsociaciones()) && !(asociacionEncontrada)) {
             nombreTemporalAsociacion = listaDeLasAsociaciones.getLlistaAssociacions()[i].getNombreAsociacion();
             if (nombreTemporalAsociacion.equals(nombreAsociacion)) {
-                String nombreMiembro;
+                String aliasMiembro;
                 int numeroElementosAsociacion = listaDeLasAsociaciones.getLlistaAssociacions()[i]
                         .getListaMiembrosAsociacion().length;
                 for (int x = 0; x < numeroElementosAsociacion; x++) {
-                    nombreMiembro = listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion()[x];
+                    aliasMiembro = listaDeLasAsociaciones.getLlistaAssociacions()[i].getListaMiembrosAsociacion()[x];
                     int j = 0;
                     while ((!(miembroDeTipoCorrectoEncontrado)) && (j < listaDeLosMiembros.nElem)) {
 
-                        if (listaDeLosMiembros.listaMembres[j].getnombreMiembro().equals(nombreMiembro)) {
+                        if (listaDeLosMiembros.listaMembres[j].getAlias().equals(aliasMiembro)) {  //Lo he cambiado el getAlias
                             if (filtro.equals("Ambos")) {
                                 listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
                                 miembroDeTipoCorrectoEncontrado = true;
@@ -191,7 +191,7 @@ public class ListaMiembros {
             ListaMiembros listaTodosMiembros) {
         Miembro miembroEnMasAsociaciones = null;
         int [] vectorNumeroVecesMiembro = new int [listaTodosMiembros.getNumeroMembres()];
-
+        
         
         for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
             
@@ -262,5 +262,11 @@ public class ListaMiembros {
         }
         return siEstaEnMasDeTres;
     }
+
+
+
+    //public String[] titulacionesEnBaseAListaMiembros (ListaMiembros listaTodosMiembros){
+
+  //  }
 
 }

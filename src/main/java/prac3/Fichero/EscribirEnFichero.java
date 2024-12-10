@@ -6,7 +6,6 @@ import prac3.Asociacion.Asociacion;
 import prac3.Accion.Accion;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
-import prac3.Estructuras.ListaMiembros;
 import prac3.Accion.Demostracion;
 import prac3.Accion.Charla;
 import java.io.IOException;
@@ -18,9 +17,9 @@ public class EscribirEnFichero{
         try(BufferedWriter escritura = new BufferedWriter(new FileWriter(nombreArchivo))){
             for (int i = 0; i < listaAsociaciones.getIndiceAsociaciones(); i++ ){
                 Asociacion asociacion = listaAsociaciones.getElementoListaAsociacion(i);
-                escritura.write(asociacion.getNombreAsociacion()+ ";"+
+                escritura.write(asociacion.getNombreAsociacion()+ ";" +
                                 asociacion.getCorreoContactoAsociacion() + ";" +
-                                asociacion.getTitulacionesAsociacion() +";"+
+                                asociacion.getTitulacionesAsociacion() + ";" +
                                 asociacion.getListaMiembrosAsociacion() + ";" +
                                 asociacion.getPersonasEnCargo());
 
@@ -55,12 +54,19 @@ public class EscribirEnFichero{
                                     charla. getNumeroAsistentes());
                 
             }else if ( accion  instanceof Demostracion) {
-                Demostracion Demostracion = (Demostracion) accion ;
-                escritura.write(";" + demostracion.)
+                Demostracion demostracion = (Demostracion) accion ;
+                escritura.write(";"+ demostracion.getFecha() +";"+ 
+                                    demostracion.getEstadoDemostracion() +";"+ 
+                                    demostracion.getVecesOfrecida() +";"+
+                                    demostracion.getCostoDemostracion());
+
 
             }
+            escritura.write("\n");
         }
         
+        }catch(IOException e){
+             e.printStackTrace();
         }
     }
 }

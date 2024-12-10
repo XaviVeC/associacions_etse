@@ -4,8 +4,8 @@ import prac3.Estructuras.Fecha;
 
 public class Alumno extends Miembro {
 
-    private String curso;
-    private int yearsEtse;
+    private String siglasCarrera; //Siglas de la carrera que cursa
+    private int yearsEtse;  //Years que lleva en la ETSE
     private boolean graduado; // Variable que indica si el alumno se ha graduado ya o no
 
     /**
@@ -13,33 +13,31 @@ public class Alumno extends Miembro {
      * 
      * @param indiceFichero - identificador del Alumno dentro del fichero
      * @param tipoMiembro   - en este caso solo deberia ser Alumne
-     * @param nombreMiembro - nombreMiembrobre del alumno
      * @param alias         - alias del alumno
      * @param correoMiembro - correo del alumno
      * @param fechaAlta     - fecha en la que se dio de alta
      * @param fechaBaja     - fecha en la que se dio de baja
      * @param curso         - curso del alumno
-     * @param yearsEtse     - anyos cursados en la ETSE
+     * @param yearsEtse     - anyos en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumno(int indiceFichero, String tipoMiembro, String nombreMiembro, String alias, String correoMiembro,
-            Fecha fechaAlta, Fecha fechaBaja, String curso, int yearsEtse, boolean graduado) {
-        super(indiceFichero, tipoMiembro, nombreMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
+    public Alumno(int indiceFichero, String tipoMiembro, String alias, String correoMiembro,
+            Fecha fechaAlta, Fecha fechaBaja, int yearsEtse, boolean graduado, String carrera) {
+        super(indiceFichero, tipoMiembro, alias, correoMiembro, fechaAlta, fechaBaja);
         this.graduado = graduado;
-        this.curso = curso;
         this.yearsEtse = yearsEtse;
+        this.siglasCarrera = carrera;
     }
 
     /**
      * Metodo String que imprime los datos de la clase alumno
      */
     public String toString() {
-        String aux = "\t\t\tNombre del alumno: " + nombreMiembro + "\n" +
-                "\t\t\tAlias: " + alias + "\n" +
+        String aux = "\t\t\tAlias: " + alias + "\n" +
                 "\t\t\tCorreo electronico alumno: " + correoMiembro + "\n" +
+                "\t\t\tCarrera alumno: " + siglasCarrera + "\n" +
                 "\t\t\tData de Alta: " + fechaAlta.toString() + "\n" +
-                "\t\t\tData de Baixa: " + fechaBaixa.toString() + "\n" +
-                "\t\t\tCurso: " + curso + "\n" +
+                "\t\t\tData de Baixa: " + fechaBaja.toString() + "\n" +
                 "\t\t\tAños en la ETSE: " + yearsEtse + "\n";
 
         if (graduado) {
@@ -51,12 +49,12 @@ public class Alumno extends Miembro {
     }
 
     /**
-     * Getter de la variable curso
+     * Getter de la variable siglasCarrera
      * 
-     * @return - variable curso
+     * @return - variable siglasCarrera
      */
-    public String getCurso() {
-        return curso;
+    public String getSiglasCarrera() {
+        return this.siglasCarrera;
     }
 
     /**
@@ -69,13 +67,6 @@ public class Alumno extends Miembro {
     }
 
     /**
-     * Modificador de la variable graduado
-     */
-    public void jaGraduado() {
-        graduado = true;
-    }
-
-    /**
      * Getter de la variable graduado
      * 
      * @return - variable graduado
@@ -85,13 +76,20 @@ public class Alumno extends Miembro {
     }
 
     /**
+     * Modificador de la variable graduado
+     */
+    public void accionGraduar() {
+        graduado = true;
+    }
+
+    /**
      * Metodo que hace una copia de un alumno en concreto
      * 
      * @return - copia de alumno en concreto
      */
     public Alumno copia() {
-        Alumno a = new Alumno(getIndiceFichero(), getTipoMiembro(), getnombreMiembro(), getAlias(), getCorreoMiembro(),
-                getFechaAlta(), getFechaBaja(), curso, yearsEtse, graduado);
+        Alumno a = new Alumno(indiceFichero, tipoMiembro, alias, correoMiembro,
+                fechaAlta, fechaBaja, yearsEtse, graduado, siglasCarrera);
         return a;
     }
 }

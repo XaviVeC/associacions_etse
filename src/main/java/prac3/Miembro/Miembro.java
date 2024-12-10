@@ -6,11 +6,10 @@ public abstract class Miembro {
     //DADES
     protected int indiceFichero; // Identificador dentro del fichero
     protected String tipoMiembro; // indica si es Professor o Alumne
-    protected String nombreMiembro; // nombre del miembro 
     protected String alias;// Alias del membre 
     protected String correoMiembro;// Correo electronico del miembro 
     protected Fecha fechaAlta; // Fecha en la que se da de alta 
-    protected Fecha fechaBaixa; // Fecha en la que se da de baja
+    protected Fecha fechaBaja; // Fecha en la que se da de baja
     //MÉTODES
     
     /**
@@ -21,18 +20,16 @@ public abstract class Miembro {
      * @param alias - Alias del nombreMiembrobre del miembro
      * @param correoMiembro - Correo del miembro
      * @param fechaAlta - Fecha en la que se dio de alta
-     * @param fechaBaixa - Fecha en la que se dio de baja
+     * @param fechaBaja - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
-    public Miembro (int indiceFichero, String tipoMiembro, String nombreMiembro, String alias, String correoMiembro, Fecha fechaAlta, Fecha fechaBaixa){
+    public Miembro (int indiceFichero, String tipoMiembro, String alias, String correoMiembro, Fecha fechaAlta, Fecha fechaBaja){
         this.indiceFichero = indiceFichero;
         this.tipoMiembro = tipoMiembro;
-        this.nombreMiembro = nombreMiembro;
         this.alias = alias;
         this.correoMiembro = correoMiembro;
         this.fechaAlta = fechaAlta;
-        this.fechaBaixa = fechaBaixa;
-
+        this.fechaBaja = fechaBaja;
     }
 
     /**
@@ -49,14 +46,6 @@ public abstract class Miembro {
      */
     public String getTipoMiembro() {
         return tipoMiembro;
-    }
-
-    /**
-     * Getter de la variable nombreMiembro
-     * @return - variable nombreMiembro
-     */
-    public String getnombreMiembro() {
-        return nombreMiembro;
     }
 
     /**
@@ -88,7 +77,7 @@ public abstract class Miembro {
      * @return - fecha en el que se dio de baja
      */
     public Fecha getFechaBaja(){
-        return fechaBaixa;
+        return fechaBaja;
     }
     
     /**
@@ -102,15 +91,5 @@ public abstract class Miembro {
      * @return - datos de un miembro en concreto por pantalla
      */
     public abstract String toString();
-
-
-    
-
-    //Funcion buscar miembro a partir de alias
-    //Esta, 
-    //SI no esta
-
-
-
 
 }

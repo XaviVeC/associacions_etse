@@ -1,7 +1,7 @@
 package prac3.Estructuras;
 
 import prac3.Asociacion.Asociacion;
-import prac3.Miembro.Miembro;
+//import prac3.Miembro.Miembro;
 
 public class ListaAsociaciones {
     private Asociacion[] listaAsociaciones;
@@ -68,6 +68,15 @@ public class ListaAsociaciones {
         return aux;
     }
 
+     
+    /**LA TERMINARA EL SALAT
+     * 
+     * @param alias
+     * @param asociacionDondeUnirse
+     * @param listaTodasAsociaciones
+     * @param listaTodosMiembros
+     */
+    /*
     public void addMiembroEnAsociacion(String alias, Asociacion asociacionDondeUnirse, 
                                        ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros) {
         Miembro membreAuxiliar;
@@ -83,7 +92,7 @@ public class ListaAsociaciones {
         }
     }
 
-    
+    */
 
     /**
      * Metodo que comprueba si existe una asociacion con el mismo nombre que el que pasa por parametro

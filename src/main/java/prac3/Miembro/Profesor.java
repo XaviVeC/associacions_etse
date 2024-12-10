@@ -11,7 +11,6 @@ public class Profesor extends Miembro {
      * Metodo Constructor de la clase Professor
      * @param indiceFichero - Indice en el que esta el Profesor dentro del fichero
      * @param tipoMiembro - En este caso solo seria profesor
-     * @param nom - Nombre del profesor
      * @param alies - Alias del profesor
      * @param correu - Correo del profesor
      * @param dataAlta - Fecha en la que se dio de alta
@@ -20,8 +19,8 @@ public class Profesor extends Miembro {
      * @param numeroDespacho - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Profesor (int indiceFichero, String tipoMiembro, String nom, String alies, String correu, Fecha dataAlta, Fecha dataBaixa,String departamento, int numeroDespacho){
-        super(indiceFichero, tipoMiembro, nom, alies, correu, dataAlta, dataBaixa);
+    public Profesor (int indiceFichero, String tipoMiembro, String alies, String correu, Fecha fechaAlta, Fecha fechaBaja,String departamento, int numeroDespacho){
+        super(indiceFichero, tipoMiembro, alies, correu, fechaAlta, fechaBaja);
         this.departamento = departamento;
         this.numeroDespacho = numeroDespacho;
       
@@ -47,11 +46,10 @@ public class Profesor extends Miembro {
      * Metodo String que imprime todos los datos del objeto profesor
      */
     public String toString (){
-        return ("\t\t\tNombre profesor: " + nombreMiembro+ "\n" +
-               "\t\t\tAlias: " + alias +  "\n" +
+        return ("\t\t\tAlias: " + alias +  "\n" +
                "\t\t\tCorro electronico : " + correoMiembro + "\n" +
                "\t\t\tFecha de Alta: " + fechaAlta.toString() + "\n" +
-               "\t\t\tFecha de Baja: " + fechaBaixa.toString() + "\n" +
+               "\t\t\tFecha de Baja: " + fechaBaja.toString() + "\n" +
                "\t\t\tDepartamento: " + departamento + "\n" +
                "\t\t\tNumero del despacho: " + numeroDespacho);
     }
@@ -61,7 +59,7 @@ public class Profesor extends Miembro {
      * @return - copia de un profesor
      */
     public Profesor copia(){
-        Profesor p = new Profesor(getIndiceFichero(), getTipoMiembro(), getnombreMiembro(), getAlias(),getCorreoMiembro(), getFechaAlta(), getFechaBaja(),getDepartamento(),getNumeroDespacho());
+        Profesor p = new Profesor(indiceFichero, tipoMiembro, alias,correoMiembro, fechaAlta, fechaBaja, departamento, numeroDespacho);
         return p;
     }
 }

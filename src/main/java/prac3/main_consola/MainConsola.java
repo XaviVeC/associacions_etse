@@ -2,7 +2,6 @@ package prac3.Main_Consola;
 
 import java.util.Scanner;
 import prac3.Estructuras.Fecha;
-import prac3.Asociacion.Asociacion;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
@@ -113,9 +112,10 @@ public class MainConsola {
                     yearSup = Integer.parseInt(introducirPorTeclado.nextLine());
                     fechaInferior = new Fecha(diaInf, mesInf, yearInf);
                     fechaSuperior = new Fecha(diaSup, mesSup, yearSup);
+                    opcion6(listaDeTodasLasAcciones, fechaInferior, fechaSuperior);
                     break;
                 case 7:
-
+                    //-------------------------------------- MAS ADELANTE
                     break;
                 case 8:
 
@@ -212,6 +212,6 @@ public class MainConsola {
     }
 
     public static void opcion6(ListaAcciones listaTodasAcciones, Fecha limInf, Fecha limSup) {
-        
+        System.out.println(ListaAcciones.sublistaCharlasEnRangoFechas(listaTodasAcciones, limInf, limSup).toString());
     }
 }
