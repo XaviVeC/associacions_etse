@@ -1,8 +1,8 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 public class MainConsola {
     public static void main(String[] args) {
-
+        mostraMenu();
         /**
          * --------------------------------------------------MENU--------------------------------------------
          * 
@@ -38,7 +38,7 @@ public class MainConsola {
          * 12. Calcular la persona que participa en mas asociaciones (RECORDAR QUE COMO
          * MAXIMO 3).
          * Si hay empate la que lleva mas tiempo en alguna de ellas. Si hay empate tmb,
-         * qualquiera de las empatadas.
+         * qualquiera de las empatadas. DANI
          * 
          * 13. Consultar y mostrar la Xerrada que ha tenido mas de X asistentes.
          * 
@@ -72,8 +72,14 @@ public class MainConsola {
         System.out.println("11.  Consultar y mostrar los datos de las demostraciones que se consideran no activas. Calcular el costo económico total que supuso preparar todas estas demostraciones.");
         System.out.println("12.  Calcular la persona más activa, es decir, la que participa en más asociaciones. En caso de empate, se considera la que tiene más antigüedad (en cualquier asociación). Si aún hay empate, se escoge a cualquiera de las personas que cumplen con los requisitos.");
         System.out.println("13. Consultar y mostrar los datos de las charlas que han tenido más de un cierto número indicado de asistentes.");
-        System.out.println("14.  Consultar y mostrar los datos de las demostraciones que se consideran no activas. Calcular el costo económico total que supuso preparar todas estas demostraciones.");
-        System.out.println("15.  Consultar y mostrar los datos de las demostraciones que se consideran no activas. Calcular el costo económico total que supuso preparar todas estas demostraciones.");
+        System.out.println("14. Valorar una charla por parte de un asistente.");
+        System.out.println("15. Consultar y mostrar la charla que está mejor valorada (que será la que tiene el promedio de valoraciones más alto). En caso de empate en la nota, se considera la que ha tenido más valoraciones, y en caso de empate se toma cualquiera.");
+        System.out.println("16. Mostrar los datos de las charlas que hará una persona concreta.");
+        System.out.println("17. Dar de baja las demostraciones que no estén activas y que fueron diseñadas antes de una cierta fecha.");
+        System.out.println("18. Salir de la aplicación.");
+
+
+
 
 
     }
