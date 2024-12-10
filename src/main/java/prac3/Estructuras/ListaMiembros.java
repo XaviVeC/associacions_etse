@@ -179,6 +179,17 @@ public class ListaMiembros {
     * Si hay empate la que lleva mas tiempo en alguna de ellas. Si hay empate tmb, qualquiera de las empatadas.
      */
 
+     public Miembro personaEnMasAsociaciones (ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros){
+        Miembro miembroEnMasAsociaciones;
+
+        for (int i = 0; i < listaTodasAsociaciones.getIndiceAsociaciones(); i++) {
+            
+        }
+
+
+        return miembroEnMasAsociaciones;
+     }
+
 
 
 
