@@ -90,29 +90,6 @@ public abstract class Membre {
     public Data getFechaBaja(){
         return fechaBaixa;
     }
-
-    /**
-     * Metodo que da de alta a un miembro, lo unico que hace es guardar la fecha que se le pasa en los parametros del alta
-     * @param fechaAlta - variable fechaAlta
-     */
-    public void donarDeAlta(Data fechaAlta){
-        //Comprobar que el membre no esta ja donat de alta
-        if (this.fechaAlta == null){
-            this.fechaAlta = fechaAlta;
-        }
-    }
-
-    /**
-     * Metodo que da de baja a un miembro, lo unico que hace es guardar la fecha que se le pasa en los parametros de la baja
-     * @param fechaBaixa - variable fechaBaixa
-     */
-    public void donarDeBaixa(Data fechaBaixa){
-        //Comprobar que el membre esta donat de Alta 
-        if ((this.fechaAlta != null) && (this.fechaBaixa == null)){
-            //Comprobar que no estiga donat de baixa 
-            this.fechaBaixa = fechaBaixa;  
-        }
-    }
     
     /**
      * Metodo que hace una copia de un miembro
@@ -128,4 +105,12 @@ public abstract class Membre {
 
 
     
+
+    //Funcion buscar miembro a partir de alias
+    //Esta, 
+    //SI no esta
+
+
+
+
 }

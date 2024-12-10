@@ -1,6 +1,6 @@
 package prac3.accions;
 
-
+import prac3.estructures.Data;
 public abstract class Accio {
     //3 primeras letras asociacion, seguidas de tres numeros a partir del 100.
     protected String codigoAccion;
@@ -75,4 +75,5 @@ public abstract class Accio {
 
     public abstract Accio copia(); // Lo dejamos vacio
     public abstract String toString(); // Lo dejamos vacio
+    public abstract Data getFecha(); //para manejar las fechas de las clases hijas
 }

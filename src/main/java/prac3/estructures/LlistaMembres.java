@@ -143,7 +143,7 @@ public class LlistaMembres {
         LlistaMembres sublistaSegunFiltro = new LlistaMembres(listaDeLosMiembros.getNumeroMembres());
 
         for (int i = 0; i < listaDeLosMiembros.getNumeroMembres(); i++) {
-            if (listaDeLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getAnio() == 9999) {
+            if (listaDeLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getyear() == 9999) {
                 if (filtro.equals("Ambos")) {
                     sublistaSegunFiltro.addMiembro(listaDeLosMiembros.getMiembroEnXIndice(i).copia());
                 } else {
@@ -156,8 +156,21 @@ public class LlistaMembres {
         return sublistaSegunFiltro;
     }
 
+    public boolean miembroExistente(String alias, LlistaMembres listaTodosMiembros) {
+        boolean existente = false;
+        int i = 0;
 
+        while ((!existente) && (i < listaTodosMiembros.getNumeroMembres())) {
+            if (alias.equals(listaTodosMiembros.getMiembroEnXIndice(i).getAlias())) {
+                existente = true;
+            }
+            else {
+                i++;
+            }
+        }
 
+        return existente;
+    }
 
 
 

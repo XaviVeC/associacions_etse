@@ -1,4 +1,5 @@
 package prac3.accions;
+
 import prac3.estructures.Data;
 
 public class Xerrada extends Accio {
@@ -10,7 +11,8 @@ public class Xerrada extends Accio {
 
     /**
      * Constructor de la classe Xerrada
-     * @param indiceFichero 
+     * 
+     * @param indiceFichero
      * @param tipoAccion
      * @param nombreAccion
      * @param asociacionesInvolucradas
@@ -20,15 +22,16 @@ public class Xerrada extends Accio {
      * @param valoraciones
      * @param numeroDeAsistentes
      */
-    public Xerrada(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas, String organizadorResponsable, Data fechaRealizacion, String[] instructoresCharla, int[] valoraciones, int numeroDeAsistentes) {
+    public Xerrada(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas,
+            String organizadorResponsable, Data fechaRealizacion, String[] instructoresCharla, int[] valoraciones,
+            int numeroDeAsistentes) {
         super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
         this.valoraciones = valoraciones;
         if (numeroDeAsistentes < 0) {
             this.numeroDeAsistentes = -999;
-        }
-        else {
+        } else {
             this.numeroDeAsistentes = numeroDeAsistentes;
         }
     }
@@ -47,6 +50,13 @@ public class Xerrada extends Accio {
      */
     public String[] getInstructoresCharla() {
         return instructoresCharla;
+    }
+
+    /**
+     * Getter de la fecha en la que se hace la charla
+     */
+    public Data getFecha() {
+        return this.fechaRealizacion;
     }
 
     /**
@@ -77,24 +87,27 @@ public class Xerrada extends Accio {
     }
 
     /**
-     * Metodo toString 
+     * Metodo toString
+     * 
      * @return - Texto con los datos de la charla
      */
     public String toString() {
         String aux = "\t\t\tNombre de la charla: " + this.nombreAccion + "\n" +
-        "\t\t\tCodigo de la charla: " + this.codigoAccion + "\n" +
-        "\t\t\tFecha de la charla: " + this.fechaRealizacion.toString() + "\n" + 
-        "\t\t\tOrganizador responsable: " + this.organizadorResponsable +"\n" +
-        "\t\t\tLos instructores de la charla son:\n";
+                "\t\t\tCodigo de la charla: " + this.codigoAccion + "\n" +
+                "\t\t\tFecha de la charla: " + this.fechaRealizacion.toString() + "\n" +
+                "\t\t\tOrganizador responsable: " + this.organizadorResponsable + "\n" +
+                "\t\t\tLos instructores de la charla son:\n";
         for (int index = 0; index < instructoresCharla.length; index++) {
             aux = aux + "\t\t\t\tInstructor " + (index + 1) + ": " + instructoresCharla[index] + "\n";
         }
         aux = aux + "\t\t\tLas asociaciones que organizaron la charla fueron:\n";
         for (int index = 0; index < asociacionesInvolucradas.length; index++) {
-            aux = aux + "\t\t\t\tAsociacion involucrada "+ (index + 1)+ ": " + this.asociacionesInvolucradas[index] + "\n";
+            aux = aux + "\t\t\t\tAsociacion involucrada " + (index + 1) + ": " + this.asociacionesInvolucradas[index]
+                    + "\n";
         }
 
-        aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes + " personas.\n\t\t\tLas valoraciones fueron\n";
+        aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes
+                + " personas.\n\t\t\tLas valoraciones fueron\n";
         for (int index = 0; index < valoraciones.length; index++) {
             aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
         }
@@ -103,10 +116,12 @@ public class Xerrada extends Accio {
 
     /**
      * Metodo copia
+     * 
      * @return - copia de la instancia
      */
     public Xerrada copia() {
-        return (new Xerrada(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas, this.organizadorResponsable,
-                            this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes));
+        return (new Xerrada(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas,
+                this.organizadorResponsable,
+                this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes));
     }
 }

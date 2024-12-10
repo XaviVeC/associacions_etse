@@ -1,64 +1,71 @@
 package prac3.estructures;
 
 public class Data {
-    
+
     private int dia;
     private int mes;
-    private int anio;
+    private int year;
 
     /**
      * Metodo constructor de la clase Data
-     * Se ha comprobado que los datos introducidos por parametro tengan sentido, es decir esten 
-     * dentro de los intervalos reales de una fecha, no puede haber un dia mayor de 31 por ejemplo.
-     * Para reflejar ese error lo que se ha hecho ha sido poner la fecha con todo 9 para que asi se vea 
+     * Se ha comprobado que los datos introducidos por parametro tengan sentido, es
+     * decir esten
+     * dentro de los intervalos reales de una fecha, no puede haber un dia mayor de
+     * 31 por ejemplo.
+     * Para reflejar ese error lo que se ha hecho ha sido poner la fecha con todo 9
+     * para que asi se vea
      * bien la diferencia respecto las que esten correctas.
-     * @param dia - variable que tiene el dia
-     * @param mes - variable que contiene el mes
-     * @param anio - variable que contiene el anio
+     * 
+     * @param dia  - variable que tiene el dia
+     * @param mes  - variable que contiene el mes
+     * @param year - variable que contiene el year
      * @return - constructor Data
      */
-    public Data (int dia, int mes, int anio){
-        if (diaValido(dia) && mesValido(mes) && anioValido(anio)){
+    public Data(int dia, int mes, int year) {
+        if (diaValido(dia) && mesValido(mes) && yearValido(year)) {
             this.dia = dia;
             this.mes = mes;
-            this.anio = anio;
-        }
-        else{
+            this.year = year;
+        } else {
             this.dia = 99;
             this.mes = 99;
-            this.anio = 9999;
+            this.year = 9999;
         }
     }
 
     /**
      * Getter de la variable dia
+     * 
      * @return - variable dia
      */
-    public int getDia(){
+    public int getDia() {
         return dia;
     }
 
     /**
      * Getter de la variable mes
+     * 
      * @return - variable mes
      */
-    public int getMes(){
+    public int getMes() {
         return mes;
     }
 
     /**
-     * Getter de la variable anio
-     * @return - variable anio
+     * Getter de la variable year
+     * 
+     * @return - variable year
      */
-    public int getAnio(){
-        return anio;
+    public int getyear() {
+        return year;
     }
 
     /**
      * Setter de la variable dia
+     * 
      * @param dia - variable dia
      */
-    public void setDia(int dia){
+    public void setDia(int dia) {
         if (diaValido(dia)) {
             this.dia = dia;
         }
@@ -66,32 +73,35 @@ public class Data {
 
     /**
      * Setter de la variable mes
+     * 
      * @param mes - variable mes
      */
-    public void setMes(int mes){
+    public void setMes(int mes) {
         if (mesValido(mes)) {
             this.mes = mes;
         }
     }
 
     /**
-     * Setter de la variable anio
-     * @param anio - variable anio
+     * Setter de la variable year
+     * 
+     * @param year - variable year
      */
-    public void setanio(int anio){
-        if (anioValido(anio)) {
-            this.anio = anio;
+    public void setyear(int year) {
+        if (yearValido(year)) {
+            this.year = year;
         }
     }
 
     /**
      * Metodo que comprueba que el dia este entre 1 y 31
+     * 
      * @param dia - variable dia
      * @return - true = esValida, false = no esValida
      */
-    public boolean diaValido(int dia){
+    public boolean diaValido(int dia) {
         boolean esValido = true;
-        if ((dia > 31) || (dia < 1)){
+        if ((dia > 31) || (dia < 1)) {
             esValido = false;
         }
         return esValido;
@@ -99,25 +109,27 @@ public class Data {
 
     /**
      * Metodo que comprueba que el mes este entre 1 y 12
+     * 
      * @param mes - variable mes
      * @return - true = esValida, false = no esValida
      */
-    public boolean mesValido(int mes){
+    public boolean mesValido(int mes) {
         boolean esValido = true;
-        if ((mes > 12) || (mes < 1)){
+        if ((mes > 12) || (mes < 1)) {
             esValido = false;
         }
         return esValido;
     }
 
     /**
-     * Metodo que comprueba que el anio este entre 1900 y 2030
-     * @param dia - variable anio
+     * Metodo que comprueba que el year este entre 1900 y 2030
+     * 
+     * @param dia - variable year
      * @return - true = esValida, false = no esValida
      */
-    public boolean anioValido(int anio){
+    public boolean yearValido(int year) {
         boolean esValido = true;
-        if ((anio > 2030) || (anio < 1)){
+        if ((year > 2030) || (year < 1)) {
             esValido = false;
         }
         return esValido;
@@ -125,19 +137,64 @@ public class Data {
 
     /**
      * Metodo String que imprime la fecha
+     * 
      * @return - Fecha completa
      */
-    public String toString (){
-        return(+this.getDia()+ "/" +this.getMes()+ "/" +this.getAnio());
+    public String toString() {
+        return (+this.getDia() + "/" + this.getMes() + "/" + this.getyear());
 
     }
 
     /**
-     * Metodo que copia una fecha en concreto 
+     * Metodo que copia una fecha en concreto
+     * 
      * @return - variable fechita
      */
-    public Data copia(){
-        Data fechita = new Data(dia, mes, anio);
+    public Data copia() {
+        Data fechita = new Data(dia, mes, year);
         return fechita;
-    } 
+    }
+
+    /**
+     * Metodo que compara dos fechas
+     * 
+     * @param otraFecha la otra fecha con la que comparamos la fecha desde quese
+     *                  ejecuta esta funcion
+     * @return retorna un codigo que
+     *         - es 0 si la fecha desde que se ejecuta es menor a otraFecha
+     *         - es 1 si son iguales
+     *         - es 2 si la fecha desde que se ejecuta es mayor a la otraFecha
+     */
+    public int compararFechas(Data otraFecha) {
+        int codigoResultado;
+
+        if (this.year > otraFecha.year) {
+            codigoResultado = 2;
+        } else {
+            if (this.year < otraFecha.year) {
+                codigoResultado = 0;
+            } else {
+                if (this.mes > otraFecha.mes) {
+                    codigoResultado = 2;
+                } else {
+                    if (this.mes < otraFecha.mes) {
+                        codigoResultado = 0;
+                    } else {
+                        if (this.dia > otraFecha.dia) {
+                            codigoResultado = 2;
+                        } else {
+                            if (this.dia < otraFecha.dia) {
+                                codigoResultado = 0;
+                            } else {
+                                codigoResultado = 1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return codigoResultado;
+    }
+
 }
