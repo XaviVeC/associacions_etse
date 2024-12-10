@@ -54,6 +54,7 @@ public class ListaAsociaciones {
         return this.listaAsociaciones;
     }
 
+
     /**
      * toString de la list de asociaciones
      * 
@@ -82,4 +83,31 @@ public class ListaAsociaciones {
         }
     }
 
+    
+
+    /**
+     * Metodo que comprueba si existe una asociacion con el mismo nombre que el que pasa por parametro
+     * @param nombreAsociacion - variable con el nombre de la asociacion a comprobar
+     * @param listaTodasAsociaciones - variable que lleva la lista de todas las asociaciones
+     * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna igual
+     */
+    public boolean existeAsociacionMismoNombre (String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones){
+        boolean siExiste = false;
+        int indiceAsociaciones = 0;
+
+        while (indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones()) {
+            if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getNombreAsociacion().equals(nombreAsociacion)){
+                siExiste = true;
+            }
+            else{
+                indiceAsociaciones++;
+            }
+        }
+        return siExiste;
+    }
+    
+
+
+
+    
 }

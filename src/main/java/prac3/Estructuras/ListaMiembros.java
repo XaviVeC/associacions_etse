@@ -1,4 +1,5 @@
 package prac3.Estructuras;
+
 import prac3.Miembro.Miembro;
 
 public class ListaMiembros {
@@ -25,7 +26,7 @@ public class ListaMiembros {
      * @return - la lista modificada
      */
     public void addMiembro(Miembro miembroQueAniadir) {
-        listaMembres[nElem] = miembroQueAniadir;
+        listaMembres[nElem] = miembroQueAniadir.copia();
         nElem++;
     }
 
@@ -81,9 +82,6 @@ public class ListaMiembros {
     }
 
     /**
-     * FALTA ACABAR PORQUE NO SE COMO HACERLO !!!!!!!!!!!!!!!!
-     * 
-     * 
      * Metodo que crea una lista de miembros de una asociacion concreta
      * 
      * @param nombreAsociacion - variable que indica el nombre de la asociacion
@@ -139,20 +137,29 @@ public class ListaMiembros {
         return listaDeMiembrosDeXAsociacion;
     }
 
-    public static ListaMiembros miembrosActivos(ListaMiembros listaDeLosMiembros, String filtro) {
-        ListaMiembros sublistaSegunFiltro = new ListaMiembros(listaDeLosMiembros.getNumeroMembres());
+    /**
+     * OPCION 3 DEL MENU
+     * Metodo que genera una sublista de miembros activos, aplicando un filtro si se
+     * desea
+     * 
+     * @param listaDeLosMiembros - Lista que contiene a todos los miembros
+     * @param filtro             - Filtro
+     * @return - Sublista con los miembros
+     */
+    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro) {
+        ListaMiembros sublistaSegunFiltro = new ListaMiembros(listaDeTodosLosMiembros.getNumeroMembres());
 
-        for (int i = 0; i < listaDeLosMiembros.getNumeroMembres(); i++) {
-            if (listaDeLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getyear() == 9999) {
+        for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i++) {
+            if (listaDeTodosLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getyear() == 9999) {
                 if (filtro.equals("Ambos")) {
-                    sublistaSegunFiltro.addMiembro(listaDeLosMiembros.getMiembroEnXIndice(i).copia());
+                    sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i).copia());
                 } else {
-                    if (listaDeLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
-                        sublistaSegunFiltro.addMiembro(listaDeLosMiembros.getMiembroEnXIndice(i).copia());
+                    if (listaDeTodosLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
+                        sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i).copia());
                     }
                 }
             }
-        }   
+        }
         return sublistaSegunFiltro;
     }
 
@@ -163,8 +170,7 @@ public class ListaMiembros {
         while ((!existente) && (i < listaTodosMiembros.getNumeroMembres())) {
             if (alias.equals(listaTodosMiembros.getMiembroEnXIndice(i).getAlias())) {
                 existente = true;
-            }
-            else {
+            } else {
                 i++;
             }
         }
@@ -172,33 +178,89 @@ public class ListaMiembros {
         return existente;
     }
 
-
-
     /**
-    * Calcular la persona que participa en mas asociaciones (RECORDAR QUE COMO MAXIMO 3).
-    * Si hay empate la que lleva mas tiempo en alguna de ellas. Si hay empate tmb, qualquiera de las empatadas.
+     * ACABAR AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+     * 
+     * Calcular la persona que participa en mas asociaciones (RECORDAR QUE COMO
+     * MAXIMO 3).
+     * Si hay empate la que lleva mas tiempo en alguna de ellas. Si hay empate tmb,
+     * qualquiera de las empatadas.
      */
 
-     public Miembro personaEnMasAsociaciones (ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros){
-        Miembro miembroEnMasAsociaciones;
+    public Miembro personaEnMasAsociaciones(ListaAsociaciones listaTodasAsociaciones,
+            ListaMiembros listaTodosMiembros) {
+        Miembro miembroEnMasAsociaciones = null;
+        int [] vectorNumeroVecesMiembro = new int [listaTodosMiembros.getNumeroMembres()];
 
-        for (int i = 0; i < listaTodasAsociaciones.getIndiceAsociaciones(); i++) {
+        
+        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
             
         }
 
-
         return miembroEnMasAsociaciones;
-     }
+    }
 
 
 
 
+    /**
+     * Metodo que comprueba si un miembro pasado por parametro esta en alguna
+     * asociacion
+     * 
+     * @param listaTodasAsociaciones - lista de todas las asociaciones
+     * @param aliasMiembroAComprobar - alias del miembro que queremos comprobar
+     * @return - booleano que indica si esta en alguna asociacion o no
+     */
+    public boolean estaElMiembroEnAlgunaAsociacion(ListaAsociaciones listaTodasAsociaciones,
+            String aliasMiembroAComprobar) {
+        boolean siEsta = false;
+        int indiceAsociacion = 0;
+        int indiceMiembroDeUnaAsoc;
+        while (!(siEsta) && (indiceAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
+            indiceMiembroDeUnaAsoc = 0;
+            while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                    .getListaMiembrosAsociacion().length) && !(siEsta)) {
+                if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)) {
+                    siEsta = true;
+                } else {
+                    indiceMiembroDeUnaAsoc++;
+                }
+            }
+            indiceAsociacion++;
+        }
+        return siEsta;
+    }
 
+    /**
+     * Metodo que comprueba si un miembro esta en mas de tres asociaciones
+     * 
+     * @param listaTodasAsociaciones - lista de todas las asociaciones
+     * @param aliasMiembroAComprobar - alias del miembro que queremos comprobar
+     * @return - booleano que indica si esta en alguna asociacion o no
+     */
+    public boolean elMiembroEstaEnMasDeTresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
+            String aliasMiembroAComprobar) {
+        boolean siEstaEnMasDeTres = false;
+        int vecesQueEsta = 0;
+        int indiceAsociacion = 0;
+        int indiceMiembroDeUnaAsoc;
+        while (!(siEstaEnMasDeTres) && (indiceAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
+            indiceMiembroDeUnaAsoc = 0;
+            while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                    .getListaMiembrosAsociacion().length) && (vecesQueEsta > 3)) {
+                if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)) {
+                    vecesQueEsta++;
+                    if (vecesQueEsta > 3) {
+                        siEstaEnMasDeTres = true;
+                    }
+                }
+                indiceMiembroDeUnaAsoc++;
+            }
+            indiceAsociacion++;
+        }
+        return siEstaEnMasDeTres;
+    }
 
-
-
-
-
-
-    
 }
