@@ -19,8 +19,8 @@ public class Profesor extends Miembro {
      * @param numeroDespacho - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Profesor (int indiceFichero, String tipoMiembro, String alies, String correu, Fecha fechaAlta, Fecha fechaBaja,String departamento, int numeroDespacho){
-        super(indiceFichero, tipoMiembro, alies, correu, fechaAlta, fechaBaja);
+    public Profesor (int indiceFichero, String tipoMiembro, String alies, Fecha fechaAlta,String departamento, int numeroDespacho){
+        super(indiceFichero, tipoMiembro, alies, fechaAlta);
         this.departamento = departamento;
         this.numeroDespacho = numeroDespacho;
       
@@ -59,7 +59,12 @@ public class Profesor extends Miembro {
      * @return - copia de un profesor
      */
     public Profesor copia(){
-        Profesor p = new Profesor(indiceFichero, tipoMiembro, alias,correoMiembro, fechaAlta, fechaBaja, departamento, numeroDespacho);
+        Profesor p = new Profesor(indiceFichero, tipoMiembro, alias, fechaAlta, departamento, numeroDespacho);
         return p;
+    }
+
+
+    public String getSiglasCarrera(){
+        return null;
     }
 }

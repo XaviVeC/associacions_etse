@@ -6,7 +6,9 @@ import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
 import prac3.Fichero.LeerFichero;
-
+import prac3.Miembro.Miembro;
+import prac3.Miembro.Profesor;
+import prac3.Miembro.Alumno;
 public class MainConsola {
     public static Scanner introducirPorTeclado = new Scanner(System.in);
 
@@ -19,6 +21,12 @@ public class MainConsola {
         //fechas opcion 6
         int diaInf, mesInf, yearInf, diaSup, mesSup, yearSup;
         Fecha fechaInferior, fechaSuperior;
+        //opcion 7
+        String nombreAsociacionOp7;
+        int cantidadMiembrosOp7;
+        String nombreMiembroOp7;
+        //opcion 8
+        
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
         int cantidadMaxima = 100;
@@ -116,9 +124,94 @@ public class MainConsola {
                     break;
                 case 7:
                     //-------------------------------------- MAS ADELANTE
+                    //primera comprobacion si ya existe el nombre de la asociacion
+                    //public boolean existeAsociacionMismoNombre (String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones)
+                    //segunda, existe el miembro que se va a añadir
+                    //public static int miembroExistente(String alias, ListaMiembros listaTodosMiembros)
+                    //tercera, el miembro está en menos de tres asociaciones
+                    //public boolean miembroPerteneceATresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
+                    System.out.println("Vas a añadir una nueva asociación");
+                    System.out.println("Introduce el nombre del la asociación:");
+                    do {
+                        nombreAsociacionOp7 = introducirPorTeclado.nextLine();
+                        if (ListaAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7, listaDeTodasLasAsociaciones)) {
+                            System.out.println("Ya existe este nombre, introducelo de nuevo");
+                        }
+                    } while (ListaAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7, listaDeTodasLasAsociaciones));
+                    
+                    System.out.println("Cuantos miembros quieres añadir, mínimo tres y máximo 20:");
+                    
+                    do {
+                        cantidadMiembrosOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (cantidadMiembrosOp7 < 3 || cantidadMiembrosOp7 > 20) {
+                            System.out.println("El mínimo de miembros es 3 y máximo 20, introducelo de nuevo.");
+                        }
+                    } while (cantidadMiembrosOp7 < 3 || cantidadMiembrosOp7 > 20);
+                    int indice = 0;
+                    String[] miembrosAsociacion = new String[cantidadMiembrosOp7];
+                    do {
+                        System.out.println("Introduce el alias del miembro " + (indice + 1) + " :");
+                        
+                        do{
+                            nombreMiembroOp7 = introducirPorTeclado.nextLine();
+                            if (ListaMiembros.miembroExistente(nombreMiembroOp7, listaDeTodosLosMiembros) == -1) {
+                                System.out.println("Este miembro no existe, introduce alguno que si lo haga.");
+                            }
+                        }while(ListaMiembros.miembroExistente(nombreMiembroOp7, listaDeTodosLosMiembros) == -1);
+                        miembrosAsociacion[indice] = nombreMiembroOp7;
+                    } while (indice < cantidadMiembrosOp7);
+
+                    //QUEDA AÑADIR LOS TITULOS QUE HAY EN LA ASOCIACION
+                    
+
                     break;
                 case 8:
+                    System.out.println("Para dar de alta a un miembro en una asociación.");
+                    System.out.println("Escribe tu alias.");
+                    String aliasOp8 = introducirPorTeclado.nextLine();
+                    System.out.println("Escribe la asociación en la que te quieres apuntar.");
+                    String nomAsocOp8 = introducirPorTeclado.nextLine();
+                    int comprovacion = opcion8vis1(aliasOp8, nomAsocOp8, listaDeTodosLosMiembros, listaDeTodasLasAsociaciones);
+                    if (comprovacion == -1) {
+                        System.out.println("¿Eres alumno o profesor? (Alumno, Profesor)");
+                        String tipoMiembroOp8 = introducirPorTeclado.nextLine();
+                        System.out.println("¿Que numero de día es hoy?");
+                        int diaOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                        System.out.println("¿Que numero de mes es hoy?");
+                        int mesOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                        System.out.println("¿Que numero de año es hoy?");
+                        int yearOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                        Fecha fechaAltaOp8 = new Fecha(diaOp8, mesOp8, yearOp8);
+                        if (tipoMiembroOp8 == "Profesor") {
+                            System.out.println("¿En que departamento estás?");
+                            String deptOp8 = introducirPorTeclado.nextLine();
+                            System.out.println("¿Cual es tu número de despacho?");
+                            int numDptOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                            Profesor nuevoProfesor = new Profesor(999, tipoMiembroOp8, aliasOp8, fechaAltaOp8, deptOp8, numDptOp8);
+                            opcion8vis2(nuevoProfesor, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
+                        }
+                        else {
+                            System.out.println("¿Cuántos años llevas en la universidad?");
+                            int yearsEtseOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                            System.out.println("¿Ya estas graduado? (s/n)");
+                            String aux = introducirPorTeclado.nextLine();
+                            boolean graduado;
+                            if (aux.equals("s")) {
+                                graduado = true;
+                            }
+                            else {
+                                graduado = false;
+                            }
+                            System.out.println("Iniciales de la carrera que cursas");
+                            String siglasCarrera = introducirPorTeclado.nextLine();
+                            Alumno nuevoAlumno = new Alumno(999, tipoMiembroOp8, aliasOp8, fechaAltaOp8, yearsEtseOp8, graduado, siglasCarrera);
+                            opcion8vis2(nuevoAlumno, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
+                        }
 
+                    }
+                    System.out.println(listaDeTodasLasAsociaciones.toString());
+                    System.out.println("\n\n");
+                    System.out.println(listaDeTodosLosMiembros.toString());
                     break;
                 case 9:
 
@@ -214,4 +307,33 @@ public class MainConsola {
     public static void opcion6(ListaAcciones listaTodasAcciones, Fecha limInf, Fecha limSup) {
         System.out.println(ListaAcciones.sublistaCharlasEnRangoFechas(listaTodasAcciones, limInf, limSup).toString());
     }
+    
+    public static void opcion7() {
+
+    }
+
+    public static int opcion8vis1(String alias, String nombreAsociacion, ListaMiembros listaTodosMiembros, ListaAsociaciones todasAsoc) {
+        int existe = ListaMiembros.miembroExistente(alias, listaTodosMiembros);
+
+        if (existe != -1) {
+            todasAsoc.addMiembroEnAsociacionExistente(alias, nombreAsociacion, todasAsoc);
+        }
+
+        return existe;
+    }
+
+    public static void opcion8vis2(Miembro miembro, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros) {
+        listaTodosMiembros.addMiembro(miembro);
+        listaTodasAsociaciones.addMiembroEnAsociacionExistente(miembro.getAlias(), nombreAsociacion, listaTodasAsociaciones);
+    }
+
+    
+
+    public static void opcion9() {
+        
+    }
+
+    
+
+
 }

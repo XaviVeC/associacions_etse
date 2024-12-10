@@ -1,7 +1,7 @@
 package prac3.Estructuras;
 
 import prac3.Asociacion.Asociacion;
-//import prac3.Miembro.Miembro;
+import prac3.Miembro.Miembro;
 
 public class ListaAsociaciones {
     private Asociacion[] listaAsociaciones;
@@ -69,30 +69,30 @@ public class ListaAsociaciones {
     }
 
      
-    /**LA TERMINARA EL SALAT
-     * 
-     * @param alias
-     * @param asociacionDondeUnirse
-     * @param listaTodasAsociaciones
-     * @param listaTodosMiembros
+    /**
+     * Metodo que modifica la listaDeMiembros que componen una asociacion, de la posicion de la lista asociaciones que corresponda
+     * @param alias - nuevo alias a añadir
+     * @param nombreAsociacion - la nombre asociacion a la que se le modifica la lista de miembros
+     * @param listaTodasAsociaciones - lista que contiene las asociaciones
      */
-    /*
-    public void addMiembroEnAsociacion(String alias, Asociacion asociacionDondeUnirse, 
-                                       ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros) {
-        Miembro membreAuxiliar;
+    public void addMiembroEnAsociacionExistente(String alias, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones) {
+        boolean encontrado = false;
+        int i = 0;
+        Asociacion auxiliar;
 
-        for (int i = 0; i < listaTodosMiembros.getNumeroMembres(); i ++) {
-            if (alias.equals(listaTodosMiembros.getMiembroEnXIndice(i).getAlias())) {
-                membreAuxiliar = listaTodosMiembros.getMiembroEnXIndice(i).copia();
+        while ((!encontrado) && (i < listaTodasAsociaciones.getIndiceAsociaciones())) {
+            if (listaTodasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion().equals(nombreAsociacion)) {
+                auxiliar = listaTodasAsociaciones.getElementoListaAsociacion(i);
+                auxiliar.addMiembroEnAsociacion(alias); // Miembro añadido en la asociacion que toca
+                encontrado = true;
             }
-        }
-        
-        for (int i = 0; i < listaTodasAsociaciones.getIndiceAsociaciones(); i++) {
-
+            else
+            {
+                i++;
+            }
         }
     }
 
-    */
 
     /**
      * Metodo que comprueba si existe una asociacion con el mismo nombre que el que pasa por parametro
@@ -100,7 +100,7 @@ public class ListaAsociaciones {
      * @param listaTodasAsociaciones - variable que lleva la lista de todas las asociaciones
      * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna igual
      */
-    public boolean existeAsociacionMismoNombre (String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones){
+    public static boolean existeAsociacionMismoNombre (String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones){
         boolean siExiste = false;
         int indiceAsociaciones = 0;
 
@@ -115,8 +115,34 @@ public class ListaAsociaciones {
         return siExiste;
     }
     
+    //Metodo que comprueba si el miembro a comprobar esta en la asociacion
+    public boolean estaElMiembroEnLaAsociacion (String alias, Asociacion asociacion){
+        boolean siEsta = false;
+        for (int index = 0; index < asociacion.getListaMiembrosAsociacion().length; index++) {
+            if (asociacion.getListaMiembrosAsociacion()[index].equals(alias)) {
+                siEsta = true;
+            }
+        }
+        return siEsta;
+    }
 
+    /**
+     * Método que devuelve que miembro participa en más asociaciones 
+     */
+    public Miembro miembroMasActivoEnUnaAsociacion (ListaMiembros listaTodosMiembros, ListaAsociaciones listaTodasAsociaciones){
+    
+       String miembroMasActivo = null;
+       int max = 0;
 
+       for (int i = 0; i< listaTodasAsociaciones.getIndiceAsociaciones(); i++){
+            String 
+
+       }
+
+        }
+
+    }
 
     
-}
+
+    

@@ -163,19 +163,27 @@ public class ListaMiembros {
         return sublistaSegunFiltro;
     }
 
-    public boolean miembroExistente(String alias, ListaMiembros listaTodosMiembros) {
+    /**
+     * Metodo que comprueba si existe el miembro en la lista que se le pase
+     * @param alias - Alias del miembro
+     * @param listaTodosMiembros - Lista en la que se comprueba
+     * @return - retorna el numero del indice en la que se encuentra, o un -1 si no existe
+     */
+    public static int miembroExistente(String alias, ListaMiembros listaMiembros) {
         boolean existente = false;
         int i = 0;
+        int codigoMiembro = -1;
 
-        while ((!existente) && (i < listaTodosMiembros.getNumeroMembres())) {
-            if (alias.equals(listaTodosMiembros.getMiembroEnXIndice(i).getAlias())) {
+        while ((!existente) && (i < listaMiembros.getNumeroMembres())) {
+            if (alias.equals(listaMiembros.getMiembroEnXIndice(i).getAlias())) {
                 existente = true;
+                codigoMiembro = i;
             } else {
                 i++;
             }
         }
 
-        return existente;
+        return codigoMiembro;
     }
 
     /**
@@ -185,7 +193,7 @@ public class ListaMiembros {
      * MAXIMO 3).
      * Si hay empate la que lleva mas tiempo en alguna de ellas. Si hay empate tmb,
      * qualquiera de las empatadas.
-     */
+     
 
     public Miembro personaEnMasAsociaciones(ListaAsociaciones listaTodasAsociaciones,
             ListaMiembros listaTodosMiembros) {
@@ -199,7 +207,7 @@ public class ListaMiembros {
 
         return miembroEnMasAsociaciones;
     }
-
+    */
 
 
 
@@ -239,7 +247,7 @@ public class ListaMiembros {
      * @param aliasMiembroAComprobar - alias del miembro que queremos comprobar
      * @return - booleano que indica si esta en alguna asociacion o no
      */
-    public boolean elMiembroEstaEnMasDeTresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
+    public  boolean miembroPerteneceATresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
             String aliasMiembroAComprobar) {
         boolean siEstaEnMasDeTres = false;
         int vecesQueEsta = 0;
@@ -248,11 +256,11 @@ public class ListaMiembros {
         while (!(siEstaEnMasDeTres) && (indiceAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
             indiceMiembroDeUnaAsoc = 0;
             while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                    .getListaMiembrosAsociacion().length) && (vecesQueEsta > 3)) {
+                    .getListaMiembrosAsociacion().length) && (vecesQueEsta > 2)) {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
                         .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)) {
                     vecesQueEsta++;
-                    if (vecesQueEsta > 3) {
+                    if (vecesQueEsta > 2) {
                         siEstaEnMasDeTres = true;
                     }
                 }
@@ -264,9 +272,59 @@ public class ListaMiembros {
     }
 
 
-
-    //public String[] titulacionesEnBaseAListaMiembros (ListaMiembros listaTodosMiembros){
-
-  //  }
+    // METODO QUE  HACE UNA LISTA DE TITULOS EN BASE A LOS MIEMBROS
+    public String[] titulacionesEnBaseAListaMiembros (ListaMiembros listaTodosMiembros, String[] listaMiembros){
+        String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
+        int indiceMiembrosTotales;
+        for (int index = 0; index < listaMiembros.length; index++) {
+            indiceMiembrosTotales= 0;
+            boolean hecho = false;
+            while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
+                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias().equals(listaMiembros[index])) {
+                    listaTitulacionesConRepeticiones[index] = listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera();
+                    hecho = true;
+                }
+                else{
+                    indiceMiembrosTotales++;
+                }
+            }
+            index++;
+        }
+        int titSinRepeticion = 1;
+        int indiceFinal;
+        boolean igual = false;
+        for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
+            indiceFinal = indicetitComprobando - 1;
+            while ((!(igual)) && (indiceFinal >= 0)) {
+                if (listaTitulacionesConRepeticiones[indicetitComprobando].equals(listaTitulacionesConRepeticiones[indiceFinal])) {
+                    igual = true;
+                }
+                else{
+                    indiceFinal--;
+                }
+            }
+            if (!(igual)){
+                titSinRepeticion++;
+            }
+        }
+        String[] listaTitulosDefinitiva = new String[titSinRepeticion];
+        for (int index = 0; index < titSinRepeticion; index++) {
+            for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
+                indiceFinal = indicetitComprobando - 1;
+                while ((!(igual)) && (indiceFinal >= 0)) {
+                    if (listaTitulacionesConRepeticiones[indicetitComprobando].equals(listaTitulacionesConRepeticiones[indiceFinal])) {
+                    igual = true;
+                    }
+                    else{
+                        indiceFinal--;
+                    }
+                }
+                if (!(igual)){
+                    listaTitulosDefinitiva[index] = listaTitulacionesConRepeticiones[indicetitComprobando];
+                }
+            }
+        }
+        return listaTitulosDefinitiva;
+    }
 
 }

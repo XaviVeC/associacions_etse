@@ -85,7 +85,7 @@ public class LeerFichero {
 
             String informacionUnMiembro;
             String[] campo, campoFecha;
-            Fecha fechaAlta, fechaBaja;
+            Fecha fechaAlta;
             int indiceLectura = 0;
             Alumno alumno;
             Profesor profesor;
@@ -98,19 +98,17 @@ public class LeerFichero {
                         Integer.parseInt(campoFecha[2]));
 
                 campoFecha = campo[5].split("-");
-                fechaBaja = new Fecha(Integer.parseInt(campoFecha[0]), Integer.parseInt(campoFecha[1]),
-                        Integer.parseInt(campoFecha[2]));
 
                 switch (campo[1]) {
                     case "Alumne":
-                        alumno = new Alumno(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3], fechaAlta,
-                        fechaBaja, Integer.parseInt(campo[6]), Boolean.parseBoolean(campo[7]), campo[8].trim());
+                        alumno = new Alumno(Integer.parseInt(campo[0]), campo[1], campo[2], fechaAlta,
+                        Integer.parseInt(campo[6]), Boolean.parseBoolean(campo[7]), campo[8].trim());
 
                         nombreListaMiembros.addMiembro(alumno);
                         break;
                     case "Professor":
-                        profesor = new Profesor(Integer.parseInt(campo[0]), campo[1], campo[2], campo[3], fechaAlta,
-                        fechaBaja, campo[6], Integer.parseInt(campo[7].trim()));
+                        profesor = new Profesor(Integer.parseInt(campo[0]), campo[1], campo[2], fechaAlta,
+                        campo[6], Integer.parseInt(campo[7].trim()));
                         nombreListaMiembros.addMiembro(profesor);
                         break;
                 }
@@ -151,7 +149,7 @@ public class LeerFichero {
                 campoIntegrantes = campo[3].split("-");
                 campoCargos = campo[4].split("-");
 
-                asociacion = new Asociacion(campo[0], campo[1], campoTitulaciones, campoIntegrantes, campoCargos);
+                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes, campoCargos);
 
                 listaARellenar.addAsociacion(asociacion);
                 indiceLectura++;

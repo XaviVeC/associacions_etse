@@ -16,20 +16,19 @@ public abstract class Miembro {
      * Metodo constructor de la clase Membre
      * @param indiceFichero - identificador dentro del fichero
      * @param tipoMiembro - si es Alumne o Professor
-     * @param nombreMiembro - nombreMiembrobre del miembro
      * @param alias - Alias del nombreMiembrobre del miembro
      * @param correoMiembro - Correo del miembro
      * @param fechaAlta - Fecha en la que se dio de alta
      * @param fechaBaja - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
-    public Miembro (int indiceFichero, String tipoMiembro, String alias, String correoMiembro, Fecha fechaAlta, Fecha fechaBaja){
+    public Miembro (int indiceFichero, String tipoMiembro, String alias, Fecha fechaAlta){
         this.indiceFichero = indiceFichero;
         this.tipoMiembro = tipoMiembro;
         this.alias = alias;
-        this.correoMiembro = correoMiembro;
+        this.correoMiembro = alias + "@urv.cat";
         this.fechaAlta = fechaAlta;
-        this.fechaBaja = fechaBaja;
+        this.fechaBaja = new Fecha(99, 99, 9999);
     }
 
     /**
@@ -91,5 +90,9 @@ public abstract class Miembro {
      * @return - datos de un miembro en concreto por pantalla
      */
     public abstract String toString();
+
+
+    public abstract String getSiglasCarrera();
+
 
 }
