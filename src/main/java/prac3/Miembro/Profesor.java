@@ -11,7 +11,7 @@ public class Profesor extends Miembro {
      * Metodo Constructor de la clase Professor
      * @param indiceFichero - Indice en el que esta el Profesor dentro del fichero
      * @param tipoMiembro - En este caso solo seria profesor
-     * @param alies - Alias del profesor
+     * @param alias - Alias del profesor
      * @param correu - Correo del profesor
      * @param dataAlta - Fecha en la que se dio de alta
      * @param dataBaixa - Fecha en la que se dio de baja
@@ -19,8 +19,8 @@ public class Profesor extends Miembro {
      * @param numeroDespacho - Numero de despacho del profesor
      * @return - Constructor de profesor
      */
-    public Profesor (int indiceFichero, String tipoMiembro, String alies, Fecha fechaAlta,String departamento, int numeroDespacho){
-        super(indiceFichero, tipoMiembro, alies, fechaAlta);
+    public Profesor (int indiceFichero, String tipoMiembro, String alias, String departamento, int numeroDespacho){
+        super(indiceFichero, tipoMiembro, alias);
         this.departamento = departamento;
         this.numeroDespacho = numeroDespacho;
       
@@ -48,8 +48,6 @@ public class Profesor extends Miembro {
     public String toString (){
         return ("\t\t\tAlias: " + alias +  "\n" +
                "\t\t\tCorro electronico : " + correoMiembro + "\n" +
-               "\t\t\tFecha de Alta: " + fechaAlta.toString() + "\n" +
-               "\t\t\tFecha de Baja: " + fechaBaja.toString() + "\n" +
                "\t\t\tDepartamento: " + departamento + "\n" +
                "\t\t\tNumero del despacho: " + numeroDespacho);
     }
@@ -59,7 +57,7 @@ public class Profesor extends Miembro {
      * @return - copia de un profesor
      */
     public Profesor copia(){
-        Profesor p = new Profesor(indiceFichero, tipoMiembro, alias, fechaAlta, departamento, numeroDespacho);
+        Profesor p = new Profesor(indiceFichero, tipoMiembro, alias, departamento, numeroDespacho);
         return p;
     }
 

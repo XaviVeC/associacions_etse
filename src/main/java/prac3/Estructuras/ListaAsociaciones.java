@@ -1,7 +1,6 @@
 package prac3.Estructuras;
 
 import prac3.Asociacion.Asociacion;
-import prac3.Miembro.Miembro;
 
 public class ListaAsociaciones {
     private Asociacion[] listaAsociaciones;
@@ -125,39 +124,6 @@ public class ListaAsociaciones {
         }
         return siEsta;
     }
-
-    /**
-     * Método que devuelve que miembro participa en más asociaciones 
-     
-    public Miembro miembroMasActivoEnUnaAsociacion (ListaMiembros listaTodosMiembros, ListaAsociaciones listaTodasAsociaciones){
-    
-       String miembroMasActivo = null;
-       int max = 0;
-
-       for (int i = 0; i< listaTodasAsociaciones.getIndiceAsociaciones(); i++){
-            String 
-
-       }
-
-        }
-    */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

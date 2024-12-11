@@ -14,14 +14,12 @@ public class Alumno extends Miembro {
      * @param indiceFichero - identificador del Alumno dentro del fichero
      * @param tipoMiembro   - en este caso solo deberia ser Alumne
      * @param alias         - alias del alumno
-     * @param fechaAlta     - fecha en la que se dio de alta
      * @param curso         - curso del alumno
      * @param yearsEtse     - anyos en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumno(int indiceFichero, String tipoMiembro, String alias,
-            Fecha fechaAlta, int yearsEtse, boolean graduado, String carrera) {
-        super(indiceFichero, tipoMiembro, alias, fechaAlta);
+    public Alumno(int indiceFichero, String tipoMiembro, String alias, int yearsEtse, boolean graduado, String carrera) {
+        super(indiceFichero, tipoMiembro, alias);
         this.graduado = graduado;
         this.yearsEtse = yearsEtse;
         this.siglasCarrera = carrera;
@@ -34,8 +32,6 @@ public class Alumno extends Miembro {
         String aux = "\t\t\tAlias: " + alias + "\n" +
                 "\t\t\tCorreo electronico alumno: " + correoMiembro + "\n" +
                 "\t\t\tCarrera alumno: " + siglasCarrera + "\n" +
-                "\t\t\tData de Alta: " + fechaAlta.toString() + "\n" +
-                "\t\t\tData de Baixa: " + fechaBaja.toString() + "\n" +
                 "\t\t\tAños en la ETSE: " + yearsEtse + "\n";
 
         if (graduado) {
@@ -87,7 +83,7 @@ public class Alumno extends Miembro {
      */
     public Alumno copia() {
         Alumno a = new Alumno(indiceFichero, tipoMiembro, alias,
-                fechaAlta, yearsEtse, graduado, siglasCarrera);
+                yearsEtse, graduado, siglasCarrera);
         return a;
     }
 }

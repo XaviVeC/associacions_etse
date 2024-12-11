@@ -1,7 +1,9 @@
 package prac3.Estructuras;
 
 import prac3.Miembro.Miembro;
-
+import prac3.Estructuras.Fecha;
+import prac3.Asociacion.Asociacion;
+import prac3.Estructuras.Fecha;
 public class ListaMiembros {
     private Miembro[] listaMembres; // lista de miembros
     private int nElem; // numero de elementos de la lista miembros
@@ -109,7 +111,8 @@ public class ListaMiembros {
                     int j = 0;
                     while ((!(miembroDeTipoCorrectoEncontrado)) && (j < listaDeLosMiembros.nElem)) {
 
-                        if (listaDeLosMiembros.listaMembres[j].getAlias().equals(aliasMiembro)) {  //Lo he cambiado el getAlias
+                        if (listaDeLosMiembros.listaMembres[j].getAlias().equals(aliasMiembro)) { // Lo he cambiado el
+                                                                                                  // getAlias
                             if (filtro.equals("Ambos")) {
                                 listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
                                 miembroDeTipoCorrectoEncontrado = true;
@@ -146,28 +149,50 @@ public class ListaMiembros {
      * @param filtro             - Filtro
      * @return - Sublista con los miembros
      */
-    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro) {
+    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro, ListaAsociaciones listaTodasAsociaciones) {
         ListaMiembros sublistaSegunFiltro = new ListaMiembros(listaDeTodosLosMiembros.getNumeroMembres());
-
+        String miembroAuxiliar;
+        String[] miembrosDeLaAsociacion;
+        boolean miembroActivoEncontrado = false;
+        int indiceBusquedaAsociacion = 0, indiceMiembrosEnAsociacion = 0;
+        Asociacion asociacionAuxiliar;
+        Fecha[] fechasBajaMiembrosAsociacion;
         for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i++) {
-            if (listaDeTodosLosMiembros.getMiembroEnXIndice(i).getFechaBaja().getyear() == 9999) {
-                if (filtro.equals("Ambos")) {
-                    sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i).copia());
-                } else {
-                    if (listaDeTodosLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
-                        sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i).copia());
+            miembroAuxiliar = listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias();
+            while (!miembroActivoEncontrado && (indiceBusquedaAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
+                asociacionAuxiliar = listaTodasAsociaciones.getElementoListaAsociacion(indiceBusquedaAsociacion);
+                miembrosDeLaAsociacion = asociacionAuxiliar.getListaMiembrosAsociacion();
+                fechasBajaMiembrosAsociacion = asociacionAuxiliar.getFechasBaja();
+                while (!miembroActivoEncontrado && (indiceMiembrosEnAsociacion < miembrosDeLaAsociacion.length)) {    
+                    if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion])) && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() != 9999)) {
+                        miembroActivoEncontrado = true;
+                        if (filtro.equals("Ambos")) {
+                            sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
+                        } else {
+                            if (listaDeTodosLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
+                                sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
+                            }
+                        }   
+                    } else {
+                        indiceMiembrosEnAsociacion++;
                     }
                 }
+                indiceMiembrosEnAsociacion = 0;
             }
+            miembroActivoEncontrado = false;
+            indiceBusquedaAsociacion = 0;
+
         }
         return sublistaSegunFiltro;
     }
 
     /**
      * Metodo que comprueba si existe el miembro en la lista que se le pase
-     * @param alias - Alias del miembro
+     * 
+     * @param alias              - Alias del miembro
      * @param listaTodosMiembros - Lista en la que se comprueba
-     * @return - retorna el numero del indice en la que se encuentra, o un -1 si no existe
+     * @return - retorna el numero del indice en la que se encuentra, o un -1 si no
+     *         existe
      */
     public static int miembroExistente(String alias, ListaMiembros listaMiembros) {
         boolean existente = false;
@@ -186,51 +211,58 @@ public class ListaMiembros {
         return codigoMiembro;
     }
 
-
     /**
-     * Metodo que devuelve el miembro que esta en mas asociaciones, en caso de que haya empate, devuelve el que lleve mas tiempo en alguna de ellas.
-     * @param listaTodasAsociaciones - variable con la lista de todas las asociaciones
-     * @param listaTodosMiembros - variable con la lista de todos los miembros
-     * @return - miembro que esta en mas asociaciones, en caso de empate, el que es mas antiguo en alguna de ellas
+     * Metodo que devuelve el miembro que esta en mas asociaciones, en caso de que
+     * haya empate, devuelve el que lleve mas tiempo en alguna de ellas.
+     * 
+     * @param listaTodasAsociaciones - variable con la lista de todas las
+     *                               asociaciones
+     * @param listaTodosMiembros     - variable con la lista de todos los miembros
+     * @return - miembro que esta en mas asociaciones, en caso de empate, el que es
+     *         mas antiguo en alguna de ellas
      */
     public Miembro miembroEnMasAsociaciones(ListaAsociaciones listaTodasAsociaciones,
             ListaMiembros listaTodosMiembros) {
-        int [] vectorNumeroVecesMiembro = new int [listaTodosMiembros.getNumeroMembres()];
+        int[] vectorNumeroVecesMiembro = new int[listaTodosMiembros.getNumeroMembres()];
         int indiceMiembrosUnaAsoc;
         int indiceListaMiembros;
         boolean miembroEncontrado;
-        
-        // Creación del vector en el que guardo en cuantas asociaciones esta cada miembro 
-        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
+
+        // Creación del vector en el que guardo en cuantas asociaciones esta cada
+        // miembro
+        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones
+                .getIndiceAsociaciones(); indiceAsociaciones++) {
             indiceMiembrosUnaAsoc = 0;
-            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) {
+            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
+                    .getListaMiembrosAsociacion().length) {
                 indiceListaMiembros = 0;
                 miembroEncontrado = false;
                 while ((indiceListaMiembros < listaTodosMiembros.getNumeroMembres()) && !(miembroEncontrado)) {
-                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc].equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
+                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
+                            .getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc]
+                            .equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
                         vectorNumeroVecesMiembro[indiceListaMiembros]++;
                         miembroEncontrado = true;
-                    }
-                    else{
+                    } else {
                         indiceListaMiembros++;
                     }
                 }
             }
         }
-        //Busqueda del miembro que tenga el numero mas grande sin pasarse de tres
+        // Busqueda del miembro que tenga el numero mas grande sin pasarse de tres
         int indiceMiembroActivo = 0;
         for (int indiceVector = 1; indiceVector < vectorNumeroVecesMiembro.length; indiceVector++) {
             if (vectorNumeroVecesMiembro[indiceVector] > 3) {
                 vectorNumeroVecesMiembro[indiceVector] = 0;
-            }
-            else{
+            } else {
                 if (vectorNumeroVecesMiembro[indiceVector] > vectorNumeroVecesMiembro[indiceMiembroActivo]) {
                     indiceMiembroActivo = indiceVector;
-                }
-                else{
+                } else {
                     // Comprobación de fechasAlta para ver cual es mas antiguo en alguna de ellas
                     if (vectorNumeroVecesMiembro[indiceVector] == vectorNumeroVecesMiembro[indiceMiembroActivo]) {
-                        if (listaTodosMiembros.getMiembroEnXIndice(indiceVector).fechaMasAnteriorDeMiembro().compararFechas(listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo).fechaMasAnteriorDeMiembro()) == 0){
+                        if (listaTodosMiembros.getMiembroEnXIndice(indiceVector).fechaMasAnteriorDeMiembro(listaTodasAsociaciones)
+                                .compararFechas(listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo)
+                                        .fechaMasAnteriorDeMiembro(listaTodasAsociaciones)) == 0) {
                             indiceMiembroActivo = indiceVector;
                         }
                     }
@@ -239,9 +271,6 @@ public class ListaMiembros {
         }
         return listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo);
     }
-    
-
-
 
     /**
      * Metodo que comprueba si un miembro pasado por parametro esta en alguna
@@ -280,7 +309,7 @@ public class ListaMiembros {
      * @return - booleano que indica si esta en alguna asociacion o no
      */
     public boolean miembroPerteneceATresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
-        String aliasMiembroAComprobar) {
+            String aliasMiembroAComprobar) {
         boolean siEstaEnMasDeTres = false;
         int vecesQueEsta = 0;
         int indiceAsociacion = 0;
@@ -303,25 +332,29 @@ public class ListaMiembros {
         return siEstaEnMasDeTres;
     }
 
-
     /**
-     * Metodo que hace una lista de titulaciones en base a los miembros, sin repetir titulaciones
+     * Metodo que hace una lista de titulaciones en base a los miembros, sin repetir
+     * titulaciones
+     * 
      * @param listaTodosMiembros - variable donde estan todos los miembros
-     * @param listaMiembros - variable donde estan los miembros sobre los que trabajamos
-     * @return - lista de las titulaciones de los miembros de listaMiembros sin repeticion
+     * @param listaMiembros      - variable donde estan los miembros sobre los que
+     *                           trabajamos
+     * @return - lista de las titulaciones de los miembros de listaMiembros sin
+     *         repeticion
      */
-    public String[] titulacionesEnBaseAListaMiembros (ListaMiembros listaTodosMiembros, String[] listaMiembros){
+    public String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
         String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
         int indiceMiembrosTotales;
         for (int index = 0; index < listaMiembros.length; index++) {
-            indiceMiembrosTotales= 0;
+            indiceMiembrosTotales = 0;
             boolean hecho = false;
             while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
-                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias().equals(listaMiembros[index])) {
-                    listaTitulacionesConRepeticiones[index] = listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera();
+                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias()
+                        .equals(listaMiembros[index])) {
+                    listaTitulacionesConRepeticiones[index] = listaTodosMiembros
+                            .getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera();
                     hecho = true;
-                }
-                else{
+                } else {
                     indiceMiembrosTotales++;
                 }
             }
@@ -333,14 +366,14 @@ public class ListaMiembros {
         for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
             indiceFinal = indicetitComprobando - 1;
             while ((!(igual)) && (indiceFinal >= 0)) {
-                if (listaTitulacionesConRepeticiones[indicetitComprobando].equals(listaTitulacionesConRepeticiones[indiceFinal])) {
+                if (listaTitulacionesConRepeticiones[indicetitComprobando]
+                        .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
                     igual = true;
-                }
-                else{
+                } else {
                     indiceFinal--;
                 }
             }
-            if (!(igual)){
+            if (!(igual)) {
                 titSinRepeticion++;
             }
         }
@@ -349,35 +382,19 @@ public class ListaMiembros {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
                 while ((!(igual)) && (indiceFinal >= 0)) {
-                    if (listaTitulacionesConRepeticiones[indicetitComprobando].equals(listaTitulacionesConRepeticiones[indiceFinal])) {
-                    igual = true;
-                    }
-                    else{
+                    if (listaTitulacionesConRepeticiones[indicetitComprobando]
+                            .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
+                        igual = true;
+                    } else {
                         indiceFinal--;
                     }
                 }
-                if (!(igual)){
+                if (!(igual)) {
                     listaTitulosDefinitiva[index] = listaTitulacionesConRepeticiones[indicetitComprobando];
                 }
             }
         }
         return listaTitulosDefinitiva;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }

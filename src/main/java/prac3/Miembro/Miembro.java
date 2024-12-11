@@ -1,5 +1,6 @@
 package prac3.Miembro;
 import prac3.Estructuras.Fecha;
+import prac3.Estructuras.ListaAsociaciones;
 //Clase base 
 public abstract class Miembro {
 
@@ -8,8 +9,6 @@ public abstract class Miembro {
     protected String tipoMiembro; // indica si es Professor o Alumne
     protected String alias;// Alias del membre 
     protected String correoMiembro;// Correo electronico del miembro 
-    protected Fecha fechaAlta; // Fecha en la que se da de alta 
-    protected Fecha fechaBaja; // Fecha en la que se da de baja
     //MÉTODES
     
     /**
@@ -18,17 +17,13 @@ public abstract class Miembro {
      * @param tipoMiembro - si es Alumne o Professor
      * @param alias - Alias del nombreMiembrobre del miembro
      * @param correoMiembro - Correo del miembro
-     * @param fechaAlta - Fecha en la que se dio de alta
-     * @param fechaBaja - Fecha en la que se dio de baja
      * @return - Constructor Membre
      */
-    public Miembro (int indiceFichero, String tipoMiembro, String alias, Fecha fechaAlta){
+    public Miembro (int indiceFichero, String tipoMiembro, String alias){
         this.indiceFichero = indiceFichero;
         this.tipoMiembro = tipoMiembro;
         this.alias = alias;
         this.correoMiembro = alias + "@urv.cat";
-        this.fechaAlta = fechaAlta;
-        this.fechaBaja = new Fecha(99, 99, 9999);
     }
 
     /**
@@ -63,21 +58,6 @@ public abstract class Miembro {
         return correoMiembro;
     }
 
-    /**
-     * Getter de la fecha exacta en la que se dio de alta
-     * @return - fecha en el que se dio de alta
-     */
-    public Fecha getFechaAlta(){
-        return fechaAlta;
-    }
-
-    /**
-     * Getter de la fecha exacta en la que se dio de baja
-     * @return - fecha en el que se dio de baja
-     */
-    public Fecha getFechaBaja(){
-        return fechaBaja;
-    }
     
     /**
      * Metodo que hace una copia de un miembro
@@ -101,11 +81,30 @@ public abstract class Miembro {
      * @param miembroSobreElQueBuscar - variable del miembro
      * @return - variable fechaAnterior
      */
-    public Fecha fechaMasAnteriorDeMiembro (){
+    public Fecha fechaMasAnteriorDeMiembro (ListaAsociaciones listaTodasAsociaciones){
         Fecha fechaAnterior = null;
-
-
-
+        int indiceListaMiembrosAsociacion;
+        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
+            indiceListaMiembrosAsociacion = 0;
+            while (indiceListaMiembrosAsociacion < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) {
+                if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion()[indiceListaMiembrosAsociacion].equals(alias)) {
+                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasBaja()[indiceListaMiembrosAsociacion].getDia() == 99) {
+                        if (fechaAnterior == null) {
+                            fechaAnterior = listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion].copia();
+                        }
+                        else{
+                            if (fechaAnterior.compararFechas(listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion]) == 0) {
+                                fechaAnterior = listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion].copia();
+                            }
+                        }
+                    }
+                }
+                else{
+                    indiceListaMiembrosAsociacion++;
+                }
+            }
+            
+        }
         return fechaAnterior;
     }
 }

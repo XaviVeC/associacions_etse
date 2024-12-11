@@ -1,4 +1,5 @@
 package prac3.Asociacion;
+import prac3.Estructuras.Fecha;
 
 public class Asociacion {
     private String nombreAsociacion; // Nombre de la asociacion
@@ -8,22 +9,27 @@ public class Asociacion {
     private String[] listaMiembrosAsociacion; // Listado de miembros de la asociacion
     private String[] personasEnCargos; // Nombre de las personas en los cargos correspondientes de la aasociacion
                                        // 0-> President; 1 -> Secretario; 2 -> Tesorero
+    private Fecha[] fechasAlta, fechasBaja;
 
     /**
      * Constructor de la clase Associacio
      * 
      * @param nombre        - nombre de la asociacion
-     * @param correo        - correo de contacto de la asociacion
      * @param titulaciones  - Lista de informacion de las titulaciones
      * @param listaMiembros - Listado de los miembros de la asociacion
      * @param persCargos    - Nombre de las personas en los cargos correspondientes
+     * @param fechaAlta     - Lista de las fechas de alta de los miembros de la asociacion.
+     * @param fechaBaja     - Lista de las fechas de baja de los miembros de la asociacion.
      */
-    public Asociacion(String nombre, String[] titulaciones, String[] listaMiembros, String[] persCargos) {
+    public Asociacion(String nombre, String[] titulaciones, String[] listaMiembros, String[] persCargos, Fecha[] fechaAlta, Fecha[] fechaBaja) {
         nombreAsociacion = nombre;
-        correoContactoAsociacion = nombre + "@urv.cat";
+        correoContactoAsociacion = nombre + "@asociaciones.urv.cat";
         titulacionesAsociacion = titulaciones;
         listaMiembrosAsociacion = listaMiembros;
         personasEnCargos = persCargos;
+        this.fechasAlta = fechaAlta;
+        this.fechasBaja = fechaBaja;
+
 
     }
 
@@ -72,6 +78,25 @@ public class Asociacion {
         return personasEnCargos;
     }
 
+
+    /**
+     * Getter de la lista de las fechas de alta de los miembros
+     * 
+     * @return - variable personasEnCargos
+     */
+    public Fecha[] getFechasAlta() {
+        return fechasAlta;
+    }
+
+    /**
+     * Getter de la lista de las fechas de baja de los miembros.
+     * 
+     * @return - variable personasEnCargos
+     */
+    public Fecha[] getFechasBaja() {
+        return fechasBaja;
+    }
+
     /**
      * Metodo que realiza una copia de una associacion en concreto
      * 
@@ -79,7 +104,7 @@ public class Asociacion {
      */
     public Asociacion copia() {
         Asociacion asociacionCopia = new Asociacion(nombreAsociacion, titulacionesAsociacion, listaMiembrosAsociacion,
-                personasEnCargos);
+                personasEnCargos, fechasAlta, fechasBaja);
         return asociacionCopia;
     }
 
@@ -98,7 +123,7 @@ public class Asociacion {
         }
         aux = aux + "\t\t\tLos miembros son:\n";
         for (int i = 0; i < listaMiembrosAsociacion.length; i++) {
-            aux = aux + "\t\t\t\tMiembro " + (i + 1) + ": " + listaMiembrosAsociacion[i] + "\n";
+            aux = aux + "\t\t\t\tMiembro " + (i + 1) + ": " + listaMiembrosAsociacion[i] + " con fecha de alta de " + fechasAlta[i].toString() + "\n";
         }
         aux = aux + "\t\t\tLos cargos son:\n\t\t\t\tPresidente --> " + personasEnCargos[0] + "\n\t\t\t\tSecretario --> "
                 + personasEnCargos[1] + "\n\t\t\t\tTesorero --> " + personasEnCargos[2] + "\n";
