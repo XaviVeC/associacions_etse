@@ -76,7 +76,5 @@ public abstract class Accion {
     public abstract Accion copia(); // Lo dejamos vacio
     public abstract String toString(); // Lo dejamos vacio
     public abstract Fecha getFecha(); //para manejar las fechas de las clases hijas
-    public abstract boolean getEstado();//acabar en demostracion
-    public abstract double getCoste(); //coste total de una demostracion
-    public abstract int getNumeroAsistentes();
+
 }

@@ -58,7 +58,6 @@ public abstract class Miembro {
         return correoMiembro;
     }
 
-    
     /**
      * Metodo que hace una copia de un miembro
      * @return - miembro copiado
@@ -70,11 +69,6 @@ public abstract class Miembro {
      * @return - datos de un miembro en concreto por pantalla
      */
     public abstract String toString();
-
-
-    public abstract String getSiglasCarrera();
-
-
 
     /**
      * Metodo que busca la fechaAlta mas antigua de un miembro

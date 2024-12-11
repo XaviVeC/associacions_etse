@@ -1,5 +1,6 @@
 package prac3.Estructuras;
 
+import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
 
 import prac3.Asociacion.Asociacion;
@@ -149,7 +150,8 @@ public class ListaMiembros {
      * @param filtro             - Filtro
      * @return - Sublista con los miembros
      */
-    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro, ListaAsociaciones listaTodasAsociaciones) {
+    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro,
+            ListaAsociaciones listaTodasAsociaciones) {
         ListaMiembros sublistaSegunFiltro = new ListaMiembros(listaDeTodosLosMiembros.getNumeroMembres());
         String miembroAuxiliar;
         String[] miembrosDeLaAsociacion;
@@ -159,12 +161,14 @@ public class ListaMiembros {
         Fecha[] fechasBajaMiembrosAsociacion;
         for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i++) {
             miembroAuxiliar = listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias();
-            while (!miembroActivoEncontrado && (indiceBusquedaAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
+            while (!miembroActivoEncontrado
+                    && (indiceBusquedaAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
                 asociacionAuxiliar = listaTodasAsociaciones.getElementoListaAsociacion(indiceBusquedaAsociacion);
                 miembrosDeLaAsociacion = asociacionAuxiliar.getListaMiembrosAsociacion();
                 fechasBajaMiembrosAsociacion = asociacionAuxiliar.getFechasBaja();
-                while (!miembroActivoEncontrado && (indiceMiembrosEnAsociacion < miembrosDeLaAsociacion.length)) {    
-                    if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion])) && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() == 9999)) {
+                while (!miembroActivoEncontrado && (indiceMiembrosEnAsociacion < miembrosDeLaAsociacion.length)) {
+                    if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion]))
+                            && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() == 9999)) {
                         miembroActivoEncontrado = true;
                         if (filtro.equals("Ambos")) {
                             sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
@@ -172,7 +176,7 @@ public class ListaMiembros {
                             if (listaDeTodosLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
                                 sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
                             }
-                        }   
+                        }
                     } else {
                         indiceMiembrosEnAsociacion++;
                     }
@@ -232,13 +236,17 @@ public class ListaMiembros {
 
         // Creación del vector en el que guardo en cuantas asociaciones esta cada
         // miembro
-        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
+        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones
+                .getIndiceAsociaciones(); indiceAsociaciones++) {
             indiceMiembrosUnaAsoc = 0;
-            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) {
+            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
+                    .getListaMiembrosAsociacion().length) {
                 indiceListaMiembros = 0;
                 miembroEncontrado = false;
                 while ((indiceListaMiembros < listaTodosMiembros.getNumeroMembres()) && !(miembroEncontrado)) {
-                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc].equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
+                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
+                            .getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc]
+                            .equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
                         vectorNumeroVecesMiembro[indiceListaMiembros]++;
                         miembroEncontrado = true;
                     } else {
@@ -259,8 +267,10 @@ public class ListaMiembros {
                 } else {
                     // Comprobación de fechasAlta para ver cual es mas antiguo en alguna de ellas
                     if (vectorNumeroVecesMiembro[indiceVector] == vectorNumeroVecesMiembro[indiceMiembroActivo]) {
-                        Fecha fechaSarita = listaTodosMiembros.listaMembres[indiceVector].fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
-                        Fecha fechaPedrito = listaTodosMiembros.listaMembres[indiceMiembroActivo].fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
+                        Fecha fechaSarita = listaTodosMiembros.listaMembres[indiceVector]
+                                .fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
+                        Fecha fechaPedrito = listaTodosMiembros.listaMembres[indiceMiembroActivo]
+                                .fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
                         if (fechaSarita.compararFechas(fechaPedrito) == 0) {
                             indiceMiembroActivo = indiceVector;
                         }
@@ -270,7 +280,6 @@ public class ListaMiembros {
         }
         return listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo);
     }
-
 
     /**
      * Metodo que comprueba si un miembro pasado por parametro esta en alguna
@@ -345,15 +354,18 @@ public class ListaMiembros {
     public static String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
         String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
         int indiceMiembrosTotales;
+        Alumno instanciaAlumno;
         for (int index = 0; index < listaMiembros.length; index++) {
             indiceMiembrosTotales = 0;
             boolean hecho = false;
             while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
                 if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias()
                         .equals(listaMiembros[index])) {
-                    listaTitulacionesConRepeticiones[index] = listaTodosMiembros
-                            .getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera();
-                    hecho = true;
+                    if (listaTodosMiembros.listaMembres[indiceMiembrosTotales] instanceof Alumno) {
+                        instanciaAlumno = (Alumno) listaTodosMiembros.listaMembres[indiceMiembrosTotales];
+                        listaTitulacionesConRepeticiones[index] = instanciaAlumno.getSiglasCarrera();
+                        hecho = true;
+                    }
                 } else {
                     indiceMiembrosTotales++;
                 }
@@ -376,8 +388,8 @@ public class ListaMiembros {
                 titSinRepeticion++;
             }
         }
-        String[] listaTitulosDefinitiva = new String[titSinRepeticion+1];
-        listaTitulosDefinitiva[0]=listaTitulacionesConRepeticiones[0];
+        String[] listaTitulosDefinitiva = new String[titSinRepeticion + 1];
+        listaTitulosDefinitiva[0] = listaTitulacionesConRepeticiones[0];
         for (int index = 1; index < titSinRepeticion + 1; index++) {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
@@ -397,7 +409,5 @@ public class ListaMiembros {
         }
         return listaTitulosDefinitiva;
     }
-
-    
 
 }

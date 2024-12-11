@@ -53,9 +53,9 @@ public class MainConsola {
 
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
-        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones[1]);
-        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones[1]);
-        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros[1]);
+        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones[0]);
+        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones[0]);
+        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros[0]);
         System.out.println("Hay un total de: " + cantidadMiembros + " miembros");
         System.out.println("Hay un total de: " + cantidadAsociaciones + " asociaciones");
         System.out.println("Hay un total de: " + cantidadAcciones + " acciones");
@@ -68,10 +68,10 @@ public class MainConsola {
 
        
 
-        LeerFichero.LeerFicheroAcciones(direccionesAcciones[1], listaDeTodasLasAcciones, cantidadAcciones);
-        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones[1], listaDeTodasLasAsociaciones,
+        LeerFichero.LeerFicheroAcciones(direccionesAcciones[0], listaDeTodasLasAcciones, cantidadAcciones);
+        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones[0], listaDeTodasLasAsociaciones,
                 cantidadAsociaciones);
-        LeerFichero.LeerFicheroMiembros(direccionesMiembros[1], listaDeTodosLosMiembros, cantidadMiembros);
+        LeerFichero.LeerFicheroMiembros(direccionesMiembros[0], listaDeTodosLosMiembros, cantidadMiembros);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
