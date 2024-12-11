@@ -12,7 +12,12 @@ import java.io.IOException;
 
 
 public class EscribirEnFichero{
-
+    
+    /**
+     * 
+     * @param listaAsociaciones
+     * @param nombreArchivo
+     */
     public static void guardarListaAsociacionTexto(ListaAsociaciones listaAsociaciones, String nombreArchivo){
         try(BufferedWriter escritura = new BufferedWriter(new FileWriter(nombreArchivo))){
             for (int i = 0; i < listaAsociaciones.getIndiceAsociaciones(); i++ ){
@@ -28,6 +33,11 @@ public class EscribirEnFichero{
             e.printStackTrace();}
     }
 
+    /**
+     * 
+     * @param listaAcciones
+     * @param nombreArchivo
+     */
     public static void guardarArchivoAcciones(ListaAcciones listaAcciones, String nombreArchivo){
        try(BufferedWriter escritura  = new BufferedWriter(new FileWriter(nombreArchivo))){
             for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++ ){

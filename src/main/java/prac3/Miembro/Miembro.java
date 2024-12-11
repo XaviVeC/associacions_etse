@@ -95,4 +95,17 @@ public abstract class Miembro {
     public abstract String getSiglasCarrera();
 
 
+
+    /**
+     * Metodo que busca la fechaAlta mas antigua de un miembro
+     * @param miembroSobreElQueBuscar - variable del miembro
+     * @return - variable fechaAnterior
+     */
+    public Fecha fechaMasAnteriorDeMiembro (){
+        Fecha fechaAnterior = null;
+
+
+
+        return fechaAnterior;
+    }
 }
