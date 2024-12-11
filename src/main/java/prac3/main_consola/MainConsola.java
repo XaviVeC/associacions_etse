@@ -417,7 +417,10 @@ public class MainConsola {
                     opcion12(listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
                     break;
                 case 13:
-
+                    System.out.println("Se mostraran todas las charlas que tengan más de X número de asistentes.");
+                    System.out.println("Introduce el número");
+                    int numeroAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());;
+                    opcion13(listaDeTodasLasAcciones, numeroAsistentes);
                     break;
                 case 14:
                     opcion14(listaDeTodasLasAcciones);
