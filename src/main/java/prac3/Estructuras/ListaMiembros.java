@@ -2,7 +2,6 @@ package prac3.Estructuras;
 
 import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
-
 import prac3.Asociacion.Asociacion;
 
 public class ListaMiembros {
