@@ -47,7 +47,16 @@ public class ListaAcciones {
      * @return
      */
     public Accion getAccionEnXIndice(int indice) {
-        return this.listaAcciones[indice].copia();
+        return this.listaAcciones[indice].copia();//habia un copia lo he quitado un momento (carla)
+    }
+
+     /**
+     * 
+     * @param indice
+     * @return
+     */
+    public Accion getAccionEnXIndiceSinCopia(int indice) {
+        return this.listaAcciones[indice];//habia un copia lo he quitado un momento (carla)
     }
 
     /**
@@ -80,18 +89,21 @@ public class ListaAcciones {
         return stringDeLaLista;
     }
 
-    // ES LA DE SALAT, estoy mirando si puede estar bien
-    // ya te digo que no, asi mirandola por encima
-    // OK, AUN ASI CREO Q HIZO YA EL EJECUTABLE EN EL MAIN
-    public static ListaAcciones accionesSegunTipo(ListaAcciones listaTodasAcciones, String tipoAccion) {
-        ListaAcciones sublistaSegunTipoAccion = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
+   
+    /**
+     * Metodo que retorna una sublista con el tipo de accion que se desee.
+     * @param tipoAccion - Filtro para el tipo de la accion
+     * @return - Lista con todas las acciones con el filtro aplicado.
+     */
+    public ListaAcciones accionesSegunTipo(String tipoAccion) {
+        ListaAcciones sublistaSegunTipoAccion = new ListaAcciones(this.nElem);
 
-        for (int i = 0; i < listaTodasAcciones.getNumeroAcciones(); i++) {
+        for (int i = 0; i < this.nElem; i++) {
             if (tipoAccion.equals("Ambos")) {
-                sublistaSegunTipoAccion.addAccion(listaTodasAcciones.getAccionEnXIndice(i));
+                sublistaSegunTipoAccion.addAccion(this.listaAcciones[i]);
             } else {
-                if (listaTodasAcciones.getAccionEnXIndice(i).getTipoAccion().equals(tipoAccion)) {
-                    sublistaSegunTipoAccion.addAccion(listaTodasAcciones.getAccionEnXIndice(i));
+                if (this.listaAcciones[i].getTipoAccion().equals(tipoAccion)) {
+                    sublistaSegunTipoAccion.addAccion(this.listaAcciones[i]);
                 }   
             }
         }
@@ -123,36 +135,41 @@ public class ListaAcciones {
         return listaAccionesFinal;
     }
 
-
-    // Obtener y mostrar la lista de charlas que se llevan a término en una franja
-    // de fechas
-    // indicada por teclado
-
-    public static ListaAcciones sublistaCharlasEnRangoFechas(ListaAcciones listaTodasLasAccines, Fecha limiteInferior, Fecha limiteSuperior){
-        ListaAcciones sublistaCharlas = accionesSegunTipo(listaTodasLasAccines, "Charla");
+    /**
+     * Metodo que retorna una sublista de charlas, pero que se encuentran dentro de un rango de fechas.
+     * @param limiteInferior - Fecha del limite inferior
+     * @param limiteSuperior - Fecha del limite superior
+     * @return - Lista de charlas dentro del rango de fechas
+     */
+    public ListaAcciones sublistaCharlasEnRangoFechas(Fecha limiteInferior, Fecha limiteSuperior){
+        ListaAcciones sublistaCharlas = accionesSegunTipo("Charla");
         ListaAcciones sublistaCharlasSegunRango = new ListaAcciones(sublistaCharlas.nElem);
         for (int i = 0; i < sublistaCharlas.nElem; i++) {
             if (sublistaCharlas.listaAcciones[i].getFecha().compararFechas(limiteInferior) > 0 && sublistaCharlas.listaAcciones[i].getFecha().compararFechas(limiteSuperior) < 2) {
-                sublistaCharlasSegunRango.addAccion(sublistaCharlas.listaAcciones[i]);//ejecuta el mio a ver si va porfa
+                sublistaCharlasSegunRango.addAccion(sublistaCharlas.listaAcciones[i]);
             } 
         }
         return sublistaCharlasSegunRango;
     }
 
-    public boolean charlaRepetida(String nombreCharla, ListaAcciones listaTodasAcciones) {
+    /**
+     * Metodo que comprueba si una nombre ya esta dentro de una lista de charlas.
+     * OPCION DE MENU 9
+     * @param nombreCharla - Nombre de la charla que se quiere comprobar si ya esta en la lista.
+     * @return - Retorna true si ya esta en la lista o false si no esta.
+     */
+    public boolean charlaRepetida(String nombreCharla) {
         boolean repetida = false;
         int i = 0;
-
-        while ((!repetida) && (i < listaTodasAcciones.getNumeroAcciones())) {
-            if (listaTodasAcciones.getAccionEnXIndice(i).getTipoAccion().equals("Charla")
-                && listaTodasAcciones.getAccionEnXIndice(i).getNombreAccion().equals(nombreCharla)) {
+        ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
+        while ((!repetida) && (i < listaCharlas.nElem)) {
+            if (listaCharlas.listaAcciones[i].getNombreAccion().equals(nombreCharla)) {
                     repetida = true;
             }
             else {
                 i++;
             }
         }
-
         return repetida;
     }
 
@@ -163,16 +180,17 @@ public class ListaAcciones {
  * @return - Retorna una lista con las demostraciones pasadas por filtro.
  */
 public ListaAcciones listaDemostracionesFiltradasSegunEstado(boolean opcionFiltro){
-    ListaAcciones demostracionesFiltradas = new ListaAcciones(this.nElem);
+    ListaAcciones listaDemostraciones = accionesSegunTipo("Demostracion");
+    ListaAcciones listaDemostracionesFiltradas = new ListaAcciones(listaDemostraciones.nElem);
     //es un recorrido de la lista desde la que se ejecuta
-    for (int index = 0; index < this.nElem; index++) {
+    for (int index = 0; index < listaDemostraciones.nElem; index++) {
         //en el caso de que sea una demostracion y que el estado sea igual al que se pasa por parametro
-        if ((this.listaAcciones[index].getTipoAccion().equals("Demostracion")) && (this.listaAcciones[index].getEstado() == opcionFiltro)) {
+        if (listaDemostraciones.listaAcciones[index].getEstado() == opcionFiltro) {
             //se hara un add a la sublista "demostracionesFiltradas" que hemos creado
-            demostracionesFiltradas.addAccion(this.listaAcciones[index]);
+            listaDemostracionesFiltradas.addAccion(listaDemostraciones.listaAcciones[index]);
         } 
     }
-    return demostracionesFiltradas;
+    return listaDemostracionesFiltradas;
 }
 
 
@@ -194,7 +212,19 @@ public double costeTotalDemostraciones(){
 
 
 
-
+/**
+ * 
+ */
+public ListaAcciones listaCharlasMasXAsistentes(int numeroAsistentes){
+    ListaAcciones listaCharlas = accionesSegunTipo("Charla");
+    ListaAcciones charlasMasXAsistentes = new ListaAcciones(listaCharlas.nElem);   
+    for(int i = 0; i < listaCharlas.nElem; i++){
+        if(listaCharlas.listaAcciones[i].getNumeroAsistentes() > numeroAsistentes){
+            charlasMasXAsistentes.addAccion(listaCharlas.listaAcciones[i]);
+        }
+    }
+    return charlasMasXAsistentes;
+}
 
 
 

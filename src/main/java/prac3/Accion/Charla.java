@@ -8,6 +8,8 @@ public class Charla extends Accion {
     private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES]; // Instructores de la charla
     private int[] valoraciones; // Vector de valoraciones de la charla
     private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
+    
+    private int indiceValoraciones;
 
     /**
      * Constructor de la classe Charla para una charla que ya se ha dado
@@ -19,22 +21,25 @@ public class Charla extends Accion {
      * @param organizadorResponsable
      * @param fechaRealizacion
      * @param instructoresCharla
-     * @param valoraciones
      * @param numeroDeAsistentes
      */
     public Charla(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas,
-            String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla, int[] valoraciones,
+            String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla,
             int numeroDeAsistentes) {
         super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
-        this.valoraciones = valoraciones;
         if (numeroDeAsistentes < 0) {
             this.numeroDeAsistentes = -999;
         } else {
             this.numeroDeAsistentes = numeroDeAsistentes;
         }
+        this.valoraciones = new int[numeroDeAsistentes];
+        indiceValoraciones = 0;
     }
+
+
+
 
     public Charla(int indiceFichero, String tipoAccion, String nombreAccion, String[] asocInvol, 
                   String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla) {
@@ -42,6 +47,8 @@ public class Charla extends Accion {
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
         this.numeroDeAsistentes = 0;
+        this.valoraciones = new int[numeroDeAsistentes];
+        indiceValoraciones = 0;
     }
 
     /**
@@ -111,8 +118,10 @@ public class Charla extends Accion {
 
         aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes
                 + " personas.\n\t\t\tLas valoraciones fueron\n";
-        for (int index = 0; index < valoraciones.length; index++) {
-            aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
+        if (this.valoraciones != null) {
+            for (int index = 0; index < valoraciones.length; index++) {
+                aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
+            }
         }
         return aux;
     }
@@ -125,6 +134,20 @@ public class Charla extends Accion {
     public Charla copia() {
         return (new Charla(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas,
                 this.organizadorResponsable,
-                this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes));
+                this.fechaRealizacion, this.instructoresCharla, this.numeroDeAsistentes));
     }
+
+    /**
+     * Método para hacer una valoracion de la charla 
+     * 
+     */
+    public void hacerValoracion(int valoracion){
+        if(this.indiceValoraciones < this.numeroDeAsistentes)
+        {
+            valoraciones[this.indiceValoraciones] = valoracion;
+            this.indiceValoraciones++;
+        }
+    }
+   
+    
 }

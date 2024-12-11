@@ -101,12 +101,12 @@ public class ListaAsociaciones {
      * @param listaTodasAsociaciones - variable que lleva la lista de todas las asociaciones
      * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna igual
      */
-    public static boolean existeAsociacionMismoNombre (String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones){
+    public boolean existeAsociacionMismoNombre (String nombreAsociacion){
         boolean siExiste = false;
         int indiceAsociaciones = 0;
 
-        while (indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones()) {
-            if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getNombreAsociacion().equals(nombreAsociacion)){
+        while (indiceAsociaciones < this.nElem && !siExiste) {
+            if (this.listaAsociaciones[indiceAsociaciones].getNombreAsociacion().equals(nombreAsociacion)){
                 siExiste = true;
             }
             else{

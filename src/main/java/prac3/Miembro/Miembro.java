@@ -84,19 +84,30 @@ public abstract class Miembro {
     public Fecha fechaMasAnteriorDeMiembro (ListaAsociaciones listaTodasAsociaciones){
         Fecha fechaAnterior = null;
         int indiceListaMiembrosAsociacion;
+        boolean hecho;
         for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
             indiceListaMiembrosAsociacion = 0;
-            while (indiceListaMiembrosAsociacion < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) {
+            hecho = false;
+            while ((indiceListaMiembrosAsociacion < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) && (!hecho)) {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion()[indiceListaMiembrosAsociacion].equals(alias)) {
                     if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasBaja()[indiceListaMiembrosAsociacion].getDia() == 99) {
                         if (fechaAnterior == null) {
                             fechaAnterior = listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion].copia();
+                            hecho = true;
                         }
                         else{
-                            if (fechaAnterior.compararFechas(listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion]) == 0) {
+                            if (fechaAnterior.compararFechas(listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion]) == 2) {
                                 fechaAnterior = listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion].copia();
                             }
+                            else{
+                                if(fechaAnterior.compararFechas(listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getFechasAlta()[indiceListaMiembrosAsociacion]) != 2){
+                                    hecho = true;
+                                }
+                            }
                         }
+                    }
+                    else{
+                        hecho = true;
                     }
                 }
                 else{

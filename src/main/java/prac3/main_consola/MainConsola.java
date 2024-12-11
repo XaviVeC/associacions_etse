@@ -1,6 +1,9 @@
 package prac3.Main_Consola;
 
 import java.util.Scanner;
+
+import prac3.Accion.Charla;
+import prac3.Estructuras.ExcepcionesPropias;
 import prac3.Estructuras.Fecha;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
@@ -26,6 +29,7 @@ public class MainConsola {
         int cantidadMiembrosOp7;
         String nombreMiembroOp7;
         //opcion 8
+
         
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
@@ -33,13 +37,13 @@ public class MainConsola {
         // Rutas de acceso de los ficheros
         String[] direccionesAcciones = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv",
-                "/src/main/java/prac3/Fichero/Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv" };
+                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv" };
         String[] direccionesMiembros = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv",
-                "/src/main/java/prac3/Fichero/Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv" };
+                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv" };
         String[] direccionesAsociaciones = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv",
-                "/src/main/java/prac3/Fichero/Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv" };
+                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv" };
         // Variables enteras varias
         int opcionMenu, cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         // Definicion de las distintas listas
@@ -49,9 +53,9 @@ public class MainConsola {
 
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
-        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones[0]);
-        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones[0]);
-        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros[0]);
+        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones[1]);
+        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones[1]);
+        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros[1]);
         System.out.println("Hay un total de: " + cantidadMiembros + " miembros");
         System.out.println("Hay un total de: " + cantidadAsociaciones + " asociaciones");
         System.out.println("Hay un total de: " + cantidadAcciones + " acciones");
@@ -62,10 +66,12 @@ public class MainConsola {
         listaDeTodasLasAsociaciones = new ListaAsociaciones(cantidadMaxima);
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
 
-        LeerFichero.LeerFicheroAcciones(direccionesAcciones[0], listaDeTodasLasAcciones, cantidadAcciones);
-        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones[0], listaDeTodasLasAsociaciones,
+       
+
+        LeerFichero.LeerFicheroAcciones(direccionesAcciones[1], listaDeTodasLasAcciones, cantidadAcciones);
+        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones[1], listaDeTodasLasAsociaciones,
                 cantidadAsociaciones);
-        LeerFichero.LeerFicheroMiembros(direccionesMiembros[0], listaDeTodosLosMiembros, cantidadMiembros);
+        LeerFichero.LeerFicheroMiembros(direccionesMiembros[1], listaDeTodosLosMiembros, cantidadMiembros);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
@@ -134,10 +140,10 @@ public class MainConsola {
                     System.out.println("Introduce el nombre del la asociación:");
                     do {
                         nombreAsociacionOp7 = introducirPorTeclado.nextLine();
-                        if (ListaAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7, listaDeTodasLasAsociaciones)) {
+                        if (listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7)) {
                             System.out.println("Ya existe este nombre, introducelo de nuevo");
                         }
-                    } while (ListaAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7, listaDeTodasLasAsociaciones));
+                    } while (listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7));
                     
                     System.out.println("Cuantos miembros quieres añadir, mínimo tres y máximo 20:");
                     
@@ -154,10 +160,10 @@ public class MainConsola {
                         
                         do{
                             nombreMiembroOp7 = introducirPorTeclado.nextLine();
-                            if (ListaMiembros.miembroExistente(nombreMiembroOp7, listaDeTodosLosMiembros) == -1) {
+                            if (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1) {
                                 System.out.println("Este miembro no existe, introduce alguno que si lo haga.");
                             }
-                        }while(ListaMiembros.miembroExistente(nombreMiembroOp7, listaDeTodosLosMiembros) == -1);
+                        }while(listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1);
                         miembrosAsociacion[indice] = nombreMiembroOp7;
                     } while (indice < cantidadMiembrosOp7);
                     //A PARTIR DE LA LISTA DE MIEMBROS SACAMOS LA LISTA DE TITULACIONES QUE CURSAN (no puede haber repeticion en la lista)
@@ -223,42 +229,86 @@ public class MainConsola {
                     System.out.println("¿Cual es el nombre de la charla que quieres añadir?");
                     String nombreCharlaOp9 = introducirPorTeclado.nextLine();
                     // Comprovacion de si el nombre de la charla ya existe, en caso verdadero, se le pide que cambie el nombre
-                    boolean estaRepetida = listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9, listaDeTodasLasAcciones);
+                    boolean estaRepetida = listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9);
                     do {
                         if (estaRepetida) {
                             System.out.println("Este nombre ya existe, tendrás que cambiarlo. Escribe uno nuevo.");
                             nombreCharlaOp9 = introducirPorTeclado.nextLine();
-                            if (!listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9, listaDeTodasLasAcciones)) {
+                            if (!listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9)) {
                                 estaRepetida = false;
                             }
                         }
                     } while (estaRepetida);
 
                     // ASOCIACIONES INVOLUCRADAS
-                    int minimo = 1;
                     int maximo = listaDeTodasLasAsociaciones.getIndiceAsociaciones();
-                    System.out.println("Tienes que escribir todas las asociaciones que esten involucradas.");
-                    System.out.println("Mínimo hay " + minimo + " asociacion, máximo hay " + maximo + " asociaciones");
-                    System.out.println("En caso de terminar, escribe 'fin'");
-                    boolean end = false;
+                    int i = 0;
                     String asocOp9;
-                    String[] asociacionesInvolOp9;
-                    while (!end) {
-                        System.out.println("Escribe una asociacion involucrada.");
+                    System.out.println("¿Cuantas asociaciones hay involucradas? [1 - "+maximo+"]");
+                    int iPersona = Integer.parseInt(introducirPorTeclado.nextLine());
+                    do {
+                        if ((iPersona == 0) || (iPersona > maximo)) {
+                            System.out.println("Has introducido un número inválido. Vuelve a escribirlo.");
+                            iPersona = Integer.parseInt(introducirPorTeclado.nextLine());
+                        }
+                    } while ((iPersona < 0) || (iPersona > maximo));
+                    
+                    String[] asociacionesInvolOp9 = new String[iPersona];
+                    boolean asociacionRepetida = false;
+                    int j = 0;
+
+                    do {
+                        System.out.println("Escribe el nombre de la asociación involucrada.");
                         asocOp9 = introducirPorTeclado.nextLine();
-                        if ((asocOp9.equals("fin")) && (minimo >= 1)) {
-                            end = true;
+                        boolean existe = listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(asocOp9);
+
+                        do {
+                            if (!existe) {
+                              System.out.println("El nombre de la asociacion que has introducido no existe. Escribe un nombre existente.");
+                                asocOp9 = introducirPorTeclado.nextLine();
+                                existe = listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(asocOp9);
+                            }
+                        } while (!existe);
+                        asociacionesInvolOp9[i] = asocOp9;
+                        
+                        if (i != 0) {
+                            while ((!asociacionRepetida) && (j < i)) {
+                                if (asociacionesInvolOp9[j].equals(asociacionesInvolOp9[i])) {
+                                    asociacionRepetida = true;
+                                }
+                                else {
+                                    j++;
+                                }
+                            }
                         }
-                        else if (minimo >=) {
-                            
+
+                        j = 0;
+
+                        if (asociacionRepetida) {
+                            System.out.println("Has introducido una asociacion que ya habias introducido.");
+                            asociacionesInvolOp9[i] = null;
                         }
-                    }
-            
-                    
-                    
-                    
-                    
-                    
+
+                        if (asociacionesInvolOp9[i] != null) {
+                            i++;
+                        }
+
+                        asociacionRepetida = false;
+
+                    } while (i < iPersona);
+
+                    // ORGANIZADOR RESPONSABLE
+                    System.out.println("¿Cuál es el alias del organizador responsable?");
+                    String organizadorRespOp9 = introducirPorTeclado.nextLine();
+                    int existe = listaDeTodosLosMiembros.miembroExistente(organizadorRespOp9);
+                    do {
+                        if (existe == -1) {
+                            System.out.println("El alias que has introducido no existe. Escribe un alias válido");
+                            organizadorRespOp9 = introducirPorTeclado.nextLine();
+                            existe = listaDeTodosLosMiembros.miembroExistente(organizadorRespOp9);
+                        }
+                    } while (existe == -1);
+
                     // FECHA
                     // Se comprueba si la charla ya se ha realizado
                     System.out.println("¿La charla ya se ha realizado? (s/n)");
@@ -274,13 +324,86 @@ public class MainConsola {
                     int mesOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
                     System.out.println("¿En que año es la charla?");
                     int yearOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    Fecha fechaCharla = new Fecha(diaOp9, mesOp9, yearOp9);
+
+                    // INSTRUCTORES DE LA CHARLA
+                    System.out.println("¿Cuantos instructores hay? [1 - 3]");
+                    int nInstructores = Integer.parseInt(introducirPorTeclado.nextLine());
+                    do {
+                        if ((nInstructores == 0) || (nInstructores > 3)) {
+                            System.out.println("Has introducido un número inválido. Vuelve a escribirlo.");
+                            nInstructores = Integer.parseInt(introducirPorTeclado.nextLine());
+                        }
+                    } while ((nInstructores == 0) || (nInstructores > 3));
+
+                    i = 0;
+                    j = 0;
+                    String instructorOp9;
+                    boolean instructorRepetido = false;
+                    String[] instructoresCharla = new String[nInstructores];
+
+                    do {
+                        System.out.println("Escribe el alias del instructor");
+                        instructorOp9 = introducirPorTeclado.nextLine();
+                        existe = listaDeTodosLosMiembros.miembroExistente(instructorOp9);
+                        
+                        do {
+                            if (existe == -1) {
+                                System.out.println("El alias que has introducido no existe. Escribe un alias válido");
+                                instructorOp9 = introducirPorTeclado.nextLine();
+                                existe = listaDeTodosLosMiembros.miembroExistente(instructorOp9);
+                            }
+                        } while (existe == -1);
+
+                        instructoresCharla[i] = instructorOp9;
+
+                        if (i != 0) {
+                            while (j < i && !instructorRepetido) {
+                                if (instructoresCharla[j].equals(instructoresCharla[i])) {
+                                    instructorRepetido = true;
+                                }
+                                else {
+                                    j++;
+                                }
+                            }
+                        }
+
+                        j = 0;
+
+                        if (instructorRepetido) {
+                            System.out.println("Has introducido un alias que ya habias introducido.");
+                            instructoresCharla[i] = null;
+                        }
+                        
+                        if (instructoresCharla[i] != null) {
+                            i++;
+                        }
+
+                        instructorRepetido = false;
+
+                    } while (i < nInstructores);
+
+                    Charla charlaNueva;
                     
+                    if (charlaRealizada) {
+                        System.out.println("¿Cuantas personas asistieron?");
+                        int nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
+                        do {
+                            if (nAsistentes < 0) {
+                                System.out.println("Introduce un número de asistentes válido.");
+                                nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
+                            }
+                        } while (nAsistentes < 0);
 
+                        charlaNueva = new Charla(indiceFicheroOp9, tipoAccionOp9, nombreCharlaOp9, asociacionesInvolOp9, organizadorRespOp9, fechaCharla, instructoresCharla, nAsistentes);
+                    }
+                    else {
+                        charlaNueva = new Charla(indiceFicheroOp9, tipoAccionOp9, nombreCharlaOp9, asociacionesInvolOp9, organizadorRespOp9, fechaCharla, instructoresCharla);
+                    }
                     
+                    listaDeTodasLasAcciones.addAccion(charlaNueva);
 
-
-
-
+                    System.out.println(listaDeTodasLasAcciones.toString());
 
                     break;
                 case 10:
@@ -288,16 +411,17 @@ public class MainConsola {
                     opcion10(listaDeTodosLosMiembros, miembrosParaComprobar);
                     break;
                 case 11:
-
+                    opcion11(listaDeTodasLasAcciones);
                     break;
                 case 12:
-
+                    opcion12(listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
                     break;
                 case 13:
 
                     break;
                 case 14:
-
+                    opcion14(listaDeTodasLasAcciones);
+                    System.out.println(listaDeTodasLasAcciones.toString());
                     break;
                 case 15:
 
@@ -317,10 +441,10 @@ public class MainConsola {
     }
 
     public static void mostraMenu() {
-        System.out.println("1.\tMostrar los datos de la lista de asociaciones.");
-        System.out.println(
+        System.out.println("1.\tMostrar los datos de la lista de asociaciones."); 
+        System.out.println( 
                 "2.\tMostrar los datos de la lista de miembros que forman parte de una asociación, añadiendo un filtro para profesores, alumnos o ambos.");
-        System.out.println(
+        System.out.println( 
                 "3.\tMostrar los datos de la lista de miembros activos, que forman parte de cualquier asociación, añadiendo un filtro para profesores, alumnos o ambos.");
         System.out
                 .println("4.\tMostrar los datos de la lista de acciones, añadiendo un filtro o no por tipo de acción.");
@@ -365,7 +489,7 @@ public class MainConsola {
     }
 
     public static void opcion4(ListaAcciones listaDeTodasLasAcciones, String filtro) {
-        System.out.println(ListaAcciones.accionesSegunTipo(listaDeTodasLasAcciones, filtro).toString());
+        System.out.println(listaDeTodasLasAcciones.accionesSegunTipo(filtro).toString());
     }
 
     public static void opcion5(ListaAcciones listaTodasLasAcciones, String nombreAsociacion) {
@@ -373,7 +497,7 @@ public class MainConsola {
     }
 
     public static void opcion6(ListaAcciones listaTodasAcciones, Fecha limInf, Fecha limSup) {
-        System.out.println(ListaAcciones.sublistaCharlasEnRangoFechas(listaTodasAcciones, limInf, limSup).toString());
+        System.out.println(listaTodasAcciones.sublistaCharlasEnRangoFechas(limInf, limSup).toString());
     }
     
     public static void opcion7() {
@@ -382,7 +506,7 @@ public class MainConsola {
 
     public static int opcion8vis1(String alias, String nombreAsociacion, ListaMiembros listaTodosMiembros, ListaAsociaciones todasAsoc,
                                   Fecha fechaAlta) {
-        int existe = ListaMiembros.miembroExistente(alias, listaTodosMiembros);
+        int existe = listaTodosMiembros.miembroExistente(alias);
 
         if (existe != -1) {
             todasAsoc.addMiembroEnAsociacionExistente(alias, nombreAsociacion, todasAsoc, fechaAlta);
@@ -399,10 +523,7 @@ public class MainConsola {
 
     
 
-    public static void opcion9() {
-        
-    }
-
+    
     
 
 
@@ -418,13 +539,21 @@ public class MainConsola {
         }
     }
 
-
-
-
-
     public static void opcion11(ListaAcciones listaTodasLasAcciones){
-        System.out.println("Se mostrará el coste total de las demostraciones activas.");
-        ListaAcciones listaDemostracionesOp11 = 
+        System.out.println("Se mostrará el coste total de las demostraciones que no están activas.");
+        ListaAcciones listaDemostracionesOp11 = listaTodasLasAcciones.listaDemostracionesFiltradasSegunEstado(false);
+        double costeTotalOp11 = listaDemostracionesOp11.costeTotalDemostraciones();
+        
+        System.out.println("Hay un total de " + listaDemostracionesOp11.getNumeroAcciones()+" demostraciones que ya no están activas, y su coste fue:\t" + costeTotalOp11);
+    }
+
+
+    public static void opcion12(ListaAsociaciones listaTodasLasAsociaciones, ListaMiembros listaTodosMiembros){
+        System.out.println(listaTodosMiembros.miembroEnMasAsociaciones(listaTodasLasAsociaciones, listaTodosMiembros).toString());
+    }
+
+    public static void opcion13(ListaAcciones listaTodasLasAcciones, int asistentes){
+        System.out.println(listaTodasLasAcciones.listaCharlasMasXAsistentes(asistentes));
     }
 
 
@@ -433,10 +562,46 @@ public class MainConsola {
 
 
 
+    public static void opcion14(ListaAcciones listaTodasLasAcciones){
+                    //Obtener el tema de la Charla 
+                    System.out.println("Introduce el nombre de la charla ");
+                    try{
+                        String nombreCharla = introducirPorTeclado.nextLine();
+                        System.out.println("Introduce la valoracion");
+                        int valoracion = introducirPorTeclado.nextInt();   
+                        introducirPorTeclado.nextLine();
+                        if (valoracion < 0 || valoracion > 10){
+                            throw new ExcepcionesPropias.ValoracionFueraDeRangoException("La valoracion que has introducido esta fuera del rango");
+                        }
+                        //Buscamos la charla dentro de la lista de Acciones 
+                        Charla charla = null;
+                         for(int indiceOp14 = 0 ; indiceOp14 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp14++){
+                                if(listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14) instanceof Charla){
+                                    Charla posibleCharla = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14);
+                                    if (posibleCharla.getNombreAccion().equals(nombreCharla)){
+                                        charla = posibleCharla;
+                                    }
+                            }
+                        }
+                        if (charla != null){
+                            System.out.println("Antes de la valoracion" + charla);
+                            System.out.println("Lista antes:" +listaTodasLasAcciones);
+                            charla.hacerValoracion(valoracion);
+                            System.out.println("Despues de la valoracion" + charla);
+                            System.out.println("Lista antes:" +listaTodasLasAcciones);
+                            System.out.println("La valoración de la charla se ha realizado correctamente");
+                            
 
-
-
-
-
+                            
+                        }else{
+                            System.out.println("la charla con el nombre" +nombreCharla+ "no ha sido encontrada o no es una charla existente");
+                        }
+                        
+                    }catch(ExcepcionesPropias.ValoracionFueraDeRangoException e) {
+                             System.out.println("Error: " + e.getMessage());
+                             introducirPorTeclado.nextLine();}
+                    
+                    
+    }
 
 }

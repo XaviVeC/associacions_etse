@@ -89,7 +89,11 @@ public class Demostracion extends Accion {
     public double getCostoDemostracion() {
         return this.costoDemostracion;
     }
-
+    
+//nada porque no hay
+    public int getNumeroAsistentes() {
+        return 0;
+    }
     /**
      * Getter de la fecha en la que se disenio la demostracion
      * 
@@ -158,4 +162,7 @@ public class Demostracion extends Accion {
                 this.organizadorResponsable,
                 this.fechaCreacion, this.costoDemostracion, this.demostracionValida, this.contadorVecesOfrecida));
     }
+
+
+
 }

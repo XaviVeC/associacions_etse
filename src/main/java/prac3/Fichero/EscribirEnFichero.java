@@ -8,6 +8,8 @@ import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
 import prac3.Miembro.Profesor;
+import prac3.Miembro.Alumno;
+import prac3.Miembro.Miembro;
 import prac3.Accion.Demostracion;
 import prac3.Accion.Charla;
 import java.io.IOException;

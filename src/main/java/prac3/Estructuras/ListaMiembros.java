@@ -197,20 +197,19 @@ public class ListaMiembros {
      * @return - retorna el numero del indice en la que se encuentra, o un -1 si no
      *         existe
      */
-    public static int miembroExistente(String alias, ListaMiembros listaMiembros) {
+    public int miembroExistente(String alias) {
         boolean existente = false;
         int i = 0;
         int codigoMiembro = -1;
 
-        while ((!existente) && (i < listaMiembros.getNumeroMembres())) {
-            if (alias.equals(listaMiembros.getMiembroEnXIndice(i).getAlias())) {
+        while ((!existente) && (i < this.nElem)) {
+            if (alias.equals(this.listaMembres[i].getAlias())) {
                 existente = true;
                 codigoMiembro = i;
             } else {
                 i++;
             }
         }
-
         return codigoMiembro;
     }
 
@@ -233,28 +232,25 @@ public class ListaMiembros {
 
         // Creación del vector en el que guardo en cuantas asociaciones esta cada
         // miembro
-        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones
-                .getIndiceAsociaciones(); indiceAsociaciones++) {
+        for (int indiceAsociaciones = 0; indiceAsociaciones < listaTodasAsociaciones.getIndiceAsociaciones(); indiceAsociaciones++) {
             indiceMiembrosUnaAsoc = 0;
-            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
-                    .getListaMiembrosAsociacion().length) {
+            while (indiceMiembrosUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion().length) {
                 indiceListaMiembros = 0;
                 miembroEncontrado = false;
                 while ((indiceListaMiembros < listaTodosMiembros.getNumeroMembres()) && !(miembroEncontrado)) {
-                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones)
-                            .getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc]
-                            .equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
+                    if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociaciones).getListaMiembrosAsociacion()[indiceMiembrosUnaAsoc].equals(listaTodosMiembros.getMiembroEnXIndice(indiceListaMiembros).getAlias())) {
                         vectorNumeroVecesMiembro[indiceListaMiembros]++;
                         miembroEncontrado = true;
                     } else {
                         indiceListaMiembros++;
                     }
                 }
+                indiceMiembrosUnaAsoc++;
             }
         }
         // Busqueda del miembro que tenga el numero mas grande sin pasarse de tres
         int indiceMiembroActivo = 0;
-        for (int indiceVector = 1; indiceVector < vectorNumeroVecesMiembro.length; indiceVector++) {
+        for (int indiceVector = 0; indiceVector < vectorNumeroVecesMiembro.length; indiceVector++) {
             if (vectorNumeroVecesMiembro[indiceVector] > 3) {
                 vectorNumeroVecesMiembro[indiceVector] = 0;
             } else {
@@ -263,9 +259,9 @@ public class ListaMiembros {
                 } else {
                     // Comprobación de fechasAlta para ver cual es mas antiguo en alguna de ellas
                     if (vectorNumeroVecesMiembro[indiceVector] == vectorNumeroVecesMiembro[indiceMiembroActivo]) {
-                        if (listaTodosMiembros.getMiembroEnXIndice(indiceVector).fechaMasAnteriorDeMiembro(listaTodasAsociaciones)
-                                .compararFechas(listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo)
-                                        .fechaMasAnteriorDeMiembro(listaTodasAsociaciones)) == 0) {
+                        Fecha fechaSarita = listaTodosMiembros.listaMembres[indiceVector].fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
+                        Fecha fechaPedrito = listaTodosMiembros.listaMembres[indiceMiembroActivo].fechaMasAnteriorDeMiembro(listaTodasAsociaciones);
+                        if (fechaSarita.compararFechas(fechaPedrito) == 0) {
                             indiceMiembroActivo = indiceVector;
                         }
                     }
@@ -274,6 +270,7 @@ public class ListaMiembros {
         }
         return listaTodosMiembros.getMiembroEnXIndice(indiceMiembroActivo);
     }
+
 
     /**
      * Metodo que comprueba si un miembro pasado por parametro esta en alguna
@@ -345,7 +342,7 @@ public class ListaMiembros {
      * @return - lista de las titulaciones de los miembros de listaMiembros sin
      *         repeticion
      */
-    public static String[] titulacionesEnBaseAListaMiembrosA(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
+    public static String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
         String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
         int indiceMiembrosTotales;
         for (int index = 0; index < listaMiembros.length; index++) {
@@ -381,7 +378,7 @@ public class ListaMiembros {
         }
         String[] listaTitulosDefinitiva = new String[titSinRepeticion+1];
         listaTitulosDefinitiva[0]=listaTitulacionesConRepeticiones[0];
-        for (int index = 1; index < titSinRepeticion; index++) {
+        for (int index = 1; index < titSinRepeticion + 1; index++) {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
                 igual = false;
@@ -402,35 +399,5 @@ public class ListaMiembros {
     }
 
     
-
-    public static String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
-        String[] vectorTitulacionesSinRepetir = new String[listaMiembros.length];
-        int indiceMiembrosTotales;
-        int titulosGuardados = 0;
-        int indiceVectorTitulos = 0;
-        for (int indiceVectorMiembros = 0; indiceVectorMiembros < listaMiembros.length; indiceVectorMiembros++) {
-            indiceMiembrosTotales = 0;
-            boolean igual = false;
-            while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
-                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias()
-                        .equals(listaMiembros[indiceVectorMiembros])) { // Si el alias es el mismo
-                    indiceVectorTitulos = titulosGuardados;
-                    while (indiceVectorTitulos >= 0 && !igual){
-                        if (vectorTitulacionesSinRepetir[indiceVectorTitulos].equals(listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera())){
-                            igual = true;
-                        }
-                    }
-                } else {
-                    indiceMiembrosTotales++;
-                }
-            }
-        }
-
-
-        return vectorTitulacionesSinRepetir;
-    }
-
-
-
 
 }

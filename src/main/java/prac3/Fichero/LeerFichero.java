@@ -56,7 +56,7 @@ public class LeerFichero {
                         }
                         Charla charla = new Charla(Integer.parseInt(campos[0]), campos[1], campos[2],
                                 camposAsociacionesInvolucradas, campos[4], auxiliarFecha, intructoresCharla,
-                                valoracionesEnEntero, Integer.parseInt(campos[8]));
+                                Integer.parseInt(campos[8]));
                         nombreListaAcciones.addAccion(charla);
                         break;
                 }
