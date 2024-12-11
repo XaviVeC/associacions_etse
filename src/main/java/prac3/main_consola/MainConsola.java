@@ -29,7 +29,7 @@ public class MainConsola {
         int cantidadMiembrosOp7;
         String nombreMiembroOp7;
         //opcion 8
-
+       
         
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
@@ -40,16 +40,20 @@ public class MainConsola {
                 "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv" };
         String[] direccionesMiembros = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv",
-                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv" };
+                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv","/Users/carlaemo/Documents/Ingenieria Biomédica/AÑO 3 /PROGRAMACIÓN /PRÁCTICA 3 /asociaciones/associacions_etse/src/main/java/prac3/Fichero/Miembros.csv" };
         String[] direccionesAsociaciones = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv",
-                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv" };
+                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv","/Users/carlaemo/Documents/Ingenieria Biomédica/AÑO 3 /PROGRAMACIÓN /PRÁCTICA 3 /asociaciones/associacions_etse/src/main/java/prac3/Fichero/Asociaciones.csv"};
         // Variables enteras varias
         int opcionMenu, cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         // Definicion de las distintas listas
         ListaAcciones listaDeTodasLasAcciones;
         ListaAsociaciones listaDeTodasLasAsociaciones;
         ListaMiembros listaDeTodosLosMiembros;
+        
+        //!!!!!!!!!!!!CARLAAAAAAAAA (FICHEROS)
+        //LeerFichero lectorArchivo = new LeerFichero();
+        //lectorArchivo.LeerFicheroAcciones("Acciones.txt", listaDeTodasLasAcciones);
 
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
@@ -427,6 +431,7 @@ public class MainConsola {
                     System.out.println(listaDeTodasLasAcciones.toString());
                     break;
                 case 15:
+                    opcion15(listaDeTodasLasAcciones);
 
                     break;
                 case 16:
@@ -587,11 +592,8 @@ public class MainConsola {
                             }
                         }
                         if (charla != null){
-                            System.out.println("Antes de la valoracion" + charla);
-                            System.out.println("Lista antes:" +listaTodasLasAcciones);
+                            
                             charla.hacerValoracion(valoracion);
-                            System.out.println("Despues de la valoracion" + charla);
-                            System.out.println("Lista antes:" +listaTodasLasAcciones);
                             System.out.println("La valoración de la charla se ha realizado correctamente");
                             
 
@@ -602,9 +604,36 @@ public class MainConsola {
                         
                     }catch(ExcepcionesPropias.ValoracionFueraDeRangoException e) {
                              System.out.println("Error: " + e.getMessage());
-                             introducirPorTeclado.nextLine();}
-           ///         
+                             introducirPorTeclado.nextLine();}         
                     
+    }
+
+    
+    public static void opcion15(ListaAcciones listaTodasLasAcciones){
+        System.out.println("Introduce el nombre de la charla ");
+        String nombreCharla15 = introducirPorTeclado.nextLine();
+        double resultado15 = 0.0;
+        Charla charla15 = null;
+
+        for(int indiceOp15 = 0 ; indiceOp15 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp15++){
+               if(listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15) instanceof Charla){
+                   Charla posibleCharla15 = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15);
+                   if (posibleCharla15.getNombreAccion().equals(nombreCharla15)){
+                       charla15 = posibleCharla15;
+                   }
+           }
+       }
+
+       if (charla15 == null) {
+        System.out.println("No se ha encontrado ninguna charla con ese nombre.");
+        } else if (charla15.getIndiceValoraciones() == 0) {
+            System.out.println("No hay ninguna valoración.");
+        } else {
+            resultado15 = charla15.getSumaValoraciones() / charla15.getIndiceValoraciones();
+            System.out.println("La valoración media es: " + resultado15);
+        }
+
+
     }
 
 }

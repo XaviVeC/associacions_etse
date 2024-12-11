@@ -8,7 +8,7 @@ public class Charla extends Accion {
     private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES]; // Instructores de la charla
     private int[] valoraciones; // Vector de valoraciones de la charla
     private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
-    
+    private int sumaValoraciones;
     private int indiceValoraciones;
 
     /**
@@ -88,6 +88,7 @@ public class Charla extends Accion {
         return valoraciones;
     }
 
+
     /**
      * 
      * @return
@@ -95,6 +96,22 @@ public class Charla extends Accion {
     public int getNumeroAsistentes() {
         return numeroDeAsistentes;
     }
+
+    /**
+     * @return 
+     */
+    public int getIndiceValoraciones (){
+        return indiceValoraciones;
+    }
+
+    /**
+     * @return 
+     */
+    public int getSumaValoraciones(){
+        return sumaValoraciones;
+
+    }
+
 
     /**
      * Metodo toString
@@ -145,6 +162,7 @@ public class Charla extends Accion {
         if(this.indiceValoraciones < this.numeroDeAsistentes)
         {
             valoraciones[this.indiceValoraciones] = valoracion;
+            this.sumaValoraciones += valoracion;
             this.indiceValoraciones++;
         }
     }
