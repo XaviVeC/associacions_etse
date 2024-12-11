@@ -1,4 +1,4 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.util.Scanner;
 
@@ -603,7 +603,7 @@ public class MainConsola {
                     }catch(ExcepcionesPropias.ValoracionFueraDeRangoException e) {
                              System.out.println("Error: " + e.getMessage());
                              introducirPorTeclado.nextLine();}
-                    
+           ///         
                     
     }
 
