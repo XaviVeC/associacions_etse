@@ -178,6 +178,9 @@ public class ListaMiembros {
                     }
                 }
                 indiceMiembrosEnAsociacion = 0;
+                if (!miembroActivoEncontrado) {
+                    indiceBusquedaAsociacion++;
+                }
             }
             miembroActivoEncontrado = false;
             indiceBusquedaAsociacion = 0;

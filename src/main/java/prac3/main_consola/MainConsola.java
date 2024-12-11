@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.util.Scanner;
 import prac3.Estructuras.Fecha;
@@ -89,7 +89,7 @@ public class MainConsola {
                     System.out.println(
                             "Se mostrará una lista con todos los miembros activos.\nPuede aplicar un filtro\n\tPara profesores --> Professor\n\tPara alumnos -->Alumne\n\tSi quieres los dos --> Ambos");
                     filtroOp3 = introducirPorTeclado.nextLine();
-                    opcion3(listaDeTodosLosMiembros, filtroOp3);
+                    opcion3(listaDeTodosLosMiembros, filtroOp3, listaDeTodasLasAsociaciones);
                     break;
                 case 4:
                     System.out.println("Se mostrarán las acciones filtradas si se quiere.");
@@ -187,7 +187,7 @@ public class MainConsola {
                             String deptOp8 = introducirPorTeclado.nextLine();
                             System.out.println("¿Cual es tu número de despacho?");
                             int numDptOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
-                            Profesor nuevoProfesor = new Profesor(999, tipoMiembroOp8, aliasOp8, fechaAltaOp8, deptOp8, numDptOp8);
+                            Profesor nuevoProfesor = new Profesor(999, tipoMiembroOp8, aliasOp8, deptOp8, numDptOp8);
                             opcion8vis2(nuevoProfesor, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
                         }
                         else {
@@ -204,7 +204,7 @@ public class MainConsola {
                             }
                             System.out.println("Iniciales de la carrera que cursas");
                             String siglasCarrera = introducirPorTeclado.nextLine();
-                            Alumno nuevoAlumno = new Alumno(999, tipoMiembroOp8, aliasOp8, fechaAltaOp8, yearsEtseOp8, graduado, siglasCarrera);
+                            Alumno nuevoAlumno = new Alumno(999, tipoMiembroOp8, aliasOp8, yearsEtseOp8, graduado, siglasCarrera);
                             opcion8vis2(nuevoAlumno, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
                         }
 
@@ -292,8 +292,8 @@ public class MainConsola {
         System.out.println(ListaMiembros.miembrosDeAsociacionConcreta(nombreAsociacion, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, filtro).toString());
     }
 
-    public static void opcion3(ListaMiembros listaConTodosLosMiembros, String filtro) {
-        System.out.println(ListaMiembros.miembrosActivosAplicandoFiltro(listaConTodosLosMiembros, filtro).toString());
+    public static void opcion3(ListaMiembros listaConTodosLosMiembros, String filtro, ListaAsociaciones todasLasAsociaciones) {
+        System.out.println(ListaMiembros.miembrosActivosAplicandoFiltro(listaConTodosLosMiembros, filtro, todasLasAsociaciones).toString());
     }
 
     public static void opcion4(ListaAcciones listaDeTodasLasAcciones, String filtro) {

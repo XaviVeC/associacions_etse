@@ -145,7 +145,8 @@ public class LeerFichero {
                 campoCargos = campo[6].split("-");
                 fechasAlta = campo[4].split("/");
                 fechasBaja = campo[5].split("/");
-                
+                alta = new Fecha[fechasAlta.length];
+                baja = new Fecha[fechasBaja.length];
                 //llena la fechaAlta
                 //primero separarla
                 for(int i = 0; i < fechasAlta.length; i++){
@@ -157,12 +158,12 @@ public class LeerFichero {
                 //primero separarla
                 for(int i = 0; i < fechasAlta.length; i++){
                     bajaTemp = fechasBaja[i].split("-");
-                    baja[i] = new Fecha(Integer.parseInt(bajaTemp[0]),Integer.parseInt(altaTemp[1]),Integer.parseInt(altaTemp[2]));
+                    baja[i] = new Fecha(Integer.parseInt(bajaTemp[0]),Integer.parseInt(bajaTemp[1]),Integer.parseInt(bajaTemp[2]));
                 }
 
 
 
-                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes, alta, baja, campoCargos);
+                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes,campoCargos, alta, baja);
                 listaARellenar.addAsociacion(asociacion);
                 indiceLectura++;
             } while (indiceLectura < cantidadAsociaciones);
