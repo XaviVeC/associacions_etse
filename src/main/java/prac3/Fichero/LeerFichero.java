@@ -95,13 +95,13 @@ public class LeerFichero {
                 switch (campo[1]) {
                     case "Alumne":
                         alumno = new Alumno(Integer.parseInt(campo[0]), campo[1], campo[2],
-                        Integer.parseInt(campo[6]), Boolean.parseBoolean(campo[7]), campo[8].trim());
+                        Integer.parseInt(campo[4]), Boolean.parseBoolean(campo[5]), campo[6].trim());
 
                         nombreListaMiembros.addMiembro(alumno);
                         break;
                     case "Professor":
                         profesor = new Profesor(Integer.parseInt(campo[0]), campo[1], campo[2],
-                        campo[6], Integer.parseInt(campo[7].trim()));
+                        campo[4], Integer.parseInt(campo[5].trim()));
 
                         nombreListaMiembros.addMiembro(profesor);
                         break;

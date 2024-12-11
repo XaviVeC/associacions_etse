@@ -10,7 +10,7 @@ public class Charla extends Accion {
     private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
 
     /**
-     * Constructor de la classe Xerrada
+     * Constructor de la classe Charla para una charla que ya se ha dado
      * 
      * @param indiceFichero
      * @param tipoAccion
@@ -36,6 +36,14 @@ public class Charla extends Accion {
         }
     }
 
+    public Charla(int indiceFichero, String tipoAccion, String nombreAccion, String[] asocInvol, 
+                  String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla) {
+        super(indiceFichero, tipoAccion, nombreAccion, asocInvol, organizadorResponsable);
+        this.fechaRealizacion = fechaRealizacion;
+        this.instructoresCharla = instructoresCharla;
+        this.numeroDeAsistentes = 0;
+    }
+
     /**
      * 
      * @return
@@ -44,6 +52,12 @@ public class Charla extends Accion {
         return fechaRealizacion;
     }
 
+    public boolean getEstado(){
+        return false;
+    }
+    public double getCoste(){
+        return 0.0;
+    }
     /**
      * 
      * @return
@@ -73,17 +87,6 @@ public class Charla extends Accion {
      */
     public int getNumeroAsistentes() {
         return numeroDeAsistentes;
-    }
-
-    /**
-     * 
-     * @param valoracion
-     * @param indiceAsistente
-     */
-    public void addValoracion(int valoracion, int indiceAsistente) {
-        if (valoraciones.length < this.numeroDeAsistentes) {
-            this.valoraciones[indiceAsistente] = valoracion;
-        }
     }
 
     /**

@@ -345,7 +345,7 @@ public class ListaMiembros {
      * @return - lista de las titulaciones de los miembros de listaMiembros sin
      *         repeticion
      */
-    public String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
+    public static String[] titulacionesEnBaseAListaMiembrosA(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
         String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
         int indiceMiembrosTotales;
         for (int index = 0; index < listaMiembros.length; index++) {
@@ -361,7 +361,6 @@ public class ListaMiembros {
                     indiceMiembrosTotales++;
                 }
             }
-            index++;
         }
         int titSinRepeticion = 1;
         int indiceFinal;
@@ -380,10 +379,12 @@ public class ListaMiembros {
                 titSinRepeticion++;
             }
         }
-        String[] listaTitulosDefinitiva = new String[titSinRepeticion];
-        for (int index = 0; index < titSinRepeticion; index++) {
+        String[] listaTitulosDefinitiva = new String[titSinRepeticion+1];
+        listaTitulosDefinitiva[0]=listaTitulacionesConRepeticiones[0];
+        for (int index = 1; index < titSinRepeticion; index++) {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
+                igual = false;
                 while ((!(igual)) && (indiceFinal >= 0)) {
                     if (listaTitulacionesConRepeticiones[indicetitComprobando]
                             .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
@@ -399,5 +400,37 @@ public class ListaMiembros {
         }
         return listaTitulosDefinitiva;
     }
+
+    
+
+    public static String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
+        String[] vectorTitulacionesSinRepetir = new String[listaMiembros.length];
+        int indiceMiembrosTotales;
+        int titulosGuardados = 0;
+        int indiceVectorTitulos = 0;
+        for (int indiceVectorMiembros = 0; indiceVectorMiembros < listaMiembros.length; indiceVectorMiembros++) {
+            indiceMiembrosTotales = 0;
+            boolean igual = false;
+            while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
+                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias()
+                        .equals(listaMiembros[indiceVectorMiembros])) { // Si el alias es el mismo
+                    indiceVectorTitulos = titulosGuardados;
+                    while (indiceVectorTitulos >= 0 && !igual){
+                        if (vectorTitulacionesSinRepetir[indiceVectorTitulos].equals(listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getSiglasCarrera())){
+                            igual = true;
+                        }
+                    }
+                } else {
+                    indiceMiembrosTotales++;
+                }
+            }
+        }
+
+
+        return vectorTitulacionesSinRepetir;
+    }
+
+
+
 
 }

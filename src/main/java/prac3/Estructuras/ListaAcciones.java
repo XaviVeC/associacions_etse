@@ -139,13 +139,55 @@ public class ListaAcciones {
         return sublistaCharlasSegunRango;
     }
 
+    public boolean charlaRepetida(String nombreCharla, ListaAcciones listaTodasAcciones) {
+        boolean repetida = false;
+        int i = 0;
 
-    
+        while ((!repetida) && (i < listaTodasAcciones.getNumeroAcciones())) {
+            if (listaTodasAcciones.getAccionEnXIndice(i).getTipoAccion().equals("Charla")
+                && listaTodasAcciones.getAccionEnXIndice(i).getNombreAccion().equals(nombreCharla)) {
+                    repetida = true;
+            }
+            else {
+                i++;
+            }
+        }
+
+        return repetida;
+    }
+
+/**
+ * Metodo que filtra las demostraciones segun un booleano que se le pasa por parametro.
+ * Se utiliza para la opcion 11 del menu.
+ * @param opcionFiltro - Elegimos si queremos las demostraciones activas o las que ya no lo estan.
+ * @return - Retorna una lista con las demostraciones pasadas por filtro.
+ */
+public ListaAcciones listaDemostracionesFiltradasSegunEstado(boolean opcionFiltro){
+    ListaAcciones demostracionesFiltradas = new ListaAcciones(this.nElem);
+    //es un recorrido de la lista desde la que se ejecuta
+    for (int index = 0; index < this.nElem; index++) {
+        //en el caso de que sea una demostracion y que el estado sea igual al que se pasa por parametro
+        if ((this.listaAcciones[index].getTipoAccion().equals("Demostracion")) && (this.listaAcciones[index].getEstado() == opcionFiltro)) {
+            //se hara un add a la sublista "demostracionesFiltradas" que hemos creado
+            demostracionesFiltradas.addAccion(this.listaAcciones[index]);
+        } 
+    }
+    return demostracionesFiltradas;
+}
 
 
-
-    
-    
+/**
+ * Metodo que se llama desde una listaAcciones, y retorna el coste total de todas las demostraciones.
+ * Se utiliza para la opcion 11 del menu.
+ * @return - Coste total de las demostraciones de una listaAcciones
+ */
+public double costeTotalDemostraciones(){
+    double acumulado = 0.0;
+    for (int i = 0; i < this.nElem; i++) {
+        acumulado += this.listaAcciones[i].getCoste();
+    }
+    return acumulado;
+}
 
 
 

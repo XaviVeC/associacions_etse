@@ -137,7 +137,7 @@ public class Asociacion {
      * En el caso de que ya exista este aias en esta Asociacion no pasará nada.
      * @param alias - nuevo alias a ingresa
      */
-    public void addMiembroEnAsociacion(String alias) {
+    public void addMiembroEnAsociacion(String alias, Fecha fechaAlta, Fecha fechaBaja) {
         boolean encontrado = false;
         int indice = 0;
         while (!encontrado && (indice < listaMiembrosAsociacion.length)) {
@@ -149,13 +149,21 @@ public class Asociacion {
         }
 
         if (!encontrado) {
+            
             String[] nuevaLista = new String[listaMiembrosAsociacion.length + 1];
+            Fecha[] nuevaListaFechaAlta = new Fecha[listaMiembrosAsociacion.length + 1];
+            Fecha[] nuevaListaFechaBaja = new Fecha[listaMiembrosAsociacion.length + 1];
             for (int i = 0; i < listaMiembrosAsociacion.length; i++) {
                 nuevaLista[i] = listaMiembrosAsociacion[i];
-                
+                nuevaListaFechaAlta[i] = fechasAlta[i];
+                nuevaListaFechaBaja[i] = fechasBaja[i];
             }
             nuevaLista[nuevaLista.length - 1] = alias;
+            nuevaListaFechaAlta[nuevaLista.length - 1] = fechaAlta;
+            nuevaListaFechaBaja[nuevaLista.length - 1] = fechaBaja;
             this.listaMiembrosAsociacion = nuevaLista;
+            this.fechasAlta = nuevaListaFechaAlta;
+            this.fechasBaja = nuevaListaFechaBaja;  
         }
     }
 }

@@ -53,7 +53,7 @@ public class Demostracion extends Accion {
      * 
      * @return - variable demostracionValida
      */
-    public boolean getEstadoDemostracion() {
+    public boolean getEstado() {
         return this.demostracionValida;
     }
 
@@ -66,6 +66,14 @@ public class Demostracion extends Accion {
         return this.contadorVecesOfrecida;
     }
 
+    /**
+     * Getter del coste de una demostracion
+     * 
+     * @return - variable costoDemostracion
+     */
+    public double getCoste() {
+        return this.costoDemostracion;
+    }
     /**
      * Getter de la fecha de creacion
      */

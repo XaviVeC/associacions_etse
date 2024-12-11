@@ -1,5 +1,4 @@
 package prac3.Miembro;
-import prac3.Estructuras.Fecha;
 
 public class Profesor extends Miembro {
 

@@ -160,6 +160,8 @@ public class MainConsola {
                         }while(ListaMiembros.miembroExistente(nombreMiembroOp7, listaDeTodosLosMiembros) == -1);
                         miembrosAsociacion[indice] = nombreMiembroOp7;
                     } while (indice < cantidadMiembrosOp7);
+                    //A PARTIR DE LA LISTA DE MIEMBROS SACAMOS LA LISTA DE TITULACIONES QUE CURSAN (no puede haber repeticion en la lista)
+
 
                     //QUEDA AÑADIR LOS TITULOS QUE HAY EN LA ASOCIACION
                     
@@ -171,24 +173,24 @@ public class MainConsola {
                     String aliasOp8 = introducirPorTeclado.nextLine();
                     System.out.println("Escribe la asociación en la que te quieres apuntar.");
                     String nomAsocOp8 = introducirPorTeclado.nextLine();
-                    int comprovacion = opcion8vis1(aliasOp8, nomAsocOp8, listaDeTodosLosMiembros, listaDeTodasLasAsociaciones);
+                    System.out.println("¿Que número de día es hoy?");
+                    int diaOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que número de mes estamos?");
+                    int mesOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que año estamos?");
+                    int yearOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    Fecha fechaAltaOp8 = new Fecha(diaOp8, mesOp8, yearOp8);
+                    int comprovacion = opcion8vis1(aliasOp8, nomAsocOp8, listaDeTodosLosMiembros, listaDeTodasLasAsociaciones, fechaAltaOp8);
                     if (comprovacion == -1) {
                         System.out.println("¿Eres alumno o profesor? (Alumno, Profesor)");
                         String tipoMiembroOp8 = introducirPorTeclado.nextLine();
-                        System.out.println("¿Que numero de día es hoy?");
-                        int diaOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
-                        System.out.println("¿Que numero de mes es hoy?");
-                        int mesOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
-                        System.out.println("¿Que numero de año es hoy?");
-                        int yearOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
-                        Fecha fechaAltaOp8 = new Fecha(diaOp8, mesOp8, yearOp8);
                         if (tipoMiembroOp8 == "Profesor") {
                             System.out.println("¿En que departamento estás?");
                             String deptOp8 = introducirPorTeclado.nextLine();
                             System.out.println("¿Cual es tu número de despacho?");
                             int numDptOp8 = Integer.parseInt(introducirPorTeclado.nextLine());
                             Profesor nuevoProfesor = new Profesor(999, tipoMiembroOp8, aliasOp8, deptOp8, numDptOp8);
-                            opcion8vis2(nuevoProfesor, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
+                            opcion8vis2(nuevoProfesor, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, fechaAltaOp8);
                         }
                         else {
                             System.out.println("¿Cuántos años llevas en la universidad?");
@@ -205,7 +207,7 @@ public class MainConsola {
                             System.out.println("Iniciales de la carrera que cursas");
                             String siglasCarrera = introducirPorTeclado.nextLine();
                             Alumno nuevoAlumno = new Alumno(999, tipoMiembroOp8, aliasOp8, yearsEtseOp8, graduado, siglasCarrera);
-                            opcion8vis2(nuevoAlumno, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
+                            opcion8vis2(nuevoAlumno, nomAsocOp8, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, fechaAltaOp8);
                         }
 
                     }
@@ -214,10 +216,76 @@ public class MainConsola {
                     System.out.println(listaDeTodosLosMiembros.toString());
                     break;
                 case 9:
+                    int indiceFicheroOp9 = listaDeTodasLasAcciones.getNumeroAcciones() - 1;
+                    String tipoAccionOp9 = "Charla";
+                    
+                    // NOMBRE DE LA CHARLA
+                    System.out.println("¿Cual es el nombre de la charla que quieres añadir?");
+                    String nombreCharlaOp9 = introducirPorTeclado.nextLine();
+                    // Comprovacion de si el nombre de la charla ya existe, en caso verdadero, se le pide que cambie el nombre
+                    boolean estaRepetida = listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9, listaDeTodasLasAcciones);
+                    do {
+                        if (estaRepetida) {
+                            System.out.println("Este nombre ya existe, tendrás que cambiarlo. Escribe uno nuevo.");
+                            nombreCharlaOp9 = introducirPorTeclado.nextLine();
+                            if (!listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9, listaDeTodasLasAcciones)) {
+                                estaRepetida = false;
+                            }
+                        }
+                    } while (estaRepetida);
+
+                    // ASOCIACIONES INVOLUCRADAS
+                    int minimo = 1;
+                    int maximo = listaDeTodasLasAsociaciones.getIndiceAsociaciones();
+                    System.out.println("Tienes que escribir todas las asociaciones que esten involucradas.");
+                    System.out.println("Mínimo hay " + minimo + " asociacion, máximo hay " + maximo + " asociaciones");
+                    System.out.println("En caso de terminar, escribe 'fin'");
+                    boolean end = false;
+                    String asocOp9;
+                    String[] asociacionesInvolOp9;
+                    while (!end) {
+                        System.out.println("Escribe una asociacion involucrada.");
+                        asocOp9 = introducirPorTeclado.nextLine();
+                        if ((asocOp9.equals("fin")) && (minimo >= 1)) {
+                            end = true;
+                        }
+                        else if (minimo >=) {
+                            
+                        }
+                    }
+            
+                    
+                    
+                    
+                    
+                    
+                    // FECHA
+                    // Se comprueba si la charla ya se ha realizado
+                    System.out.println("¿La charla ya se ha realizado? (s/n)");
+                    String aux = introducirPorTeclado.nextLine();
+                    boolean charlaRealizada = false;
+                    if (aux.equals("s")) {
+                        charlaRealizada = true;
+                    }
+                    // Se pregunta el dia de la charla
+                    System.out.println("¿Que día es la charla?");
+                    int diaOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que número de mes es la charla?");
+                    int mesOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que año es la charla?");
+                    int yearOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    
+
+                    
+
+
+
+
 
                     break;
                 case 10:
-
+                    String[] miembrosParaComprobar = {"pedrito","saraaaalaaa","salatMalecom"};
+                    opcion10(listaDeTodosLosMiembros, miembrosParaComprobar);
                     break;
                 case 11:
 
@@ -312,19 +380,21 @@ public class MainConsola {
 
     }
 
-    public static int opcion8vis1(String alias, String nombreAsociacion, ListaMiembros listaTodosMiembros, ListaAsociaciones todasAsoc) {
+    public static int opcion8vis1(String alias, String nombreAsociacion, ListaMiembros listaTodosMiembros, ListaAsociaciones todasAsoc,
+                                  Fecha fechaAlta) {
         int existe = ListaMiembros.miembroExistente(alias, listaTodosMiembros);
 
         if (existe != -1) {
-            todasAsoc.addMiembroEnAsociacionExistente(alias, nombreAsociacion, todasAsoc);
+            todasAsoc.addMiembroEnAsociacionExistente(alias, nombreAsociacion, todasAsoc, fechaAlta);
         }
 
         return existe;
     }
 
-    public static void opcion8vis2(Miembro miembro, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones, ListaMiembros listaTodosMiembros) {
+    public static void opcion8vis2(Miembro miembro, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones, 
+                                   ListaMiembros listaTodosMiembros, Fecha fechaAlta) {
         listaTodosMiembros.addMiembro(miembro);
-        listaTodasAsociaciones.addMiembroEnAsociacionExistente(miembro.getAlias(), nombreAsociacion, listaTodasAsociaciones);
+        listaTodasAsociaciones.addMiembroEnAsociacionExistente(miembro.getAlias(), nombreAsociacion, listaTodasAsociaciones, fechaAlta);
     }
 
     
@@ -334,6 +404,39 @@ public class MainConsola {
     }
 
     
+
+
+
+
+    //ESTO ES UNA PRUEBA DE LA FUNCION DE DANI DE SACAR UN VECTOR STRING CON LAS INICIALES DE LAS CARRERAS DE LOS ALUMNOS
+    public static void opcion10(ListaMiembros listaTodosLosMiembros, String[] miembrosACoprobar)
+    {
+        String[] vectorTitulaciones = ListaMiembros.titulacionesEnBaseAListaMiembros(listaTodosLosMiembros, miembrosACoprobar);
+
+        for (int i = 0; i < vectorTitulaciones.length; i++) {
+            System.out.println("La titulacion " + (i + 1) + " es:\t" + vectorTitulaciones[i]);
+        }
+    }
+
+
+
+
+
+    public static void opcion11(ListaAcciones listaTodasLasAcciones){
+        System.out.println("Se mostrará el coste total de las demostraciones activas.");
+        ListaAcciones listaDemostracionesOp11 = 
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

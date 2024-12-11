@@ -74,15 +74,17 @@ public class ListaAsociaciones {
      * @param nombreAsociacion - la nombre asociacion a la que se le modifica la lista de miembros
      * @param listaTodasAsociaciones - lista que contiene las asociaciones
      */
-    public void addMiembroEnAsociacionExistente(String alias, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones) {
+    public void addMiembroEnAsociacionExistente(String alias, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones, 
+                                                Fecha fechaAlta) {
         boolean encontrado = false;
         int i = 0;
         Asociacion auxiliar;
+        Fecha fechaBaja = new Fecha(99, 99, 9999);
 
         while ((!encontrado) && (i < listaTodasAsociaciones.getIndiceAsociaciones())) {
             if (listaTodasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion().equals(nombreAsociacion)) {
                 auxiliar = listaTodasAsociaciones.getElementoListaAsociacion(i);
-                auxiliar.addMiembroEnAsociacion(alias); // Miembro añadido en la asociacion que toca
+                auxiliar.addMiembroEnAsociacion(alias, fechaAlta, fechaBaja); // Miembro añadido en la asociacion que toca
                 encontrado = true;
             }
             else
