@@ -1,4 +1,4 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.util.Scanner;
 import prac3.Estructuras.Fecha;
@@ -33,13 +33,13 @@ public class MainConsola {
         // Rutas de acceso de los ficheros
         String[] direccionesAcciones = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv",
-                "/src/main/java/prac3/Fichero/Miembros.csv", "/src/main/java/prac3/Fichero/Acciones.csv" };
+                "/src/main/java/prac3/Fichero/Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv" };
         String[] direccionesMiembros = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv",
-                "/src/main/java/prac3/Fichero/Miembros.csv", "/src/main/java/prac3/Fichero/Miembros.csv" };
+                "/src/main/java/prac3/Fichero/Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv" };
         String[] direccionesAsociaciones = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv",
-                "/src/main/java/prac3/Fichero/Asociaciones.csv", "/src/main/java/prac3/Fichero/Asociaciones.csv" };
+                "/src/main/java/prac3/Fichero/Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv" };
         // Variables enteras varias
         int opcionMenu, cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         // Definicion de las distintas listas
