@@ -1,9 +1,9 @@
 package prac3.Estructuras;
 
 import prac3.Miembro.Miembro;
-import prac3.Estructuras.Fecha;
+
 import prac3.Asociacion.Asociacion;
-import prac3.Estructuras.Fecha;
+
 public class ListaMiembros {
     private Miembro[] listaMembres; // lista de miembros
     private int nElem; // numero de elementos de la lista miembros
@@ -164,7 +164,7 @@ public class ListaMiembros {
                 miembrosDeLaAsociacion = asociacionAuxiliar.getListaMiembrosAsociacion();
                 fechasBajaMiembrosAsociacion = asociacionAuxiliar.getFechasBaja();
                 while (!miembroActivoEncontrado && (indiceMiembrosEnAsociacion < miembrosDeLaAsociacion.length)) {    
-                    if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion])) && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() != 9999)) {
+                    if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion])) && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() == 9999)) {
                         miembroActivoEncontrado = true;
                         if (filtro.equals("Ambos")) {
                             sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));

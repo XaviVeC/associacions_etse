@@ -1,11 +1,6 @@
-1;Alumne;Jor1;jorge@example.com;04-05-2001;99-99-9999;4;true;GEI
-2;Professor;elenaB;elena@example.com;16-07-2010;11-11-2017;DEIM;27  
-3;Alumne;luciaaaa;lucia@example.com;10-09-2015;99-99-9999;5;false;GEI 
-4;Professor;Carlos2001;carlos@example.com;25-03-2002;99-99-9999;DEIM;15  
-5;Alumne;pedrito;pedro@example.com;12-01-2003;15-04-2010;2;true;GEI
-6;Professor;luisjanguela;luis@example.com;17-11-2004;99-99-9999;DEEEA;33  
-7;Alumne;saraaaalaaa;sara@example.com;09-06-2000;99-99-9999;3;false;GEI 
-8;Professor;Alberto12;alberto@example.com;08-02-2001;99-99-9999;DEIM;12  
-9;Alumne;eleena9;elena@example.com;13-09-2008;99-99-9999;1;true;GEI 
-10;Professor;AnaBohueles;ana@example.com;27-10-2009;99-99-9999;DEEEA;5  
-11;Alumne;LucyAAAAAaaa;lucia@example.com;19-04-2006;99-99-9999;4;false;GEI
+1;Professor;Carlos2001;carlos@example.com;25-03-2002;99-99-9999;DEIM;15  
+2;Alumne;pedrito;pedro@example.com;12-01-2003;15-04-2010;2;true;GEI
+3;Professor;luisjanguela;luis@example.com;17-11-2004;99-99-9999;DEEEA;33  
+4;Alumne;saraaaalaaa;sara@example.com;09-06-2000;99-99-9999;3;false;GEI 
+5;Professor;Alberto12;alberto@example.com;08-02-2001;99-99-9999;DEIM;12  
+6;Professor;AnaBohueles;ana@example.com;27-10-2009;99-99-9999;DEEEA;5  

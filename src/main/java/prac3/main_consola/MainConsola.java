@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.util.Scanner;
 import prac3.Estructuras.Fecha;
