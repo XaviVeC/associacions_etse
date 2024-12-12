@@ -227,6 +227,7 @@ public class MainConsola {
                     System.out.println("\n\n");
                     System.out.println(listaDeTodosLosMiembros.toString());
                     break;
+                    /*
                 case 9:
                     int indiceFicheroOp9 = listaDeTodasLasAcciones.getNumeroAcciones() - 1;
                     String tipoAccionOp9 = "Charla";
@@ -414,6 +415,7 @@ public class MainConsola {
                     System.out.println(listaDeTodasLasAcciones.toString());
 
                     break;
+                    */
                 case 10:
                     String[] miembrosParaComprobar = { "pedrito", "saraaaalaaa", "salatMalecom" };
                     opcion10(listaDeTodosLosMiembros, miembrosParaComprobar);
@@ -687,6 +689,5 @@ public class MainConsola {
    
     }
 
-    public static void opcion18
 
-}}
+}
