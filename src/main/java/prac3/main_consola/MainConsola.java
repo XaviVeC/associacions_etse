@@ -621,7 +621,7 @@ public class MainConsola {
                 numeroValoraciones = charla15.getIndiceValoraciones();
 
                 if (numeroValoraciones >0){
-                     mediaDeLasValoraciones = charla15.getSumaValoraciones() / numeroValoraciones;
+                     mediaDeLasValoraciones = (double) charla15.getSumaValoraciones() / (double) numeroValoraciones;
                 }
                 
 
@@ -636,7 +636,7 @@ public class MainConsola {
         
         if (mejorCharla15 != null){
             System.out.println("La Charla con mejor puntuación es: " + mejorCharla15.getNombreAccion());
-            System.out.println("El mejor resultado es: " + mejorResultado15);
+            System.out.println("Su media es: " + mejorResultado15);
             System.out.println("El numeor total de valoraciones es: " + maxNumeroValoraciones);
         } else {
             System.out.println("No hi ha cap xerrada disponible.");
@@ -645,20 +645,21 @@ public class MainConsola {
 
 
     public void opcion16(ListaAcciones listaDeTodasLasAcciones, ListaMiembros listaDeTodosLosMiembros, String nombreCharlaOp16){
-        ListaAcciones charla = listaCharlasDeXMiembro(listaDeTodosLosMiembros,listaDeTodasLasAcciones, nombreCharlaOp16);
+        //ListaAcciones charla = listaCharlasDeXMiembro(listaDeTodosLosMiembros,listaDeTodasLasAcciones, nombreCharlaOp16);
     }
 
     public static void opcion17(ListaAcciones listaDeTodasLasAcciones){
-        System.out.println ("Se van a dar de baja a las Demostraciones que no esten activas y que diseñaron antes de la fecha que se introduce a continuación");
+        System.out.println ("Se van a dar de baja a las Demostraciones que no esten activas y que se diseñaron antes de la fecha que se introduce a continuación");
         System.out.println("Limite de Fecha:");
                     System.out.println("Dia Limite :");
-                    diaLim= Integer.parseInt(introducirPorTeclado.nextLine());
+                    int diaLim = Integer.parseInt(introducirPorTeclado.nextLine());
                     System.out.println("Mes Limite:");
-                    mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    int mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
                     System.out.println("Año Limite:");
-                    yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    int yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
 
-        fechaLimite = new Fecha(diaLim, mesLim, yearLim);
+        Fecha fechaLimite = new Fecha(diaLim, mesLim, yearLim);
+
     }
 
 
