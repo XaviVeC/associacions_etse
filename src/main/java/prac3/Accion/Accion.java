@@ -1,6 +1,6 @@
 package prac3.Accion;
-
 import prac3.Estructuras.Fecha;
+
 public abstract class Accion {
     //3 primeras letras asociacion, seguidas de tres numeros a partir del 100.
     protected String codigoAccion;

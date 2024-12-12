@@ -107,7 +107,7 @@ public class EscribirEnFichero{
 
             if ( accion instanceof Charla){
                 Charla charla = (Charla) accion ;
-                escritura.write(";"+charla.getFechaRealizacion() +";" +
+                escritura.write(";"+charla.getFecha() +";" +
                                     charla.getInstructoresCharla() +";" +
                                     charla.getValoraciones() + ";"+ 
                                     charla. getNumeroAsistentes());
@@ -117,7 +117,7 @@ public class EscribirEnFichero{
                 escritura.write(";"+ demostracion.getFecha() +";"+ 
                                     demostracion.getEstado() +";"+ 
                                     demostracion.getVecesOfrecida() +";"+
-                                    demostracion.getCostoDemostracion());
+                                    demostracion.getCoste());
 
 
             }

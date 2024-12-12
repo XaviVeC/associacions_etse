@@ -30,6 +30,8 @@ public class MainConsola {
         String nombreMiembroOp7;
         //opcion 8
        
+        //Opcion 16
+        String nombreCharlaOp16;
         
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
@@ -93,7 +95,7 @@ public class MainConsola {
                     System.out.println(
                             "Se mostrará una lista con todos los miembros activos.\nPuede aplicar un filtro\n\tPara profesores --> Professor\n\tPara alumnos -->Alumne\n\tSi quieres los dos --> Ambos");
                     filtroOp3 = introducirPorTeclado.nextLine();
-                    opcion3(listaDeTodosLosMiembros, filtroOp3, listaDeTodasLasAsociaciones);
+                    opcion3(filtroOp3, listaDeTodasLasAsociaciones);
                     break;
                 case 4:
                     System.out.println("Se mostrarán las acciones filtradas si se quiere.");
@@ -429,7 +431,12 @@ public class MainConsola {
 
                     break;
                 case 16:
-
+                    do
+                    {
+                        System.out.println("Introduce el nombre de la charla");
+                        nombreCharlaOp16 = introducirPorTeclado.nextLine();
+                    } while (!listaDeTodasLasAcciones.estaLaCharlaEnLaListaDeAcciones(listaDeTodasLasAcciones, nombreCharlaOp16))    
+                    opcion16(listaDeTodasLasAcciones, listaDeTodosLosMiembros, nombreCharlaOp9);
                     break;
                 case 17:
 
@@ -486,7 +493,7 @@ public class MainConsola {
         System.out.println(ListaMiembros.miembrosDeAsociacionConcreta(nombreAsociacion, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, filtro).toString());
     }
 
-    public static void opcion3(ListaMiembros listaConTodosLosMiembros, String filtro, ListaAsociaciones todasLasAsociaciones) {
+listaConTodosLosMiembros    public static void opcion3(ListaMiembros listaConTodosLosMiembros, String filtro, ListaAsociaciones todasLasAsociaciones) {
         System.out.println(ListaMiembros.miembrosActivosAplicandoFiltro(listaConTodosLosMiembros, filtro, todasLasAsociaciones).toString());
     }
 
@@ -644,8 +651,8 @@ public class MainConsola {
     }
 
 
-    public void opcion16(ListaAcciones listaDeTodasLasAcciones, ListaMiembros listaDeTodosLosMiembros, String nombreCharlaOp16){
-        //ListaAcciones charla = listaCharlasDeXMiembro(listaDeTodosLosMiembros,listaDeTodasLasAcciones, nombreCharlaOp16);
+    public static void opcion16(ListaAcciones listaDeTodasLasAcciones, ListaMiembros listaDeTodosLosMiembros, String nombreCharlaOp16){
+        System.out.println(ListaAcciones.listaCharlasDeXMiembro(listaDeTodosLosMiembros,listaDeTodasLasAcciones, nombreCharlaOp16).toString());
     }
 
     public static void opcion17(ListaAcciones listaDeTodasLasAcciones){
@@ -657,9 +664,13 @@ public class MainConsola {
                     int mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
                     System.out.println("Año Limite:");
                     int yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
+ instanc7
+listaDeTodasLasAcciones.getAccio()indigetAccionEnXIndiceSinCopia(indiceOp15)        Fecha flechaLimite LasAcciones= new Fecha(diaLim, mesLim, yearLim);
+        Demoif()stracion demostracion = null;
+        if(int indiceOp17 = 0; indiceOp17 < listaDeTodasLasAcciones.getNumeroAcciones(); indiceOp17++){
+            
 
-        Fecha fechaLimite = new Fecha(diaLim, mesLim, yearLim);
-
+        }
     }
 
 

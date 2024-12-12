@@ -3,7 +3,6 @@ package prac3.Estructuras;
 import prac3.Accion.Accion;
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
-import prac3.Miembro.Miembro;
 
 public class ListaAcciones {
     private Accion[] listaAcciones; // lista de acciones
@@ -102,7 +101,7 @@ public class ListaAcciones {
         ListaAcciones sublistaSegunTipoAccion = new ListaAcciones(this.nElem);
 
         for (int i = 0; i < this.nElem; i++) {
-            if (tipoAccion.equals("Ambos")) {
+            if (tipoAccion.equalsIgnoreCase("Ambos")) {
                 sublistaSegunTipoAccion.addAccion(this.listaAcciones[i]);
             } else {
                 if (this.listaAcciones[i].getTipoAccion().equals(tipoAccion)) {
@@ -251,13 +250,13 @@ public class ListaAcciones {
 
 
     /**
-     * 
-     * @param listaTodosMiembros
-     * @param listaTodasAcciones
-     * @param aliasMiembroQueComprobar
-     * @return
+     * Metodo que te hace una busqueda de las charlas en las que esta un miembro en concreto
+     * @param listaTodosMiembros - lista de todos los miembros
+     * @param listaTodasAcciones - lista de todas las acciones
+     * @param aliasMiembroQueComprobar - alias del miembro que queremos comprobar
+     * @return - lista de las charlas en las que participa el miembro que pasa por parametro
      */
-    public ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
+    public static ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
         ListaAcciones listaCharlas = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
         ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaCharlas.getNumeroAcciones());
         listaCharlas = listaTodasAcciones.accionesSegunTipo("Charla").copia();
@@ -267,5 +266,25 @@ public class ListaAcciones {
             }
         }
         return listaCharlasDefinitiva;
+    }
+
+    /**
+     * Metodo que comprueba si una charla esta en la lista o no en base a su nombre
+     * @param listaDeTodasLasAcciones - lista de todas las acciones
+     * @param nombreCharla - nombre de la charla en la que buscamos
+     * @return -  = true = si que esta la charla, false = no esta la charla
+     */
+    public boolean estaLaCharlaEnLaListaDeAcciones (ListaAcciones listaDeTodasLasAcciones, String nombreCharla){
+        int indice = 0;
+        boolean siEsta = false;
+        while (!siEsta && indice < listaDeTodasLasAcciones.getNumeroAcciones()) {
+            if (listaDeTodasLasAcciones.getAccionEnXIndice(indice).getNombreAccion().equals(nombreCharla)) {
+                siEsta = true;
+            }
+            else{
+                indice++;
+            }
+        }
+        return siEsta;
     }
 }

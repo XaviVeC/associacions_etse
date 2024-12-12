@@ -55,20 +55,6 @@ public class Charla extends Accion {
      * 
      * @return
      */
-    public Fecha getFechaRealizacion() {
-        return fechaRealizacion;
-    }
-
-    public boolean getEstado(){
-        return false;
-    }
-    public double getCoste(){
-        return 0.0;
-    }
-    /**
-     * 
-     * @return
-     */
     public String[] getInstructoresCharla() {
         return instructoresCharla;
     }
@@ -87,7 +73,6 @@ public class Charla extends Accion {
     public int[] getValoraciones() {
         return valoraciones;
     }
-
 
     /**
      * 

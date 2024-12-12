@@ -82,28 +82,6 @@ public class Demostracion extends Accion {
     }
 
     /**
-     * Getter del costo de la demostracion
-     * 
-     * @return - variable costoDemostracion
-     */
-    public double getCostoDemostracion() {
-        return this.costoDemostracion;
-    }
-    
-//nada porque no hay
-    public int getNumeroAsistentes() {
-        return 0;
-    }
-    /**
-     * Getter de la fecha en la que se disenio la demostracion
-     * 
-     * @return - variable fechaDisenio
-     */
-    public Fecha getFechaCreacion() {
-        return this.fechaCreacion;
-    }
-
-    /**
      * Metodo que inhabilita una demostracion
      */
     public void deshabilitarDemostracion() {

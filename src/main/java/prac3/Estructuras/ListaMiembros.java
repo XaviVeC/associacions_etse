@@ -113,7 +113,7 @@ public class ListaMiembros {
 
                         if (listaDeLosMiembros.listaMembres[j].getAlias().equals(aliasMiembro)) { // Lo he cambiado el
                                                                                                   // getAlias
-                            if (filtro.equals("Ambos")) {
+                            if (filtro.equalsIgnoreCase("Ambos")) {
                                 listaDeMiembrosDeXAsociacion.addMiembro(listaDeLosMiembros.listaMembres[j].copia());
                                 miembroDeTipoCorrectoEncontrado = true;
                             } else {
@@ -145,21 +145,21 @@ public class ListaMiembros {
      * Metodo que genera una sublista de miembros activos, aplicando un filtro si se
      * desea
      * 
-     * @param listaDeLosMiembros - Lista que contiene a todos los miembros
-     * @param filtro             - Filtro
+     * @param filtro - Filtro de tipo de tipo de miembro
+     * @param listaTodasAsociaciones - Lista que contiene a las asociaciones donde estan los miembros
      * @return - Sublista con los miembros
      */
-    public static ListaMiembros miembrosActivosAplicandoFiltro(ListaMiembros listaDeTodosLosMiembros, String filtro,
+    public ListaMiembros miembrosActivosAplicandoFiltro(String filtro,
             ListaAsociaciones listaTodasAsociaciones) {
-        ListaMiembros sublistaSegunFiltro = new ListaMiembros(listaDeTodosLosMiembros.getNumeroMembres());
+        ListaMiembros sublistaSegunFiltro = new ListaMiembros(this.nElem);
         String miembroAuxiliar;
         String[] miembrosDeLaAsociacion;
         boolean miembroActivoEncontrado = false;
         int indiceBusquedaAsociacion = 0, indiceMiembrosEnAsociacion = 0;
         Asociacion asociacionAuxiliar;
         Fecha[] fechasBajaMiembrosAsociacion;
-        for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i++) {
-            miembroAuxiliar = listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias();
+        for (int i = 0; i < this.nElem; i++) {
+            miembroAuxiliar = this.listaMembres[i].getAlias();
             while (!miembroActivoEncontrado
                     && (indiceBusquedaAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
                 asociacionAuxiliar = listaTodasAsociaciones.getElementoListaAsociacion(indiceBusquedaAsociacion);
@@ -169,11 +169,11 @@ public class ListaMiembros {
                     if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion]))
                             && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() == 9999)) {
                         miembroActivoEncontrado = true;
-                        if (filtro.equals("Ambos")) {
-                            sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
+                        if (filtro.equalsIgnoreCase("Ambos")) {
+                            sublistaSegunFiltro.addMiembro(this.listaMembres[i]);
                         } else {
-                            if (listaDeTodosLosMiembros.listaMembres[i].getTipoMiembro().equals(filtro)) {
-                                sublistaSegunFiltro.addMiembro(listaDeTodosLosMiembros.getMiembroEnXIndice(i));
+                            if (this.listaMembres[i].getTipoMiembro().equals(filtro)) {
+                                sublistaSegunFiltro.addMiembro(this.listaMembres[i]);
                             }
                         }
                     } else {
