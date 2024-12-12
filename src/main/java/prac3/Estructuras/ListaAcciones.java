@@ -230,6 +230,8 @@ public class ListaAcciones {
 
     /**
      * 
+     * @param numeroAsistentes
+     * @return
      */
     public ListaAcciones listaCharlasMasXAsistentes(int numeroAsistentes) {
         ListaAcciones listaCharlas = accionesSegunTipo("Charla");
@@ -248,7 +250,13 @@ public class ListaAcciones {
     }
 
 
-
+    /**
+     * 
+     * @param listaTodosMiembros
+     * @param listaTodasAcciones
+     * @param aliasMiembroQueComprobar
+     * @return
+     */
     public ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
         ListaAcciones listaCharlas = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
         ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaCharlas.getNumeroAcciones());
@@ -256,9 +264,8 @@ public class ListaAcciones {
         for (int i = 0; i < listaCharlas.getNumeroAcciones(); i++) {
             if (listaCharlas.getAccionEnXIndice(i).getOrganizadorResponsable().equals(aliasMiembroQueComprobar)) {
                 listaCharlasDefinitiva.addAccion(listaCharlas.getAccionEnXIndice(i).copia());
+            }
         }
-
         return listaCharlasDefinitiva;
-    } return null;
-}
+    }
 }

@@ -618,8 +618,12 @@ public class MainConsola {
                if(listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15) instanceof Charla){
                  Charla charla15 =  (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15);
                    // Calculamos la media 
-                mediaDeLasValoraciones = charla15.getSumaValoraciones() / charla15.getIndiceValoraciones();
                 numeroValoraciones = charla15.getIndiceValoraciones();
+
+                if (numeroValoraciones >0){
+                     mediaDeLasValoraciones = charla15.getSumaValoraciones() / numeroValoraciones;
+                }
+                
 
                 //Comprobamos cual es la mejor Charla 
                 if ((mediaDeLasValoraciones > mejorResultado15) || (mediaDeLasValoraciones == mejorResultado15) && (numeroValoraciones > maxNumeroValoraciones)){
@@ -631,14 +635,31 @@ public class MainConsola {
         }
         
         if (mejorCharla15 != null){
-            System.out.println("La xerrada millor valorada és: " + mejorCharla15.getNombreAccion());
-            System.out.println("Mitjana de valoracions: " + mejorResultado15);
-            System.out.println("Nombre de valoracions: " + maxNumeroValoraciones);
+            System.out.println("La Charla con mejor puntuación es: " + mejorCharla15.getNombreAccion());
+            System.out.println("El mejor resultado es: " + mejorResultado15);
+            System.out.println("El numeor total de valoraciones es: " + maxNumeroValoraciones);
         } else {
             System.out.println("No hi ha cap xerrada disponible.");
         }
-       
-
     }
+
+
+    public void opcion16(ListaAcciones listaDeTodasLasAcciones, ListaMiembros listaDeTodosLosMiembros, String nombreCharlaOp16){
+        ListaAcciones charla = listaCharlasDeXMiembro(listaDeTodosLosMiembros,listaDeTodasLasAcciones, nombreCharlaOp16);
+    }
+
+    public static void opcion17(ListaAcciones listaDeTodasLasAcciones){
+        System.out.println ("Se van a dar de baja a las Demostraciones que no esten activas y que diseñaron antes de la fecha que se introduce a continuación");
+        System.out.println("Limite de Fecha:");
+                    System.out.println("Dia Limite :");
+                    diaLim= Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("Mes Limite:");
+                    mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("Año Limite:");
+                    yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
+
+        fechaLimite = new Fecha(diaLim, mesLim, yearLim);
+    }
+
 
 } 
