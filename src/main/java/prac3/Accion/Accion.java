@@ -25,6 +25,7 @@ public abstract class Accion {
         this.tipoAccion = tipoAccion;
         this.asociacionesInvolucradas = asociacionesInvolucradas;
         this.organizadorResponsable = organizadorResponsable;
+        this.indiceFichero = indiceFichero;
         codigoAccion = generarCodigoAccion(asociacionesInvolucradas[0], indiceFichero);
     }
 

@@ -227,11 +227,9 @@ public class MainConsola {
                     System.out.println("\n\n");
                     System.out.println(listaDeTodosLosMiembros.toString());
                     break;
-                    /*
+                    
                 case 9:
                     int indiceFicheroOp9 = listaDeTodasLasAcciones.getNumeroAcciones() - 1;
-                    String tipoAccionOp9 = "Charla";
-
                     // NOMBRE DE LA CHARLA
                     System.out.println("¿Cual es el nombre de la charla que quieres añadir?");
                     String nombreCharlaOp9 = introducirPorTeclado.nextLine();
@@ -408,14 +406,12 @@ public class MainConsola {
                         charlaNueva = new Charla(indiceFicheroOp9, nombreCharlaOp9, asociacionesInvolOp9,
                                 organizadorRespOp9, fechaCharla, instructoresCharla, null,0, 0);
                     }
-
-                    }
-                    //listaDeTodasLasAcciones.addAccion(charlaNueva);
+                    listaDeTodasLasAcciones.addAccion(charlaNueva);
 
                     System.out.println(listaDeTodasLasAcciones.toString());
 
                     break;
-                    */
+                    
                 case 10:
                     String[] miembrosParaComprobar = { "pedrito", "saraaaalaaa", "salatMalecom" };
                     opcion10(listaDeTodosLosMiembros, miembrosParaComprobar);
@@ -690,4 +686,25 @@ public class MainConsola {
     }
 
 
+
 }
+
+
+
+
+
+/**
+ * TO DO LIST
+ * 1. En el toString de las asociaciones, indicar quien esta de baja o no
+ * 2. Si no hay valoraciones mostrar un mensaje en el toString que ponga no valorada (toString de Charlas)
+ * 3. En el caso de que no se hayan llenado todas las valoraciones indicar que aun se puede valorar.
+ * 4. Completar la opcion 7
+ * 5. Comprobar en la opcion 8
+ *      - añado alguien que esta -> Deja añadirlo pero luego no sale repetido en la asociacion
+ *      - añado a alguien y despues al mismo -> Deja añadirlo pero luego no sale repetido en la asociacion
+ *      - añado a alguien que no existe -> Se crea el miembro CORRECTO
+ *      - añado al mismo que antes
+ * 6. ARREGLAR, si la titulacion del nuevo miembro que añades es valida y no existe en la lista de titulaciones, no se añade esta titulacion a la lista pero el miembro si. SE DEBERIA AÑADIR
+ * 
+ * 
+ */
