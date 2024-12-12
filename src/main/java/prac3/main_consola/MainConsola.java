@@ -35,9 +35,7 @@ public class MainConsola {
         // -----------------------------------------------------------------
         int cantidadMaxima = 100;
         // Rutas de acceso de los ficheros
-        String[] direccionesAcciones = {
-                "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv",
-                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Acciones.csv" };
+        String[] direccionesAcciones = { "src/main/java/prac3/Fichero/Acciones.csv"};
         String[] direccionesMiembros = {
                 "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv",
                 "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv","/Users/carlaemo/Documents/Ingenieria Biomédica/AÑO 3 /PROGRAMACIÓN /PRÁCTICA 3 /asociaciones/associacions_etse/src/main/java/prac3/Fichero/Miembros.csv" };
@@ -636,4 +634,4 @@ public class MainConsola {
 
     }
 
-}
+} 
