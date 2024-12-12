@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.util.Scanner;
 
@@ -579,7 +579,7 @@ public class MainConsola {
                         Charla charla = null;
                          for(int indiceOp14 = 0 ; indiceOp14 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp14++){
                                 if(listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14) instanceof Charla){
-                                    Charla posibleCharla = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14);
+                                    Charla posibleCharla =  (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14);
                                     if (posibleCharla.getNombreAccion().equals(nombreCharla)){
                                         charla = posibleCharla;
                                     }
@@ -604,29 +604,40 @@ public class MainConsola {
 
     
     public static void opcion15(ListaAcciones listaTodasLasAcciones){
-        System.out.println("Introduce el nombre de la charla ");
-        String nombreCharla15 = introducirPorTeclado.nextLine();
-        double resultado15 = 0.0;
-        Charla charla15 = null;
+        
+        double mejorResultado15 = 0.0;
+   
+        Charla mejorCharla15 = null;
+        int maxNumeroValoraciones = 0;
+        double mediaDeLasValoraciones = 0.0;
+        int numeroValoraciones = 0;
 
+
+    
         for(int indiceOp15 = 0 ; indiceOp15 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp15++){
                if(listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15) instanceof Charla){
-                   Charla posibleCharla15 = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15);
-                   if (posibleCharla15.getNombreAccion().equals(nombreCharla15)){
-                       charla15 = posibleCharla15;
-                   }
-           }
-       }
+                 Charla charla15 =  (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15);
+                   // Calculamos la media 
+                mediaDeLasValoraciones = charla15.getSumaValoraciones() / charla15.getIndiceValoraciones();
+                numeroValoraciones = charla15.getIndiceValoraciones();
 
-       if (charla15 == null) {
-        System.out.println("No se ha encontrado ninguna charla con ese nombre.");
-        } else if (charla15.getIndiceValoraciones() == 0) {
-            System.out.println("No hay ninguna valoración.");
-        } else {
-            resultado15 = charla15.getSumaValoraciones() / charla15.getIndiceValoraciones();
-            System.out.println("La valoración media es: " + resultado15);
+                //Comprobamos cual es la mejor Charla 
+                if ((mediaDeLasValoraciones > mejorResultado15) || (mediaDeLasValoraciones == mejorResultado15) && (numeroValoraciones > maxNumeroValoraciones)){
+                    mejorResultado15 = mediaDeLasValoraciones;
+                    maxNumeroValoraciones = numeroValoraciones;
+                    mejorCharla15 = charla15;
+                }
+            }
         }
-
+        
+        if (mejorCharla15 != null){
+            System.out.println("La xerrada millor valorada és: " + mejorCharla15.getNombreAccion());
+            System.out.println("Mitjana de valoracions: " + mejorResultado15);
+            System.out.println("Nombre de valoracions: " + maxNumeroValoraciones);
+        } else {
+            System.out.println("No hi ha cap xerrada disponible.");
+        }
+       
 
     }
 
