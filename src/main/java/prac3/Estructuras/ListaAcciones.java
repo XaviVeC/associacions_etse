@@ -3,6 +3,7 @@ package prac3.Estructuras;
 import prac3.Accion.Accion;
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
+import prac3.Miembro.Miembro;
 
 public class ListaAcciones {
     private Accion[] listaAcciones; // lista de acciones
@@ -246,4 +247,9 @@ public class ListaAcciones {
         return charlasMasXAsistentes;
     }
 
+
+
+    public ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
+        ListaAcciones lista = new ListaAcciones(nElem);
+    }
 }
