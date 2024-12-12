@@ -250,6 +250,14 @@ public class ListaAcciones {
 
 
     public ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
-        ListaAcciones lista = new ListaAcciones(nElem);
+        ListaAcciones listaCharlas = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
+        ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaCharlas.getNumeroAcciones());
+        listaCharlas = listaTodasAcciones.accionesSegunTipo("Charla").copia();
+        for (int i = 0; i < listaCharlas.getNumeroAcciones(); i++) {
+            if (listaCharlas.getAccionEnXIndice(i).getOrganizadorResponsable().equals(aliasMiembroQueComprobar)) {
+                listaCharlasDefinitiva.addAccion(listaCharlas.getAccionEnXIndice(i).copia());
+        }
+
+        return listaCharlasDefinitiva;
     }
 }
