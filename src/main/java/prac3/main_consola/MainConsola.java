@@ -35,13 +35,9 @@ public class MainConsola {
         // -----------------------------------------------------------------
         int cantidadMaxima = 100;
         // Rutas de acceso de los ficheros
-        String[] direccionesAcciones = { "src/main/java/prac3/Fichero/Acciones.csv"};
-        String[] direccionesMiembros = {
-                "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv",
-                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Miembros.csv","/Users/carlaemo/Documents/Ingenieria Biomédica/AÑO 3 /PROGRAMACIÓN /PRÁCTICA 3 /asociaciones/associacions_etse/src/main/java/prac3/Fichero/Miembros.csv" };
-        String[] direccionesAsociaciones = {
-                "C:\\Users\\bllad\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv",
-                "C:\\Users\\Usuario\\OneDrive\\Escritorio\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv", "C:\\Users\\Asus\\Desktop\\TRABAJO PROGRA\\associacions_etse\\src\\main\\java\\prac3\\Fichero\\Asociaciones.csv","/Users/carlaemo/Documents/Ingenieria Biomédica/AÑO 3 /PROGRAMACIÓN /PRÁCTICA 3 /asociaciones/associacions_etse/src/main/java/prac3/Fichero/Asociaciones.csv"};
+        String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
+        String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
+        String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
         // Variables enteras varias
         int opcionMenu, cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         // Definicion de las distintas listas
@@ -55,9 +51,9 @@ public class MainConsola {
 
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
-        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones[0]);
-        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones[0]);
-        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros[0]);
+        cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones);
+        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones);
+        cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros);
         System.out.println("Hay un total de: " + cantidadMiembros + " miembros");
         System.out.println("Hay un total de: " + cantidadAsociaciones + " asociaciones");
         System.out.println("Hay un total de: " + cantidadAcciones + " acciones");
@@ -70,10 +66,10 @@ public class MainConsola {
 
        
 
-        LeerFichero.LeerFicheroAcciones(direccionesAcciones[0], listaDeTodasLasAcciones, cantidadAcciones);
-        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones[0], listaDeTodasLasAsociaciones,
+        LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
+        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones, listaDeTodasLasAsociaciones,
                 cantidadAsociaciones);
-        LeerFichero.LeerFicheroMiembros(direccionesMiembros[0], listaDeTodosLosMiembros, cantidadMiembros);
+        LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
