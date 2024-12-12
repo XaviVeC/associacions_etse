@@ -258,8 +258,8 @@ public class ListaAcciones {
      */
     public static ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
         ListaAcciones listaCharlas = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
-        ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaCharlas.getNumeroAcciones());
-        listaCharlas = listaTodasAcciones.accionesSegunTipo("Charla").copia();
+        ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
+        listaCharlas = listaTodasAcciones.accionesSegunTipo("Charla");
         for (int i = 0; i < listaCharlas.getNumeroAcciones(); i++) {
             if (listaCharlas.getAccionEnXIndice(i).getOrganizadorResponsable().equals(aliasMiembroQueComprobar)) {
                 listaCharlasDefinitiva.addAccion(listaCharlas.getAccionEnXIndice(i).copia());
