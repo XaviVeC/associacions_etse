@@ -17,12 +17,13 @@ import prac3.Miembro.Profesor;
 
 public class LeerFichero {
 
-
     /**
      * Metodo que lee los datos del fichero de acciones y lo guarda en una lista
-     * @param nombreFichero - Nombre del fichero que contiene los datos de las acciones
+     * 
+     * @param nombreFichero       - Nombre del fichero que contiene los datos de las
+     *                            acciones
      * @param nombreListaAcciones - Nombre de la lista donde guardamos las acciones
-     * @param cantidadDeAcciones - Cantidad de acciones a leer
+     * @param cantidadDeAcciones  - Cantidad de acciones a leer
      */
     public static void LeerFicheroAcciones(String nombreFichero, ListaAcciones nombreListaAcciones,
             int cantidadDeAcciones) {
@@ -42,7 +43,7 @@ public class LeerFichero {
                 camposAsociacionesInvolucradas = campos[3].split("-");
                 switch (campos[1]) {
                     case "Demostracion":
-                        Demostracion demostracion = new Demostracion(Integer.parseInt(campos[0]), campos[1], campos[2],
+                        Demostracion demostracion = new Demostracion(Integer.parseInt(campos[0]), campos[2],
                                 camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Integer.parseInt(campos[6]),
                                 Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8].trim()));
                         nombreListaAcciones.addAccion(demostracion);
@@ -54,9 +55,9 @@ public class LeerFichero {
                         for (int i = 0; i < valoracionesEnEntero.length; i++) {
                             valoracionesEnEntero[i] = Integer.parseInt(valoraciones[i]);
                         }
-                        Charla charla = new Charla(Integer.parseInt(campos[0]), campos[1], campos[2],
+                        Charla charla = new Charla(Integer.parseInt(campos[0]), campos[2],
                                 camposAsociacionesInvolucradas, campos[4], auxiliarFecha, intructoresCharla,
-                                Integer.parseInt(campos[8]));
+                                valoracionesEnEntero, Integer.parseInt(campos[8]), Integer.parseInt(campos[9].trim()));
                         nombreListaAcciones.addAccion(charla);
                         break;
                 }
@@ -95,13 +96,13 @@ public class LeerFichero {
                 switch (campo[1]) {
                     case "Alumne":
                         alumno = new Alumno(Integer.parseInt(campo[0]), campo[1], campo[2],
-                        Integer.parseInt(campo[4]), Boolean.parseBoolean(campo[5]), campo[6].trim());
+                                Integer.parseInt(campo[4]), Boolean.parseBoolean(campo[5]), campo[6].trim());
 
                         nombreListaMiembros.addMiembro(alumno);
                         break;
                     case "Professor":
                         profesor = new Profesor(Integer.parseInt(campo[0]), campo[1], campo[2],
-                        campo[4], Integer.parseInt(campo[5].trim()));
+                                campo[4], Integer.parseInt(campo[5].trim()));
 
                         nombreListaMiembros.addMiembro(profesor);
                         break;
@@ -132,10 +133,11 @@ public class LeerFichero {
         try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
 
             String informacionUnaAsociacion;
-            String[] campo, campoTitulaciones, campoIntegrantes, campoCargos, fechasAlta, fechasBaja, altaTemp, bajaTemp;
+            String[] campo, campoTitulaciones, campoIntegrantes, campoCargos, fechasAlta, fechasBaja, altaTemp,
+                    bajaTemp;
             int indiceLectura = 0;
             Asociacion asociacion;
-        
+
             Fecha[] alta, baja;
             do {
                 informacionUnaAsociacion = lectura.readLine();
@@ -147,23 +149,23 @@ public class LeerFichero {
                 fechasBaja = campo[5].split("/");
                 alta = new Fecha[fechasAlta.length];
                 baja = new Fecha[fechasBaja.length];
-                //llena la fechaAlta
-                //primero separarla
-                for(int i = 0; i < fechasAlta.length; i++){
+                // llena la fechaAlta
+                // primero separarla
+                for (int i = 0; i < fechasAlta.length; i++) {
                     altaTemp = fechasAlta[i].split("-");
-                    alta[i] = new Fecha(Integer.parseInt(altaTemp[0]),Integer.parseInt(altaTemp[1]),Integer.parseInt(altaTemp[2]));
+                    alta[i] = new Fecha(Integer.parseInt(altaTemp[0]), Integer.parseInt(altaTemp[1]),
+                            Integer.parseInt(altaTemp[2]));
                 }
 
-                //llena la fechaAlta
-                //primero separarla
-                for(int i = 0; i < fechasAlta.length; i++){
+                // llena la fechaAlta
+                // primero separarla
+                for (int i = 0; i < fechasAlta.length; i++) {
                     bajaTemp = fechasBaja[i].split("-");
-                    baja[i] = new Fecha(Integer.parseInt(bajaTemp[0]),Integer.parseInt(bajaTemp[1]),Integer.parseInt(bajaTemp[2]));
+                    baja[i] = new Fecha(Integer.parseInt(bajaTemp[0]), Integer.parseInt(bajaTemp[1]),
+                            Integer.parseInt(bajaTemp[2]));
                 }
 
-
-
-                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes,campoCargos, alta, baja);
+                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes, campoCargos, alta, baja);
                 listaARellenar.addAsociacion(asociacion);
                 indiceLectura++;
             } while (indiceLectura < cantidadAsociaciones);

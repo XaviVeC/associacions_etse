@@ -148,7 +148,7 @@ public class ListaAcciones {
      * @return - Lista de charlas dentro del rango de fechas
      */
     public ListaAcciones sublistaCharlasEnRangoFechas(Fecha limiteInferior, Fecha limiteSuperior) {
-        ListaAcciones sublistaCharlas = accionesSegunTipo("Charla");
+        ListaAcciones sublistaCharlas = this.accionesSegunTipo("Charla");
         ListaAcciones sublistaCharlasSegunRango = new ListaAcciones(sublistaCharlas.nElem);
         for (int i = 0; i < sublistaCharlas.nElem; i++) {
             if (sublistaCharlas.listaAcciones[i].getFecha().compararFechas(limiteInferior) > 0
@@ -286,5 +286,21 @@ public class ListaAcciones {
             }
         }
         return siEsta;
+    }
+
+    /**
+     * Método para eliminar una Accion que sea anterior a la fecha 
+     */
+
+    public void eliminarAccionPorFecha (Fecha fecha){
+        for (int i = 0; i < nElem ; i++){
+            if (listaAcciones[i].getFecha().equals(fecha)){
+                for (int j = i ; j < nElem ; j++){
+                    listaAcciones[j] = listaAcciones[j+1];
+                }
+                listaAcciones[nElem -1 ] = null;
+                nElem --;
+            }
+        }
     }
 }

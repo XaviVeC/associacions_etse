@@ -12,43 +12,40 @@ public class Charla extends Accion {
     private int indiceValoraciones;
 
     /**
-     * Constructor de la classe Charla para una charla que ya se ha dado
+     * Constructor para las charlas que ya estan valoradas
      * 
-     * @param indiceFichero
-     * @param tipoAccion
-     * @param nombreAccion
-     * @param asociacionesInvolucradas
-     * @param organizadorResponsable
-     * @param fechaRealizacion
-     * @param instructoresCharla
-     * @param numeroDeAsistentes
+     * @param indiceFichero            - Indice que se lee en el ficher
+     * @param nombreAccion             - Nombre de la charla
+     * @param asociacionesInvolucradas - Asociaciones organizadoras
+     * @param organizadorResponsable   - Organizadores de la charla
+     * @param fechaRealizacion         - Fechas en la que se ha hecho la charla
+     * @param instructoresCharla       - Instructores que impartieron la charla
+     * @param numeroDeAsistentes       - Numero de asistentes
+     * @param valoraciones             - Lista de las valoraciones
+     * @param numeroValoraciones       - Numero de valorciones (max. una por
+     *                                 asistente)
      */
-    public Charla(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas,
+    public Charla(int indiceFichero, String nombreAccion, String[] asociacionesInvolucradas,
             String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla,
-            int numeroDeAsistentes) {
-        super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
+            int[] valoraciones, int numeroDeAsistentes, int numeroValoraciones) {
+        super(indiceFichero, "Charla", nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
+        
         if (numeroDeAsistentes < 0) {
             this.numeroDeAsistentes = -999;
         } else {
             this.numeroDeAsistentes = numeroDeAsistentes;
         }
+
         this.valoraciones = new int[numeroDeAsistentes];
-        indiceValoraciones = 0;
-    }
 
+        if (numeroValoraciones != 0) {
+            for (int i = 0; i < numeroValoraciones; i++) {
+                this.valoraciones[i] = valoraciones[i];
+            }
+        }
 
-
-
-    public Charla(int indiceFichero, String tipoAccion, String nombreAccion, String[] asocInvol, 
-                  String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla) {
-        super(indiceFichero, tipoAccion, nombreAccion, asocInvol, organizadorResponsable);
-        this.fechaRealizacion = fechaRealizacion;
-        this.instructoresCharla = instructoresCharla;
-        this.numeroDeAsistentes = 0;
-        this.valoraciones = new int[numeroDeAsistentes];
-        indiceValoraciones = 0;
     }
 
     /**
@@ -83,20 +80,19 @@ public class Charla extends Accion {
     }
 
     /**
-     * @return 
+     * @return
      */
-    public int getIndiceValoraciones (){
+    public int getIndiceValoraciones() {
         return indiceValoraciones;
     }
 
     /**
-     * @return 
+     * @return
      */
-    public int getSumaValoraciones(){
+    public int getSumaValoraciones() {
         return sumaValoraciones;
 
     }
-
 
     /**
      * Metodo toString
@@ -117,11 +113,16 @@ public class Charla extends Accion {
             aux = aux + "\t\t\t\tAsociacion involucrada " + (index + 1) + ": " + this.asociacionesInvolucradas[index]
                     + "\n";
         }
+        
+        if (this.numeroDeAsistentes != 0) {
+            aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes
+                    + " personas.\n";
+        }
 
-        aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes
-                + " personas.\n\t\t\tLas valoraciones fueron\n";
-        if (this.valoraciones != null) {
-            for (int index = 0; index < valoraciones.length; index++) {
+        if (this.indiceValoraciones != 0) {
+            aux = aux + "\t\t\tLas valoraciones fueron\n";
+                                
+            for (int index = 0; index < indiceValoraciones; index++) {
                 aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
             }
         }
@@ -134,23 +135,22 @@ public class Charla extends Accion {
      * @return - copia de la instancia
      */
     public Charla copia() {
-        return (new Charla(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas,
+        return (new Charla(this.indiceFichero, this.nombreAccion, this.asociacionesInvolucradas,
                 this.organizadorResponsable,
-                this.fechaRealizacion, this.instructoresCharla, this.numeroDeAsistentes));
+                this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes,
+                this.indiceValoraciones));
     }
 
     /**
-     * Método para hacer una valoracion de la charla 
+     * Método para hacer una valoracion de la charla
      * 
      */
-    public void hacerValoracion(int valoracion){
-        if(this.indiceValoraciones < this.numeroDeAsistentes)
-        {
+    public void hacerValoracion(int valoracion) {
+        if (this.indiceValoraciones < this.numeroDeAsistentes) {
             valoraciones[this.indiceValoraciones] = valoracion;
             this.sumaValoraciones += valoracion;
             this.indiceValoraciones++;
         }
     }
-   
-    
+
 }

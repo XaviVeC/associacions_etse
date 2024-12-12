@@ -23,24 +23,17 @@ public class Demostracion extends Accion {
      * @param estadoDemostracion       - demostracion activa o no activa
      * @param vecesOfrecida            - Cuantas veces se ofrecio la demostracion
      */
-    public Demostracion(int indiceFichero, String tipoAccion, String nombreAccion, String[] asociacionesInvolucradas,
+    public Demostracion(int indiceFichero, String nombreAccion, String[] asociacionesInvolucradas,
             String organizadorResponsable,
             Fecha fechaCreacion, double costoDemostracion, boolean estadoDemostracion, int vecesOfrecida) {
         // Atributos de la superclase
-        super(indiceFichero, tipoAccion, nombreAccion, asociacionesInvolucradas, organizadorResponsable);
+        super(indiceFichero, "Demostracion", nombreAccion, asociacionesInvolucradas, organizadorResponsable);
 
         // Atributos de esta subclase
         this.demostracionValida = estadoDemostracion; // Cuando se crea una demostracion, se considera que se empieza a
                                                       // ofrecer en este instante
         this.contadorVecesOfrecida = vecesOfrecida; // Todavia no se ha ofrecido, ya que se acaba de crear
-        this.fechaCreacion = new Fecha(fechaCreacion.getDia(), fechaCreacion.getMes(), fechaCreacion.getyear()); // Hay
-                                                                                                                // que
-                                                                                                                // crear
-                                                                                                                // una
-                                                                                                                // nueva
-                                                                                                                // clase
-                                                                                                                // Data
-
+        this.fechaCreacion = new Fecha(fechaCreacion.getDia(), fechaCreacion.getMes(), fechaCreacion.getyear()); 
         if (this.costoDemostracion < 0) {
             this.costoDemostracion = -999; // Si el costo introducido es negativo, se asigna un costo que indica error
         } else {
@@ -74,6 +67,7 @@ public class Demostracion extends Accion {
     public double getCoste() {
         return this.costoDemostracion;
     }
+
     /**
      * Getter de la fecha de creacion
      */
@@ -136,11 +130,9 @@ public class Demostracion extends Accion {
      * @return - copia de la instancia
      */
     public Demostracion copia() {
-        return (new Demostracion(this.indiceFichero, this.tipoAccion, this.nombreAccion, this.asociacionesInvolucradas,
+        return (new Demostracion(this.indiceFichero, this.nombreAccion, this.asociacionesInvolucradas,
                 this.organizadorResponsable,
                 this.fechaCreacion, this.costoDemostracion, this.demostracionValida, this.contadorVecesOfrecida));
     }
-
-
 
 }
