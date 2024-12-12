@@ -45,7 +45,7 @@ public class Charla extends Accion {
                 this.valoraciones[i] = valoraciones[i];
             }
         }
-
+        indiceValoraciones = numeroValoraciones;
     }
 
     /**
