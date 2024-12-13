@@ -4,40 +4,33 @@ import prac3.Estructuras.Fecha;
 
 public class Charla extends Accion {
     private final int MAXIMO_INSTRUCTORES = 3; // Limite maximo de las personas que imparten la charla
-    private Fecha fechaRealizacion; // Fecha en la que se imparte la charla
-    private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES]; // Instructores de la charla
+    private Fecha fechaRealizacion; 
+    private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES]; 
     private int[] valoraciones; // Vector de valoraciones de la charla
-    private int numeroDeAsistentes; // Numero de personas que asistieron a la charla
-    private int sumaValoraciones;
-    private int indiceValoraciones;
+    private int numeroDeAsistentes;
+    private int sumaValoraciones; // Suma de las valoraciones realizadas
+    private int indiceValoraciones; // Indice de las valoraciones realizadas para guardar el tamaño del vector
 
     /**
      * Constructor para las charlas que ya estan valoradas
-     * 
-     * @param indiceFichero            - Indice que se lee en el ficher
-     * @param nombreAccion             - Nombre de la charla
+     * @param indiceFichero - Indice que se lee en el ficher
+     * @param nombreAccion - Nombre de la charla
      * @param asociacionesInvolucradas - Asociaciones organizadoras
-     * @param organizadorResponsable   - Organizadores de la charla
-     * @param fechaRealizacion         - Fechas en la que se ha hecho la charla
-     * @param instructoresCharla       - Instructores que impartieron la charla
-     * @param numeroDeAsistentes       - Numero de asistentes
-     * @param valoraciones             - Lista de las valoraciones
-     * @param numeroValoraciones       - Numero de valorciones (max. una por
-     *                                 asistente)
+     * @param organizadorResponsable - Organizadores de la charla
+     * @param fechaRealizacion - Fechas en la que se ha hecho la charla
+     * @param instructoresCharla - Instructores que impartieron la charla
+     * @param numeroDeAsistentes - Numero de asistentes
+     * @param valoraciones - Lista de las valoraciones
+     * @param numeroValoraciones - Numero de valorciones (max. una por asistente)
      */
     public Charla(int indiceFichero, String nombreAccion, String[] asociacionesInvolucradas,
-            String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla,
-            int[] valoraciones, int numeroDeAsistentes, int numeroValoraciones) {
+                  String organizadorResponsable, Fecha fechaRealizacion, String[] instructoresCharla,
+                  int[] valoraciones, int numeroDeAsistentes, int numeroValoraciones) {
+        
         super(indiceFichero, "Charla", nombreAccion, asociacionesInvolucradas, organizadorResponsable);
         this.fechaRealizacion = fechaRealizacion;
         this.instructoresCharla = instructoresCharla;
-        
-        if (numeroDeAsistentes < 0) {
-            this.numeroDeAsistentes = -999;
-        } else {
-            this.numeroDeAsistentes = numeroDeAsistentes;
-        }
-
+        this.numeroDeAsistentes = numeroDeAsistentes;
         this.valoraciones = new int[numeroDeAsistentes];
 
         if (numeroValoraciones != 0) {
@@ -45,12 +38,13 @@ public class Charla extends Accion {
                 this.valoraciones[i] = valoraciones[i];
             }
         }
+
         indiceValoraciones = numeroValoraciones;
     }
 
     /**
-     * 
-     * @return
+     * Getter de los instructores de la charla
+     * @return - tabla de String con los alias de los instructores de la charla
      */
     public String[] getInstructoresCharla() {
         return instructoresCharla;
@@ -58,65 +52,67 @@ public class Charla extends Accion {
 
     /**
      * Getter de la fecha en la que se hace la charla
+     * @return - variable fechaRealizacion
      */
     public Fecha getFecha() {
-        return this.fechaRealizacion;
+        return fechaRealizacion;
     }
 
     /**
-     * 
-     * @return
+     * Getter de las valoraciones de la charla
+     * @return - tabla de enteros con las valoraciones que se le han puesto a la charla
      */
     public int[] getValoraciones() {
         return valoraciones;
     }
 
     /**
-     * 
-     * @return
+     * Getter del numero de asistentes de la charla
+     * @return - variable numeroDeAsistentes
      */
     public int getNumeroAsistentes() {
         return numeroDeAsistentes;
     }
 
     /**
-     * @return
+     * Getter del indice de las valoraciones realizadas
+     * @return - variable indiceValoraciones
      */
     public int getIndiceValoraciones() {
         return indiceValoraciones;
     }
 
     /**
-     * @return
+     * Getter de la suma de las valoraciones realizadas
+     * @return - variable sumaValoraciones
      */
     public int getSumaValoraciones() {
         return sumaValoraciones;
-
     }
 
     /**
      * Metodo toString
-     * 
      * @return - Texto con los datos de la charla
      */
     public String toString() {
         String aux = "\t\t\tNombre de la charla: " + this.nombreAccion + "\n" +
-                "\t\t\tCodigo de la charla: " + this.codigoAccion + "\n" +
-                "\t\t\tFecha de la charla: " + this.fechaRealizacion.toString() + "\n" +
-                "\t\t\tOrganizador responsable: " + this.organizadorResponsable + "\n" +
-                "\t\t\tLos instructores de la charla son:\n";
+                     "\t\t\tCodigo de la charla: " + this.codigoAccion + "\n" +
+                     "\t\t\tFecha de la charla: " + this.fechaRealizacion.toString() + "\n" +
+                     "\t\t\tOrganizador responsable: " + this.organizadorResponsable + "\n" +
+                     "\t\t\tLos instructores de la charla son:\n";
+        
         for (int index = 0; index < instructoresCharla.length; index++) {
             aux = aux + "\t\t\t\tInstructor " + (index + 1) + ": " + instructoresCharla[index] + "\n";
         }
+        
         aux = aux + "\t\t\tLas asociaciones que organizaron la charla fueron:\n";
+        
         for (int index = 0; index < asociacionesInvolucradas.length; index++) {
-            aux = aux + "\t\t\t\tAsociacion involucrada " + (index + 1) + ": " + this.asociacionesInvolucradas[index]
-                    + "\n";
+            aux = aux + "\t\t\t\tAsociacion involucrada " + (index + 1) + ": " + this.asociacionesInvolucradas[index] + "\n";
         }
         
         if (this.numeroDeAsistentes != 0) {
-            aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes
-                    + " personas.\n";
+            aux = aux + "\t\t\tAsistieron un total de " + this.numeroDeAsistentes + " personas.\n";
         }
 
         if (this.indiceValoraciones != 0) {
@@ -126,37 +122,35 @@ public class Charla extends Accion {
                 aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
             }
         }
-        else{
+        else {
             aux = aux + "\t\t\tLa charla no ha sido valorada\n";
         }
+        
         if (this.indiceValoraciones < this.numeroDeAsistentes) {
             aux = aux + "\t\t\tPuedes valorar la charla (para valorar introduce un 14).\n";
         }
+        
         return aux;
     }
 
     /**
      * Metodo copia
-     * 
      * @return - copia de la instancia
      */
     public Charla copia() {
         return (new Charla(this.indiceFichero, this.nombreAccion, this.asociacionesInvolucradas,
-                this.organizadorResponsable,
-                this.fechaRealizacion, this.instructoresCharla, this.valoraciones, this.numeroDeAsistentes,
-                this.indiceValoraciones));
+                this.organizadorResponsable, this.fechaRealizacion, this.instructoresCharla, 
+                this.valoraciones, this.numeroDeAsistentes, this.indiceValoraciones));
     }
 
     /**
-     * Método para hacer una valoracion de la charla
-     * 
+     * Metodo para hacer una valoracion de la charla
      */
     public void hacerValoracion(int valoracion) {
         if (this.indiceValoraciones < this.numeroDeAsistentes) {
             valoraciones[this.indiceValoraciones] = valoracion;
-            this.sumaValoraciones += valoracion;
-            this.indiceValoraciones++;
+            this.sumaValoraciones += valoracion; // Se suma la valoracion realizada al total de valoraciones
+            this.indiceValoraciones++; // Se incrementa el indice de valoraciones realizadas
         }
     }
-
 }
