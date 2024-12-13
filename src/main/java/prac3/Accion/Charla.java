@@ -129,6 +129,9 @@ public class Charla extends Accion {
         else{
             aux = aux + "\t\t\tLa charla no ha sido valorada\n";
         }
+        if (this.indiceValoraciones < this.numeroDeAsistentes) {
+            aux = aux + "\t\t\tPuedes valorar la charla (para valorar introduce un 14).\n";
+        }
         return aux;
     }
 
