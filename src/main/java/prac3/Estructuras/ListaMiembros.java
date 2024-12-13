@@ -325,7 +325,7 @@ public class ListaMiembros {
         while (!(siEstaEnMasDeTres) && (indiceAsociacion < listaTodasAsociaciones.getIndiceAsociaciones())) {
             indiceMiembroDeUnaAsoc = 0;
             while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                    .getListaMiembrosAsociacion().length) && (vecesQueEsta > 2)) {
+                    .getListaMiembrosAsociacion().length) && (vecesQueEsta < 3)) {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
                         .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)) {
                     vecesQueEsta++;
@@ -365,35 +365,36 @@ public class ListaMiembros {
                         listaTitulacionesConRepeticiones[index] = instanciaAlumno.getSiglasCarrera();
                         hecho = true;
                     }
+                    else{
+                        indiceMiembrosTotales++;
+                    }
                 } else {
                     indiceMiembrosTotales++;
                 }
             }
         }
-        int titSinRepeticion = 1;
-        int indiceFinal;
-        boolean igual = false;
-        for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
-            indiceFinal = indicetitComprobando - 1;
-            while ((!(igual)) && (indiceFinal >= 0)) {
-                if (listaTitulacionesConRepeticiones[indicetitComprobando]
-                        .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
-                    igual = true;
-                } else {
-                    indiceFinal--;
+        // desplazo los titulos para que no haya null de por medio ni en el primero
+        for (int i = 0; i < listaTitulacionesConRepeticiones.length; i++){
+            if (listaTitulacionesConRepeticiones[i] == null) {
+                while (listaTitulacionesConRepeticiones[i] == null) {
+                    for (int j = i+1; j < listaTitulacionesConRepeticiones.length; j++){
+                        listaTitulacionesConRepeticiones[j-1] = listaTitulacionesConRepeticiones[j];
+                    }
                 }
             }
-            if (!(igual)) {
-                titSinRepeticion++;
-            }
         }
-        String[] listaTitulosDefinitiva = new String[titSinRepeticion + 1];
+
+
+        int titSinRepeticion = 1;
+        int indiceFinal;
+        boolean igual;
+        String[] listaTitulosDefinitiva = new String[titSinRepeticion];
         listaTitulosDefinitiva[0] = listaTitulacionesConRepeticiones[0];
         for (int index = 1; index < titSinRepeticion + 1; index++) {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
                 igual = false;
-                while ((!(igual)) && (indiceFinal >= 0)) {
+                while ((!(igual)) && (indiceFinal >= 0) && (listaTitulacionesConRepeticiones[indicetitComprobando] != null)) {
                     if (listaTitulacionesConRepeticiones[indicetitComprobando]
                             .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
                         igual = true;

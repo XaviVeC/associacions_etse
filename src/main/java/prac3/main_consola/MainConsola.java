@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
+import prac3.Asociacion.Asociacion;
 import prac3.Estructuras.ExcepcionesPropias;
 import prac3.Estructuras.Fecha;
 import prac3.Estructuras.ListaAcciones;
@@ -30,6 +31,10 @@ public class MainConsola {
         String nombreAsociacionOp7;
         int cantidadMiembrosOp7;
         String nombreMiembroOp7;
+        String[] stringTitulacionesOp7;
+        Fecha[] vectorFechasAltaOp7;
+        Fecha[] vectorFechaBajaOp7;
+        String[] aliasPersonasCargosOp7;
         // opcion 8
 
         // Opcion 16
@@ -160,22 +165,55 @@ public class MainConsola {
                     } while (cantidadMiembrosOp7 < 3 || cantidadMiembrosOp7 > 20);
                     int indice = 0;
                     String[] miembrosAsociacion = new String[cantidadMiembrosOp7];
+
                     do {
                         System.out.println("Introduce el alias del miembro " + (indice + 1) + " :");
 
                         do {
                             nombreMiembroOp7 = introducirPorTeclado.nextLine();
+
                             if (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1) {
-                                System.out.println("Este miembro no existe, introduce alguno que si lo haga.");
+                                // FALTA CREAR NUEVO MIEMBRO
+                                System.out.println("Este miembro no existe, introduce alguno que sí lo haga.");
                             }
-                        } while (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1);
+                            else{
+                                if (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(listaDeTodasLasAsociaciones, nombreMiembroOp7)) {
+                                    // COMPRUEBO QUE EL MIEMBRO ESTA EN 3 ASOCIACIONES O NO
+                                    System.out.println("esto miembro ya esta en tres asociaciones, no puede estar en mas, introduce alguno que si que pueda.");    
+                                }
+                            }
+                        } while (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1 || (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(listaDeTodasLasAsociaciones, nombreMiembroOp7)));
+
+                        // Asignar el miembro válido al arreglo
                         miembrosAsociacion[indice] = nombreMiembroOp7;
+                        indice++;
                     } while (indice < cantidadMiembrosOp7);
-                    // A PARTIR DE LA LISTA DE MIEMBROS SACAMOS LA LISTA DE TITULACIONES QUE CURSAN
-                    // (no puede haber repeticion en la lista)
-
-                    // QUEDA AÑADIR LOS TITULOS QUE HAY EN LA ASOCIACION
-
+                    //Titulos
+                    stringTitulacionesOp7 = ListaMiembros.titulacionesEnBaseAListaMiembros(listaDeTodosLosMiembros, miembrosAsociacion);
+                    //Fechas
+                    System.out.println("¿Que número de día es hoy?");
+                    int diaOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que número de mes estamos?");
+                    int mesOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    System.out.println("¿En que año estamos?");
+                    int yearOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
+                    Fecha fechaAltaOp7 = new Fecha(diaOp7, mesOp7, yearOp7); // Fecha alta es hoy
+                    Fecha fechaBajaOp7 = new Fecha(99, 99, 9999); // De momento no se ha dado de baja nadie
+                    //string de fechas
+                    vectorFechasAltaOp7 = new Fecha[miembrosAsociacion.length];
+                    vectorFechaBajaOp7 = new Fecha[miembrosAsociacion.length];
+                    for (int i = 0; i < miembrosAsociacion.length; i++) {
+                        vectorFechasAltaOp7[i] = fechaAltaOp7.copia();      // Vector de fechas Alta
+                        vectorFechaBajaOp7[i] = fechaBajaOp7.copia();       // Vector de fechas Baja
+                    }
+                    // Personas en los cargos
+                    aliasPersonasCargosOp7 = new String[3];
+                    for (int i = 0; i < 3; i++) {
+                        aliasPersonasCargosOp7[i] = miembrosAsociacion[i];  // Vector de alias de los cargos altos
+                    } 
+                    Asociacion asociacionNueva = new Asociacion(nombreAsociacionOp7, stringTitulacionesOp7, miembrosAsociacion, aliasPersonasCargosOp7, vectorFechasAltaOp7, vectorFechaBajaOp7);
+                    listaDeTodasLasAsociaciones.addAsociacion(asociacionNueva);
+                    System.out.println(listaDeTodasLasAsociaciones.toString());
                     break;
                 case 8:
                     System.out.println("Para dar de alta a un miembro en una asociación.");
