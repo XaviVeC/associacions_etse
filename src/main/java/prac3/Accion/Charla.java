@@ -126,6 +126,9 @@ public class Charla extends Accion {
                 aux = aux + "\t\t\t\tValoracion " + (index + 1) + ": " + valoraciones[index] + "\n";
             }
         }
+        else{
+            aux = aux + "\t\t\tLa charla no ha sido valorada\n";
+        }
         return aux;
     }
 
