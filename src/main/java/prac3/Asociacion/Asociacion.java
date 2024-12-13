@@ -123,7 +123,13 @@ public class Asociacion {
         }
         aux = aux + "\t\t\tLos miembros son:\n";
         for (int i = 0; i < listaMiembrosAsociacion.length; i++) {
-            aux = aux + "\t\t\t\tMiembro " + (i + 1) + ": " + listaMiembrosAsociacion[i] + " con fecha de alta de " + fechasAlta[i].toString() + "\n";
+            aux = aux + "\t\t\t\tMiembro " + (i + 1) + ": " + listaMiembrosAsociacion[i] + " con fecha de alta de " + fechasAlta[i].toString();
+            if (fechasBaja[i].getDia() != 99) {
+                aux = aux + " se dio de baja el " + fechasBaja[i].toString() + "\n";
+            }
+            else{
+                aux = aux + "\n";
+            }
         }
         aux = aux + "\t\t\tLos cargos son:\n\t\t\t\tPresidente --> " + personasEnCargos[0] + "\n\t\t\t\tSecretario --> "
                 + personasEnCargos[1] + "\n\t\t\t\tTesorero --> " + personasEnCargos[2] + "\n";
