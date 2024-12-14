@@ -53,7 +53,6 @@ public class ListaAsociaciones {
         return this.listaAsociaciones;
     }
 
-
     /**
      * toString de la list de asociaciones
      * 
@@ -67,15 +66,18 @@ public class ListaAsociaciones {
         return aux;
     }
 
-     
     /**
-     * Metodo que modifica la listaDeMiembros que componen una asociacion, de la posicion de la lista asociaciones que corresponda
-     * @param alias - nuevo alias a añadir
-     * @param nombreAsociacion - la nombre asociacion a la que se le modifica la lista de miembros
+     * Metodo que modifica la listaDeMiembros que componen una asociacion, de la
+     * posicion de la lista asociaciones que corresponda
+     * 
+     * @param alias                  - nuevo alias a añadir
+     * @param nombreAsociacion       - la nombre asociacion a la que se le modifica
+     *                               la lista de miembros
      * @param listaTodasAsociaciones - lista que contiene las asociaciones
      */
-    public void addMiembroEnAsociacionExistente(String alias, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones, 
-                                                Fecha fechaAlta) {
+    public void addMiembroEnAsociacionExistente(String alias, String nombreAsociacion,
+            ListaAsociaciones listaTodasAsociaciones,
+            Fecha fechaAlta) {
         boolean encontrado = false;
         int i = 0;
         Asociacion auxiliar;
@@ -84,40 +86,42 @@ public class ListaAsociaciones {
         while ((!encontrado) && (i < listaTodasAsociaciones.getIndiceAsociaciones())) {
             if (listaTodasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion().equals(nombreAsociacion)) {
                 auxiliar = listaTodasAsociaciones.getElementoListaAsociacion(i);
-                auxiliar.addMiembroEnAsociacion(alias, fechaAlta, fechaBaja); // Miembro añadido en la asociacion que toca
+                auxiliar.addMiembroEnAsociacion(alias, fechaAlta, fechaBaja); // Miembro añadido en la asociacion que
+                                                                              // toca
                 encontrado = true;
-            }
-            else
-            {
+            } else {
                 i++;
             }
         }
     }
 
-
     /**
-     * Metodo que comprueba si existe una asociacion con el mismo nombre que el que pasa por parametro
-     * @param nombreAsociacion - variable con el nombre de la asociacion a comprobar
-     * @param listaTodasAsociaciones - variable que lleva la lista de todas las asociaciones
-     * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna igual
+     * Metodo que comprueba si existe una asociacion con el mismo nombre que el que
+     * pasa por parametro
+     * 
+     * @param nombreAsociacion       - variable con el nombre de la asociacion a
+     *                               comprobar
+     * @param listaTodasAsociaciones - variable que lleva la lista de todas las
+     *                               asociaciones
+     * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna
+     *         igual
      */
-    public boolean existeAsociacionMismoNombre (String nombreAsociacion){
+    public boolean existeAsociacionMismoNombre(String nombreAsociacion) {
         boolean siExiste = false;
         int indiceAsociaciones = 0;
 
         while (indiceAsociaciones < this.nElem && !siExiste) {
-            if (this.listaAsociaciones[indiceAsociaciones].getNombreAsociacion().equals(nombreAsociacion)){
+            if (this.listaAsociaciones[indiceAsociaciones].getNombreAsociacion().equals(nombreAsociacion)) {
                 siExiste = true;
-            }
-            else{
+            } else {
                 indiceAsociaciones++;
             }
         }
         return siExiste;
     }
-    
-    //Metodo que comprueba si el miembro a comprobar esta en la asociacion
-    public boolean estaElMiembroEnLaAsociacion (String alias, Asociacion asociacion){
+
+    // Metodo que comprueba si el miembro a comprobar esta en la asociacion
+    public boolean estaElMiembroEnLaAsociacion(String alias, Asociacion asociacion) {
         boolean siEsta = false;
         for (int index = 0; index < asociacion.getListaMiembrosAsociacion().length; index++) {
             if (asociacion.getListaMiembrosAsociacion()[index].equals(alias)) {
@@ -127,10 +131,4 @@ public class ListaAsociaciones {
         return siEsta;
     }
 
-
-
 }
-
-    
-
-    

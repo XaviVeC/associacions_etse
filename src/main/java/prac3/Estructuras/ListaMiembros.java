@@ -145,8 +145,9 @@ public class ListaMiembros {
      * Metodo que genera una sublista de miembros activos, aplicando un filtro si se
      * desea
      * 
-     * @param filtro - Filtro de tipo de tipo de miembro
-     * @param listaTodasAsociaciones - Lista que contiene a las asociaciones donde estan los miembros
+     * @param filtro                 - Filtro de tipo de tipo de miembro
+     * @param listaTodasAsociaciones - Lista que contiene a las asociaciones donde
+     *                               estan los miembros
      * @return - Sublista con los miembros
      */
     public ListaMiembros miembrosActivosAplicandoFiltro(String filtro,
@@ -364,8 +365,7 @@ public class ListaMiembros {
                         instanciaAlumno = (Alumno) listaTodosMiembros.listaMembres[indiceMiembrosTotales];
                         listaTitulacionesConRepeticiones[index] = instanciaAlumno.getSiglasCarrera();
                         hecho = true;
-                    }
-                    else{
+                    } else {
                         indiceMiembrosTotales++;
                     }
                 } else {
@@ -374,16 +374,15 @@ public class ListaMiembros {
             }
         }
         // desplazo los titulos para que no haya null de por medio ni en el primero
-        for (int i = 0; i < listaTitulacionesConRepeticiones.length; i++){
+        for (int i = 0; i < listaTitulacionesConRepeticiones.length; i++) {
             if (listaTitulacionesConRepeticiones[i] == null) {
                 while (listaTitulacionesConRepeticiones[i] == null) {
-                    for (int j = i+1; j < listaTitulacionesConRepeticiones.length; j++){
-                        listaTitulacionesConRepeticiones[j-1] = listaTitulacionesConRepeticiones[j];
+                    for (int j = i + 1; j < listaTitulacionesConRepeticiones.length; j++) {
+                        listaTitulacionesConRepeticiones[j - 1] = listaTitulacionesConRepeticiones[j];
                     }
                 }
             }
         }
-
 
         int titSinRepeticion = 1;
         int indiceFinal;
@@ -394,7 +393,8 @@ public class ListaMiembros {
             for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
                 indiceFinal = indicetitComprobando - 1;
                 igual = false;
-                while ((!(igual)) && (indiceFinal >= 0) && (listaTitulacionesConRepeticiones[indicetitComprobando] != null)) {
+                while ((!(igual)) && (indiceFinal >= 0)
+                        && (listaTitulacionesConRepeticiones[indicetitComprobando] != null)) {
                     if (listaTitulacionesConRepeticiones[indicetitComprobando]
                             .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
                         igual = true;

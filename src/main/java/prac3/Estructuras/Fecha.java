@@ -8,7 +8,9 @@ public class Fecha {
     /**
      * Metodo constructor de la clase Data
      * Se ha comprobado que los datos introducidos por parametro tengan sentido
-     * Para reflejar ese error lo que se ha hecho ha sido poner la fecha con todo 9 para que asi se vea
+     * Para reflejar ese error lo que se ha hecho ha sido poner la fecha con todo 9
+     * para que asi se vea
+     * 
      * @param dia  - variable que tiene el dia
      * @param mes  - variable que contiene el mes
      * @param year - variable que contiene el year
@@ -27,6 +29,7 @@ public class Fecha {
 
     /**
      * Getter de la variable dia
+     * 
      * @return - variable dia
      */
     public int getDia() {
@@ -35,6 +38,7 @@ public class Fecha {
 
     /**
      * Getter de la variable mes
+     * 
      * @return - variable mes
      */
     public int getMes() {
@@ -43,6 +47,7 @@ public class Fecha {
 
     /**
      * Getter de la variable year
+     * 
      * @return - variable year
      */
     public int getyear() {
@@ -51,6 +56,7 @@ public class Fecha {
 
     /**
      * Setter de la variable dia
+     * 
      * @param dia - variable dia
      */
     public void setDia(int dia) {
@@ -61,6 +67,7 @@ public class Fecha {
 
     /**
      * Setter de la variable mes
+     * 
      * @param mes - variable mes
      */
     public void setMes(int mes) {
@@ -71,6 +78,7 @@ public class Fecha {
 
     /**
      * Setter de la variable year
+     * 
      * @param year - variable year
      */
     public void setyear(int year) {
@@ -81,36 +89,39 @@ public class Fecha {
 
     /**
      * Metodo que comprueba que el dia este entre 1 y 31
+     * 
      * @param dia - variable dia
      * @return - true = esValida; false = no esValida
      */
     public boolean diaValido(int dia) {
         boolean esValido = true;
-        
+
         if ((dia > 31) || (dia < 1)) {
             esValido = false;
         }
-        
+
         return esValido;
     }
 
     /**
      * Metodo que comprueba que el mes este entre 1 y 12
+     * 
      * @param mes - variable mes
      * @return - true = esValida; false = no esValida
      */
     public boolean mesValido(int mes) {
         boolean esValido = true;
-        
+
         if ((mes > 12) || (mes < 1)) {
             esValido = false;
-        
+
         }
         return esValido;
     }
 
     /**
      * Metodo que comprueba que el year este entre 1900 y 2030
+     * 
      * @param dia - variable year
      * @return - true = esValida; false = no esValida
      */
@@ -124,6 +135,7 @@ public class Fecha {
 
     /**
      * Metodo String que imprime la fecha
+     * 
      * @return - Fecha completa
      */
     public String toString() {
@@ -132,6 +144,7 @@ public class Fecha {
 
     /**
      * Metodo que copia una fecha en concreto
+     * 
      * @return - variable fechita
      */
     public Fecha copia() {
@@ -140,7 +153,9 @@ public class Fecha {
 
     /**
      * Metodo que compara dos fechas
-     * @param otraFecha la otra fecha con la que comparamos la fecha desde quese ejecuta esta funcion
+     * 
+     * @param otraFecha la otra fecha con la que comparamos la fecha desde quese
+     *                  ejecuta esta funcion
      * @return retorna un codigo que
      *         - 0 -> si la fecha desde que se ejecuta es menor a otraFecha
      *         - 1 -> si son iguales

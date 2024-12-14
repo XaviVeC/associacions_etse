@@ -1,10 +1,9 @@
 package prac3.Miembro;
 
-
 public class Alumno extends Miembro {
 
-    private String siglasCarrera; //Siglas de la carrera que cursa
-    private int yearsEtse;  //Years que lleva en la ETSE
+    private String siglasCarrera; // Siglas de la carrera que cursa
+    private int yearsEtse; // Years que lleva en la ETSE
     private boolean graduado; // Variable que indica si el alumno se ha graduado ya o no
 
     /**
@@ -17,7 +16,8 @@ public class Alumno extends Miembro {
      * @param yearsEtse     - anyos en la ETSE
      * @return - Objecto de la clase Alumne.
      */
-    public Alumno(int indiceFichero, String tipoMiembro, String alias, int yearsEtse, boolean graduado, String carrera) {
+    public Alumno(int indiceFichero, String tipoMiembro, String alias, int yearsEtse, boolean graduado,
+            String carrera) {
         super(indiceFichero, tipoMiembro, alias);
         this.graduado = graduado;
         this.yearsEtse = yearsEtse;

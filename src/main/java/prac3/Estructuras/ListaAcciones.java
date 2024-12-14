@@ -248,21 +248,22 @@ public class ListaAcciones {
         return charlasMasXAsistentes;
     }
 
-
     /**
-     * Metodo que te hace una busqueda de las charlas en las que esta un miembro en concreto
-     * @param listaTodosMiembros - lista de todos los miembros
-     * @param listaTodasAcciones - lista de todas las acciones
+     * Metodo que te hace una busqueda de las charlas en las que esta un miembro en
+     * concreto
+     * 
+     * @param listaTodosMiembros       - lista de todos los miembros
+     * @param listaTodasAcciones       - lista de todas las acciones
      * @param aliasMiembroQueComprobar - alias del miembro que queremos comprobar
-     * @return - lista de las charlas en las que participa el miembro que pasa por parametro
+     * @return - lista de las charlas en las que participa el miembro que pasa por
+     *         parametro
      */
-    public static ListaAcciones listaCharlasDeXMiembro (ListaMiembros listaTodosMiembros, ListaAcciones listaTodasAcciones, String aliasMiembroQueComprobar){
-        ListaAcciones listaCharlas = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
-        ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
-        listaCharlas = listaTodasAcciones.accionesSegunTipo("Charla");
-        for (int i = 0; i < listaCharlas.getNumeroAcciones(); i++) {
-            if (listaCharlas.getAccionEnXIndice(i).getOrganizadorResponsable().equals(aliasMiembroQueComprobar)) {
-                listaCharlasDefinitiva.addAccion(listaCharlas.getAccionEnXIndice(i).copia());
+    public ListaAcciones listaCharlasDeXMiembro(ListaMiembros listaTodosMiembros, String aliasMiembroQueComprobar) {
+        ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
+        ListaAcciones listaCharlasDefinitiva = new ListaAcciones(listaCharlas.nElem);
+        for (int i = 0; i < listaCharlas.nElem; i++) {
+            if (listaCharlas.listaAcciones[i].getOrganizadorResponsable().equals(aliasMiembroQueComprobar)) {
+                listaCharlasDefinitiva.addAccion(listaCharlas.listaAcciones[i]);
             }
         }
         return listaCharlasDefinitiva;
@@ -270,18 +271,18 @@ public class ListaAcciones {
 
     /**
      * Metodo que comprueba si una charla esta en la lista o no en base a su nombre
+     * 
      * @param listaDeTodasLasAcciones - lista de todas las acciones
-     * @param nombreCharla - nombre de la charla en la que buscamos
-     * @return -  = true = si que esta la charla, false = no esta la charla
+     * @param nombreCharla            - nombre de la charla en la que buscamos
+     * @return - = true = si que esta la charla, false = no esta la charla
      */
-    public boolean estaLaCharlaEnLaListaDeAcciones (ListaAcciones listaDeTodasLasAcciones, String nombreCharla){
+    public boolean estaLaCharlaEnLaListaDeAcciones(ListaAcciones listaDeTodasLasAcciones, String nombreCharla) {
         int indice = 0;
         boolean siEsta = false;
         while (!siEsta && indice < listaDeTodasLasAcciones.getNumeroAcciones()) {
             if (listaDeTodasLasAcciones.getAccionEnXIndice(indice).getNombreAccion().equals(nombreCharla)) {
                 siEsta = true;
-            }
-            else{
+            } else {
                 indice++;
             }
         }
@@ -289,18 +290,47 @@ public class ListaAcciones {
     }
 
     /**
-     * Método para eliminar una Accion que sea anterior a la fecha 
+     * Método para eliminar una Accion que sea anterior a la fecha
      */
 
-    public void eliminarAccionPorFecha (Fecha fecha){
-        for (int i = 0; i < nElem ; i++){
-            if (listaAcciones[i].getFecha().equals(fecha)){
-                for (int j = i ; j < nElem ; j++){
-                    listaAcciones[j] = listaAcciones[j+1];
+    public void eliminarAccionPorFecha(Fecha fecha) {
+        for (int i = 0; i < nElem; i++) {
+            if (listaAcciones[i].getFecha().equals(fecha)) {
+                for (int j = i; j < nElem; j++) {
+                    listaAcciones[j] = listaAcciones[j + 1];
                 }
-                listaAcciones[nElem -1 ] = null;
-                nElem --;
+                listaAcciones[nElem - 1] = null;
+                nElem--;
             }
         }
     }
+
+    /**
+     * OPCION 15 DEL MENU
+     * Metodo que retorna la charla con mejor media de valoraciones, en el caso de
+     * que dos valoraciones tengan la misma media, se queda con la que tenga más
+     * valoraciones,
+     * en caso de enpate se queda con la que sea.
+     * 
+     * @return - La charla con mejores valoraciones
+     */
+    public Charla charlaMejorValorada() {
+        ListaAcciones listaDeLasCharlas = this.accionesSegunTipo("Charla");
+        Charla charlaConMejorValoracion = (Charla) listaDeLasCharlas.listaAcciones[0];
+        Charla charlaAComparar;
+        for (int i = 1; i < listaDeLasCharlas.nElem; i++) {
+            charlaAComparar = (Charla) listaDeLasCharlas.listaAcciones[i];
+            if (charlaAComparar.mediaValoraciones() >= charlaConMejorValoracion.mediaValoraciones()) {
+                if (charlaAComparar.mediaValoraciones() == charlaConMejorValoracion.mediaValoraciones()) {
+                    if (charlaAComparar.getIndiceValoraciones() > charlaConMejorValoracion.getIndiceValoraciones()) {
+                        charlaConMejorValoracion = charlaAComparar;
+                    }
+                } else {
+                    charlaConMejorValoracion = charlaAComparar;
+                }
+            }
+        }
+        return charlaConMejorValoracion;
+    }
+
 }

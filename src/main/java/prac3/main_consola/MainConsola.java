@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.util.Scanner;
 
@@ -175,22 +175,26 @@ public class MainConsola {
                             if (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1) {
                                 // FALTA CREAR NUEVO MIEMBRO
                                 System.out.println("Este miembro no existe, introduce alguno que sí lo haga.");
-                            }
-                            else{
-                                if (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(listaDeTodasLasAsociaciones, nombreMiembroOp7)) {
+                            } else {
+                                if (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(
+                                        listaDeTodasLasAsociaciones, nombreMiembroOp7)) {
                                     // COMPRUEBO QUE EL MIEMBRO ESTA EN 3 ASOCIACIONES O NO
-                                    System.out.println("esto miembro ya esta en tres asociaciones, no puede estar en mas, introduce alguno que si que pueda.");    
+                                    System.out.println(
+                                            "esto miembro ya esta en tres asociaciones, no puede estar en mas, introduce alguno que si que pueda.");
                                 }
                             }
-                        } while (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1 || (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(listaDeTodasLasAsociaciones, nombreMiembroOp7)));
+                        } while (listaDeTodosLosMiembros.miembroExistente(nombreMiembroOp7) == -1
+                                || (listaDeTodosLosMiembros.miembroPerteneceATresAsociaciones(
+                                        listaDeTodasLasAsociaciones, nombreMiembroOp7)));
 
                         // Asignar el miembro válido al arreglo
                         miembrosAsociacion[indice] = nombreMiembroOp7;
                         indice++;
                     } while (indice < cantidadMiembrosOp7);
-                    //Titulos
-                    stringTitulacionesOp7 = ListaMiembros.titulacionesEnBaseAListaMiembros(listaDeTodosLosMiembros, miembrosAsociacion);
-                    //Fechas
+                    // Titulos
+                    stringTitulacionesOp7 = ListaMiembros.titulacionesEnBaseAListaMiembros(listaDeTodosLosMiembros,
+                            miembrosAsociacion);
+                    // Fechas
                     System.out.println("¿Que número de día es hoy?");
                     int diaOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
                     System.out.println("¿En que número de mes estamos?");
@@ -199,19 +203,20 @@ public class MainConsola {
                     int yearOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
                     Fecha fechaAltaOp7 = new Fecha(diaOp7, mesOp7, yearOp7); // Fecha alta es hoy
                     Fecha fechaBajaOp7 = new Fecha(99, 99, 9999); // De momento no se ha dado de baja nadie
-                    //string de fechas
+                    // string de fechas
                     vectorFechasAltaOp7 = new Fecha[miembrosAsociacion.length];
                     vectorFechaBajaOp7 = new Fecha[miembrosAsociacion.length];
                     for (int i = 0; i < miembrosAsociacion.length; i++) {
-                        vectorFechasAltaOp7[i] = fechaAltaOp7.copia();      // Vector de fechas Alta
-                        vectorFechaBajaOp7[i] = fechaBajaOp7.copia();       // Vector de fechas Baja
+                        vectorFechasAltaOp7[i] = fechaAltaOp7.copia(); // Vector de fechas Alta
+                        vectorFechaBajaOp7[i] = fechaBajaOp7.copia(); // Vector de fechas Baja
                     }
                     // Personas en los cargos
                     aliasPersonasCargosOp7 = new String[3];
                     for (int i = 0; i < 3; i++) {
-                        aliasPersonasCargosOp7[i] = miembrosAsociacion[i];  // Vector de alias de los cargos altos
-                    } 
-                    Asociacion asociacionNueva = new Asociacion(nombreAsociacionOp7, stringTitulacionesOp7, miembrosAsociacion, aliasPersonasCargosOp7, vectorFechasAltaOp7, vectorFechaBajaOp7);
+                        aliasPersonasCargosOp7[i] = miembrosAsociacion[i]; // Vector de alias de los cargos altos
+                    }
+                    Asociacion asociacionNueva = new Asociacion(nombreAsociacionOp7, stringTitulacionesOp7,
+                            miembrosAsociacion, aliasPersonasCargosOp7, vectorFechasAltaOp7, vectorFechaBajaOp7);
                     listaDeTodasLasAsociaciones.addAsociacion(asociacionNueva);
                     System.out.println(listaDeTodasLasAsociaciones.toString());
                     break;
@@ -265,7 +270,7 @@ public class MainConsola {
                     System.out.println("\n\n");
                     System.out.println(listaDeTodosLosMiembros.toString());
                     break;
-                    
+
                 case 9:
                     int indiceFicheroOp9 = listaDeTodasLasAcciones.getNumeroAcciones() - 1;
                     // NOMBRE DE LA CHARLA
@@ -437,19 +442,19 @@ public class MainConsola {
                                 nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
                             }
                         } while (nAsistentes < 0);
-                        
+
                         charlaNueva = new Charla(indiceFicheroOp9, nombreCharlaOp9, asociacionesInvolOp9,
-                                organizadorRespOp9, fechaCharla, instructoresCharla,null, nAsistentes, 0);
+                                organizadorRespOp9, fechaCharla, instructoresCharla, null, nAsistentes, 0);
                     } else {
                         charlaNueva = new Charla(indiceFicheroOp9, nombreCharlaOp9, asociacionesInvolOp9,
-                                organizadorRespOp9, fechaCharla, instructoresCharla, null,0, 0);
+                                organizadorRespOp9, fechaCharla, instructoresCharla, null, 0, 0);
                     }
                     listaDeTodasLasAcciones.addAccion(charlaNueva);
 
                     System.out.println(listaDeTodasLasAcciones.toString());
 
                     break;
-                    
+
                 case 10:
                     String[] miembrosParaComprobar = { "pedrito", "saraaaalaaa", "salatMalecom" };
                     opcion10(listaDeTodosLosMiembros, miembrosParaComprobar);
@@ -473,7 +478,6 @@ public class MainConsola {
                     break;
                 case 15:
                     opcion15(listaDeTodasLasAcciones);
-
                     break;
                 case 16:
                     do {
@@ -489,7 +493,7 @@ public class MainConsola {
                 default: // aplicaremos un try catch para la opcion de menu por si escriben numero > 18
                     break;
             }
-        }while(opcionMenu!=18);
+        } while (opcionMenu != 18);
 
     }
 
@@ -648,51 +652,18 @@ public class MainConsola {
     }
 
     public static void opcion15(ListaAcciones listaTodasLasAcciones) {
-
-        double mejorResultado15 = 0.0;
-
-        Charla mejorCharla15 = null;
-        int maxNumeroValoraciones = 0;
-        double mediaDeLasValoraciones = 0.0;
-        int numeroValoraciones = 0;
-
-        for (int indiceOp15 = 0; indiceOp15 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp15++) {
-            if (listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15) instanceof Charla) {
-                Charla charla15 = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp15);
-                // Calculamos la media
-                numeroValoraciones = charla15.getIndiceValoraciones();
-
-                if (numeroValoraciones > 0) {
-                    mediaDeLasValoraciones = (double) charla15.getSumaValoraciones() / (double) numeroValoraciones;
-                }
-
-                // Comprobamos cual es la mejor Charla
-                if ((mediaDeLasValoraciones > mejorResultado15) || (mediaDeLasValoraciones == mejorResultado15)
-                        && (numeroValoraciones > maxNumeroValoraciones)) {
-                    mejorResultado15 = mediaDeLasValoraciones;
-                    maxNumeroValoraciones = numeroValoraciones;
-                    mejorCharla15 = charla15;
-                }
-            }
-        }
-
-        if (mejorCharla15 != null) {
-            System.out.println("La Charla con mejor puntuación es: " + mejorCharla15.getNombreAccion());
-            System.out.println("Su media es: " + mejorResultado15);
-            System.out.println("El numero total de valoraciones es: " + maxNumeroValoraciones);
-        } else {
-            System.out.println("No hi ha cap xerrada disponible.");
-        }
+        System.out.println(listaTodasLasAcciones.charlaMejorValorada().toString());
     }
 
     public static void opcion16(ListaAcciones listaDeTodasLasAcciones, ListaMiembros listaDeTodosLosMiembros,
             String aliasPersonaOp16) {
-        System.out.println(ListaAcciones
-                .listaCharlasDeXMiembro(listaDeTodosLosMiembros, listaDeTodasLasAcciones, aliasPersonaOp16).toString());
+        System.out.println(
+                listaDeTodasLasAcciones.listaCharlasDeXMiembro(listaDeTodosLosMiembros, aliasPersonaOp16).toString());
     }
 
-    public static void opcion17(ListaAcciones listaDeTodasLasAcciones){
-      System.out.println("Se van a dar de baja a las Demostraciones que no esten activas y que se diseñaron antes de la fecha que se introduce a continuación");
+    public static void opcion17(ListaAcciones listaDeTodasLasAcciones) {
+        System.out.println(
+                "Se van a dar de baja a las Demostraciones que no esten activas y que se diseñaron antes de la fecha que se introduce a continuación");
         System.out.println("Limite de Fecha:");
         System.out.println("Dia Limite :");
         int diaLim = Integer.parseInt(introducirPorTeclado.nextLine());
@@ -701,48 +672,55 @@ public class MainConsola {
         System.out.println("Año Limite:");
         int yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
         Fecha fechaLimite = new Fecha(diaLim, mesLim, yearLim);
-        
-        Demostracion demostracionBaja = null;
-        
-        for (int indiceOp17 = 0; indiceOp17 < listaDeTodasLasAcciones.getNumeroAcciones(); indiceOp17++){
 
-            if ((listaDeTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp17) instanceof Demostracion ) && (listaDeTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp17).getFecha().equals(fechaLimite))){
+        Demostracion demostracionBaja = null;
+
+        for (int indiceOp17 = 0; indiceOp17 < listaDeTodasLasAcciones.getNumeroAcciones(); indiceOp17++) {
+
+            if ((listaDeTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp17) instanceof Demostracion)
+                    && (listaDeTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp17).getFecha()
+                            .equals(fechaLimite))) {
                 demostracionBaja = (Demostracion) listaDeTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp17);
             }
         }
 
-        if (demostracionBaja != null){
-            //Verificamos que la fecha sea anterior a la que hemos introducido 
-            if (demostracionBaja.getFecha().compararFechas(fechaLimite) == 0){
+        if (demostracionBaja != null) {
+            // Verificamos que la fecha sea anterior a la que hemos introducido
+            if (demostracionBaja.getFecha().compararFechas(fechaLimite) == 0) {
                 listaDeTodasLasAcciones.eliminarAccionPorFecha(fechaLimite);
                 System.out.println("La demostracion se ha dado de baja correctamente");
-            }else {
+            } else {
                 System.out.println("La demostracion no ha podido darse de baja correctamente");
             }
         }
-   
+
     }
 
-
-
 }
-
-
-
-
 
 /**
  * TO DO LIST
  * 1. En el toString de las asociaciones, indicar quien esta de baja o no
- * 2. Si no hay valoraciones mostrar un mensaje en el toString que ponga no valorada (toString de Charlas)
- * 3. En el caso de que no se hayan llenado todas las valoraciones indicar que aun se puede valorar.
+ * 2. Si no hay valoraciones mostrar un mensaje en el toString que ponga no
+ * valorada (toString de Charlas)
+ * 3. En el caso de que no se hayan llenado todas las valoraciones indicar que
+ * aun se puede valorar.
  * 4. Completar la opcion 7
  * 5. Comprobar en la opcion 8
- *      - añado alguien que esta -> Deja añadirlo pero luego no sale repetido en la asociacion
- *      - añado a alguien y despues al mismo -> Deja añadirlo pero luego no sale repetido en la asociacion
- *      - añado a alguien que no existe -> Se crea el miembro CORRECTO
- *      - añado al mismo que antes
- * 6. ARREGLAR, si la titulacion del nuevo miembro que añades es valida y no existe en la lista de titulaciones, no se añade esta titulacion a la lista pero el miembro si. SE DEBERIA AÑADIR
- * 
+ * - añado alguien que esta -> Deja añadirlo pero luego no sale repetido en la
+ * asociacion
+ * - añado a alguien y despues al mismo -> Deja añadirlo pero luego no sale
+ * repetido en la asociacion
+ * - añado a alguien que no existe -> Se crea el miembro CORRECTO
+ * - añado al mismo que antes
+ * 6. ARREGLAR, si la titulacion del nuevo miembro que añades es valida y no
+ * existe en la lista de titulaciones, no se añade esta titulacion a la lista
+ * pero el miembro si. SE DEBERIA AÑADIR
+ * 7. Estudiar si quitamos los correos de los ficheros, ya quese generan
+ * automaticamente, y no hace falta leerlos,
+ * y también quitar el indice fichero de todos los ficheros menos el de
+ * acciones,
+ * ya que en el de acciones se usa para crear el codigo de la accion, pero en el
+ * resto (miembros y asociaciones) no se usa para nada.
  * 
  */
