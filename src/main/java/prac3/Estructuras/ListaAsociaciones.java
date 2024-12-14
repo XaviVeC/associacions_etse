@@ -106,7 +106,7 @@ public class ListaAsociaciones {
      * @return - siExiste, true -> si que hay una igual, false -> no hay ninguna
      *         igual
      */
-    public boolean existeAsociacionMismoNombre(String nombreAsociacion) {
+    public boolean existeAsociacion(String nombreAsociacion) {
         boolean siExiste = false;
         int indiceAsociaciones = 0;
 

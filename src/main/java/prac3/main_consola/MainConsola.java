@@ -5,25 +5,22 @@ import java.util.Scanner;
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
 import prac3.Asociacion.Asociacion;
+import prac3.Estructuras.ExcepcionesPropias;
+import prac3.Estructuras.ExcepcionesPropias.AsociacionNoEncontradaException;
 import prac3.Estructuras.Fecha;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
 import prac3.Fichero.EscribirEnFichero;
 import prac3.Fichero.LeerFichero;
+import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
 import prac3.Miembro.Profesor;
-import prac3.Miembro.Alumno;
 
 public class MainConsola {
     public static Scanner introducirPorTeclado = new Scanner(System.in);
 
     public static void main(String[] args) {
-        // VARIABLES PARA LAS OPCIONES
-        String nombreAsociacionOp2, filtroOp2;
-        String filtroOp3;
-        String filtroOp4;
-        String nombreAsociacionOp5;
         // fechas opcion 6
         int diaInf, mesInf, yearInf, diaSup, mesSup, yearSup;
         Fecha fechaInferior, fechaSuperior;
@@ -51,7 +48,7 @@ public class MainConsola {
         String opcionMenu;
         int cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         int opcionMenuInt = 18;
-        //Variables varias
+        // Variables varias
         boolean entradaValidaOpcionMenu;
         // Definicion de las distintas listas
         ListaAcciones listaDeTodasLasAcciones;
@@ -85,52 +82,154 @@ public class MainConsola {
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
             System.out.println("Elige la opcion del menu.");
-            
+
             entradaValidaOpcionMenu = false;
             do {
                 mostraMenu();
-                System.out.println("\n");
                 opcionMenu = introducirPorTeclado.nextLine();
-                try
-                {
+                try {
                     opcionMenuInt = Integer.parseInt(opcionMenu);
                     entradaValidaOpcionMenu = true;
-                }catch(NumberFormatException e)
-                {
+                } catch (NumberFormatException e) {
                     System.out.println("Error: '" + opcionMenu + "' no es un número válido. Inténtalo de nuevo.\n");
                 }
-                
+
             } while (!entradaValidaOpcionMenu);
-            
-            
+
             switch (opcionMenuInt) {
-                case 1:
+                case 1://ERRORES TRATADOS
                     System.out.println("Se mostrará la lista con todas las asociaciones");
                     opcion1(listaDeTodasLasAsociaciones);
                     break;
-                case 2:
-                    System.out.println("¿Sobre que asociación quieres información?");
-                    nombreAsociacionOp2 = introducirPorTeclado.nextLine();
-                    System.out
-                            .println("Escribe un filtro para profesores, alumnos, o ambos (Professor, Alumne, Ambos).");
-                    filtroOp2 = introducirPorTeclado.nextLine();
-                    opcion2(nombreAsociacionOp2, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, filtroOp2);
+                case 2://ERRORES TRATADOS
+                    boolean salirDoWhile = false;
+                    String nombreAsociacionOp2 = "";
+                    do {
+                        System.out.println("¿Sobre qué asociación quieres información?");
+                        nombreAsociacionOp2 = introducirPorTeclado.nextLine();
+
+                        // Verificar si la asociación existe
+                        try {
+                            if (!listaDeTodasLasAsociaciones.existeAsociacion(nombreAsociacionOp2)) {
+                                throw new ExcepcionesPropias.AsociacionNoEncontradaException(
+                                        "La asociación '" + nombreAsociacionOp2
+                                                + "' no existe. Por favor, inténtalo de nuevo.");
+                            }
+                            salirDoWhile = true;
+                        } catch (AsociacionNoEncontradaException e) {
+                            System.out.println(e.getMessage()); // Manejo de la excepción
+                        }
+                    } while (!salirDoWhile);
+                    System.out.println("Ahora se aplicará un filtro.");
+                    int filtroOp2 = 0;
+                    do {
+                        System.out.println("Introduce:\n\t1 --> Professor\n\t2 --> Alumno\n\t3 --> Ambos");
+                        try {
+                            filtroOp2 = Integer.parseInt(introducirPorTeclado.nextLine());
+                            if (filtroOp2 < 1 || filtroOp2 > 3) {
+                                System.out.println("No existe esta opción.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Introduce un número.");
+                        }
+                    } while (filtroOp2 < 1 || filtroOp2 > 3);
+
+                    String filtroStringOp2 = "";
+
+                    switch (filtroOp2) {
+                        case 1:
+                            filtroStringOp2 = "Professor";
+                            break;
+                        case 2:
+                            filtroStringOp2 = "Alumne";
+                            break;
+                        case 3:
+                            filtroStringOp2 = "Ambos";
+                            break;
+                    }
+                    opcion2(nombreAsociacionOp2, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, filtroStringOp2);
                     break;
-                case 3:
+
+                case 3://ERRORES TRATADOS
                     System.out.println(
-                            "Se mostrará una lista con todos los miembros activos.\nPuede aplicar un filtro\n\tPara profesores --> Professor\n\tPara alumnos -->Alumne\n\tSi quieres los dos --> Ambos");
-                    filtroOp3 = introducirPorTeclado.nextLine();
-                    opcion3(listaDeTodosLosMiembros, filtroOp3, listaDeTodasLasAsociaciones);
+                            "Se mostrará una lista con todos los miembros activos. Se aplicará un filtro.");
+                    int filtroOp3 = 0;
+                    do {
+                        System.out.println("Introduce:\n\t1 --> Professor\n\t2 --> Alumno\n\t3 --> Ambos");
+                        try {
+                            filtroOp3 = Integer.parseInt(introducirPorTeclado.nextLine());
+                            if (filtroOp3 < 1 || filtroOp3 > 3) {
+                                System.out.println("No existe esta opción.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Introduce un número.");
+                        }
+                    } while (filtroOp3 < 1 || filtroOp3 > 3);
+
+                    String filtroStringOp3 = "";
+
+                    switch (filtroOp3) {
+                        case 1:
+                            filtroStringOp3 = "Professor";
+                            break;
+                        case 2:
+                            filtroStringOp3 = "Alumne";
+                            break;
+                        case 3:
+                            filtroStringOp3 = "Ambos";
+                            break;
+                    }
+                    opcion3(listaDeTodosLosMiembros, filtroStringOp3, listaDeTodasLasAsociaciones);
                     break;
-                case 4:
+                case 4://ERRORES TRATADOS
                     System.out.println("Se mostrarán las acciones filtradas si se quiere.");
+                    int filtroOp4 = 0;
+                    do {
+                        System.out.println("Introduce:\n\t1 --> Demostracion\n\t2 --> Charla\n\t3 --> Ambos");
+                        try {
+                            filtroOp4 = Integer.parseInt(introducirPorTeclado.nextLine());
+                            if (filtroOp4 < 1 || filtroOp4 > 3) {
+                                System.out.println("No existe esta opción.");
+                            }
+                        } catch (NumberFormatException e) {
+                            System.out.println("Introduce un número.");
+                        }
+                    } while (filtroOp4 < 1 || filtroOp4 > 3);
+
+                    String filtroStringOp4 = "";
+
+                    switch (filtroOp4) {
+                        case 1:
+                            filtroStringOp4 = "Demostracion";
+                            break;
+                        case 2:
+                            filtroStringOp4 = "Charla";
+                            break;
+                        case 3:
+                            filtroStringOp4 = "Ambos";
+                            break;
+                    }
                     System.out.println("¿Que tipo de accion quieres? (Charla, Demostracion, Ambos)");
-                    filtroOp4 = introducirPorTeclado.nextLine();
-                    opcion4(listaDeTodasLasAcciones, filtroOp4);
+                    opcion4(listaDeTodasLasAcciones, filtroStringOp4);
                     break;
-                case 5:
-                    System.out.println("¿De que asociación quieres las acciones?");
-                    nombreAsociacionOp5 = introducirPorTeclado.nextLine();
+                case 5://ERRORES TRATADOS
+                    String nombreAsociacionOp5 = "";
+                    boolean salirDoWhileOp5 = false;
+                    do {
+                        System.out.println("¿Sobre qué asociación quieres información?");
+                        nombreAsociacionOp5 = introducirPorTeclado.nextLine();
+                        // Verificar si la asociación existe
+                        try {
+                            if (!listaDeTodasLasAsociaciones.existeAsociacion(nombreAsociacionOp5)) {
+                                throw new ExcepcionesPropias.AsociacionNoEncontradaException(
+                                        "La asociación '" + nombreAsociacionOp5
+                                                + "' no existe. Por favor, inténtalo de nuevo.");
+                            }
+                            salirDoWhileOp5 = true;
+                        } catch (AsociacionNoEncontradaException e) {
+                            System.out.println(e.getMessage()); // Manejo de la excepción
+                        }
+                    } while (!salirDoWhileOp5);
                     opcion5(listaDeTodasLasAcciones, nombreAsociacionOp5);
                     break;
                 case 6:
@@ -169,10 +268,10 @@ public class MainConsola {
                     System.out.println("Introduce el nombre del la asociación:");
                     do {
                         nombreAsociacionOp7 = introducirPorTeclado.nextLine();
-                        if (listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7)) {
+                        if (listaDeTodasLasAsociaciones.existeAsociacion(nombreAsociacionOp7)) {
                             System.out.println("Ya existe este nombre, introducelo de nuevo");
                         }
-                    } while (listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(nombreAsociacionOp7));
+                    } while (listaDeTodasLasAsociaciones.existeAsociacion(nombreAsociacionOp7));
 
                     System.out.println("Cuantos miembros quieres añadir, mínimo tres y máximo 20:");
 
@@ -328,14 +427,14 @@ public class MainConsola {
                     do {
                         System.out.println("Escribe el nombre de la asociación involucrada.");
                         asocOp9 = introducirPorTeclado.nextLine();
-                        boolean existe = listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(asocOp9);
+                        boolean existe = listaDeTodasLasAsociaciones.existeAsociacion(asocOp9);
 
                         do {
                             if (!existe) {
                                 System.out.println(
                                         "El nombre de la asociacion que has introducido no existe. Escribe un nombre existente.");
                                 asocOp9 = introducirPorTeclado.nextLine();
-                                existe = listaDeTodasLasAsociaciones.existeAsociacionMismoNombre(asocOp9);
+                                existe = listaDeTodasLasAsociaciones.existeAsociacion(asocOp9);
                             }
                         } while (!existe);
                         asociacionesInvolOp9[i] = asocOp9;
