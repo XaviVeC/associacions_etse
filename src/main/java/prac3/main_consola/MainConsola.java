@@ -1,15 +1,15 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.util.Scanner;
 
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
 import prac3.Asociacion.Asociacion;
-import prac3.Estructuras.ExcepcionesPropias;
 import prac3.Estructuras.Fecha;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
+import prac3.Fichero.EscribirEnFichero;
 import prac3.Fichero.LeerFichero;
 import prac3.Miembro.Miembro;
 import prac3.Miembro.Profesor;
@@ -497,11 +497,13 @@ public class MainConsola {
                 case 17:
                     opcion17(listaDeTodasLasAcciones);
                     break;
+                case 18:
+                    opcion18(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, null);
 
                 default: // aplicaremos un try catch para la opcion de menu por si escriben numero > 18
                     break;
             }
-        } while (opcionMenu != 18);
+        } while (opcionMenu <= 18);
 
     }
 
@@ -682,6 +684,26 @@ public class MainConsola {
         }
 
     }
+
+     public static void opcion18(ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones, ListaMiembros listaDeTodosLosMiembros, Boolean fin){
+        System.out.println("Deseas guardar la información en los ficheros antes de salir? Si/No");
+        String respuesta = introducirPorTeclado.nextLine();
+
+        String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
+        String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
+        String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
+        
+        if(respuesta.equalsIgnoreCase("Si")){
+            EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, direccionesAcciones);
+            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, direccionesAsociaciones );
+            EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, direccionesMiembros);
+            System.out.println("Datos guardados en archivos correctamente.\n");
+        }else if(respuesta.equalsIgnoreCase("No")){
+            System.out.println("Los datos no se han guardado.\n");
+        }
+        fin = true ;
+     }
+
 
 }
 
