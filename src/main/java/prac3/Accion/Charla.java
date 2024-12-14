@@ -152,7 +152,7 @@ public class Charla extends Accion {
     public void hacerValoracion(int valoracion) {
         if (this.indiceValoraciones < this.numeroDeAsistentes && (valoracion > 0 && valoracion <= 10)) {
             valoraciones[this.indiceValoraciones] = valoracion;
-            this.indiceValoraciones++; // Se incrementa el indice de valoraciones realizadas
+            this.indiceValoraciones++; 
         }
     }
 

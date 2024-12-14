@@ -167,7 +167,7 @@ public class ListaAcciones {
      *                     en la lista.
      * @return - Retorna true si ya esta en la lista o false si no esta.
      */
-    public boolean charlaRepetida(String nombreCharla) {
+    public boolean existeCharla(String nombreCharla) {
         boolean repetida = false;
         int i = 0;
         ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
@@ -331,6 +331,44 @@ public class ListaAcciones {
             }
         }
         return charlaConMejorValoracion;
+    }
+
+    /**
+     * OPCION 14 DEL MENU
+     * Metodo para valorar la charla cuyo nombre se pasa por parametro, junto a la
+     * valoracion.
+     * 
+     * @param nombreCharla - Nombre de la charla que se va a valorar
+     * @param valoracion   - Valoracion
+     * @return - Codigo del resultado 0 --> valorada correctamente, 1 --> No se ha
+     *         encontrado la charla, 2 --> No se pueden poner mas valoraciones, 
+     *         3 --> valor de valoracion incorrecto
+     */
+    public int valorarXCharla(String nombreCharla, int valoracion) {
+        boolean charlaEncontrada = false;
+        int indiceBusqueda = 0;
+        int codigoResultado = 1;
+        while (indiceBusqueda < this.nElem && !charlaEncontrada) {
+            if ((this.listaAcciones[indiceBusqueda] instanceof Charla)
+                    && (this.listaAcciones[indiceBusqueda].getNombreAccion().equals(nombreCharla))) {
+                charlaEncontrada = true;
+                Charla castinCharla = (Charla) this.listaAcciones[indiceBusqueda];
+                if (castinCharla.getIndiceValoraciones() < castinCharla.getNumeroAsistentes()) {
+                    if (valoracion > 0 && valoracion <= 10) {
+                        castinCharla.hacerValoracion(valoracion);
+                        codigoResultado = 0;
+                    } else {
+                        codigoResultado = 3;
+                    }
+                } else {
+                    codigoResultado = 2;
+                }
+            } else {
+                indiceBusqueda++;
+            }
+
+        }
+        return codigoResultado;
     }
 
 }

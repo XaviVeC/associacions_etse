@@ -278,12 +278,12 @@ public class MainConsola {
                     String nombreCharlaOp9 = introducirPorTeclado.nextLine();
                     // Comprovacion de si el nombre de la charla ya existe, en caso verdadero, se le
                     // pide que cambie el nombre
-                    boolean estaRepetida = listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9);
+                    boolean estaRepetida = listaDeTodasLasAcciones.existeCharla(nombreCharlaOp9);
                     do {
                         if (estaRepetida) {
                             System.out.println("Este nombre ya existe, tendrás que cambiarlo. Escribe uno nuevo.");
                             nombreCharlaOp9 = introducirPorTeclado.nextLine();
-                            if (!listaDeTodasLasAcciones.charlaRepetida(nombreCharlaOp9)) {
+                            if (!listaDeTodasLasAcciones.existeCharla(nombreCharlaOp9)) {
                                 estaRepetida = false;
                             }
                         }
@@ -473,8 +473,16 @@ public class MainConsola {
                     opcion13(listaDeTodasLasAcciones, numeroAsistentes);
                     break;
                 case 14:
-                    opcion14(listaDeTodasLasAcciones);
-                    System.out.println(listaDeTodasLasAcciones.toString());
+                    System.out.println("Introduce el nombre de la charla");
+                    String nombreCharlaOp14 = introducirPorTeclado.nextLine();
+                    if (listaDeTodasLasAcciones.existeCharla(nombreCharlaOp14)) {
+                        System.out.println("Introduce la valoracion");
+                        int valoracionOp14 = Integer.parseInt(introducirPorTeclado.nextLine());
+                        opcion14(listaDeTodasLasAcciones, nombreCharlaOp14, valoracionOp14);
+                    } else {
+                        System.out.println("La charla no existe.");
+                    }
+
                     break;
                 case 15:
                     opcion15(listaDeTodasLasAcciones);
@@ -612,41 +620,20 @@ public class MainConsola {
         System.out.println(listaTodasLasAcciones.listaCharlasMasXAsistentes(asistentes));
     }
 
-    public static void opcion14(ListaAcciones listaTodasLasAcciones) {
-        // Obtener el tema de la Charla
-        System.out.println("Introduce el nombre de la charla ");
-        try {
-            String nombreCharla = introducirPorTeclado.nextLine();
-            System.out.println("Introduce la valoracion");
-            int valoracion = introducirPorTeclado.nextInt();
-            introducirPorTeclado.nextLine();
-            if (valoracion < 0 || valoracion > 10) {
-                throw new ExcepcionesPropias.ValoracionFueraDeRangoException(
-                        "La valoracion que has introducido esta fuera del rango");
-            }
-            // Buscamos la charla dentro de la lista de Acciones
-            Charla charla = null;
-            for (int indiceOp14 = 0; indiceOp14 < listaTodasLasAcciones.getNumeroAcciones(); indiceOp14++) {
-                if (listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14) instanceof Charla) {
-                    Charla posibleCharla = (Charla) listaTodasLasAcciones.getAccionEnXIndiceSinCopia(indiceOp14);
-                    if (posibleCharla.getNombreAccion().equals(nombreCharla)) {
-                        charla = posibleCharla;
-                    }
-                }
-            }
-            if (charla != null) {
+    public static void opcion14(ListaAcciones listaTodasLasAcciones, String nombreCharla, int valoracion) {
+        switch (listaTodasLasAcciones.valorarXCharla(nombreCharla, valoracion)) {
+            case 0:
+                System.out.println("Charla valorada correctamente");
+                System.out.println(listaTodasLasAcciones.toString());
+                break;
 
-                charla.hacerValoracion(valoracion);
-                System.out.println("La valoración de la charla se ha realizado correctamente");
+            case 2:
+                System.out.println("La charla " + nombreCharla + " ya no se puede valorar, ha alcanzado el máximo de valoraciones");
+                break;
 
-            } else {
-                System.out.println("la charla con el nombre" + nombreCharla
-                        + "no ha sido encontrada o no es una charla existente");
-            }
-
-        } catch (ExcepcionesPropias.ValoracionFueraDeRangoException e) {
-            System.out.println("Error: " + e.getMessage());
-            introducirPorTeclado.nextLine();
+            case 3:
+                System.out.println("Valor " + valoracion +" no valido, valores válidos [1 - 10])");
+                break;
         }
 
     }
