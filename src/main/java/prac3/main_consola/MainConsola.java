@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.util.Scanner;
 
@@ -48,7 +48,11 @@ public class MainConsola {
         String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
         String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
         // Variables enteras varias
-        int opcionMenu, cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
+        String opcionMenu;
+        int cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
+        int opcionMenuInt = 18;
+        //Variables varias
+        boolean entradaValidaOpcionMenu;
         // Definicion de las distintas listas
         ListaAcciones listaDeTodasLasAcciones;
         ListaAsociaciones listaDeTodasLasAsociaciones;
@@ -81,10 +85,25 @@ public class MainConsola {
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
             System.out.println("Elige la opcion del menu.");
-            mostraMenu();
-            opcionMenu = Integer.parseInt(introducirPorTeclado.nextLine());
-
-            switch (opcionMenu) {
+            
+            entradaValidaOpcionMenu = false;
+            do {
+                mostraMenu();
+                System.out.println("\n");
+                opcionMenu = introducirPorTeclado.nextLine();
+                try
+                {
+                    opcionMenuInt = Integer.parseInt(opcionMenu);
+                    entradaValidaOpcionMenu = true;
+                }catch(NumberFormatException e)
+                {
+                    System.out.println("Error: '" + opcionMenu + "' no es un número válido. Inténtalo de nuevo.\n");
+                }
+                
+            } while (!entradaValidaOpcionMenu);
+            
+            
+            switch (opcionMenuInt) {
                 case 1:
                     System.out.println("Se mostrará la lista con todas las asociaciones");
                     opcion1(listaDeTodasLasAsociaciones);
@@ -468,9 +487,16 @@ public class MainConsola {
                 case 13:
                     System.out.println("Se mostraran todas las charlas que tengan más de X número de asistentes.");
                     System.out.println("Introduce el número");
-                    int numeroAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
-                    ;
-                    opcion13(listaDeTodasLasAcciones, numeroAsistentes);
+                    int numeroAsistentes;
+                    do {
+                        numeroAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (numeroAsistentes < 0) {
+                            System.out.println("Valor incorrecto, el valor debe ser positivo");
+                        } else {
+                            opcion13(listaDeTodasLasAcciones, numeroAsistentes);
+                        }
+                    } while (numeroAsistentes < 0);
+
                     break;
                 case 14:
                     System.out.println("Introduce el nombre de la charla");
@@ -503,7 +529,7 @@ public class MainConsola {
                 default: // aplicaremos un try catch para la opcion de menu por si escriben numero > 18
                     break;
             }
-        } while (opcionMenu <= 18);
+        } while (opcionMenuInt <= 18);
 
     }
 
@@ -611,6 +637,7 @@ public class MainConsola {
 
         System.out.println("Hay un total de " + listaDemostracionesOp11.getNumeroAcciones()
                 + " demostraciones que ya no están activas, y su coste fue:\t" + costeTotalOp11);
+        System.out.println(listaDemostracionesOp11.toString());
     }
 
     public static void opcion12(ListaAsociaciones listaTodasLasAsociaciones, ListaMiembros listaTodosMiembros) {
@@ -630,11 +657,12 @@ public class MainConsola {
                 break;
 
             case 2:
-                System.out.println("La charla " + nombreCharla + " ya no se puede valorar, ha alcanzado el máximo de valoraciones");
+                System.out.println("La charla " + nombreCharla
+                        + " ya no se puede valorar, ha alcanzado el máximo de valoraciones");
                 break;
 
             case 3:
-                System.out.println("Valor " + valoracion +" no valido, valores válidos [1 - 10])");
+                System.out.println("Valor " + valoracion + " no valido, valores válidos [1 - 10])");
                 break;
         }
 
@@ -685,25 +713,25 @@ public class MainConsola {
 
     }
 
-     public static void opcion18(ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones, ListaMiembros listaDeTodosLosMiembros, Boolean fin){
+    public static void opcion18(ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones,
+            ListaMiembros listaDeTodosLosMiembros, Boolean fin) {
         System.out.println("Deseas guardar la información en los ficheros antes de salir? Si/No");
         String respuesta = introducirPorTeclado.nextLine();
 
         String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
         String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
         String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
-        
-        if(respuesta.equalsIgnoreCase("Si")){
+
+        if (respuesta.equalsIgnoreCase("Si")) {
             EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, direccionesAcciones);
-            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, direccionesAsociaciones );
+            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, direccionesAsociaciones);
             EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, direccionesMiembros);
             System.out.println("Datos guardados en archivos correctamente.\n");
-        }else if(respuesta.equalsIgnoreCase("No")){
+        } else if (respuesta.equalsIgnoreCase("No")) {
             System.out.println("Los datos no se han guardado.\n");
         }
-        fin = true ;
-     }
-
+        fin = true;
+    }
 
 }
 

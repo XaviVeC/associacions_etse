@@ -44,7 +44,7 @@ public class LeerFichero {
                 switch (campos[1]) {
                     case "Demostracion":
                         Demostracion demostracion = new Demostracion(Integer.parseInt(campos[0]), campos[2],
-                                camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Integer.parseInt(campos[6]),
+                                camposAsociacionesInvolucradas, campos[4], auxiliarFecha, Double.parseDouble(campos[6]),
                                 Boolean.parseBoolean(campos[7]), Integer.parseInt(campos[8].trim()));
                         nombreListaAcciones.addAccion(demostracion);
                         break;

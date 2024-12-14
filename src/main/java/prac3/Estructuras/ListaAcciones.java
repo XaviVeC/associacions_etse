@@ -228,9 +228,11 @@ public class ListaAcciones {
     }
 
     /**
+     * Metodo para generar una lista con las charlas que hayan tenido mas de X
+     * asistentes
      * 
-     * @param numeroAsistentes
-     * @return
+     * @param numeroAsistentes - Asistentes que marcan el limite
+     * @return - La lista con charlas de mas de numeroAsistentes
      */
     public ListaAcciones listaCharlasMasXAsistentes(int numeroAsistentes) {
         ListaAcciones listaCharlas = accionesSegunTipo("Charla");
@@ -341,7 +343,7 @@ public class ListaAcciones {
      * @param nombreCharla - Nombre de la charla que se va a valorar
      * @param valoracion   - Valoracion
      * @return - Codigo del resultado 0 --> valorada correctamente, 1 --> No se ha
-     *         encontrado la charla, 2 --> No se pueden poner mas valoraciones, 
+     *         encontrado la charla, 2 --> No se pueden poner mas valoraciones,
      *         3 --> valor de valoracion incorrecto
      */
     public int valorarXCharla(String nombreCharla, int valoracion) {

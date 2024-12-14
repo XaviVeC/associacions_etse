@@ -35,8 +35,8 @@ public class Demostracion extends Accion {
 
         // AVER SI HACE FALTA COMPROBARLO ESTO
         // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-        if (this.costoDemostracion < 0) {
-            this.costoDemostracion = -999; // Si el costo introducido es negativo, se asigna un costo que indica error
+        if (this.costoDemostracion < 0.0) {
+            this.costoDemostracion = -999.0; // Si el costo introducido es negativo, se asigna un costo que indica error
         } else {
             this.costoDemostracion = costoDemostracion; // Sino, se admite el introducido por parametro
         }

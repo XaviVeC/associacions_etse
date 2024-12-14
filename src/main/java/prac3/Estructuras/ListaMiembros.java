@@ -229,7 +229,7 @@ public class ListaMiembros {
      */
     public Miembro miembroEnMasAsociaciones(ListaAsociaciones listaTodasAsociaciones,
             ListaMiembros listaTodosMiembros) {
-        int[] vectorNumeroVecesMiembro = new int[listaTodosMiembros.getNumeroMembres()];
+        int[] vectorNumeroVecesMiembro = new int[listaTodosMiembros.nElem];
         int indiceMiembrosUnaAsoc;
         int indiceListaMiembros;
         boolean miembroEncontrado;
