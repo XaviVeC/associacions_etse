@@ -1,5 +1,5 @@
-1;Demostracion;ExperimentoQuimica;Alfa-Beta;pedrito;19/9/2001;true;12;12.0
-2;Charla;Seminario1;Gamma-Delta;luisjanguela;21/7/2008;pedrito-saraaaalaaa;1-4-5-0;4
-3;Demostracion;ExperimentoFisica;Alfa-Epsilon;Carlos2001;1/12/2003;false;1;100.0
-4;Charla;Procesadores;Delta-Gamma;saraaaalaaa;15/5/2020;pedrito-saraaaalaaa;0-0-0-0;4
-5;Charla;Seminario2;Beta-Delta-Alfa-Epsilon;AnaBohueles;9/4/2011;pedrito-saraaaalaaa;10;1
+1;Demostracion;ExperimentoQuimica;Alfa-Beta;pedrito;19-9-2001;12;true;12
+2;Charla;Seminario1;Gamma-Delta;luisjanguela;21-7-2008;pedrito-saraaaalaaa;1-4-5-0;4;3
+3;Demostracion;ExperimentoFisica;Alfa-Epsilon;Carlos2001;1-12-2003;100;false;1
+4;Charla;Procesadores;Delta-Gamma;saraaaalaaa;15-5-2020;pedrito-saraaaalaaa;0-0-0-0;4;0
+5;Charla;Seminario2;Beta-Delta-Alfa-Epsilon;AnaBohueles;9-4-2011;pedrito-saraaaalaaa;0;1;0
