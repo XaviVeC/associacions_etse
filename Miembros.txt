@@ -1,7 +1,8 @@
-Profesor;1;Professor;Carlos2001;Carlos2001@urv.cat;DEIM;15
-Alumno;2;Alumne;pedrito;pedrito@urv.cat;GEI;2;true
-Profesor;3;Professor;luisjanguela;luisjanguela@urv.cat;DEEEA;33
-Alumno;4;Alumne;saraaaalaaa;saraaaalaaa@urv.cat;GEI;3;false
-Profesor;5;Professor;Alberto12;Alberto12@urv.cat;DEIM;12
-Profesor;6;Professor;AnaBohueles;AnaBohueles@urv.cat;DEEEA;5
-Alumno;7;Alumne;salatMalecom;salatMalecom@urv.cat;BioGEI;2;false
+1;Profesor;Carlos2001;Carlos2001@urv.cat;DEIM;15
+2;Alumno;pedrito;pedrito@urv.cat;2;true;GEI
+3;Profesor;luisjanguela;luisjanguela@urv.cat;DEEEA;33
+4;Alumno;saraaaalaaa;saraaaalaaa@urv.cat;3;false;GEI
+5;Profesor;Alberto12;Alberto12@urv.cat;DEIM;12
+6;Profesor;AnaBohueles;AnaBohueles@urv.cat;DEEEA;5
+7;Alumno;salatMalecom;salatMalecom@urv.cat;2;false;BioGEI
+999;Alumno;adira;adira@urv.cat;2;false;GEI

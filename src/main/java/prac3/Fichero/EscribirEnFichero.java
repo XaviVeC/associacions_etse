@@ -62,18 +62,17 @@ public class EscribirEnFichero{
                 }
 
 
-            escritura.write(tipoMiembro +";"+
-                            miembro.getIndiceFichero()  +";" + 
-                            miembro.getTipoMiembro() +";" +
+            escritura.write(miembro.getIndiceFichero()+";"+
+                            tipoMiembro +";"+
                             miembro.getAlias()+";" +
                             miembro.getCorreoMiembro());
 
 
             if ( miembro instanceof Alumno){
                 Alumno alumno = (Alumno) miembro;
-                escritura.write(";" + alumno.getSiglasCarrera() +";"+
-                                    alumno.getYearsEtse() + ";"+
-                                    alumno.getGraduado());
+                escritura.write(";" + alumno.getYearsEtse() + ";"+
+                                    alumno.getGraduado() +";"+
+                                    alumno.getSiglasCarrera());
             }else if (miembro instanceof Profesor){
                 Profesor profesor = (Profesor) miembro;
                 escritura.write(";" +profesor.getDepartamento() +";"+
@@ -117,14 +116,15 @@ public class EscribirEnFichero{
                 escritura.write(";"+charla.getFecha() +";" +
                                     unirLista(charla.getInstructoresCharla() ,"-")+";" +
                                     unirVector(charla.getValoraciones(), "-") + ";"+ 
-                                    charla. getNumeroAsistentes());
+                                    charla. getNumeroAsistentes() +";"+
+                                    charla.getIndiceValoraciones());
                 
             }else if ( accion  instanceof Demostracion) {
                 Demostracion demostracion = (Demostracion) accion ;
                 escritura.write(";"+ demostracion.getFecha() +";"+ 
+                                    demostracion.getCoste() +";"+
                                     demostracion.getEstado() +";"+ 
-                                    demostracion.getVecesOfrecida() +";"+
-                                    demostracion.getCoste());
+                                    demostracion.getVecesOfrecida() +";");
 
 
             }

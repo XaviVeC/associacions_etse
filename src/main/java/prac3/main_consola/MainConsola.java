@@ -32,8 +32,6 @@ public class MainConsola {
         Fecha[] vectorFechasAltaOp7;
         Fecha[] vectorFechaBajaOp7;
         String[] aliasPersonasCargosOp7;
-        // opcion 8
-
         // Opcion 16
         String aliasPersonaOp16;
 
@@ -97,12 +95,12 @@ public class MainConsola {
             } while (!entradaValidaOpcionMenu);
 
             switch (opcionMenuInt) {
-                case 1://ERRORES TRATADOS
+                case 1:// ERRORES TRATADOS
                     System.out.println("Se mostrará la lista con todas las asociaciones");
                     opcion1(listaDeTodasLasAsociaciones);
                     break;
-                case 2://ERRORES TRATADOS
-                    boolean salirDoWhile = false;
+                case 2:// ERRORES TRATADOS
+                    boolean salirDoWhileOp2 = false;
                     String nombreAsociacionOp2 = "";
                     do {
                         System.out.println("¿Sobre qué asociación quieres información?");
@@ -115,11 +113,11 @@ public class MainConsola {
                                         "La asociación '" + nombreAsociacionOp2
                                                 + "' no existe. Por favor, inténtalo de nuevo.");
                             }
-                            salirDoWhile = true;
+                            salirDoWhileOp2 = true;
                         } catch (AsociacionNoEncontradaException e) {
                             System.out.println(e.getMessage()); // Manejo de la excepción
                         }
-                    } while (!salirDoWhile);
+                    } while (!salirDoWhileOp2);
                     System.out.println("Ahora se aplicará un filtro.");
                     int filtroOp2 = 0;
                     do {
@@ -150,7 +148,7 @@ public class MainConsola {
                     opcion2(nombreAsociacionOp2, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, filtroStringOp2);
                     break;
 
-                case 3://ERRORES TRATADOS
+                case 3:// ERRORES TRATADOS
                     System.out.println(
                             "Se mostrará una lista con todos los miembros activos. Se aplicará un filtro.");
                     int filtroOp3 = 0;
@@ -181,7 +179,7 @@ public class MainConsola {
                     }
                     opcion3(listaDeTodosLosMiembros, filtroStringOp3, listaDeTodasLasAsociaciones);
                     break;
-                case 4://ERRORES TRATADOS
+                case 4:// ERRORES TRATADOS
                     System.out.println("Se mostrarán las acciones filtradas si se quiere.");
                     int filtroOp4 = 0;
                     do {
@@ -212,7 +210,7 @@ public class MainConsola {
                     System.out.println("¿Que tipo de accion quieres? (Charla, Demostracion, Ambos)");
                     opcion4(listaDeTodasLasAcciones, filtroStringOp4);
                     break;
-                case 5://ERRORES TRATADOS
+                case 5:// ERRORES TRATADOS
                     String nombreAsociacionOp5 = "";
                     boolean salirDoWhileOp5 = false;
                     do {
@@ -232,23 +230,55 @@ public class MainConsola {
                     } while (!salirDoWhileOp5);
                     opcion5(listaDeTodasLasAcciones, nombreAsociacionOp5);
                     break;
-                case 6:
+                case 6://FALTA AÑADIR COMPROBACION DE ERRORES
                     System.out
                             .println("\nSe mostrará la lista de Charlas dentro de un rango de fechas que introducirás");
                     System.out.println("Introduce el límite inferior:");
-                    System.out.println("Día inferior:");
-                    diaInf = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("Mes inferior:");
-                    mesInf = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("Año inferior:");
-                    yearInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                    do {
+                        System.out.println("Día inferior:");
+                        diaInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (diaInf < 1 || diaInf > 31) {
+                            System.out.println("El rango de dias es de [1 - 31]");
+                        }
+                    } while (diaInf < 1 || diaInf > 31);
+                    do {
+                        System.out.println("Mes inferior:");
+                        mesInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (mesInf < 1 || mesInf > 12) {
+                            System.out.println("El rango de meses es de [1 - 12]");
+                        }
+                    } while (mesInf < 1 || mesInf > 12);
+                    do {
+                        System.out.println("Año inferior:");
+                        System.out.println("El rango de años es de [1991 - 2024]");
+                        yearInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (yearInf < 1991 || yearInf > 2024) {
+                            System.out.println("Introduce un año válido");
+                        }
+                    } while (yearInf < 1991 || yearInf > 2024);
                     System.out.println("Introduce el límite superior:");
-                    System.out.println("Día superior:");
-                    diaSup = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("Mes superior:");
-                    mesSup = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("Año superior:");
-                    yearSup = Integer.parseInt(introducirPorTeclado.nextLine());
+                    do {
+                        System.out.println("Día superior:");
+                        diaSup = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (diaSup < 1 || diaSup > 31) {
+                            System.out.println("El rango de dias es de [1 - 31]");
+                        }
+                    } while (diaSup < 1 || diaSup > 31);
+                    do {
+                        System.out.println("Mes superior:");
+                        mesSup = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (mesSup < 1 || mesSup > 12) {
+                            System.out.println("El rango de meses es de [1 - 12]");
+                        }
+                    } while (mesSup < 1 || mesSup > 12);
+                    do {
+                        System.out.println("Año superior:");
+                        System.out.println("El rango de años es de [1991 - 2024]");
+                        yearSup = Integer.parseInt(introducirPorTeclado.nextLine());
+                        if (yearSup < 1991 || yearSup > 2024) {
+                            System.out.println("Introduce un año válido");
+                        }
+                    } while (yearSup < 1991 || yearSup > 2024);
                     fechaInferior = new Fecha(diaInf, mesInf, yearInf);
                     fechaSuperior = new Fecha(diaSup, mesSup, yearSup);
                     opcion6(listaDeTodasLasAcciones, fechaInferior, fechaSuperior);
@@ -623,13 +653,10 @@ public class MainConsola {
                     opcion17(listaDeTodasLasAcciones);
                     break;
                 case 18:
-                    opcion18(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros, null);
-
-                default: // aplicaremos un try catch para la opcion de menu por si escriben numero > 18
-                    break;
+                    opcion18(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
+                    break;        
             }
-        } while (opcionMenuInt <= 18);
-
+        } while (opcionMenuInt < 18);
     }
 
     public static void mostraMenu() {
@@ -813,23 +840,20 @@ public class MainConsola {
     }
 
     public static void opcion18(ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones,
-            ListaMiembros listaDeTodosLosMiembros, Boolean fin) {
-        System.out.println("Deseas guardar la información en los ficheros antes de salir? Si/No");
+            ListaMiembros listaDeTodosLosMiembros) {
+        System.out.println("Deseas guardar la información en los ficheros antes de salir? s/n");
         String respuesta = introducirPorTeclado.nextLine();
 
-        String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
-        String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
-        String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
-
-        if (respuesta.equalsIgnoreCase("Si")) {
-            EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, direccionesAcciones);
-            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, direccionesAsociaciones);
-            EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, direccionesMiembros);
+        if (respuesta.equalsIgnoreCase("s")) {
+            EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
+            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
+            EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
             System.out.println("Datos guardados en archivos correctamente.\n");
-        } else if (respuesta.equalsIgnoreCase("No")) {
+        } else if (respuesta.equalsIgnoreCase("n")) {
             System.out.println("Los datos no se han guardado.\n");
         }
-        fin = true;
+    
+
     }
 
 }

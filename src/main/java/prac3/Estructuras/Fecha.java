@@ -139,7 +139,7 @@ public class Fecha {
      * @return - Fecha completa
      */
     public String toString() {
-        return (+this.getDia() + "/" + this.getMes() + "/" + this.getyear());
+        return (+this.getDia() + "-" + this.getMes() + "-" + this.getyear());
     }
 
     /**
