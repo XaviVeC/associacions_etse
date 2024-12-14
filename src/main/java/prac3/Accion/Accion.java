@@ -52,6 +52,14 @@ public abstract class Accion {
     }
 
     /**
+     * Getter de la variable indiceFichero
+     * @return
+     */
+    public int getIndiceFichero(){
+        return indiceFichero;
+    }
+
+    /**
      * Getter de la variable nombreAccion
      * 
      * @return - variable nombreAccion

@@ -97,6 +97,7 @@ public class EscribirEnFichero{
        try(BufferedWriter escritura  = new BufferedWriter(new FileWriter(nombreArchivo))){
             for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++ ){
                 Accion accion = listaAcciones.getAccionEnXIndice(i);
+
                 String tipoAccion = "";
                 if ( accion  instanceof Charla){
                     tipoAccion = "Charla";
@@ -104,12 +105,12 @@ public class EscribirEnFichero{
                     tipoAccion = "Demostracion";
                 }
             
-            escritura.write(tipoAccion + ";" +
-                            accion.getCodigoAccion() +";" + 
-                            accion.getTipoAccion() + ";" +
+            escritura.write(accion.getIndiceFichero() +";"+
+                            tipoAccion + ";" +
                             accion.getNombreAccion() + ";" +
                             unirLista(accion.getAsociacionesInvolucradas(), "-")+";"+
                             accion.getOrganizadorResponsable());
+                            ;
 
             if ( accion instanceof Charla){
                 Charla charla = (Charla) accion ;
