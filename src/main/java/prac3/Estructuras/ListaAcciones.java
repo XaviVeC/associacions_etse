@@ -3,6 +3,7 @@ package prac3.Estructuras;
 import prac3.Accion.Accion;
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
+import prac3.Estructuras.ExcepcionesPropias.CharlaNoEncotradaException;
 
 public class ListaAcciones {
     private Accion[] listaAcciones; // lista de acciones
@@ -167,7 +168,7 @@ public class ListaAcciones {
      *                     en la lista.
      * @return - Retorna true si ya esta en la lista o false si no esta.
      */
-    public boolean existeCharla(String nombreCharla) {
+    public boolean existeCharla(String nombreCharla) throws CharlaNoEncotradaException {
         boolean repetida = false;
         int i = 0;
         ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
@@ -178,7 +179,30 @@ public class ListaAcciones {
                 i++;
             }
         }
+        if (!repetida) {
+            throw new CharlaNoEncotradaException("La charla '" + nombreCharla + "' no existe.");
+        }
         return repetida;
+    }
+
+
+    /**
+     * Metodo que devuelve true si no existe la charla
+     * @param nombreCharla - Nombre de la charla a comprobar
+     * @return - true si no existe
+     */
+    public boolean noExisteCharla(String nombreCharla){
+        boolean noExiste = true;
+        int i = 0;
+        ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
+        while ((noExiste) && (i < listaCharlas.nElem)) {
+            if (listaCharlas.listaAcciones[i].getNombreAccion().equals(nombreCharla)) {
+                noExiste = false;
+            } else {
+                i++;
+            }
+        }
+        return noExiste;
     }
 
     /**

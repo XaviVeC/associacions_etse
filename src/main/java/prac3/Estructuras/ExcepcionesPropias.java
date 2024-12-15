@@ -14,4 +14,10 @@ public class ExcepcionesPropias {
         }
     }
 
+    public static class CharlaNoEncotradaException extends Exception {
+        public CharlaNoEncotradaException (String mensajeError){
+            super(mensajeError);
+        }
+    }
+
 }
