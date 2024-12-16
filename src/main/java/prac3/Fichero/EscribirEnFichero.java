@@ -29,8 +29,7 @@ public class EscribirEnFichero{
             for (int i = 0; i < listaAsociaciones.getIndiceAsociaciones(); i++ ){
                 Asociacion asociacion = listaAsociaciones.getElementoListaAsociacion(i);
                 escritura.write(asociacion.getNombreAsociacion()+ ";" +
-                                asociacion.getCorreoContactoAsociacion() + ";" +
-                                unirLista(asociacion.getTitulacionesAsociacion(),"-") + ";" +
+                                unirLista(asociacion.getTitulacionesAsociacion(),"/") + ";" +
                                 unirLista(asociacion.getListaMiembrosAsociacion(), "-" )+ ";" +
                                 unirFecha(asociacion.getFechasAlta(),"/") +";"+
                                 unirFecha(asociacion.getFechasBaja(),"/")+";"+
@@ -64,8 +63,7 @@ public class EscribirEnFichero{
 
             escritura.write(miembro.getIndiceFichero()+";"+
                             tipoMiembro +";"+
-                            miembro.getAlias()+";" +
-                            miembro.getCorreoMiembro());
+                            miembro.getAlias());
 
 
             if ( miembro instanceof Alumno){

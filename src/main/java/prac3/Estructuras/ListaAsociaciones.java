@@ -131,4 +131,12 @@ public class ListaAsociaciones {
         return siEsta;
     }
 
+
+    /* 
+    public boolean estaMiembroEnAsociacionBusquedaPorNombre(String nombreMiembro, String nombreAsociacion)
+    {
+
+    }
+    */
+
 }

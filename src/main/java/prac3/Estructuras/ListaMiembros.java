@@ -3,6 +3,7 @@ package prac3.Estructuras;
 import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
 import prac3.Asociacion.Asociacion;
+import prac3.Estructuras.ExcepcionesPropias.MiembroEnTresAsociaciones;
 
 public class ListaMiembros {
     private Miembro[] listaMembres; // lista de miembros
@@ -318,7 +319,7 @@ public class ListaMiembros {
      * @return - booleano que indica si esta en alguna asociacion o no
      */
     public boolean miembroPerteneceATresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
-            String aliasMiembroAComprobar) {
+            String aliasMiembroAComprobar) throws  MiembroEnTresAsociaciones{
         boolean siEstaEnMasDeTres = false;
         int vecesQueEsta = 0;
         int indiceAsociacion = 0;
@@ -328,7 +329,8 @@ public class ListaMiembros {
             while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
                     .getListaMiembrosAsociacion().length) && (vecesQueEsta < 3)) {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)) {
+                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)  && listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                        .getFechasBaja()[indiceMiembroDeUnaAsoc].getyear() == 9999) {
                     vecesQueEsta++;
                     if (vecesQueEsta > 2) {
                         siEstaEnMasDeTres = true;
@@ -338,6 +340,10 @@ public class ListaMiembros {
             }
             indiceAsociacion++;
         }
+        if (siEstaEnMasDeTres) {
+            throw new MiembroEnTresAsociaciones("Ya está en tres asociaciones.");
+        }
+        
         return siEstaEnMasDeTres;
     }
 

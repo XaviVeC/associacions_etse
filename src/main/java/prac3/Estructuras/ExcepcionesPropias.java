@@ -19,5 +19,10 @@ public class ExcepcionesPropias {
             super(mensajeError);
         }
     }
+    public static class MiembroEnTresAsociaciones extends Exception {
+        public MiembroEnTresAsociaciones (String mensajeError){
+            super(mensajeError);
+        }
+    }
 
 }

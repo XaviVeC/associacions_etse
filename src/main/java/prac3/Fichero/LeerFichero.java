@@ -98,13 +98,13 @@ public class LeerFichero {
                 switch (campo[1]) {
                     case "Alumne":
                         alumno = new Alumno(Integer.parseInt(campo[0]), campo[1], campo[2],
-                                Integer.parseInt(campo[4]), Boolean.parseBoolean(campo[5]), campo[6].trim());
+                                Integer.parseInt(campo[3]), Boolean.parseBoolean(campo[4]), campo[5].trim());
 
                         nombreListaMiembros.addMiembro(alumno);
                         break;
                     case "Professor":
                         profesor = new Profesor(Integer.parseInt(campo[0]), campo[1], campo[2],
-                                campo[4], Integer.parseInt(campo[5].trim()));
+                                campo[3], Integer.parseInt(campo[4].trim()));
 
                         nombreListaMiembros.addMiembro(profesor);
                         break;
@@ -144,11 +144,11 @@ public class LeerFichero {
             do {
                 informacionUnaAsociacion = lectura.readLine();
                 campo = informacionUnaAsociacion.split(";");
-                campoTitulaciones = campo[2].split("-");
-                campoIntegrantes = campo[3].split("-");
-                campoCargos = campo[6].split("-");
-                fechasAlta = campo[4].split("/");
-                fechasBaja = campo[5].split("/");
+                campoTitulaciones = campo[1].split("/");
+                campoIntegrantes = campo[2].split("-");
+                fechasAlta = campo[3].split("/");
+                fechasBaja = campo[4].split("/");
+                campoCargos = campo[5].split("-");
                 alta = new Fecha[fechasAlta.length];
                 baja = new Fecha[fechasBaja.length];
                 // llena la fechaAlta
