@@ -185,18 +185,37 @@ public class ListaAcciones {
         return repetida;
     }
 
-
     /**
      * Metodo que devuelve true si no existe la charla
+     * 
      * @param nombreCharla - Nombre de la charla a comprobar
      * @return - true si no existe
      */
-    public boolean noExisteCharla(String nombreCharla){
+    public boolean noExisteCharla(String nombreCharla) {
         boolean noExiste = true;
         int i = 0;
         ListaAcciones listaCharlas = this.accionesSegunTipo("Charla");
         while ((noExiste) && (i < listaCharlas.nElem)) {
             if (listaCharlas.listaAcciones[i].getNombreAccion().equals(nombreCharla)) {
+                noExiste = false;
+            } else {
+                i++;
+            }
+        }
+        return noExiste;
+    }
+
+    /**
+     * Metodo que devuelve true si no existe la demostracion
+     * @param nombreDemostracion - Nombre de la demostracion a comprobar
+     * @return - true si no existe
+     */
+    public boolean noExisteDemostracion(String nombreDemostracion) {
+        boolean noExiste = true;
+        int i = 0;
+        ListaAcciones listaDemostraciones = this.accionesSegunTipo("Demostracion");
+        while ((noExiste) && (i < listaDemostraciones.nElem)) {
+            if (listaDemostraciones.listaAcciones[i].getNombreAccion().equals(nombreDemostracion)) {
                 noExiste = false;
             } else {
                 i++;
@@ -397,22 +416,22 @@ public class ListaAcciones {
         return codigoResultado;
     }
 
-     public void eliminarDemostracionPorFechaYNoActivas(Fecha fecha) {
-        
-    
+    public void eliminarDemostracionPorFechaYNoActivas(Fecha fecha) {
+
         // Recorrer la lista desde el final para evitar problemas al eliminar elementos
         for (int index = this.nElem - 1; index >= 0; index--) {
             // Verificar si el elemento es una instancia de Demostracion
             if (this.listaAcciones[index] instanceof Demostracion) {
                 Demostracion instanciaDemostracion = (Demostracion) this.listaAcciones[index];
-    
+
                 // Comparar las fechas
-                if ((instanciaDemostracion.getFecha().compararFechas(fecha) == 0) && (instanciaDemostracion.getEstado() == false)) {
+                if ((instanciaDemostracion.getFecha().compararFechas(fecha) == 0)
+                        && (instanciaDemostracion.getEstado() == false)) {
                     // Mover los elementos hacia la izquierda para eliminar el actual
                     for (int j = index; j < this.nElem - 1; j++) {
                         this.listaAcciones[j] = this.listaAcciones[j + 1];
                     }
-    
+
                     // Vaciar el último elemento y reducir el tamaño
                     this.listaAcciones[this.nElem - 1] = null;
                     this.nElem--;
