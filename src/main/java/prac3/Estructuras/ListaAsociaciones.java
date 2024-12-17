@@ -121,22 +121,41 @@ public class ListaAsociaciones {
     }
 
     // Metodo que comprueba si el miembro a comprobar esta en la asociacion
-    public boolean estaElMiembroEnLaAsociacion(String alias, Asociacion asociacion) {
+    public boolean estaElMiembroActivoEnLaAsociacion(String alias, Asociacion asociacion) {
         boolean siEsta = false;
         for (int index = 0; index < asociacion.getListaMiembrosAsociacion().length; index++) {
-            if (asociacion.getListaMiembrosAsociacion()[index].equals(alias)) {
+            if (asociacion.getListaMiembrosAsociacion()[index].equals(alias) && asociacion.getFechasBaja()[index].getyear() == 9999) {
                 siEsta = true;
             }
         }
         return siEsta;
     }
 
+    public boolean existeMiembroEnListaAsociaciones(String nombreMiembro, String[] nombresAsociaciones) {
+        boolean siEsta = false;
+        boolean asociacionEncontrada = false;
+        int i = 0, j = 0;
 
-    /* 
-    public boolean estaMiembroEnAsociacionBusquedaPorNombre(String nombreMiembro, String nombreAsociacion)
-    {
+        while ((!siEsta) && (i < nombresAsociaciones.length)) {
+            while ((!asociacionEncontrada) && (j < this.nElem)) {
+                if (this.listaAsociaciones[j].getNombreAsociacion().equals(nombresAsociaciones[i])) {
+                    asociacionEncontrada = true;
 
+                } else {
+                    j++;
+                }
+            }
+            if (estaElMiembroActivoEnLaAsociacion(nombreMiembro, this.getElementoListaAsociacion(j))) {
+                siEsta = true;
+            } else {
+                i++;
+                asociacionEncontrada = false;
+                j = 0;
+            }
+
+        }
+
+        return siEsta;
     }
-    */
 
 }

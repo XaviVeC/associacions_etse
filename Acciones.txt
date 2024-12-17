@@ -1,11 +1,14 @@
 1;Demostracion;ExperimentoQuimica;MensajerosDeLaPaz-ManosUnidas;AlexSmith01;19-9-2001;12.0;true;12;
 2;Charla;Seminario1;RedSolidaria-SemillasDePaz-VocesDeEsperanza-LazosDeAmistad;MiguelLopez21;21-7-2008;MiguelLopez21-SandraLopez32-RafaelSanz01;1-4-5-0;4;3
+3;Demostracion;ExperimentoFisica;LazosDeEsperanza-EsperanzaYSolidaridad;AndreaLopez65;1-12-2003;100.0;false;1;
 4;Charla;Procesadores;LuzDeSolidaridad-Futbolitos;RafaelOrtega43;15-5-2020;RafaelOrtega43-CristianHernandez65;0-0-0-0;4;0
 5;Charla;Seminario2;AlasDeAmor-ManosDeVida-Jaimitos-SemillasDeSolidaridad;VictorMartin87;9-4-2011;VictorMartin87-SofiaMartin99;0;1;0
 6;Demostracion;LucesYSombras;AsociacionSinNombre-ILoveYouChatGPT;TeresaVidal65;24-10-2010;8.0;true;10;
 7;Charla;TeoriaRelatividad;LosAnalgesicos-SalvarASmith-VocesDeEsperanza-CorazonesDeAmor;BeatrizSanz78;7-11-2011;BeatrizSanz78-SandraLopez32-AntonioPerez90;1-9-7-0;4;3
+8;Demostracion;Boom;AlasDeSolidaridad-LuzDeAmor;RaulPerez87;4-9-2004;500.0;false;1;
 9;Charla;Microchips;CorazonesDeVida-VeganosPorElMundo;RicardoVidal54;25-2-2018;RicardoVidal54-JavierLopez23;9-10-0-0;4;2
 10;Charla;HistoriaDeBrasil;Colonizadores-SalvadosPorLaCampana-HogaresFelices-VocesDelMundo;AndreaLopez65;9-8-2018;AndreaLopez65-LuciaOrtega21;0;1;0
+11;Demostracion;LuxacionesDeExtremidades;PuentesDeEsperanza-AlasDeLibertad;ElenaPerez45;11-10-2007;52.0;false;7;
 12;Charla;Ludopatia;SalvarASmith-LosPapadas-CarneForever-GurusDelNorte;JuanLopez90;7-8-2016;JuanLopez90-BeatrizLopez65-CarlosHernandez78;1-2-8-0;4;3
 13;Demostracion;ArmasDeFogueo;HawaiBombay-ClubDeFansDeLolaLolita;ElenaCano76;28-1-2015;89.0;false;5;
 14;Charla;Vertigo;AsociacionSinNombre-JuntosPorTarragona;BeatrizMartin88;30-5-2013;BeatrizMartin88-ElenaRuiz21;8-0-0-0;4;1
@@ -15,3 +18,4 @@
 18;Demostracion;Navajazos;JuanBeatoForYou-ClubDeFansDeLolaLolita;SofiaLopez34;7-12-2012;77.0;false;3;
 19;Charla;OsosPolares;LosPenultimos-Colonizadores;FernandoSanz87;1-2-2009;FernandoSanz87-AnaGomez21;10-0;2;1
 20;Charla;MachosAlfa;DaciasSandero-ClubDeFansDelJincho-LosUltimos-Jaimitos;FernandoHernandez32;7-10-2013;FernandoHernandez32-santiGomez99;0;1;0
+19;Charla;asdasdasdasd;LosUltimos-LosPenultimos;santiGomez99;1-1-2024;santiGomez99-JuliaDiaz93;1-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0;30;1

@@ -338,7 +338,7 @@ public class MainConsola {
                     opcion6(listaDeTodasLasAcciones, fechaInferior, fechaSuperior);
                     break;
 
-                case 7:// FALTA COMPROBAR
+                case 7://COMPROBADA
                        // Variables que se utilizaran
                     String nombreAsociacionOp7;
                     int cantidadMiembrosOp7 = 0;
@@ -438,7 +438,7 @@ public class MainConsola {
                         System.out.println("Dia de creación:");
                         do {
                             try {
-                                diaInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                                diaOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
                                 entradaValidaOp7 = true;
                             } catch (NumberFormatException e) {
                                 System.out.println("Has introducido un valor inválido.");
@@ -455,7 +455,7 @@ public class MainConsola {
                         System.out.println("Mes de creacion:");
                         do {
                             try {
-                                mesInf = Integer.parseInt(introducirPorTeclado.nextLine());
+                                mesOp7 = Integer.parseInt(introducirPorTeclado.nextLine());
                                 entradaValidaOp7 = true;
                             } catch (NumberFormatException e) {
                                 System.out.println("Has introducido un valor inválido.");
@@ -804,7 +804,7 @@ public class MainConsola {
                     } while (!charlaCorrectaOp9);
                     // --------------------------------------------------------------------------------
 
-                    // ASOCIACIONES INVOLUCRADAS
+                    // ASOCIACIONES INVOLUCRADAS. COMPROBADO
 
                     int maximo = listaDeTodasLasAsociaciones.getIndiceAsociaciones();
                     int i = 0;
@@ -872,64 +872,122 @@ public class MainConsola {
 
                     } while (i < nAsociacionesInvolucradasOp9);
 
-
-/* */
-                    //-------------------------------------------------------------------------------------------------------
-                    // ORGANIZADOR RESPONSABLE
-                    System.out.println("¿Cuál es el alias del organizador responsable?");
-                    String organizadorRespOp9 = introducirPorTeclado.nextLine();
-                    int existe = listaDeTodosLosMiembros.miembroExistente(organizadorRespOp9);
+                    // -------------------------------------------------------------------------------------------------------
+                    // ORGANIZADOR RESPONSABLE. COMPROBADO
+                    
+                    String organizadorRespOp9 = "";
+                    int existe = -1;
+                    boolean estaEnAsociacion = false;
                     do {
+                        System.out.println("¿Cuál es el alias del organizador responsable?");
+                        organizadorRespOp9 = introducirPorTeclado.nextLine();
+                        existe = listaDeTodosLosMiembros.miembroExistente(organizadorRespOp9);
+                        estaEnAsociacion = listaDeTodasLasAsociaciones.existeMiembroEnListaAsociaciones(organizadorRespOp9, asociacionesInvolOp9);
                         if (existe == -1) {
                             System.out.println("El alias que has introducido no existe. Escribe un alias válido");
-                            organizadorRespOp9 = introducirPorTeclado.nextLine();
-                            existe = listaDeTodosLosMiembros.miembroExistente(organizadorRespOp9);
+                        } else {
+                            if (!estaEnAsociacion) {
+                                System.out.println(
+                                        "El alias que has introdicido no se encuentra en ninguna de las asociaciones involucradas. Escribe un alias que esté en alguna de estas.");
+                            }
                         }
-                        else {
-                            //ListaAcciones accionesDondeEstaOrganizador = 
-                        }
-                    } while (existe == -1);
-                    //-------------------------------------------------------------------------------------------------------
+                    } while (existe == -1 || !estaEnAsociacion);
+                    // -------------------------------------------------------------------------------------------------------
 
-
-
-
-                    //-------------------------------------------------------------------------------------------------------
-                    // FECHA
-                    // Se comprueba si la charla ya se ha realizado
+                    // -------------------------------------------------------------------------------------------------------
+                    // Se comprueba si la charla ya se ha realizado. COMPROBADO
                     System.out.println("¿La charla ya se ha realizado? (s/n)");
-                    String aux = introducirPorTeclado.nextLine();
+                    String letraOp9 = "";
                     boolean charlaRealizada = false;
-                    if (aux.equals("s")) {
-                        charlaRealizada = true;
-                    }
-                    //-------------------------------------------------------------------------------------------------------
 
-
-
-
-                    //-------------------------------------------------------------------------------------------------------
-                    // Se pregunta el dia de la charla
-                    System.out.println("¿Que día es la charla?");
-                    int diaOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("¿En que número de mes es la charla?");
-                    int mesOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
-                    System.out.println("¿En que año es la charla?");
-                    int yearOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
-                    Fecha fechaCharla = new Fecha(diaOp9, mesOp9, yearOp9);
-                    //-------------------------------------------------------------------------------------------------------
-
-
-
-
-                    //-------------------------------------------------------------------------------------------------------
-                    // INSTRUCTORES DE LA CHARLA
-                    System.out.println("¿Cuantos instructores hay? [1 - 3]");
-                    int nInstructores = Integer.parseInt(introducirPorTeclado.nextLine());
                     do {
+                        letraOp9 = introducirPorTeclado.nextLine();
+                        if (letraOp9.equals("s") || letraOp9.equals("n")) {
+                            charlaRealizada = true;
+                        } else {
+                            System.out.println("No existe esta opción. Introduce de nuevo:");
+                        }
+                    } while (!charlaRealizada);
+                    // -------------------------------------------------------------------------------------------------------
+
+                    // -------------------------------------------------------------------------------------------------------
+                    // Se pregunta el dia de la charla. COMPROBADO
+                    int diaOp9 = 0, mesOp9 = 0, yearOp9 = 0;
+                    boolean entradaValidaOp9;
+                    do {
+                        entradaValidaOp9 = false;
+                        System.out.println("Dia en que está programada la charla o se hizo la charla:");
+                        do {
+                            try {
+                                diaOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                                entradaValidaOp9 = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Has introducido un valor inválido.");
+                            }
+                        } while (!entradaValidaOp9);
+
+                        if (diaOp9 < 1 || diaOp9 > 31) {
+                            System.out.println("El rango de dias es de [1 - 31]");
+                        }
+                    } while (diaOp9 < 1 || diaOp9 > 31);
+
+                    do {
+                        entradaValidaOp9 = false;
+                        System.out.println("Mes en que está programada la charla o se hizo la charla:");
+                        do {
+                            try {
+                                mesOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                                entradaValidaOp9 = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Has introducido un valor inválido.");
+                            }
+                        } while (!entradaValidaOp9);
+
+                        if (mesOp9 < 1 || mesOp9 > 12) {
+                            System.out.println("El rango de meses es de [1 - 12]");
+                        }
+                    } while (mesOp9 < 1 || mesOp9 > 12);
+
+                    do {
+                        entradaValidaOp9 = false;
+                        System.out.println("Año en que está programada la charla o se hizo la charla:");
+                        System.out.println("El rango de años es de [1991 - 2024]");
+
+                        do {
+                            try {
+                                yearOp9 = Integer.parseInt(introducirPorTeclado.nextLine());
+                                entradaValidaOp9 = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Has introducido un valor inválido.");
+                            }
+                        } while (!entradaValidaOp9);
+
+                        if (yearOp9 < 1991 || yearOp9 > 2024) {
+                            System.out.println("Introduce un año válido");
+                        }
+                    } while (yearOp9 < 1991 || yearOp9 > 2024);
+                    Fecha fechaCharla = new Fecha(diaOp9, mesOp9, yearOp9);
+                    // -------------------------------------------------------------------------------------------------------
+
+                    // -------------------------------------------------------------------------------------------------------
+                    // INSTRUCTORES DE LA CHARLA. COMPROBADO
+                    int nInstructores = 0;
+                    boolean formatoCorrecto;
+                    do {
+                        System.out.println("¿Cuantos instructores hay? [1 - 3]");
+                        formatoCorrecto = false;
+                        do {
+                            try {
+                                nInstructores = Integer.parseInt(introducirPorTeclado.nextLine());
+                                formatoCorrecto = true;
+                            } catch (NumberFormatException e) {
+                                System.out.println("Entrada incorrecta. Introduce un número:");
+                            }
+                        } while (!formatoCorrecto);
                         if ((nInstructores == 0) || (nInstructores > 3)) {
                             System.out.println("Has introducido un número inválido. Vuelve a escribirlo.");
                             nInstructores = Integer.parseInt(introducirPorTeclado.nextLine());
+
                         }
                     } while ((nInstructores == 0) || (nInstructores > 3));
 
@@ -937,20 +995,26 @@ public class MainConsola {
                     j = 0;
                     String instructorOp9;
                     boolean instructorRepetido = false;
+                    boolean estaEnLaAsociacion = false;
                     String[] instructoresCharla = new String[nInstructores];
 
                     do {
                         System.out.println("Escribe el alias del instructor");
-                        instructorOp9 = introducirPorTeclado.nextLine();
-                        existe = listaDeTodosLosMiembros.miembroExistente(instructorOp9);
+                        
 
                         do {
+                            instructorOp9 = introducirPorTeclado.nextLine();
+                            existe = listaDeTodosLosMiembros.miembroExistente(instructorOp9);
+                            estaEnLaAsociacion = listaDeTodasLasAsociaciones.existeMiembroEnListaAsociaciones(instructorOp9, asociacionesInvolOp9);
                             if (existe == -1) {
                                 System.out.println("El alias que has introducido no existe. Escribe un alias válido");
-                                instructorOp9 = introducirPorTeclado.nextLine();
-                                existe = listaDeTodosLosMiembros.miembroExistente(instructorOp9);
+                            } else {
+                            if (!estaEnLaAsociacion) {
+                                System.out.println(
+                                        "El alias que has introdicido no se encuentra en ninguna de las asociaciones involucradas o está de baja. Escribe un alias que esté en alguna de estas.");
                             }
-                        } while (existe == -1);
+                        }
+                        } while (existe == -1 || !estaEnLaAsociacion);
 
                         instructoresCharla[i] = instructorOp9;
 
@@ -967,7 +1031,7 @@ public class MainConsola {
                         j = 0;
 
                         if (instructorRepetido) {
-                            System.out.println("Has introducido un alias que ya habias introducido.");
+                            System.out.println("Has introducido un alias que ya habias introducido. Introduce de nuevo");
                             instructoresCharla[i] = null;
                         }
 
@@ -978,36 +1042,40 @@ public class MainConsola {
                         instructorRepetido = false;
 
                     } while (i < nInstructores);
-                    //-------------------------------------------------------------------------------------------------------
+                    // -------------------------------------------------------------------------------------------------------
                     Charla charlaNueva;
 
                     if (charlaRealizada) {
 
-
-
-                        //-------------------------------------------------------------------------------------------------------
+                        // -------------------------------------------------------------------------------------------------------
                         System.out.println("¿Cuantas personas asistieron?");
-                        int nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
+                        int nAsistentes = 0;
+                        boolean entradaCorrecta;
                         do {
-                            if (nAsistentes < 0) {
+                            entradaCorrecta = false;
+                            do {
+                                try {
+                                    nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
+                                    entradaCorrecta = true;
+                                } catch (NumberFormatException e) {
+                                    System.out.println("Entrada incorrecta. Introduce de nuevo.");
+                                }
+                            } while (!entradaCorrecta);
+
+                            if (nAsistentes < 0 || nAsistentes > 700) {
                                 System.out.println("Introduce un número de asistentes válido.");
-                                nAsistentes = Integer.parseInt(introducirPorTeclado.nextLine());
                             }
-                        } while (nAsistentes < 0);
-                        
-                        //-------------------------------------------------------------------------------------------------------
-                        
-                        
-                        
-                        
-                        
+                        } while (nAsistentes < 0 || nAsistentes > 700);
+
+                        // -------------------------------------------------------------------------------------------------------
+
                         charlaNueva = new Charla(indiceFicheroOp9, nombreCharlaOp9, asociacionesInvolOp9,
                                 organizadorRespOp9, fechaCharla, instructoresCharla, null, nAsistentes, 0);
                     } else {
                         charlaNueva = new Charla(indiceFicheroOp9, nombreCharlaOp9, asociacionesInvolOp9,
                                 organizadorRespOp9, fechaCharla, instructoresCharla, null, 0, 0);
                     }
-                    
+
                     listaDeTodasLasAcciones.addAccion(charlaNueva);
 
                     System.out.println(listaDeTodasLasAcciones.toString());
