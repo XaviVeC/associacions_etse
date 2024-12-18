@@ -1,6 +1,8 @@
 package prac3.Estructuras;
 
 import prac3.Asociacion.Asociacion;
+import prac3.Miembro.Miembro;
+import prac3.Miembro.Alumno;
 
 public class ListaAsociaciones {
     private Asociacion[] listaAsociaciones;
@@ -120,17 +122,66 @@ public class ListaAsociaciones {
         return siExiste;
     }
 
-    // Metodo que comprueba si el miembro a comprobar esta en la asociacion
+    /**
+     * Metodo que comprueba si el miembro esta activo en la asociacion
+     * 
+     * @param alias      - Alias del miembro a comprobar
+     * @param asociacion - Asociacion en la que se va a añadir el miembro
+     * @return - true si esta, false si no esta
+     */
     public boolean estaElMiembroActivoEnLaAsociacion(String alias, Asociacion asociacion) {
         boolean siEsta = false;
         for (int index = 0; index < asociacion.getListaMiembrosAsociacion().length; index++) {
-            if (asociacion.getListaMiembrosAsociacion()[index].equals(alias) && asociacion.getFechasBaja()[index].getyear() == 9999) {
+            if (asociacion.getListaMiembrosAsociacion()[index].equals(alias)
+                    && asociacion.getFechasBaja()[index].getyear() == 9999) {
                 siEsta = true;
             }
         }
         return siEsta;
     }
 
+    /**
+     * Metodo que comprueba si el miembro esta activo en la asociacion
+     * 
+     * @param alias      - Alias del miembro a comprobar
+     * @param asociacion - Asociacion en la que se va a añadir el miembro
+     * @return - true si esta, false si no esta
+     */
+    public boolean alumnoHaEstadoEnLaAsociacion(String alias, Asociacion asociacion, ListaMiembros listaTodosLosMiembros) {
+        boolean siEsta = false;
+        boolean esAlumno = false;
+        int indiceBusquedaAlumno = 0;
+
+        while (!esAlumno && indiceBusquedaAlumno < listaTodosLosMiembros.getNumeroMembres()) {
+            if (listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno).getAlias().equals(alias) && listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno) instanceof Alumno) {
+                esAlumno = true;
+            }
+            else
+            {
+                indiceBusquedaAlumno++;
+            }
+        }
+        indiceBusquedaAlumno = 0;
+
+        if (esAlumno) {
+            while (!siEsta && indiceBusquedaAlumno < asociacion.getListaMiembrosAsociacion().length) {
+                if (asociacion.getListaMiembrosAsociacion()[indiceBusquedaAlumno].equals(alias)) {
+                    siEsta = true;
+                } else {
+                    indiceBusquedaAlumno++;
+                }
+            }
+        }
+
+        return siEsta;
+    }
+
+    /**
+     * 
+     * @param nombreMiembro
+     * @param nombresAsociaciones
+     * @return
+     */
     public boolean existeMiembroEnListaAsociaciones(String nombreMiembro, String[] nombresAsociaciones) {
         boolean siEsta = false;
         boolean asociacionEncontrada = false;

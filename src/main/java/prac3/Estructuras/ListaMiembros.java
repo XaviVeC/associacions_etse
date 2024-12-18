@@ -380,13 +380,19 @@ public class ListaMiembros {
             }
         }
         // desplazo los titulos para que no haya null de por medio ni en el primero
+        boolean loQueQuedaEsNull = false;
         for (int i = 0; i < listaTitulacionesConRepeticiones.length; i++) {
-            while (listaTitulacionesConRepeticiones[i] == null) {
-                for (int j = i; j<listaTitulacionesConRepeticiones.length-1; j++) {
-                        listaTitulacionesConRepeticiones[j] = listaTitulacionesConRepeticiones[j+1];
+            while (listaTitulacionesConRepeticiones[i] == null && !loQueQuedaEsNull) {
+                for (int j = i; j < listaTitulacionesConRepeticiones.length - 1; j++) {
+                    listaTitulacionesConRepeticiones[j] = listaTitulacionesConRepeticiones[j + 1];
+                }
+                listaTitulacionesConRepeticiones[listaTitulacionesConRepeticiones.length - 1] = null; // Ajusta el último elemento
+                if (listaTitulacionesConRepeticiones[i] == null) {
+                    loQueQuedaEsNull = true;
                 }
             }
         }
+        
         
 
         String[] elementosUnicos = new String[listaTitulacionesConRepeticiones.length];

@@ -513,29 +513,60 @@ public class MainConsola {
                     System.out.println("Para dar de alta a un miembro en una asociación.");
 
                     // ---------------------------------------------------------------------------------
-                    String aliasOp8 = "";
-                    System.out.println("Escribe tu alias.");
-                    do {
-
-                        aliasOp8 = introducirPorTeclado.nextLine();
-
-                        if (aliasOp8.contains(";") || aliasOp8.contains("-")) {
-                            System.out.println("No pueden contener ';' o '-'. Introduce de nuevo.");
-                        }
-
-                    } while (aliasOp8.contains(";") || aliasOp8.contains("-"));
-                    // ---------------------------------------------------------------------------------
-
-                    // ---------------------------------------------------------------------------------
                     String nomAsocOp8 = "";
+                    Asociacion asociacionAuxiliarOp8 = null;
                     System.out.println("Escribe la asociación en la que te quieres apuntar.");
                     do {
                         nomAsocOp8 = introducirPorTeclado.nextLine();
                         if (!listaDeTodasLasAsociaciones.existeAsociacion(nomAsocOp8)) {
                             System.out.println("No existe la asociacion. Introduce de otra.");
+                        } else {
+                            boolean asociacionEncontradaOp8 = false;
+                            int iBusquedaAsociacionOp8 = 0;
+                            while (iBusquedaAsociacionOp8 < listaDeTodasLasAsociaciones.getIndiceAsociaciones()
+                                    && !asociacionEncontradaOp8) {
+                                if (listaDeTodasLasAsociaciones.getElementoListaAsociacion(iBusquedaAsociacionOp8)
+                                        .getNombreAsociacion().equals(nomAsocOp8)) {
+                                    asociacionAuxiliarOp8 = listaDeTodasLasAsociaciones
+                                            .getElementoListaAsociacion(iBusquedaAsociacionOp8);
+                                    asociacionEncontradaOp8 = true;
+                                } else {
+                                    iBusquedaAsociacionOp8++;
+                                }
+                            }
+
                         }
 
                     } while (!listaDeTodasLasAsociaciones.existeAsociacion(nomAsocOp8));
+                    // ---------------------------------------------------------------------------------
+
+                    // ---------------------------------------------------------------------------------
+                    String aliasOp8 = "";
+                    System.out.println("Escribe tu alias.");
+                    boolean miembroValidoOp8;
+                    do {
+                        miembroValidoOp8 = false;
+                        aliasOp8 = introducirPorTeclado.nextLine();
+
+                        if (aliasOp8.contains(";") || aliasOp8.contains("-")) {
+                            System.out.println("No pueden contener ';' o '-'. Introduce de nuevo.");
+
+                        } else {
+                            if (listaDeTodasLasAsociaciones.estaElMiembroActivoEnLaAsociacion(aliasOp8,
+                                    asociacionAuxiliarOp8)) {
+                                System.out.println("Este miembro ya está en la asociación. Introduce de nuevo.");
+                            } else {
+                                if (listaDeTodasLasAsociaciones.alumnoHaEstadoEnLaAsociacion(aliasOp8,
+                                        asociacionAuxiliarOp8, listaDeTodosLosMiembros)) {
+                                    System.out
+                                            .println("Este alumno ya ha estado en la asociación. Introduce de nuevo.");
+                                } else {
+                                    miembroValidoOp8 = true;
+                                }
+                            }
+                        }
+
+                    } while (aliasOp8.contains(";") || aliasOp8.contains("-") || !miembroValidoOp8);
                     // ---------------------------------------------------------------------------------
 
                     int diaOp8 = 0, mesOp8 = 0, yearOp8 = 0;
@@ -552,7 +583,6 @@ public class MainConsola {
                                 System.out.println("Has introducido un valor inválido. Introduce de nuevo:");
                             }
                         } while (!entradaValidaOp8);
-
 
                         if (diaOp8 < 1 || diaOp8 > 31) {
                             System.out.println("El rango de dias es de [1 - 31]");

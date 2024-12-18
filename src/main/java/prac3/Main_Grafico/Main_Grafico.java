@@ -61,6 +61,13 @@ public void actionPerformed(ActionEvent e) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
 }
+
+private void mostrarLaInformacionDemostraciones(ListaAcciones listaAcciones){
+    if(){
+        
+    }
+}
+
 }
 
 
