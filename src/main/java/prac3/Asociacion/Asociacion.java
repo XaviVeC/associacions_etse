@@ -115,10 +115,14 @@ public class Asociacion {
     public String toString() {
         String aux = "\t\t\tNombre de la asociacion: " + nombreAsociacion + "\n" +
                 "\t\t\tCorreo de la asociacion: " + correoContactoAsociacion + "\n" +
-                "\t\t\tLas titulaciones involucradas son:\n";
-
-        for (int i = 0; i < titulacionesAsociacion.length; i++) {
-            aux = aux + "\t\t\t\tTitulacion " + (i + 1) + ": " + titulacionesAsociacion[i] + "\n";
+                "";
+        if (titulacionesAsociacion[0].equals("null")) {
+            aux = aux + "\t\t\tNo hay titulaciones, son todos profesores\n";
+        } else {
+            aux = aux + "\t\t\tLas titulaciones involucradas son:\n";
+            for (int i = 0; i < titulacionesAsociacion.length; i++) {
+                aux = aux + "\t\t\t\tTitulacion " + (i + 1) + ": " + titulacionesAsociacion[i] + "\n";
+            }
         }
 
         aux = aux + "\t\t\tLos miembros son:\n";

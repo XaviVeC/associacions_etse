@@ -319,7 +319,7 @@ public class ListaMiembros {
      * @return - booleano que indica si esta en alguna asociacion o no
      */
     public boolean miembroPerteneceATresAsociaciones(ListaAsociaciones listaTodasAsociaciones,
-            String aliasMiembroAComprobar) throws  MiembroEnTresAsociaciones{
+            String aliasMiembroAComprobar) throws MiembroEnTresAsociaciones {
         boolean siEstaEnMasDeTres = false;
         int vecesQueEsta = 0;
         int indiceAsociacion = 0;
@@ -329,8 +329,9 @@ public class ListaMiembros {
             while ((indiceMiembroDeUnaAsoc < listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
                     .getListaMiembrosAsociacion().length) && (vecesQueEsta < 3)) {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)  && listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                        .getFechasBaja()[indiceMiembroDeUnaAsoc].getyear() == 9999) {
+                        .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)
+                        && listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
+                                .getFechasBaja()[indiceMiembroDeUnaAsoc].getyear() == 9999) {
                     vecesQueEsta++;
                     if (vecesQueEsta > 2) {
                         siEstaEnMasDeTres = true;
@@ -343,7 +344,7 @@ public class ListaMiembros {
         if (siEstaEnMasDeTres) {
             throw new MiembroEnTresAsociaciones("Ya está en tres asociaciones.");
         }
-        
+
         return siEstaEnMasDeTres;
     }
 
@@ -386,14 +387,20 @@ public class ListaMiembros {
                 for (int j = i; j < listaTitulacionesConRepeticiones.length - 1; j++) {
                     listaTitulacionesConRepeticiones[j] = listaTitulacionesConRepeticiones[j + 1];
                 }
-                listaTitulacionesConRepeticiones[listaTitulacionesConRepeticiones.length - 1] = null; // Ajusta el último elemento
-                if (listaTitulacionesConRepeticiones[i] == null) {
-                    loQueQuedaEsNull = true;
+
+                loQueQuedaEsNull = true;
+                int indiceNull = i;
+                while (indiceNull < listaTitulacionesConRepeticiones.length && loQueQuedaEsNull) {
+                    if (listaTitulacionesConRepeticiones[indiceNull] != null) {
+                        loQueQuedaEsNull = false;
+                    } else {
+                        indiceNull++;
+                    }
+
                 }
             }
+
         }
-        
-        
 
         String[] elementosUnicos = new String[listaTitulacionesConRepeticiones.length];
         int titSinRepeticion = 0;
@@ -435,36 +442,35 @@ public class ListaMiembros {
                 listaTitulosDefinitiva = new String[titSinRepeticion];
                 listaTitulosDefinitiva[0] = listaTitulacionesConRepeticiones[0];
                 if (titSinRepeticion != 1) {
-                while (k < listaTitulacionesConRepeticiones.length && todoNull) {
-                    if (listaTitulacionesConRepeticiones[k] != null) {
-                        todoNull = false;
+                    while (k < listaTitulacionesConRepeticiones.length && todoNull) {
+                        if (listaTitulacionesConRepeticiones[k] != null) {
+                            todoNull = false;
+                        }
+                        k++;
                     }
-                    k++;
-                }
-                if (!todoNull) {
-                    for (int index = 1; index < titSinRepeticion; index++) {
-                        for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
-                            indiceFinal = indicetitComprobando - 1;
-                            igual = false;
-                            while ((!(igual)) && (indiceFinal >= 0)
-                                    && (listaTitulacionesConRepeticiones[indicetitComprobando] != null)) {
-                                if (listaTitulacionesConRepeticiones[indicetitComprobando]
-                                        .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
-                                    igual = true;
-                                } else {
-                                    indiceFinal--;
+                    if (!todoNull) {
+                        for (int index = 1; index < titSinRepeticion; index++) {
+                            for (int indicetitComprobando = 1; indicetitComprobando < listaTitulacionesConRepeticiones.length; indicetitComprobando++) {
+                                indiceFinal = indicetitComprobando - 1;
+                                igual = false;
+                                while ((!(igual)) && (indiceFinal >= 0)
+                                        && (listaTitulacionesConRepeticiones[indicetitComprobando] != null)) {
+                                    if (listaTitulacionesConRepeticiones[indicetitComprobando]
+                                            .equals(listaTitulacionesConRepeticiones[indiceFinal])) {
+                                        igual = true;
+                                    } else {
+                                        indiceFinal--;
+                                    }
+                                }
+                                if (!(igual)) {
+                                    listaTitulosDefinitiva[index] = listaTitulacionesConRepeticiones[index];
                                 }
                             }
-                            if (!(igual)) {
-                                listaTitulosDefinitiva[index] = listaTitulacionesConRepeticiones[index];
-                            }
                         }
+                    } else {
+                        listaTitulosDefinitiva = null;
                     }
                 }
-                else{
-                    listaTitulosDefinitiva = null;
-                }
-            }
                 break;
         }
         return listaTitulosDefinitiva;

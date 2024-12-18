@@ -364,11 +364,11 @@ public class MainConsola {
                         if (!tamanyoCorrecto) {
                             System.out.println("Debe tener al menos 3 caracteres.");
                         }
-                        if (nombreAsociacionOp7.contains("-")) {
-                            System.out.println("No puede contener el símbolo '-'");
+                        if (nombreAsociacionOp7.contains("-") || nombreAsociacionOp7.contains(";")) {
+                            System.out.println("No puede contener el símbolo '-' ni el ';'");
                         }
                     } while (listaDeTodasLasAsociaciones.existeAsociacion(nombreAsociacionOp7) || !tamanyoCorrecto ||
-                            nombreAsociacionOp7.contains("-"));
+                            nombreAsociacionOp7.contains("-") || nombreAsociacionOp7.contains(";"));
 
                     System.out.println("Cuantos miembros quieres añadir, mínimo tres y máximo 20:");
                     boolean numeroValidoOp7 = false;
@@ -391,7 +391,8 @@ public class MainConsola {
                     int indice = 0;
                     String[] miembrosAsociacion = new String[cantidadMiembrosOp7];
                     boolean miembroValido = false, miembroRepetido;
-
+                    System.out.println(
+                            "El orden de los miembros introducidos corresponde con los cargos Presidente/a, Secretario/a y Tesorero/a.");
                     do {
                         System.out.println("Introduce el alias del miembro " + (indice + 1) + " :");
                         miembroValido = false;

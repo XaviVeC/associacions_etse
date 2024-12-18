@@ -12,8 +12,13 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.ScrollPaneConstants;
 
+import prac3.Accion.Demostracion;
 import prac3.Estructuras.ListaAcciones;
 
 public class Main_Grafico  extends JFrame implements ActionListener{
@@ -21,6 +26,7 @@ public class Main_Grafico  extends JFrame implements ActionListener{
     private static String[] acciones = {"Charla", "Demostracion"};
    private JPanel panelBotones;
    private JButton[] botonesAcciones;
+   String tipoAccionSelecionada = "ninguna";
    
 
    public Main_Grafico(String titulo, ListaAcciones listaTodasLasAcciones){
@@ -62,11 +68,31 @@ public void actionPerformed(ActionEvent e) {
     throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
 }
 
-private void mostrarLaInformacionDemostraciones(ListaAcciones listaAcciones){
-    if(){
+private void mostrarLaInformacionDemostracionesDeUnaAsociacion(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones){
+    ListaAcciones demostraciones = new ListaAcciones(listaAcciones.getNumeroAcciones());
+        for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++ ){
+            if(listaAcciones.getAccionEnXIndice(i) instanceof Demostracion){
+                Demostracion demostracion = (Demostracion) listaAcciones.getAccionEnXIndice(i);
+                for(int j = 0; j < listaAsociaciones.getIndiceAsociaciones(); j++ ){
+                    String asociacion = listaAsociaciones.getElementoListaAsociacion(j);
+                    if(demostracion.getNombreAccion().equalsIgnoreCase(asociacion)){
+                        demostraciones.addAccion(demostracion);
+                    }
+                }
+            }
+        }
+
+        JTextArea textoDemostracion = new JTextArea(10, 30);
+        textoDemostracion.setLineWrap(true);
+        textoDemostracion.setWrapStyleWord(true);
+        textoDemostracion.setText(demostraciones.toString());
+        textoDemostracion.setCaretPosition(0);
+        JScrollPane scrollPanel = new JScrollPane(textoDemostracion);
+        scrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        
         
     }
-}
+
 
 }
 
