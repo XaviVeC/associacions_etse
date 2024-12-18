@@ -126,3 +126,4 @@
 126;Profesor;saraaaalaaa;DEEA;43
 127;Alumno;Lucas44;2;true;GEI
 128;Alumno;Alberto12;4;false;GEB
+128;Alumno;JuanPerez;2;false;GEI

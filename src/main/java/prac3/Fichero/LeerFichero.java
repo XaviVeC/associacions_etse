@@ -1,6 +1,9 @@
 package prac3.Fichero;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.EOFException;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -126,7 +129,7 @@ public class LeerFichero {
      * @param nombreFichero        - Nombre del fichero que contiene las
      *                             asociaciones
      * @param listaARellenar       - Nombre de la lista donde almacenaremos las
-     *                             distintas asociaciones
+     *                             leerSerializadotintas asociaciones
      * @param cantidadAsociaciones - Cantidad de asociaciones que debemos leer
      */
     public static void LeerFicheroAsociaciones(String nombreFichero, ListaAsociaciones listaARellenar,
@@ -206,6 +209,72 @@ public class LeerFichero {
         }
 
         return contador;
+    }
+
+    /**
+     * 
+     * @param nombreFichero
+     * @param listaAsociaciones
+     * @throws IOException
+     */
+    public static void LeerListaAsociacionesBin(String nombreFichero, ListaAsociaciones listaAsociaciones)
+            throws IOException {
+        try (DataInputStream leerSerializado = new DataInputStream(new FileInputStream(nombreFichero))) {
+            // Leer mientras haya asociaciones en el fichero
+            while (true) {
+                // Leer el nombre de la asociación
+                String nombre = leerSerializado.readUTF();
+
+                // Leer las titulaciones
+                int numTitulaciones = leerSerializado.readInt();
+                String[] titulaciones = new String[numTitulaciones];
+                for (int i = 0; i < numTitulaciones; i++) {
+                    titulaciones[i] = leerSerializado.readUTF();
+                }
+
+                // Leer los integrantes
+                int numIntegrantes = leerSerializado.readInt();
+                String[] integrantes = new String[numIntegrantes];
+                for (int i = 0; i < numIntegrantes; i++) {
+                    integrantes[i] = leerSerializado.readUTF();
+                }
+
+                // Leer las fechas de alta
+                int numFechasAlta = leerSerializado.readInt();
+                Fecha[] altas = new Fecha[numFechasAlta];
+                for (int i = 0; i < numFechasAlta; i++) {
+                    int dia = leerSerializado.readInt();
+                    int mes = leerSerializado.readInt();
+                    int anio = leerSerializado.readInt();
+                    altas[i] = new Fecha(dia, mes, anio);
+                }
+
+                // Leer las fechas de baja
+                int numFechasBaja = leerSerializado.readInt();
+                Fecha[] bajas = new Fecha[numFechasBaja];
+                for (int i = 0; i < numFechasBaja; i++) {
+                    int dia = leerSerializado.readInt();
+                    int mes = leerSerializado.readInt();
+                    int anio = leerSerializado.readInt();
+                    bajas[i] = new Fecha(dia, mes, anio);
+                }
+
+                // Leer los cargos
+                int numCargos = leerSerializado.readInt();
+                String[] cargos = new String[numCargos];
+                for (int i = 0; i < numCargos; i++) {
+                    cargos[i] = leerSerializado.readUTF();
+                }
+
+                // Crear la nueva Asociación y agregarla a la lista
+                Asociacion asociacion = new Asociacion(nombre, titulaciones, integrantes, cargos, altas, bajas);
+                listaAsociaciones.addAsociacion(asociacion);
+            }
+        } catch (EOFException e) {
+            // Excepción esperada cuando se llega al final del archivo
+        } catch (IOException e) {
+            System.err.println("Error al leer las asociaciones: " + e.getMessage());
+        }
     }
 
 }

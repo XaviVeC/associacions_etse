@@ -357,18 +357,18 @@ public class ListaMiembros {
      * @return - lista de las titulaciones de los miembros de listaMiembros sin
      *         repeticion
      */
-    public static String[] titulacionesEnBaseAListaMiembros(ListaMiembros listaTodosMiembros, String[] listaMiembros) {
+    public String[] titulacionesEnBaseAListaMiembros(String[] listaMiembros) {
         String[] listaTitulacionesConRepeticiones = new String[listaMiembros.length];
         int indiceMiembrosTotales;
         Alumno instanciaAlumno;
         for (int index = 0; index < listaMiembros.length; index++) {
             indiceMiembrosTotales = 0;
             boolean hecho = false;
-            while ((indiceMiembrosTotales < listaTodosMiembros.getNumeroMembres()) && !(hecho)) {
-                if (listaTodosMiembros.getMiembroEnXIndice(indiceMiembrosTotales).getAlias()
+            while ((indiceMiembrosTotales < this.nElem) && !(hecho)) {
+                if (this.listaMembres[indiceMiembrosTotales].getAlias()
                         .equals(listaMiembros[index])) {
-                    if (listaTodosMiembros.listaMembres[indiceMiembrosTotales] instanceof Alumno) {
-                        instanciaAlumno = (Alumno) listaTodosMiembros.listaMembres[indiceMiembrosTotales];
+                    if (this.listaMembres[indiceMiembrosTotales] instanceof Alumno) {
+                        instanciaAlumno = (Alumno) this.listaMembres[indiceMiembrosTotales];
                         listaTitulacionesConRepeticiones[index] = instanciaAlumno.getSiglasCarrera();
                         hecho = true;
                     } else {
@@ -381,7 +381,7 @@ public class ListaMiembros {
         }
         // desplazo los titulos para que no haya null de por medio ni en el primero
         for (int i = 0; i < listaTitulacionesConRepeticiones.length; i++) {
-            if (listaTitulacionesConRepeticiones[i] == null) {
+            while (listaTitulacionesConRepeticiones[i] == null) {
                 for (int j = i; j<listaTitulacionesConRepeticiones.length-1; j++) {
                         listaTitulacionesConRepeticiones[j] = listaTitulacionesConRepeticiones[j+1];
                 }

@@ -188,4 +188,14 @@ public class Asociacion {
             this.fechasBaja = nuevaListaFechaBaja;
         }
     }
+
+    /**
+     * Metodo para modificar las titulaciones de una asociacion.
+     * 
+     * @param titulacionesNuevas - Titulaciones recalculadas
+     */
+    public void setterTitulaciones(String[] titulacionesNuevas) {
+        this.titulacionesAsociacion = titulacionesNuevas;
+    }
+
 }

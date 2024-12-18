@@ -1,7 +1,7 @@
 package prac3.Main_Consola;
 
+import java.io.IOException;
 import java.util.Scanner;
-
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
 import prac3.Asociacion.Asociacion;
@@ -22,7 +22,7 @@ import prac3.Miembro.Profesor;
 public class MainConsola {
     public static Scanner introducirPorTeclado = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         // Opcion 16
         String aliasPersonaOp16;
@@ -34,6 +34,10 @@ public class MainConsola {
         String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
         String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
         String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
+        String direccionesAsociacionesBin = "src/main/java/prac3/Fichero/AsociacionesSerializadas.bin";
+        String direccionesAsociacionesBinAux = "src/main/java/prac3/Fichero/AsociacionesSerializadasAuxiliar.bin";
+        // String direccionesAsociacionesBinario =
+        // "src\\main\\java\\prac3\\Fichero\\AsociacionesSerializadas.bin";
         // Variables enteras varias
         int cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
         int opcionMenuInt = 18;
@@ -43,10 +47,6 @@ public class MainConsola {
         ListaAcciones listaDeTodasLasAcciones;
         ListaAsociaciones listaDeTodasLasAsociaciones;
         ListaMiembros listaDeTodosLosMiembros;
-
-        // !!!!!!!!!!!!CARLAAAAAAAAA (FICHEROS)
-        // LeerFichero lectorArchivo = new LeerFichero();
-        // lectorArchivo.LeerFicheroAcciones("Acciones.txt", listaDeTodasLasAcciones);
 
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
@@ -64,9 +64,11 @@ public class MainConsola {
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
 
         LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
-        LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones, listaDeTodasLasAsociaciones,
-                cantidadAsociaciones);
+        // LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,
+        // listaDeTodasLasAsociaciones,cantidadAsociaciones);
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
+
+        LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
@@ -429,8 +431,8 @@ public class MainConsola {
                         indice++;
                     } while (indice < cantidadMiembrosOp7);
                     // Titulos
-                    stringTitulacionesOp7 = ListaMiembros.titulacionesEnBaseAListaMiembros(listaDeTodosLosMiembros,
-                            miembrosAsociacion);
+                    stringTitulacionesOp7 = listaDeTodosLosMiembros
+                            .titulacionesEnBaseAListaMiembros(miembrosAsociacion);
                     // -------------------------------------------------------------------------------------
                     int diaOp7 = 0, mesOp7 = 0, yearOp7 = 0;
                     boolean entradaValidaOp7;
@@ -517,11 +519,11 @@ public class MainConsola {
 
                         aliasOp8 = introducirPorTeclado.nextLine();
 
-                        if (listaDeTodosLosMiembros.miembroExistente(aliasOp8) != -1) {
-                            System.out.println("El alias introducido ya existe. Introduce otro.");
+                        if (aliasOp8.contains(";") || aliasOp8.contains("-")) {
+                            System.out.println("No pueden contener ';' o '-'. Introduce de nuevo.");
                         }
 
-                    } while (listaDeTodosLosMiembros.miembroExistente(aliasOp8) != -1);
+                    } while (aliasOp8.contains(";") || aliasOp8.contains("-"));
                     // ---------------------------------------------------------------------------------
 
                     // ---------------------------------------------------------------------------------
@@ -550,6 +552,7 @@ public class MainConsola {
                                 System.out.println("Has introducido un valor inválido. Introduce de nuevo:");
                             }
                         } while (!entradaValidaOp8);
+
 
                         if (diaOp8 < 1 || diaOp8 > 31) {
                             System.out.println("El rango de dias es de [1 - 31]");
@@ -1316,9 +1319,10 @@ public class MainConsola {
                     }
                     // ----------------------------------------------------
 
-                    Demostracion newDemo = new Demostracion(indiceFicheroOp10, nombreDemostracionOp10, asociacionesInvolOp10,
+                    Demostracion newDemo = new Demostracion(indiceFicheroOp10, nombreDemostracionOp10,
+                            asociacionesInvolOp10,
                             organizadorRespOp10, fechaCharlaOp10, costeDemostracion, disponible, vecesOfrecidaOp10);
-                    
+
                     listaDeTodasLasAcciones.addAccion(newDemo);
 
                     break;
@@ -1497,14 +1501,45 @@ public class MainConsola {
             todasAsoc.addMiembroEnAsociacionExistente(alias, nombreAsociacion, todasAsoc, fechaAlta);
         }
 
+        boolean asociacionEncontradaVis1 = false;
+        int indiceVis1 = 0;
+        while (!asociacionEncontradaVis1 && indiceVis1 < todasAsoc.getIndiceAsociaciones()) {
+            if (todasAsoc.getElementoListaAsociacion(indiceVis1).getNombreAsociacion()
+                    .equals(nombreAsociacion)) {
+                asociacionEncontradaVis1 = true;
+            } else {
+                indiceVis1++;
+            }
+        }
+        String[] listaTitulacionesRecalculadaVis1 = listaTodosMiembros.titulacionesEnBaseAListaMiembros(
+                todasAsoc.getElementoListaAsociacion(indiceVis1).getListaMiembrosAsociacion());
+        todasAsoc.getElementoListaAsociacion(indiceVis1)
+                .setterTitulaciones(listaTitulacionesRecalculadaVis1);
         return existe;
     }
 
     public static void opcion8vis2(Miembro miembro, String nombreAsociacion, ListaAsociaciones listaTodasAsociaciones,
             ListaMiembros listaTodosMiembros, Fecha fechaAlta) {
         listaTodosMiembros.addMiembro(miembro);
+
         listaTodasAsociaciones.addMiembroEnAsociacionExistente(miembro.getAlias(), nombreAsociacion,
                 listaTodasAsociaciones, fechaAlta);
+
+        boolean asociacionEncontradaVis2 = false;
+        int indiceVis2 = 0;
+        while (!asociacionEncontradaVis2 && indiceVis2 < listaTodasAsociaciones.getIndiceAsociaciones()) {
+            if (listaTodasAsociaciones.getElementoListaAsociacion(indiceVis2).getNombreAsociacion()
+                    .equals(nombreAsociacion)) {
+                asociacionEncontradaVis2 = true;
+            } else {
+                indiceVis2++;
+            }
+        }
+        String[] listaTitulacionesRecalculadaVis2 = listaTodosMiembros.titulacionesEnBaseAListaMiembros(
+                listaTodasAsociaciones.getElementoListaAsociacion(indiceVis2).getListaMiembrosAsociacion());
+        listaTodasAsociaciones.getElementoListaAsociacion(indiceVis2)
+                .setterTitulaciones(listaTitulacionesRecalculadaVis2);
+
     }
 
     public static void opcion11(ListaAcciones listaTodasLasAcciones) {
@@ -1580,6 +1615,9 @@ public class MainConsola {
             EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
             EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
             EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
+            EscribirEnFichero.EscribirListaAsociacionesBin(
+                    "src\\main\\java\\prac3\\Fichero\\AsociacionesSerializadasAuxiliar.bin",
+                    listaDeTodasLasAsociaciones);
             System.out.println("Datos guardados en archivos correctamente.\n");
         } else if (respuesta.equalsIgnoreCase("n")) {
             System.out.println("Los datos no se han guardado.\n");
