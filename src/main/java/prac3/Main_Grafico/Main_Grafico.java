@@ -68,7 +68,10 @@ public void actionPerformed(ActionEvent e) {
     throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
 }
 
-private void mostrarLaInformacionDemostracionesDeUnaAsociacion(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones){
+
+
+
+private void mostrarLaInformacionDeDemostraciones(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones){
     ListaAcciones demostraciones = new ListaAcciones(listaAcciones.getNumeroAcciones());
         for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++ ){
             if(listaAcciones.getAccionEnXIndice(i) instanceof Demostracion){
@@ -89,6 +92,7 @@ private void mostrarLaInformacionDemostracionesDeUnaAsociacion(ListaAcciones lis
         textoDemostracion.setCaretPosition(0);
         JScrollPane scrollPanel = new JScrollPane(textoDemostracion);
         scrollPanel.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        JOptionPane.showMessageDialog(this, scrollPanel, "Demostraciones de la Asociacion:", JOptionPane.INFORMATION_MESSAGE);
         
         
     }
