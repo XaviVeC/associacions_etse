@@ -1,4 +1,4 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -15,6 +15,7 @@ import prac3.Estructuras.ListaAsociaciones;
 import prac3.Estructuras.ListaMiembros;
 import prac3.Fichero.EscribirEnFichero;
 import prac3.Fichero.LeerFichero;
+import prac3.Main_Grafico.Main_Grafico;
 import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
 import prac3.Miembro.Profesor;
@@ -70,6 +71,9 @@ public class MainConsola {
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
+
+        Main_Grafico ventana = new Main_Grafico("Demostraciones por Asociación", listaDeTodasLasAsociaciones);
+        ventana.setVisible(true);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
