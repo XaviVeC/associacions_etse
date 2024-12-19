@@ -1656,4 +1656,29 @@ public class MainConsola {
 
     }
 
+    /*
+     * COMPROBACIONES A TENER EN CUENTA EN CADA METODO
+     * ---------------------1-------------------------
+     * NADA
+     * ---------------------2-------------------------
+     * Introduce una asociacion que existe
+     * Introduce un numero
+     * Introduce uno entre el 1-3
+     * ---------------------3-------------------------
+     * Introduce un numero
+     * Introduce uno entre el 1-3
+     * ---------------------4-------------------------
+     * Introduce un numero
+     * Introduce uno entre el 1-3
+     * ---------------------5-------------------------
+     * Introduce una asociacion que existe
+     * ---------------------6-------------------------
+     * Introduce bien el dia, el mes y el año
+     * 
+     * 
+     * 
+     * 
+     * 
+     * 
+     */
 }
