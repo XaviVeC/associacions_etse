@@ -2,6 +2,8 @@ package prac3.Estructuras;
 
 import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
+
+
 import prac3.Asociacion.Asociacion;
 import prac3.Estructuras.ExcepcionesPropias.MiembroEnTresAsociaciones;
 
@@ -474,6 +476,27 @@ public class ListaMiembros {
                 break;
         }
         return listaTitulosDefinitiva;
+    }
+
+    /**
+     * Metodo para comprobar si el alias del mimembro es un alumno o no.
+     * 
+     * @param nombreMiembro - alias del miembro a comprobar
+     * @return true si es un alumno o false si no lo es.
+     */
+    public boolean esMiembroUnAlumno(String nombreMiembro) {
+        int indiceBusquedaMiembro = 0;
+        boolean miembroEncontrado = false;
+        while (!miembroEncontrado && indiceBusquedaMiembro < this.nElem) {
+            if (this.listaMembres[indiceBusquedaMiembro].getAlias().equals(nombreMiembro)
+                    && this.listaMembres[indiceBusquedaMiembro] instanceof Alumno) {
+                miembroEncontrado = true;
+            } else {
+                indiceBusquedaMiembro++;
+            }
+        }
+
+        return miembroEncontrado;
     }
 
 }
