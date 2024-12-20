@@ -72,7 +72,7 @@ public class MainConsola {
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
 
-        Main_Grafico ventana = new Main_Grafico("Demostraciones por Asociación", listaDeTodasLasAsociaciones);
+        Main_Grafico ventana = new Main_Grafico("Demostraciones por Asociación", listaDeTodasLasAsociaciones, listaDeTodasLasAcciones);
         ventana.setVisible(true);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------

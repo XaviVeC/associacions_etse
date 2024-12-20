@@ -14,7 +14,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-
+import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import prac3.Accion.Demostracion;
 import prac3.Estructuras.ListaAcciones;
@@ -27,7 +29,7 @@ public class Main_Grafico  extends JFrame {
    private JButton[] botonesAsociaciones;
    
 
-   public Main_Grafico(String titulo, ListaAsociaciones listaDeTodasLasAsociaciones){
+   public Main_Grafico(String titulo, ListaAsociaciones listaDeTodasLasAsociaciones, ListaAcciones listaDeTodasLasAcciones){
         super (titulo);
     
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,11 +37,13 @@ public class Main_Grafico  extends JFrame {
         this.setSize(600,400);
         contenedorPrincipal = new JPanel();
         contenedorPrincipal.setLayout(new BorderLayout());
-
+        contenedorPrincipal.setBackground(new Color(135, 206, 250)); //POR QUE NO SE CAMBIA EL COLOR DE LA VENTANA ??
         panelBotones = new JPanel();
 
 
-        inicializarBotonesAsociaciones(listaDeTodasLasAsociaciones);
+        inicializarBotonesAsociaciones(listaDeTodasLasAsociaciones, listaDeTodasLasAcciones);
+
+    
 
         this.add(contenedorPrincipal);
         this.setVisible(true);
@@ -49,14 +53,24 @@ public class Main_Grafico  extends JFrame {
 
 
 /*
- * Método que crea tantos botones como asociaciones hay y los añade a un panel de tipo Scroll y lo añade al contenedor principal
+ * Método que crea tantos botones como asociaciones hay y los añade a un panel de tipo Scroll y este al contenedor principal
  */
 
-private void inicializarBotonesAsociaciones(ListaAsociaciones listaAsociaciones){
+private void inicializarBotonesAsociaciones(ListaAsociaciones listaAsociaciones, ListaAcciones listaAcciones){
+  
+    //Añadimos el panel para filtrar directamente el nombre de la asociación 
+
+    JPanel panelDeBusqueda = new JPanel();
+    panelDeBusqueda.setBackground(Color.PINK);
+    JTextField filtro = new JTextField(30);
+    panelDeBusqueda.add(filtro, BorderLayout.CENTER);
+
     //Inicializamos el panel de los botones 
     panelBotones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
+
     //Inicializamos la lista de botones 
     botonesAsociaciones = new JButton[listaAsociaciones.getIndiceAsociaciones()];
+
 
     //Vamos creando tantos botones como Asociaciones hayan 
     for (int i = 0; i < listaAsociaciones.getIndiceAsociaciones(); i++){
@@ -70,14 +84,14 @@ private void inicializarBotonesAsociaciones(ListaAsociaciones listaAsociaciones)
                     JButton sourceButton = (JButton) e.getSource();
                     String nombreAsociacion = sourceButton.getText();
 
-                    JOptionPane.showMessageDialog(Main_Grafico.this,"Has seleccionado la asociación: " + nombreAsociacion, "Información de la Asociación",JOptionPane.INFORMATION_MESSAGE);
-                    
+                    mostrarLaInformacionDeDemostraciones(listaAcciones, listaAsociaciones, nombreAsociacion);
+
                 }
             });
 
             panelBotones.add(botonesAsociaciones[i]);
-    }
 
+    }
 
 
     // Crear un JScrollPane para poder hacer el Scroll
@@ -85,32 +99,67 @@ private void inicializarBotonesAsociaciones(ListaAsociaciones listaAsociaciones)
     scrollPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
     scrollPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
+    //Añadimos una búsqueda a tiempo real para el panel de búqueda
+    filtro.getDocument().addDocumentListener(new DocumentListener() {
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            filtrarLasAsociaciones();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            filtrarLasAsociaciones();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            filtrarLasAsociaciones();
+        }
+        
+        private void filtrarLasAsociaciones(){
+            String nombreAsociacionQueBuscamos = filtro.getText().toLowerCase();
+            panelBotones.removeAll();
+
+            for (int i = 0; i < botonesAsociaciones.length; i++){
+                JButton boton = botonesAsociaciones[i];
+                if (boton.getText().toLowerCase().contains(nombreAsociacionQueBuscamos)){
+                    panelBotones.add(boton);
+                }
+            }
+
+            panelBotones.revalidate();
+            panelBotones.repaint();
+        }
+    });
+
+
     //Configuramos el panel principal y añadimos el Scroll Panel
     contenedorPrincipal.setLayout(new BorderLayout());
+    contenedorPrincipal.setBackground(new Color(135, 206, 250));
     contenedorPrincipal.add(scrollPanel, BorderLayout.CENTER);
-
+    contenedorPrincipal.add(panelDeBusqueda, BorderLayout.NORTH); 
 }
 
 
 
 
-private void mostrarLaInformacionDeDemostraciones(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones){
+private void mostrarLaInformacionDeDemostraciones(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones, String nombreAsociacion){
     ListaAcciones demostraciones = new ListaAcciones(listaAcciones.getNumeroAcciones());
-        for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++ ){
-            if(listaAcciones.getAccionEnXIndice(i) instanceof Demostracion){
-                Demostracion demostracion = (Demostracion) listaAcciones.getAccionEnXIndice(i);
-                for(int j = 0; j < listaAsociaciones.getIndiceAsociaciones(); j++ ){
-                    String asociacion = listaAsociaciones.getElementoListaAsociacion(j).getNombreAsociacion();
-                    if(demostracion.getNombreAccion().equalsIgnoreCase(asociacion)){
-                        demostraciones.addAccion(demostracion);
-                    }
-                }
+
+    
+    for (int i = 0; i < listaAcciones.getNumeroAcciones(); i++) {
+        if (listaAcciones.getAccionEnXIndice(i) instanceof Demostracion) {
+            Demostracion demostracion = (Demostracion) listaAcciones.getAccionEnXIndice(i);
+            if (demostracion.getNombreAsociacion().equalsIgnoreCase(nombreAsociacion)) {
+                demostraciones.addAccion(demostracion);
             }
         }
-
+    }
+    
         //Mostraremos las demostraciones activas en un nuevo panel
         JPanel panelDemostraciones = new JPanel();
-        panelDemostraciones.setLayout(new BoxLayout(panelBotones, BoxLayout.Y_AXIS));
+        panelDemostraciones.setLayout(new BoxLayout(panelDemostraciones, BoxLayout.Y_AXIS));
         
         for (int i = 0; i < demostraciones.getNumeroAcciones(); i++){
             Demostracion demostracion = (Demostracion) listaAcciones.getAccionEnXIndice(i);
