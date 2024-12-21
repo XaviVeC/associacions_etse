@@ -1487,6 +1487,12 @@ public class MainConsola {
                 case 18:
                     opcion18(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
                     break;
+
+                case 19:
+                    
+                    pruebaFuncionDelMainGrafico(true, "LazosDeEsperanza", listaDeTodasLasAcciones);
+                    break;
+
             }
         } while (opcionMenuInt < 18);
 
@@ -1743,5 +1749,10 @@ public class MainConsola {
         } else {
             System.out.println("Los datos no se han guardado.\n");
         }
+    }
+
+    public static void pruebaFuncionDelMainGrafico(boolean filtro, String nombreAsociacion,
+            ListaAcciones listaDeTodasLasAcciones) {
+        System.out.println(listaDeTodasLasAcciones.demostracionesActivasConFiltro(filtro, nombreAsociacion));
     }
 }

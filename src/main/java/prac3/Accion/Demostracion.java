@@ -138,5 +138,4 @@ public class Demostracion extends Accion {
                 this.demostracionValida, this.contadorVecesOfrecida));
     }
 
-   
 }

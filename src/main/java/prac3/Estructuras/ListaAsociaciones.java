@@ -146,17 +146,17 @@ public class ListaAsociaciones {
      * @param asociacion - Asociacion en la que se va a añadir el miembro
      * @return - true si esta, false si no esta
      */
-    public boolean alumnoHaEstadoEnLaAsociacion(String alias, Asociacion asociacion, ListaMiembros listaTodosLosMiembros) {
+    public boolean alumnoHaEstadoEnLaAsociacion(String alias, Asociacion asociacion,
+            ListaMiembros listaTodosLosMiembros) {
         boolean siEsta = false;
         boolean esAlumno = false;
         int indiceBusquedaAlumno = 0;
 
         while (!esAlumno && indiceBusquedaAlumno < listaTodosLosMiembros.getNumeroMembres()) {
-            if (listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno).getAlias().equals(alias) && listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno) instanceof Alumno) {
+            if (listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno).getAlias().equals(alias)
+                    && listaTodosLosMiembros.getMiembroEnXIndice(indiceBusquedaAlumno) instanceof Alumno) {
                 esAlumno = true;
-            }
-            else
-            {
+            } else {
                 indiceBusquedaAlumno++;
             }
         }
@@ -207,5 +207,7 @@ public class ListaAsociaciones {
 
         return siEsta;
     }
+
+ 
 
 }

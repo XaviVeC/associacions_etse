@@ -207,6 +207,7 @@ public class ListaAcciones {
 
     /**
      * Metodo que devuelve true si no existe la demostracion
+     * 
      * @param nombreDemostracion - Nombre de la demostracion a comprobar
      * @return - true si no existe
      */
@@ -440,4 +441,49 @@ public class ListaAcciones {
         }
     }
 
+    /**
+     * Metodo que retorna una lista de demostraciones activas, podiendo aplicar un
+     * filtro.
+     * 
+     * @param filtro           - true si se quiere filtro o false si no se quiere.
+     * @param nombreAsociacion - si filtro true, nombre de la asociacion de la que
+     *                         queremos las demostraciones
+     * @return - lista con las demostraciones activas con o sin filtro.
+     */
+    public ListaAcciones demostracionesActivasConFiltro(boolean filtro, String nombreAsociacion) {
+        ListaAcciones listaDeLasDemostraciones = new ListaAcciones(this.nElem);
+        Demostracion auxiliarParaCasting = null;
+        if (filtro) {
+            boolean cumpleFiltro;
+            int indiceBusqueda;
+            for (int i = 0; i < this.nElem; i++) {
+                cumpleFiltro = false;
+                indiceBusqueda = 0;
+                if (this.listaAcciones[i] instanceof Demostracion) {
+                    auxiliarParaCasting = (Demostracion) this.listaAcciones[i];
+                    while (!cumpleFiltro && indiceBusqueda < auxiliarParaCasting.getAsociacionesInvolucradas().length) {
+                        if (auxiliarParaCasting.getAsociacionesInvolucradas()[indiceBusqueda]
+                                .equals(nombreAsociacion) && auxiliarParaCasting.getEstado()) {
+                            cumpleFiltro = true;
+                            listaDeLasDemostraciones.addAccion(auxiliarParaCasting);
+                        } else {
+                            indiceBusqueda++;
+                        }
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < this.nElem; i++) {
+                if (this.listaAcciones[i] instanceof Demostracion) {
+                    auxiliarParaCasting = (Demostracion) this.listaAcciones[i];
+                    if (auxiliarParaCasting.getEstado()) {
+                        listaDeLasDemostraciones.addAccion(auxiliarParaCasting);
+                    }
+
+                }
+            }
+        }
+
+        return listaDeLasDemostraciones;
+    }
 }
