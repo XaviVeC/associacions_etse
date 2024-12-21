@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -72,7 +72,8 @@ public class MainConsola {
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
 
-        Main_Grafico ventana = new Main_Grafico("Demostraciones por Asociación", listaDeTodasLasAsociaciones, listaDeTodasLasAcciones);
+        Main_Grafico ventana = new Main_Grafico("Demostraciones por Asociación", listaDeTodasLasAsociaciones,
+                listaDeTodasLasAcciones);
         ventana.setVisible(true);
 
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
@@ -859,7 +860,12 @@ public class MainConsola {
 
                         nombreCharlaOp9 = introducirPorTeclado.nextLine();
                         if (listaDeTodasLasAcciones.noExisteCharla(nombreCharlaOp9)) {
-                            charlaCorrectaOp9 = true;
+                            if (nombreCharlaOp9.contains(";")) {
+                                System.out.println("El nombre de la charla no puede contener ';'. Introduce de nuevo:");
+                            } else {
+                                charlaCorrectaOp9 = true;
+                            }
+
                         } else {
                             System.out.println("Escribe un nombre que no exista. Introduce de nuevo:");
                         }
@@ -1655,12 +1661,56 @@ public class MainConsola {
         System.out.println(
                 "Se van a dar de baja a las Demostraciones que no esten activas y que se diseñaron antes de la fecha que se introduce a continuación");
         System.out.println("Limite de Fecha:");
-        System.out.println("Dia Limite :");
-        int diaLim = Integer.parseInt(introducirPorTeclado.nextLine());
-        System.out.println("Mes Limite:");
-        int mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
-        System.out.println("Año Limite:");
-        int yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
+        int diaLim = 0, mesLim = 0, yearLim = 0;
+        boolean entradaCorrectaOp17;
+        do {
+            entradaCorrectaOp17 = false;
+            System.out.println("Dia Limite: [1 - 31]");
+            do {
+                try {
+                    diaLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    entradaCorrectaOp17 = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("La entrada es incorrecta, debe ser un número. Introduce de nuevo:");
+                }
+            } while (!entradaCorrectaOp17);
+            if (diaLim < 1 || diaLim > 31) {
+                System.out.println("Rango de día incorrecto. Introduce de nuevo:");
+            }
+        } while (diaLim < 1 || diaLim > 31);
+
+        do {
+            entradaCorrectaOp17 = false;
+            System.out.println("Mes Limite: [1 - 12]");
+            do {
+                try {
+                    mesLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    entradaCorrectaOp17 = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("La entrada es incorrecta, debe ser un número. Introduce de nuevo:");
+                }
+            } while (!entradaCorrectaOp17);
+            if (mesLim < 1 || mesLim > 12) {
+                System.out.println("El rango del mes es incorrecto. Introduce de nuevo:");
+            }
+        } while (mesLim < 1 || mesLim > 12);
+
+        do {
+            entradaCorrectaOp17 = false;
+            System.out.println("Año Limite: [1991 - 2025]");
+            do {
+                try {
+                    yearLim = Integer.parseInt(introducirPorTeclado.nextLine());
+                    entradaCorrectaOp17 = true;
+                } catch (NumberFormatException e) {
+                    System.out.println("La entrada es incorrecta, debe ser un número. Introduce de nuevo:");
+                }
+            } while (!entradaCorrectaOp17);
+            if (yearLim < 1991 || yearLim > 2025) {
+                System.out.println("Rango del año incorrecto. Introduce de nuevo:");
+            }
+        } while (yearLim < 1991 || yearLim > 2025);
+
         Fecha fechaLimite = new Fecha(diaLim, mesLim, yearLim);
 
         listaDeTodasLasAcciones.eliminarDemostracionPorFechaYNoActivas(fechaLimite);
@@ -1669,46 +1719,29 @@ public class MainConsola {
 
     public static void opcion18(ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones,
             ListaMiembros listaDeTodosLosMiembros) {
-        System.out.println("Deseas guardar la información en los ficheros antes de salir? s/n");
-        String respuesta = introducirPorTeclado.nextLine();
+
+        String respuesta = "";
+        boolean respuestaValida = false;
+        do {
+            System.out.println("Deseas guardar la información en los ficheros antes de salir? s/n");
+            respuesta = introducirPorTeclado.nextLine();
+            if (respuesta.equals("s") || respuesta.equals("n")) {
+                respuestaValida = true;
+            } else {
+                System.out.println("Lo que has escrito no es una opción.");
+            }
+        } while (!respuestaValida);
 
         if (respuesta.equalsIgnoreCase("s")) {
             EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
             EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
             EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
             EscribirEnFichero.EscribirListaAsociacionesBin(
-                    "src\\main\\java\\prac3\\Fichero\\AsociacionesSerializadasAuxiliar.bin",
+                    "src/main/java/prac3/Fichero/AsociacionesSerializadasAuxiliar.bin",
                     listaDeTodasLasAsociaciones);
             System.out.println("Datos guardados en archivos correctamente.\n");
-        } else if (respuesta.equalsIgnoreCase("n")) {
+        } else {
             System.out.println("Los datos no se han guardado.\n");
         }
-
     }
-
-    /*
-     * COMPROBACIONES A TENER EN CUENTA EN CADA METODO
-     * ---------------------1-------------------------
-     * NADA
-     * ---------------------2-------------------------
-     * Introduce una asociacion que existe
-     * Introduce un numero
-     * Introduce uno entre el 1-3
-     * ---------------------3-------------------------
-     * Introduce un numero
-     * Introduce uno entre el 1-3
-     * ---------------------4-------------------------
-     * Introduce un numero
-     * Introduce uno entre el 1-3
-     * ---------------------5-------------------------
-     * Introduce una asociacion que existe
-     * ---------------------6-------------------------
-     * Introduce bien el dia, el mes y el año
-     * 
-     * 
-     * 
-     * 
-     * 
-     * 
-     */
 }

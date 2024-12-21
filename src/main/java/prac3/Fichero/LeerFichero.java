@@ -221,7 +221,7 @@ public class LeerFichero {
             throws IOException {
         try (DataInputStream leerSerializado = new DataInputStream(new FileInputStream(nombreFichero))) {
             // Leer mientras haya asociaciones en el fichero
-            while (true) {
+            while (leerSerializado.available() > 0) {
                 // Leer el nombre de la asociación
                 String nombre = leerSerializado.readUTF();
 
@@ -270,8 +270,9 @@ public class LeerFichero {
                 Asociacion asociacion = new Asociacion(nombre, titulaciones, integrantes, cargos, altas, bajas);
                 listaAsociaciones.addAsociacion(asociacion);
             }
+            leerSerializado.close();
         } catch (EOFException e) {
-            // Excepción esperada cuando se llega al final del archivo
+            System.out.println("Lectura completa...");
         } catch (IOException e) {
             System.err.println("Error al leer las asociaciones: " + e.getMessage());
         }

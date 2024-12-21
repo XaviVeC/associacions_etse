@@ -39,6 +39,7 @@ public class EscribirEnFichero {
                 escritura.write("\n");
 
             }
+            escritura.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,6 +79,7 @@ public class EscribirEnFichero {
                 escritura.write("\n");
 
             }
+            escritura.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -125,6 +127,7 @@ public class EscribirEnFichero {
                 }
                 escritura.write("\n");
             }
+            escritura.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -217,6 +220,7 @@ public class EscribirEnFichero {
                     escribirSerializado.writeUTF(cargos[ii]);
                 }
             }
+            escribirSerializado.close();
         } catch (IOException e) {
             System.err.println("Error al escribir la lista de asociaciones: " + e.getMessage());
         }
