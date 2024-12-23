@@ -2,6 +2,9 @@ package prac3.main_consola;
 
 import java.io.IOException;
 import java.util.Scanner;
+
+import javax.swing.SwingUtilities;
+
 import prac3.Accion.Charla;
 import prac3.Accion.Demostracion;
 import prac3.Asociacion.Asociacion;
@@ -72,9 +75,8 @@ public class MainConsola {
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
 
-        Main_Grafico ventana = new Main_Grafico("Demostraciones", listaDeTodasLasAsociaciones,listaDeTodasLasAcciones);
-        ventana.setVisible(true);
-
+        SwingUtilities.invokeLater(() -> new Main_Grafico("Demostraciones", listaDeTodasLasAsociaciones,listaDeTodasLasAcciones ));
+        
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
             System.out.println("Elige la opcion del menu.");
