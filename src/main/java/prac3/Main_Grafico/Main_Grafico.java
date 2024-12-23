@@ -4,7 +4,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -15,7 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-
 import prac3.Accion.Demostracion;
 import prac3.Estructuras.ListaAcciones;
 import prac3.Estructuras.ListaAsociaciones;
@@ -31,10 +29,9 @@ public class Main_Grafico extends JFrame {
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        this.setSize(600, 400);
+        this.setSize(800, 600);
         contenedorPrincipal = new JPanel();
         contenedorPrincipal.setLayout(new BorderLayout());
-        contenedorPrincipal.setBackground(new Color(135, 206, 250));
         panelBotones = new JPanel();
 
         // Mostrar diálogo inicial al arrancar
@@ -50,16 +47,8 @@ public class Main_Grafico extends JFrame {
      */
     private void mostrarDialogoInicial(ListaAsociaciones listaAsociaciones, ListaAcciones listaAcciones) {
         Object[] opciones = { "Mostrar todas las demostraciones", "Filtrar por asociación" };
-        int seleccion = JOptionPane.showOptionDialog(
-            this,
-            "¿Qué desea hacer?",
-            "Seleccionar acción",
-            JOptionPane.DEFAULT_OPTION,
-            JOptionPane.QUESTION_MESSAGE,
-            null,
-            opciones,
-            opciones[0]
-        );
+        int seleccion = JOptionPane.showOptionDialog(this,"¿Qué desea hacer?","Seleccionar acción", JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,
+            null,opciones,opciones[0]);
 
         if (seleccion == 0) {
             // Mostrar todas las demostraciones activas
@@ -101,6 +90,12 @@ public class Main_Grafico extends JFrame {
 
                     // Mostrar demostraciones de la asociación seleccionada
                     mostrarLaInformacionDeDemostraciones(listaAcciones, listaAsociaciones, nombreAsociacion);
+
+                    // Volver al diálogo inicial después de cerrar
+                    contenedorPrincipal.removeAll();
+                    mostrarDialogoInicial(listaAsociaciones, listaAcciones);
+                    contenedorPrincipal.revalidate();
+                    contenedorPrincipal.repaint();
                 }
             });
 
@@ -180,9 +175,25 @@ public class Main_Grafico extends JFrame {
         scrollDemostraciones.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         // Mostrar el panel en un JOptionPane
-        JOptionPane.showMessageDialog(this, scrollDemostraciones,
-                nombreAsociacion == null ? "Todas las Demostraciones" : "Demostraciones - " + nombreAsociacion,
-                JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, scrollDemostraciones, 
+            nombreAsociacion == null ? "Todas las Demostraciones" : "Demostraciones - " + nombreAsociacion, 
+            JOptionPane.INFORMATION_MESSAGE
+        );
+
+        if (nombreAsociacion == null){
+             // Volver a la pantalla inicial
+        contenedorPrincipal.removeAll();
+        mostrarDialogoInicial(listaAsociaciones, listaAcciones);
+        contenedorPrincipal.revalidate();
+        contenedorPrincipal.repaint();
+        }else {
+             // Volver a la pantalla inicial
+        contenedorPrincipal.removeAll();
+        inicializarBotonesAsociaciones(listaAsociaciones, listaAcciones);;
+        contenedorPrincipal.revalidate();
+        contenedorPrincipal.repaint();
+        }
+       
     }
 
     private void actualizarPanelDemostraciones(JPanel panelDemostraciones, ListaAcciones demostraciones) {
@@ -193,7 +204,7 @@ public class Main_Grafico extends JFrame {
             JButton botonDemostracion = new JButton(demostracion.getNombreAccion());
             botonDemostracion.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    mostrarDetallesDemostracion(demostracion);
+                    mostrarDetallesDemostracion(demostracion, null,null);
                 }
             });
 
@@ -204,16 +215,23 @@ public class Main_Grafico extends JFrame {
         panelDemostraciones.repaint();
     }
 
-    private void mostrarDetallesDemostracion(Demostracion demostracion) {
+    private void mostrarDetallesDemostracion(Demostracion demostracion,  ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones) {
         JTextArea demostracionDetalles = new JTextArea(10, 30);
         demostracionDetalles.setLineWrap(true);
         demostracionDetalles.setWrapStyleWord(true);
         demostracionDetalles.setText(demostracion.toString());
         demostracionDetalles.setCaretPosition(0);
-
+    
         JScrollPane scrollDetalles = new JScrollPane(demostracionDetalles);
         scrollDetalles.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
+    
         JOptionPane.showMessageDialog(this, scrollDetalles, "Detalles de Demostración", JOptionPane.INFORMATION_MESSAGE);
+    
+        // Después de mostrar los detalles, volvemos a la lista de demostraciones
+        contenedorPrincipal.removeAll();
+        mostrarLaInformacionDeDemostraciones(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, null); // Mostrar las demostraciones de nuevo
+        contenedorPrincipal.revalidate();
+        contenedorPrincipal.repaint();
     }
+    
 }
