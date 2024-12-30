@@ -69,8 +69,7 @@ public class MainConsola {
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
 
         LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
-        // LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,
-        // listaDeTodasLasAsociaciones,cantidadAsociaciones);
+        //LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,listaDeTodasLasAsociaciones,cantidadAsociaciones);
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
@@ -1742,10 +1741,10 @@ public class MainConsola {
 
         if (respuesta.equalsIgnoreCase("s")) {
             EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
-            EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
+            //EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
             EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
             EscribirEnFichero.EscribirListaAsociacionesBin(
-                    "src/main/java/prac3/Fichero/AsociacionesSerializadasAuxiliar.bin",
+                    "src/main/java/prac3/Fichero/AsociacionesSerializadas.bin",
                     listaDeTodasLasAsociaciones);
             System.out.println("Datos guardados en archivos correctamente.\n");
         } else {
