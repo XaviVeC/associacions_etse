@@ -210,6 +210,7 @@ public class MainConsola {
                     opcion4(listaDeTodasLasAcciones, filtroStringOp4);
                     break;
                 case 5:// COMPROBADO
+                    opcion1(listaDeTodasLasAsociaciones);       //muestra la lista de asociaciones para que no tenga que abrir el archivo para consultarlo
                     String nombreAsociacionOp5 = "";
                     boolean salirDoWhileOp5 = false;
                     do {
@@ -1156,6 +1157,9 @@ public class MainConsola {
                     break;
 
                 case 10:// COMPROBADA
+                String filtroStringOp10;
+                filtroStringOp10 = "Demostracion";
+                opcion4(listaDeTodasLasAcciones, filtroStringOp10);
                     int indiceFicheroOp10 = listaDeTodasLasAcciones
                             .getAccionEnXIndice(listaDeTodasLasAcciones.getNumeroAcciones() - 1).getIndiceFichero() + 1;
                     // ----------------------------------------------------------
