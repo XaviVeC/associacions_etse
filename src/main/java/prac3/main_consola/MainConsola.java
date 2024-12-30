@@ -1,4 +1,4 @@
-package prac3.main_consola;
+package prac3.Main_Consola;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -99,6 +99,7 @@ public class MainConsola {
                     opcion1(listaDeTodasLasAsociaciones);
                     break;
                 case 2:// COMPROBADO
+                    opcion1(listaDeTodasLasAsociaciones);       //muestra la lista de asociaciones para que no tenga que abrir el archivo para consultarlo
                     boolean salirDoWhileOp2 = false;
                     String nombreAsociacionOp2 = "";
                     do {
