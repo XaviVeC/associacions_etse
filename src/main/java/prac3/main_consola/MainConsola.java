@@ -28,9 +28,6 @@ public class MainConsola {
 
     public static void main(String[] args) throws IOException {
 
-        // Opcion 16
-        String aliasPersonaOp16;
-
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
         int cantidadMaxima = 200;
@@ -69,13 +66,14 @@ public class MainConsola {
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
 
         LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
-        //LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,listaDeTodasLasAsociaciones,cantidadAsociaciones);
+        // LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,listaDeTodasLasAsociaciones,cantidadAsociaciones);
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
 
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
 
-        SwingUtilities.invokeLater(() -> new Main_Grafico("Demostraciones", listaDeTodasLasAsociaciones,listaDeTodasLasAcciones ));
-        
+        SwingUtilities.invokeLater(
+                () -> new Main_Grafico("Demostraciones", listaDeTodasLasAsociaciones, listaDeTodasLasAcciones));
+
         // BUCLE PRINCIPAL DEL PROGRAMA -----------------------------------------------
         do {
             System.out.println("Elige la opcion del menu.");
@@ -98,7 +96,8 @@ public class MainConsola {
                     opcion1(listaDeTodasLasAsociaciones);
                     break;
                 case 2:// COMPROBADO
-                    opcion1(listaDeTodasLasAsociaciones);       //muestra la lista de asociaciones para que no tenga que abrir el archivo para consultarlo
+                    opcion1(listaDeTodasLasAsociaciones); // muestra la lista de asociaciones para que no tenga que
+                                                          // abrir el archivo para consultarlo
                     boolean salirDoWhileOp2 = false;
                     String nombreAsociacionOp2 = "";
                     do {
@@ -210,7 +209,8 @@ public class MainConsola {
                     opcion4(listaDeTodasLasAcciones, filtroStringOp4);
                     break;
                 case 5:// COMPROBADO
-                    opcion1(listaDeTodasLasAsociaciones);       //muestra la lista de asociaciones para que no tenga que abrir el archivo para consultarlo
+                    opcion1(listaDeTodasLasAsociaciones); // muestra la lista de asociaciones para que no tenga que
+                                                          // abrir el archivo para consultarlo
                     String nombreAsociacionOp5 = "";
                     boolean salirDoWhileOp5 = false;
                     do {
@@ -902,7 +902,12 @@ public class MainConsola {
                     String[] asociacionesInvolOp9 = new String[nAsociacionesInvolucradasOp9];
                     boolean asociacionRepetida = false;
                     int j = 0, i = 0;
-
+                    // NOMBRES DE LAS POSIBLES ASOCIACIONES
+                    System.out.println("Las asociaciones que existen son:");
+                    for (int k = 0; k < listaDeTodasLasAsociaciones.getIndiceAsociaciones(); k++) {
+                        System.out.println("La asociación " + (k + 1) + " es:\t"
+                                + listaDeTodasLasAsociaciones.getElementoListaAsociacion(k).getNombreAsociacion());
+                    }
                     do {
                         System.out.println("Escribe el nombre de la asociación involucrada.");
                         asocOp9 = introducirPorTeclado.nextLine();
@@ -946,7 +951,25 @@ public class MainConsola {
 
                     // -------------------------------------------------------------------------------------------------------
                     // ORGANIZADOR RESPONSABLE. COMPROBADO
-
+                    // mostrar los posibles alias de las asociaciones
+                    boolean asociacionEncontradaOp9 = false;
+                    int indiceBusquedaAsociacionOp9 = 0;
+                    System.out.println("Estos son los posibles responsables: ");
+                    for (int k = 0; k < asociacionesInvolOp9.length; k++) {
+                        asociacionEncontradaOp9 = false;
+                        indiceBusquedaAsociacionOp9 = 0;
+                        while (!asociacionEncontradaOp9
+                                && indiceBusquedaAsociacionOp9 < listaDeTodasLasAsociaciones.getIndiceAsociaciones()) {
+                            if (asociacionesInvolOp9[k].equals(listaDeTodasLasAsociaciones
+                                    .getElementoListaAsociacion(indiceBusquedaAsociacionOp9).getNombreAsociacion())) {
+                                System.out.println(listaDeTodasLasAsociaciones
+                                        .getElementoListaAsociacion(indiceBusquedaAsociacionOp9).toString() + "\n");
+                                asociacionEncontradaOp9 = true;
+                            } else {
+                                indiceBusquedaAsociacionOp9++;
+                            }
+                        }
+                    }
                     String organizadorRespOp9 = "";
                     int existe = -1;
                     boolean estaEnAsociacion = false;
@@ -1070,7 +1093,22 @@ public class MainConsola {
                     boolean instructorRepetido = false;
                     boolean estaEnLaAsociacion = false;
                     String[] instructoresCharla = new String[nInstructores];
-
+                    System.out.println("Los posibles instructores son: ");
+                    for (int k = 0; k < asociacionesInvolOp9.length; k++) {
+                        asociacionEncontradaOp9 = false;
+                        indiceBusquedaAsociacionOp9 = 0;
+                        while (!asociacionEncontradaOp9
+                                && indiceBusquedaAsociacionOp9 < listaDeTodasLasAsociaciones.getIndiceAsociaciones()) {
+                            if (asociacionesInvolOp9[k].equals(listaDeTodasLasAsociaciones
+                                    .getElementoListaAsociacion(indiceBusquedaAsociacionOp9).getNombreAsociacion())) {
+                                System.out.println(listaDeTodasLasAsociaciones
+                                        .getElementoListaAsociacion(indiceBusquedaAsociacionOp9).toString() + "\n");
+                                asociacionEncontradaOp9 = true;
+                            } else {
+                                indiceBusquedaAsociacionOp9++;
+                            }
+                        }
+                    }
                     do {
                         System.out.println("Escribe el alias del instructor");
 
@@ -1125,6 +1163,7 @@ public class MainConsola {
                         System.out.println("¿Cuantas personas asistieron?");
                         int nAsistentes = 0;
                         boolean entradaCorrecta;
+                        int maxAsistentesOp9 = 700;
                         do {
                             entradaCorrecta = false;
                             do {
@@ -1136,10 +1175,10 @@ public class MainConsola {
                                 }
                             } while (!entradaCorrecta);
 
-                            if (nAsistentes < 0 || nAsistentes > 700) {
+                            if (nAsistentes <= 0 || nAsistentes > maxAsistentesOp9) {
                                 System.out.println("Introduce un número de asistentes válido. Introduce de nuevo:");
                             }
-                        } while (nAsistentes < 0 || nAsistentes > 700);
+                        } while (nAsistentes <= 0 || nAsistentes > maxAsistentesOp9);
 
                         // -------------------------------------------------------------------------------------------------------
 
@@ -1157,9 +1196,9 @@ public class MainConsola {
                     break;
 
                 case 10:// COMPROBADA
-                String filtroStringOp10;
-                filtroStringOp10 = "Demostracion";
-                opcion4(listaDeTodasLasAcciones, filtroStringOp10);
+                    String filtroStringOp10;
+                    filtroStringOp10 = "Demostracion";
+                    opcion4(listaDeTodasLasAcciones, filtroStringOp10);
                     int indiceFicheroOp10 = listaDeTodasLasAcciones
                             .getAccionEnXIndice(listaDeTodasLasAcciones.getNumeroAcciones() - 1).getIndiceFichero() + 1;
                     // ----------------------------------------------------------
@@ -1472,7 +1511,7 @@ public class MainConsola {
                     break;
 
                 case 16:
-
+                    String aliasPersonaOp16;
                     do {
                         System.out.println("Introduce el nombre de la persona");
                         aliasPersonaOp16 = introducirPorTeclado.nextLine();
@@ -1485,8 +1524,29 @@ public class MainConsola {
                     break;
 
                 case 17:
+                    System.out.println("Estas son las demostraciones no activas que hay:\n");
+                    Demostracion auxOp17 = null;
+                    for (int iop17 = 0; iop17 < listaDeTodasLasAcciones.getNumeroAcciones(); iop17++) {
+                        if (listaDeTodasLasAcciones.getAccionEnXIndice(iop17) instanceof Demostracion) {
+                            auxOp17 = (Demostracion)listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
+                            if (!auxOp17.getEstado()) {
+                                System.out.println("La demostración con indice "+ (iop17+1)+ " es:\n" +listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
+                            }
+                            
+                        }
+                    }
                     opcion17(listaDeTodasLasAcciones);
-                    System.out.println(listaDeTodasLasAcciones.toString());
+                    System.out.println("Demostraciones después de elimianar las no activas realizadas antes de la fecha \n");
+                    for (int iop17 = 0; iop17 < listaDeTodasLasAcciones.getNumeroAcciones(); iop17++) {
+                        if (listaDeTodasLasAcciones.getAccionEnXIndice(iop17) instanceof Demostracion) {
+                            auxOp17 = (Demostracion)listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
+                            if (!auxOp17.getEstado()) {
+                                System.out.println("La demostración con indice "+ (iop17+1)+ " es:\n" +listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
+                            }
+                            
+                        }
+                    }
+            
                     break;
 
                 case 18:
@@ -1494,7 +1554,7 @@ public class MainConsola {
                     break;
 
                 case 19:
-                    
+
                     pruebaFuncionDelMainGrafico(true, "LazosDeEsperanza", listaDeTodasLasAcciones);
                     break;
 
@@ -1742,10 +1802,10 @@ public class MainConsola {
                 System.out.println("Lo que has escrito no es una opción.");
             }
         } while (!respuestaValida);
-
         if (respuesta.equalsIgnoreCase("s")) {
             EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
-            //EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones, "Asociaciones.txt");
+            // EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones,
+            // "Asociaciones.txt");
             EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
             EscribirEnFichero.EscribirListaAsociacionesBin(
                     "src/main/java/prac3/Fichero/AsociacionesSerializadas.bin",

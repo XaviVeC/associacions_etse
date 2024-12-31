@@ -1,182 +1,182 @@
-1;Professor;AlexSmith01;DEIM;10  
-2;Alumne;pedrito99;3;true;GEI  
-3;Professor;JuliaDiaz93;DEEEA;18  
-4;Alumne;marcoA93;1;false;GEB  
-5;Professor;CarlosLopez12;DEIM;12  
-6;Professor;Ana20Ferrer;DEEEA;7  
-7;Alumne;santiGomez99;2;true;GESST  
-8;Professor;Miguel21Perez;DEIM;15  
-9;Alumne;LauraA23;4;false;BioGEI  
-10;Professor;TeresaH88;DEEEA;20  
-11;Alumne;DanielC20;3;true;DG GEB-GESST  
-12;Professor;RamonGarcia54;DEIM;17  
-13;Alumne;LuciaMartinez45;2;false;externETSE  
-14;Professor;PabloOrtega32;DEEEA;13  
-15;Alumne;CarmenLopez11;4;true;GEI  
-16;Professor;FernandoC96;DEIM;14  
-17;Alumne;AlvaroH77;1;false;GEB  
-18;Professor;SilviaPerez01;DEEEA;22  
-19;Alumne;RaulGomez21;3;true;BioGEI  
-20;Professor;VictorMartin87;DEIM;9  
-21;Alumne;AndreaLopez65;2;false;GESST  
-22;Professor;CristinaHernandez78;DEEEA;18  
-23;Alumne;SofiaCano99;4;true;DG GEB-GESST  
-24;Professor;JorgeMendez34;DEIM;21  
-25;Alumne;DavidGarcia32;1;false;externETSE  
-26;Professor;AnaLopez12;DEEEA;19  
-27;Alumne;JuliaPerez76;3;true;GEI  
-28;Professor;PedroSantos90;DEIM;16  
-29;Alumne;ElenaRuiz21;2;false;BioGEI  
-30;Professor;ManuelOrtega43;DEEEA;20  
-31;Alumne;BeatrizMartin88;4;true;GEB  
-32;Professor;LauraRamirez66;DEIM;12  
-33;Alumne;JavierLopez23;1;false;GESST  
-34;Professor;RicardoVidal54;DEEEA;23  
-35;Alumne;MariaGonzalez12;3;true;DG GEB-GESST  
-36;Professor;EstherFernandez65;DEIM;15  
-37;Alumne;AlejandroHernandez99;2;false;externETSE  
-38;Professor;TeresaMolina78;DEEEA;18  
-39;Alumne;MiguelOrtega45;4;true;BioGEI  
-40;Professor;AntonioPerez90;DEIM;14  
-41;Alumne;SandraLopez32;1;false;GEB  
-42;Professor;RafaelSanz01;DEEEA;22  
-43;Alumne;CristinaDiaz21;3;true;GEI  
-44;Professor;ClaraHernandez12;DEIM;19  
-45;Alumne;JoseMartin65;2;false;GESST  
-46;Professor;FernandoGarcia34;DEEEA;17  
-47;Alumne;AnaSantos88;4;true;DG GEB-GESST  
-48;Professor;MiguelLopez45;DEIM;20  
-49;Alumne;PabloHernandez12;1;false;externETSE  
-50;Professor;LauraSanchez78;DEEEA;16  
-51;Alumne;CarmenGarcia90;3;true;BioGEI  
-52;Professor;JavierLopez23;DEIM;13  
-53;Alumne;LuciaRamirez34;2;false;GEB  
-54;Professor;CarlosOrtega65;DEEEA;18  
-55;Alumne;RaulPerez87;4;true;GEI  
-56;Professor;JuliaDiaz43;DEIM;12  
-57;Alumne;SandraMartin12;1;false;GESST  
-58;Professor;TeresaLopez76;DEEEA;21  
-59;Alumne;MiguelSanz99;3;true;DG GEB-GESST  
-60;Professor;PedroMartin32;DEIM;10
-61;Alumne;BeatrizLopez65;2;false;externETSE  
-62;Professor;CristinaRamirez21;DEEEA;14  
-63;Alumne;AntonioDiaz78;4;true;BioGEI  
-64;Professor;RamonVidal12;DEIM;19  
-65;Alumne;ElenaPerez45;1;false;GEB  
-66;Professor;ManuelSantos32;DEEEA;16  
-67;Alumne;LuciaGomez90;3;true;GEI  
-68;Professor;JorgeDiaz23;DEIM;22  
-69;Alumne;MariaLopez87;2;false;GESST  
-70;Professor;LauraOrtega45;DEEEA;18  
-71;Alumne;PabloMartin99;4;true;DG GEB-GESST  
-72;Professor;FernandoGarcia12;DEIM;15  
-73;Alumne;SandraPerez32;1;false;externETSE  
-74;Professor;AnaDiaz43;DEEEA;17  
-75;Alumne;CristianHernandez65;3;true;BioGEI  
-76;Professor;MiguelLopez21;DEIM;10  
-77;Alumne;BeatrizSanz78;2;false;GEB  
-78;Professor;CarlosPerez34;DEEEA;19  
-79;Alumne;LuciaMartinez12;4;true;GEI  
-80;Professor;SofiaRamirez23;DEIM;14  
-81;Alumne;JorgeHernandez65;1;false;GESST  
-82;Professor;RafaelOrtega43;DEEEA;21  
-83;Alumne;LauraGomez99;3;true;DG GEB-GESST  
-84;Professor;MariaDiaz78;DEIM;12  
-85;Alumne;PedroSanz32;2;false;externETSE  
-86;Professor;VictorLopez45;DEEEA;20  
-87;Alumne;SandraDiaz21;4;true;BioGEI  
-88;Professor;MiguelGarcia65;DEIM;18  
-89;Alumne;LuciaSantos78;1;false;GEB  
-90;Professor;JavierLopez32;DEEEA;17  
-91;Alumne;ElenaMartin90;3;true;GEI  
-92;Professor;CristinaOrtega23;DEIM;13  
-93;Alumne;PabloDiaz87;2;false;GESST  
-94;Professor;CarlosRamirez45;DEEEA;15  
-95;Alumne;BeatrizLopez12;4;true;DG GEB-GESST  
-96;Professor;LauraSantos78;DEIM;11  
-97;Alumne;FernandoHernandez32;1;false;externETSE  
-98;Professor;RamonDiaz65;DEEEA;19  
-99;Alumne;LuciaOrtega21;3;true;BioGEI  
-100;Professor;SofiaGarcia43;DEIM;16  
-101;Professor;AndreaMendez90;DEIM;13
-102;Professor;ClaudiaDiaz12;DEEEA;20
-103;Alumne;RafaelMartin76;4;true;GEI
-104;Alumne;MiguelCano88;3;true;DG GEB-GESST
-105;Professor;PabloSanchez65;DEEEA;18
-106;Alumne;CarlaRamirez32;1;false;GESST
-107;Professor;AlbertoGarcia21;DEIM;17
-108;Alumne;LuciaDiaz99;3;true;BioGEI
-109;Alumne;ElenaCano76;2;false;GEB
-110;Professor;VictorRamirez34;DEIM;22
-111;Professor;FernandoSanz87;DEEEA;16
-112;Alumne;BeatrizHernandez45;3;true;DG GEB-GESST
-113;Professor;ClaraMendez54;DEIM;15
-114;Alumne;DanielOrtega32;1;false;externETSE
-115;Professor;CarlosHernandez78;DEEEA;13
-116;Alumne;SofiaMartin99;2;false;BioGEI
-117;Alumne;JuanLopez90;1;false;GESST
-118;Professor;SilviaCano78;DEEEA;17
-119;Alumne;CarolinaDiaz45;3;true;BioGEI
-120;Professor;Carlos2001;DEIM;50
-121;Professor;saraaaalaaa;DEEA;43
-122;Alumne;Lucas44;2;true;GEI
-123;Alumne;Alberto12;4;false;GEB
-124;Alumne;LuciaSanz21;4;true;BioGEI  
-125;Alumne;CarmenRamirez90;1;false;DG GEB-GESST  
-126;Alumne;PabloHernandez54;2;false;GEI  
-127;Alumne;LauraMendez32;3;true;GEB  
-128;Alumne;RafaelOrtega65;4;true;GESST  
-129;Alumne;BeatrizSantos99;1;false;BioGEI  
-130;Alumne;MiguelGonzalez45;2;false;DG GEB-GESST  
-131;Alumne;SandraDiaz87;3;true;GEI  
-132;Alumne;AnaGarcia12;4;true;GEB  
-133;Alumne;JorgeRamirez78;1;false;GESST  
-134;Alumne;CristinaPerez34;2;false;BioGEI  
-135;Alumne;FernandoMartin65;3;true;DG GEB-GESST  
-136;Alumne;CarlaSanz21;4;true;GEI  
-137;Alumne;LuciaOrtega76;1;false;GEB  
-138;Alumne;PabloDiaz90;2;false;GESST  
-139;Alumne;SandraHernandez45;3;true;BioGEI  
-140;Alumne;AntonioLopez54;4;true;DG GEB-GESST  
-141;Alumne;ClaraGarcia12;1;false;GEI  
-142;Alumne;MarioMendez87;2;false;GEB  
-143;Alumne;RafaelSantos32;3;true;GESST  
-144;Alumne;BeatrizDiaz99;4;true;BioGEI  
-145;Alumne;MiguelRamirez45;1;false;DG GEB-GESST  
-146;Alumne;LuciaHernandez78;2;false;GEI  
-147;Alumne;AdrianCano21;3;true;GEB  
-148;Alumne;CristinaSanz34;4;true;GESST  
-149;Alumne;AnaDiaz87;1;false;BioGEI  
-150;Alumne;LauraLopez76;2;false;DG GEB-GESST  
-151;Alumne;JorgeOrtega45;3;true;GEI  
-152;Alumne;FernandoSantos12;4;true;GEB  
-153;Alumne;CarmenMartin21;1;false;GESST  
-154;Alumne;PabloCano78;2;false;BioGEI  
-155;Alumne;SandraPerez34;3;true;DG GEB-GESST  
-156;Alumne;AntonioRamirez99;4;true;GEI  
-157;Alumne;CarlaDiaz45;1;false;GEB  
-158;Alumne;AdrianHernandez54;2;false;GESST  
-159;Alumne;LuciaMartin76;3;true;BioGEI  
-160;Alumne;CristinaLopez87;4;true;DG GEB-GESST  
-161;Alumne;MarioPerez12;1;false;GEI  
-162;Alumne;BeatrizOrtega99;2;false;GEB  
-163;Alumne;LauraGarcia21;3;true;GESST  
-164;Alumne;FernandoSanz65;4;true;BioGEI  
-165;Alumne;ClaraRamirez45;1;false;DG GEB-GESST  
-166;Alumne;PabloDiaz76;2;false;GEI  
-167;Alumne;SandraHernandez34;3;true;GEB  
-168;Alumne;RafaelLopez78;4;true;GESST  
-169;Alumne;LuciaOrtega54;1;false;BioGEI  
-170;Alumne;AntonioCano45;2;false;DG GEB-GESST  
-171;Alumne;MarioRamirez21;3;true;GEI  
-172;Alumne;CristinaSantos76;4;true;GEB  
-173;Alumne;JorgeDiaz12;1;false;GESST  
-174;Alumne;LauraMartin87;2;false;BioGEI  
-175;Alumne;SandraLopez34;3;true;DG GEB-GESST  
-176;Alumne;FernandoOrtega45;4;true;GEI  
-177;Alumne;AdrianGarcia65;1;false;GEB  
-178;Alumne;ClaraCano78;2;false;GESST  
-179;Alumne;LuciaGimenez99;3;true;BioGEI  
-180;Alumne;BeatrizRamirez12;4;true;DG GEB-GESST  
-181;Alumne;CristinaPerez45;1;false;GEI  
-182;Alumne;PabloSanz21;2;false;GEB   
+1;Profesor;AlexSmith01;DEIM;10
+2;Alumno;pedrito99;3;true;GEI
+3;Profesor;JuliaDiaz93;DEEEA;18
+4;Alumno;marcoA93;1;false;GEB
+5;Profesor;CarlosLopez12;DEIM;12
+6;Profesor;Ana20Ferrer;DEEEA;7
+7;Alumno;santiGomez99;2;true;GESST
+8;Profesor;Miguel21Perez;DEIM;15
+9;Alumno;LauraA23;4;false;BioGEI
+10;Profesor;TeresaH88;DEEEA;20
+11;Alumno;DanielC20;3;true;DG GEB-GESST
+12;Profesor;RamonGarcia54;DEIM;17
+13;Alumno;LuciaMartinez45;2;false;externETSE
+14;Profesor;PabloOrtega32;DEEEA;13
+15;Alumno;CarmenLopez11;4;true;GEI
+16;Profesor;FernandoC96;DEIM;14
+17;Alumno;AlvaroH77;1;false;GEB
+18;Profesor;SilviaPerez01;DEEEA;22
+19;Alumno;RaulGomez21;3;true;BioGEI
+20;Profesor;VictorMartin87;DEIM;9
+21;Alumno;AndreaLopez65;2;false;GESST
+22;Profesor;CristinaHernandez78;DEEEA;18
+23;Alumno;SofiaCano99;4;true;DG GEB-GESST
+24;Profesor;JorgeMendez34;DEIM;21
+25;Alumno;DavidGarcia32;1;false;externETSE
+26;Profesor;AnaLopez12;DEEEA;19
+27;Alumno;JuliaPerez76;3;true;GEI
+28;Profesor;PedroSantos90;DEIM;16
+29;Alumno;ElenaRuiz21;2;false;BioGEI
+30;Profesor;ManuelOrtega43;DEEEA;20
+31;Alumno;BeatrizMartin88;4;true;GEB
+32;Profesor;LauraRamirez66;DEIM;12
+33;Alumno;JavierLopez23;1;false;GESST
+34;Profesor;RicardoVidal54;DEEEA;23
+35;Alumno;MariaGonzalez12;3;true;DG GEB-GESST
+36;Profesor;EstherFernandez65;DEIM;15
+37;Alumno;AlejandroHernandez99;2;false;externETSE
+38;Profesor;TeresaMolina78;DEEEA;18
+39;Alumno;MiguelOrtega45;4;true;BioGEI
+40;Profesor;AntonioPerez90;DEIM;14
+41;Alumno;SandraLopez32;1;false;GEB
+42;Profesor;RafaelSanz01;DEEEA;22
+43;Alumno;CristinaDiaz21;3;true;GEI
+44;Profesor;ClaraHernandez12;DEIM;19
+45;Alumno;JoseMartin65;2;false;GESST
+46;Profesor;FernandoGarcia34;DEEEA;17
+47;Alumno;AnaSantos88;4;true;DG GEB-GESST
+48;Profesor;MiguelLopez45;DEIM;20
+49;Alumno;PabloHernandez12;1;false;externETSE
+50;Profesor;LauraSanchez78;DEEEA;16
+51;Alumno;CarmenGarcia90;3;true;BioGEI
+52;Profesor;JavierLopez23;DEIM;13
+53;Alumno;LuciaRamirez34;2;false;GEB
+54;Profesor;CarlosOrtega65;DEEEA;18
+55;Alumno;RaulPerez87;4;true;GEI
+56;Profesor;JuliaDiaz43;DEIM;12
+57;Alumno;SandraMartin12;1;false;GESST
+58;Profesor;TeresaLopez76;DEEEA;21
+59;Alumno;MiguelSanz99;3;true;DG GEB-GESST
+60;Profesor;PedroMartin32;DEIM;10
+61;Alumno;BeatrizLopez65;2;false;externETSE
+62;Profesor;CristinaRamirez21;DEEEA;14
+63;Alumno;AntonioDiaz78;4;true;BioGEI
+64;Profesor;RamonVidal12;DEIM;19
+65;Alumno;ElenaPerez45;1;false;GEB
+66;Profesor;ManuelSantos32;DEEEA;16
+67;Alumno;LuciaGomez90;3;true;GEI
+68;Profesor;JorgeDiaz23;DEIM;22
+69;Alumno;MariaLopez87;2;false;GESST
+70;Profesor;LauraOrtega45;DEEEA;18
+71;Alumno;PabloMartin99;4;true;DG GEB-GESST
+72;Profesor;FernandoGarcia12;DEIM;15
+73;Alumno;SandraPerez32;1;false;externETSE
+74;Profesor;AnaDiaz43;DEEEA;17
+75;Alumno;CristianHernandez65;3;true;BioGEI
+76;Profesor;MiguelLopez21;DEIM;10
+77;Alumno;BeatrizSanz78;2;false;GEB
+78;Profesor;CarlosPerez34;DEEEA;19
+79;Alumno;LuciaMartinez12;4;true;GEI
+80;Profesor;SofiaRamirez23;DEIM;14
+81;Alumno;JorgeHernandez65;1;false;GESST
+82;Profesor;RafaelOrtega43;DEEEA;21
+83;Alumno;LauraGomez99;3;true;DG GEB-GESST
+84;Profesor;MariaDiaz78;DEIM;12
+85;Alumno;PedroSanz32;2;false;externETSE
+86;Profesor;VictorLopez45;DEEEA;20
+87;Alumno;SandraDiaz21;4;true;BioGEI
+88;Profesor;MiguelGarcia65;DEIM;18
+89;Alumno;LuciaSantos78;1;false;GEB
+90;Profesor;JavierLopez32;DEEEA;17
+91;Alumno;ElenaMartin90;3;true;GEI
+92;Profesor;CristinaOrtega23;DEIM;13
+93;Alumno;PabloDiaz87;2;false;GESST
+94;Profesor;CarlosRamirez45;DEEEA;15
+95;Alumno;BeatrizLopez12;4;true;DG GEB-GESST
+96;Profesor;LauraSantos78;DEIM;11
+97;Alumno;FernandoHernandez32;1;false;externETSE
+98;Profesor;RamonDiaz65;DEEEA;19
+99;Alumno;LuciaOrtega21;3;true;BioGEI
+100;Profesor;SofiaGarcia43;DEIM;16
+101;Profesor;AndreaMendez90;DEIM;13
+102;Profesor;ClaudiaDiaz12;DEEEA;20
+103;Alumno;RafaelMartin76;4;true;GEI
+104;Alumno;MiguelCano88;3;true;DG GEB-GESST
+105;Profesor;PabloSanchez65;DEEEA;18
+106;Alumno;CarlaRamirez32;1;false;GESST
+107;Profesor;AlbertoGarcia21;DEIM;17
+108;Alumno;LuciaDiaz99;3;true;BioGEI
+109;Alumno;ElenaCano76;2;false;GEB
+110;Profesor;VictorRamirez34;DEIM;22
+111;Profesor;FernandoSanz87;DEEEA;16
+112;Alumno;BeatrizHernandez45;3;true;DG GEB-GESST
+113;Profesor;ClaraMendez54;DEIM;15
+114;Alumno;DanielOrtega32;1;false;externETSE
+115;Profesor;CarlosHernandez78;DEEEA;13
+116;Alumno;SofiaMartin99;2;false;BioGEI
+117;Alumno;JuanLopez90;1;false;GESST
+118;Profesor;SilviaCano78;DEEEA;17
+119;Alumno;CarolinaDiaz45;3;true;BioGEI
+120;Profesor;Carlos2001;DEIM;50
+121;Profesor;saraaaalaaa;DEEA;43
+122;Alumno;Lucas44;2;true;GEI
+123;Alumno;Alberto12;4;false;GEB
+124;Alumno;LuciaSanz21;4;true;BioGEI
+125;Alumno;CarmenRamirez90;1;false;DG GEB-GESST
+126;Alumno;PabloHernandez54;2;false;GEI
+127;Alumno;LauraMendez32;3;true;GEB
+128;Alumno;RafaelOrtega65;4;true;GESST
+129;Alumno;BeatrizSantos99;1;false;BioGEI
+130;Alumno;MiguelGonzalez45;2;false;DG GEB-GESST
+131;Alumno;SandraDiaz87;3;true;GEI
+132;Alumno;AnaGarcia12;4;true;GEB
+133;Alumno;JorgeRamirez78;1;false;GESST
+134;Alumno;CristinaPerez34;2;false;BioGEI
+135;Alumno;FernandoMartin65;3;true;DG GEB-GESST
+136;Alumno;CarlaSanz21;4;true;GEI
+137;Alumno;LuciaOrtega76;1;false;GEB
+138;Alumno;PabloDiaz90;2;false;GESST
+139;Alumno;SandraHernandez45;3;true;BioGEI
+140;Alumno;AntonioLopez54;4;true;DG GEB-GESST
+141;Alumno;ClaraGarcia12;1;false;GEI
+142;Alumno;MarioMendez87;2;false;GEB
+143;Alumno;RafaelSantos32;3;true;GESST
+144;Alumno;BeatrizDiaz99;4;true;BioGEI
+145;Alumno;MiguelRamirez45;1;false;DG GEB-GESST
+146;Alumno;LuciaHernandez78;2;false;GEI
+147;Alumno;AdrianCano21;3;true;GEB
+148;Alumno;CristinaSanz34;4;true;GESST
+149;Alumno;AnaDiaz87;1;false;BioGEI
+150;Alumno;LauraLopez76;2;false;DG GEB-GESST
+151;Alumno;JorgeOrtega45;3;true;GEI
+152;Alumno;FernandoSantos12;4;true;GEB
+153;Alumno;CarmenMartin21;1;false;GESST
+154;Alumno;PabloCano78;2;false;BioGEI
+155;Alumno;SandraPerez34;3;true;DG GEB-GESST
+156;Alumno;AntonioRamirez99;4;true;GEI
+157;Alumno;CarlaDiaz45;1;false;GEB
+158;Alumno;AdrianHernandez54;2;false;GESST
+159;Alumno;LuciaMartin76;3;true;BioGEI
+160;Alumno;CristinaLopez87;4;true;DG GEB-GESST
+161;Alumno;MarioPerez12;1;false;GEI
+162;Alumno;BeatrizOrtega99;2;false;GEB
+163;Alumno;LauraGarcia21;3;true;GESST
+164;Alumno;FernandoSanz65;4;true;BioGEI
+165;Alumno;ClaraRamirez45;1;false;DG GEB-GESST
+166;Alumno;PabloDiaz76;2;false;GEI
+167;Alumno;SandraHernandez34;3;true;GEB
+168;Alumno;RafaelLopez78;4;true;GESST
+169;Alumno;LuciaOrtega54;1;false;BioGEI
+170;Alumno;AntonioCano45;2;false;DG GEB-GESST
+171;Alumno;MarioRamirez21;3;true;GEI
+172;Alumno;CristinaSantos76;4;true;GEB
+173;Alumno;JorgeDiaz12;1;false;GESST
+174;Alumno;LauraMartin87;2;false;BioGEI
+175;Alumno;SandraLopez34;3;true;DG GEB-GESST
+176;Alumno;FernandoOrtega45;4;true;GEI
+177;Alumno;AdrianGarcia65;1;false;GEB
+178;Alumno;ClaraCano78;2;false;GESST
+179;Alumno;LuciaGimenez99;3;true;BioGEI
+180;Alumno;BeatrizRamirez12;4;true;DG GEB-GESST
+181;Alumno;CristinaPerez45;1;false;GEI
+182;Alumno;PabloSanz21;2;false;GEB
