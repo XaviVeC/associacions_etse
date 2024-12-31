@@ -1224,7 +1224,7 @@ public class MainConsola {
 
                     int jj = 0, ii = 0;
                     String asocOp10;
-
+                    opcion1(listaDeTodasLasAsociaciones);
                     do {
                         System.out.println("Escribe el nombre de la asociación involucrada.");
                         asocOp10 = introducirPorTeclado.nextLine();
@@ -1296,7 +1296,7 @@ public class MainConsola {
                     boolean entradaValidaOp10;
                     do {
                         entradaValidaOp10 = false;
-                        System.out.println("Dia en que está programada la charla o se hizo la charla:");
+                        System.out.println("Dia en que está programada la demostracion o se hizo la demostracion:");
                         do {
                             try {
                                 diaOp10 = Integer.parseInt(introducirPorTeclado.nextLine());
@@ -1313,7 +1313,7 @@ public class MainConsola {
 
                     do {
                         entradaValidaOp10 = false;
-                        System.out.println("Mes en que está programada la charla o se hizo la charla:");
+                        System.out.println("Mes en que está programada la demostracion o se hizo la demostracion:");
                         do {
                             try {
                                 mesOp10 = Integer.parseInt(introducirPorTeclado.nextLine());
@@ -1330,7 +1330,7 @@ public class MainConsola {
 
                     do {
                         entradaValidaOp10 = false;
-                        System.out.println("Año en que está programada la charla o se hizo la charla:");
+                        System.out.println("Año en que está programada la demostracion o se hizo la demostracion:");
                         System.out.println("El rango de años es de [1991 - 2025]");
 
                         do {
@@ -1393,7 +1393,7 @@ public class MainConsola {
                             organizadorRespOp10, fechaCharlaOp10, costeDemostracion, disponible, vecesOfrecidaOp10);
 
                     listaDeTodasLasAcciones.addAccion(newDemo);
-
+                    opcion4(listaDeTodasLasAcciones, filtroStringOp10);
                     break;
 
                 case 11:// COMPROBADA
