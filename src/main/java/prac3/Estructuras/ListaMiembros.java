@@ -171,7 +171,7 @@ public class ListaMiembros {
                 fechasBajaMiembrosAsociacion = asociacionAuxiliar.getFechasBaja();
                 while (!miembroActivoEncontrado && (indiceMiembrosEnAsociacion < miembrosDeLaAsociacion.length)) {
                     if ((miembroAuxiliar.equals(miembrosDeLaAsociacion[indiceMiembrosEnAsociacion]))
-                            && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getyear() == 9999)) {
+                            && (fechasBajaMiembrosAsociacion[indiceMiembrosEnAsociacion].getYear() == 9999)) {
                         miembroActivoEncontrado = true;
                         if (filtro.equalsIgnoreCase("Ambos")) {
                             sublistaSegunFiltro.addMiembro(this.listaMembres[i]);
@@ -333,7 +333,7 @@ public class ListaMiembros {
                 if (listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
                         .getListaMiembrosAsociacion()[indiceMiembroDeUnaAsoc].equals(aliasMiembroAComprobar)
                         && listaTodasAsociaciones.getElementoListaAsociacion(indiceAsociacion)
-                                .getFechasBaja()[indiceMiembroDeUnaAsoc].getyear() == 9999) {
+                                .getFechasBaja()[indiceMiembroDeUnaAsoc].getYear() == 9999) {
                     vecesQueEsta++;
                     if (vecesQueEsta > 2) {
                         siEstaEnMasDeTres = true;

@@ -50,42 +50,10 @@ public class Fecha {
      * 
      * @return - variable year
      */
-    public int getyear() {
+    public int getYear() {
         return year;
     }
 
-    /**
-     * Setter de la variable dia
-     * 
-     * @param dia - variable dia
-     */
-    public void setDia(int dia) {
-        if (diaValido(dia)) {
-            this.dia = dia;
-        }
-    }
-
-    /**
-     * Setter de la variable mes
-     * 
-     * @param mes - variable mes
-     */
-    public void setMes(int mes) {
-        if (mesValido(mes)) {
-            this.mes = mes;
-        }
-    }
-
-    /**
-     * Setter de la variable year
-     * 
-     * @param year - variable year
-     */
-    public void setyear(int year) {
-        if (yearValido(year)) {
-            this.year = year;
-        }
-    }
 
     /**
      * Metodo que comprueba que el dia este entre 1 y 31
@@ -139,7 +107,7 @@ public class Fecha {
      * @return - Fecha completa
      */
     public String toString() {
-        return (+this.getDia() + "-" + this.getMes() + "-" + this.getyear());
+        return (this.dia + "-" + this.mes + "-" + this.year);
     }
 
     /**
@@ -157,9 +125,9 @@ public class Fecha {
      * @param otraFecha la otra fecha con la que comparamos la fecha desde quese
      *                  ejecuta esta funcion
      * @return retorna un codigo que
-     *         - 0 -> si la fecha desde que se ejecuta es menor a otraFecha
-     *         - 1 -> si son iguales
-     *         - 2 -> si la fecha desde que se ejecuta es mayor a la otraFecha
+     *         0 -> si la fecha desde que se ejecuta es menor a otraFecha
+     *         1 -> si son iguales
+     *         2 -> si la fecha desde que se ejecuta es mayor a la otraFecha
      */
     public int compararFechas(Fecha otraFecha) {
         int codigoResultado;

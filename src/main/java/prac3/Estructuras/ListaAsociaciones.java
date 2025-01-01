@@ -132,7 +132,7 @@ public class ListaAsociaciones {
         boolean siEsta = false;
         for (int index = 0; index < asociacion.getListaMiembrosAsociacion().length; index++) {
             if (asociacion.getListaMiembrosAsociacion()[index].equals(alias)
-                    && asociacion.getFechasBaja()[index].getyear() == 9999) {
+                    && asociacion.getFechasBaja()[index].getYear() == 9999) {
                 siEsta = true;
             }
         }

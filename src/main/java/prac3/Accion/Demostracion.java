@@ -31,10 +31,8 @@ public class Demostracion extends Accion {
         this.demostracionValida = estadoDemostracion; // Cuando se crea una demostracion, se considera que se empieza a
                                                       // ofrecer en este instante
         this.contadorVecesOfrecida = vecesOfrecida; // Todavia no se ha ofrecido, ya que se acaba de crear
-        this.fechaCreacion = new Fecha(fechaCreacion.getDia(), fechaCreacion.getMes(), fechaCreacion.getyear());
+        this.fechaCreacion = new Fecha(fechaCreacion.getDia(), fechaCreacion.getMes(), fechaCreacion.getYear());
 
-        // AVER SI HACE FALTA COMPROBARLO ESTO
-        // $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
         if (this.costoDemostracion < 0.0) {
             this.costoDemostracion = -999.0; // Si el costo introducido es negativo, se asigna un costo que indica error
         } else {

@@ -201,7 +201,7 @@ public class EscribirEnFichero {
                 for (int ii = 0; ii < altas.length; ii++) {
                     escribirSerializado.writeInt(altas[ii].getDia());
                     escribirSerializado.writeInt(altas[ii].getMes());
-                    escribirSerializado.writeInt(altas[ii].getyear());
+                    escribirSerializado.writeInt(altas[ii].getYear());
                 }
 
                 // Escribir las fechas de baja
@@ -210,7 +210,7 @@ public class EscribirEnFichero {
                 for (int ii = 0; ii < bajas.length; ii++) {
                     escribirSerializado.writeInt(bajas[ii].getDia());
                     escribirSerializado.writeInt(bajas[ii].getMes());
-                    escribirSerializado.writeInt(bajas[ii].getyear());
+                    escribirSerializado.writeInt(bajas[ii].getYear());
                 }
 
                 // Escribir los cargos
