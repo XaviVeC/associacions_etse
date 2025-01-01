@@ -30,18 +30,17 @@ public class MainConsola {
 
         // VARIABLES DEL MAIN
         // -----------------------------------------------------------------
-        int cantidadMaxima = 200;
+        int cantidadMaxima = 300;
         // Rutas de acceso de los ficheros
         String direccionesAcciones = "src/main/java/prac3/Fichero/Acciones.csv";
         String direccionesMiembros = "src/main/java/prac3/Fichero/Miembros.csv";
-        String direccionesAsociaciones = "src/main/java/prac3/Fichero/Asociaciones.csv";
         String direccionesAsociacionesBin = "src/main/java/prac3/Fichero/AsociacionesSerializadas.bin";
         // String direccionesAsociacionesBinAux =
         // "src/main/java/prac3/Fichero/AsociacionesSerializadasAuxiliar.bin";
         // String direccionesAsociacionesBinario =
         // "src\\main\\java\\prac3\\Fichero\\AsociacionesSerializadas.bin";
         // Variables enteras varias
-        int cantidadAcciones, cantidadMiembros, cantidadAsociaciones;
+        int cantidadAcciones, cantidadMiembros;
         int opcionMenuInt = 18;
         // Variables varias
         boolean entradaValidaOpcionMenu;
@@ -53,11 +52,7 @@ public class MainConsola {
         // CANTIDADES DE ENTIDADES
         // --------------------------------------------------------------
         cantidadAcciones = LeerFichero.ContarEntidadesFichero(direccionesAcciones);
-        cantidadAsociaciones = LeerFichero.ContarEntidadesFichero(direccionesAsociaciones);
         cantidadMiembros = LeerFichero.ContarEntidadesFichero(direccionesMiembros);
-        System.out.println("Hay un total de: " + cantidadMiembros + " miembros");
-        System.out.println("Hay un total de: " + cantidadAsociaciones + " asociaciones");
-        System.out.println("Hay un total de: " + cantidadAcciones + " acciones");
 
         // CREACION DE LAS LISTAS
         // --------------------------------------------------------------
@@ -66,11 +61,11 @@ public class MainConsola {
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
 
         LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
-        // LeerFichero.LeerFicheroAsociaciones(direccionesAsociaciones,listaDeTodasLasAsociaciones,cantidadAsociaciones);
+        // System.out.println(listaDeTodasLasAcciones.toString());
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
-
+        // System.out.println(listaDeTodosLosMiembros.toString());
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
-
+        // System.out.println(listaDeTodasLasAsociaciones.toString());
         SwingUtilities.invokeLater(
                 () -> new Main_Grafico("Demostraciones", listaDeTodasLasAsociaciones, listaDeTodasLasAcciones));
 
@@ -1528,34 +1523,32 @@ public class MainConsola {
                     Demostracion auxOp17 = null;
                     for (int iop17 = 0; iop17 < listaDeTodasLasAcciones.getNumeroAcciones(); iop17++) {
                         if (listaDeTodasLasAcciones.getAccionEnXIndice(iop17) instanceof Demostracion) {
-                            auxOp17 = (Demostracion)listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
+                            auxOp17 = (Demostracion) listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
                             if (!auxOp17.getEstado()) {
-                                System.out.println("La demostración con indice "+ (iop17+1)+ " es:\n" +listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
+                                System.out.println("La demostración con indice " + (iop17 + 1) + " es:\n"
+                                        + listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
                             }
-                            
+
                         }
                     }
                     opcion17(listaDeTodasLasAcciones);
-                    System.out.println("Demostraciones después de elimianar las no activas realizadas antes de la fecha \n");
+                    System.out.println(
+                            "Demostraciones después de elimianar las no activas realizadas antes de la fecha \n");
                     for (int iop17 = 0; iop17 < listaDeTodasLasAcciones.getNumeroAcciones(); iop17++) {
                         if (listaDeTodasLasAcciones.getAccionEnXIndice(iop17) instanceof Demostracion) {
-                            auxOp17 = (Demostracion)listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
+                            auxOp17 = (Demostracion) listaDeTodasLasAcciones.getAccionEnXIndice(iop17);
                             if (!auxOp17.getEstado()) {
-                                System.out.println("La demostración con indice "+ (iop17+1)+ " es:\n" +listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
+                                System.out.println("La demostración con indice " + (iop17 + 1) + " es:\n"
+                                        + listaDeTodasLasAcciones.getAccionEnXIndice(iop17).toString() + "\n");
                             }
-                            
+
                         }
                     }
-            
+
                     break;
 
                 case 18:
                     opcion18(listaDeTodasLasAcciones, listaDeTodasLasAsociaciones, listaDeTodosLosMiembros);
-                    break;
-
-                case 19:
-
-                    pruebaFuncionDelMainGrafico(true, "LazosDeEsperanza", listaDeTodasLasAcciones);
                     break;
 
             }
@@ -1816,8 +1809,4 @@ public class MainConsola {
         }
     }
 
-    public static void pruebaFuncionDelMainGrafico(boolean filtro, String nombreAsociacion,
-            ListaAcciones listaDeTodasLasAcciones) {
-        System.out.println(listaDeTodasLasAcciones.demostracionesActivasConFiltro(filtro, nombreAsociacion));
-    }
 }
