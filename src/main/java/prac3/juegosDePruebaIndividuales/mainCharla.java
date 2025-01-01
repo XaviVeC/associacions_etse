@@ -38,5 +38,19 @@ public class mainCharla {
         // GETTER indiceValoraciones
         System.out.println("Se probará el getter del número de valoraciones hechas a la charla:");
         System.out.println("\tLa cantidad de valoraciones que se hicieron son: " + ch1.getIndiceValoraciones());
+
+        // COMPROBAR COPIA
+        Charla ch1_copia = ch1.copia();
+        System.out.println("Se probará el método copia de una charla:");
+        System.out.println(ch1_copia.toString());
+
+        // COMPROBAR hacerValoracion
+        System.out.println("Se probará el método que añade una valoración a la charla:");
+        ch1.hacerValoracion(8);
+        System.out.println(ch1_copia.toString());
+
+        // COMPROBAR mediaValoraciones
+        System.out.println("Se probará el método que calcula la media de las valoraciones de la charla:");
+        System.out.println("\tLa media de las valoraciones de la charla es: " +ch1_copia.mediaValoraciones());
     }
 }
