@@ -62,6 +62,7 @@ public class MainConsola {
 
         LeerFichero.LeerFicheroAcciones(direccionesAcciones, listaDeTodasLasAcciones, cantidadAcciones);
         // System.out.println(listaDeTodasLasAcciones.toString());
+
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
         // System.out.println(listaDeTodosLosMiembros.toString());
         LeerFichero.LeerListaAsociacionesBin(direccionesAsociacionesBin, listaDeTodasLasAsociaciones);
@@ -339,9 +340,6 @@ public class MainConsola {
                         }
                     } while (yearSup < 1991 || yearSup > 2025);
 
-                    if (entradaValidaOpcionMenu) {
-
-                    }
                     Fecha LimiteUno = new Fecha(diaInf, mesInf, yearInf);
                     Fecha LimiteDos = new Fecha(diaSup, mesSup, yearSup);
 
