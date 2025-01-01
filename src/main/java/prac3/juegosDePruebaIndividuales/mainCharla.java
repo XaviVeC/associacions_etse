@@ -6,7 +6,7 @@ public class mainCharla {
     public static void main(String[] args) {
         
         // CONSTRUCTOR DE CHARLA Y LO COMPROBAMOS CON EL toString
-        System.out.println("Se creará una asociación y se mostrará por el terminal:");
+        System.out.println("Se creará una charla y se mostrará por el terminal:");
         int indiceFichero = 15;
         String nombreAccion = "NewCharla";
         String[] asociacionesInvolucradas = { "DaciasSandero", "CarneForever" };
@@ -18,19 +18,23 @@ public class mainCharla {
         int indiceValoraciones = 3;
         Charla ch1 = new Charla(indiceFichero, nombreAccion, asociacionesInvolucradas, organizadorResponsable, fechaRealizacion, instructoresCharla, valoraciones, numeroDeAsistentes, indiceValoraciones);
         System.out.println(ch1.toString());
+
         // GETTER instructoresCharla
         System.out.println("Se probará el getter de los instructores de la charla:");
         for (int i = 0; i < ch1.getInstructoresCharla().length; i++) {
             System.out.println("\t" + ch1.getInstructoresCharla()[i]);
         }
+
         // GETTER Fecha
         System.out.println("Se probará el getter de la fecha de la charla:");
         System.out.println("\tFecha de la charla: " + ch1.getFecha().toString());
+
         // GETTER Valoraciones
         System.out.println("Se probará el getter de las valoraciones de la charla:");
         for (int i = 0; i < ch1.getIndiceValoraciones(); i++) {
             System.out.println("\t" + ch1.getValoraciones()[i]);
         }
+
         // GETTER numeroAsistentes
         System.out.println("Se probará el getter del número de asistentes a la charla:");
         System.out.println("\tAsistieron un total de: " + ch1.getNumeroAsistentes());
@@ -46,7 +50,7 @@ public class mainCharla {
 
         // COMPROBAR hacerValoracion
         System.out.println("Se probará el método que añade una valoración a la charla:");
-        ch1.hacerValoracion(8);
+        ch1_copia.hacerValoracion(8);
         System.out.println(ch1_copia.toString());
 
         // COMPROBAR mediaValoraciones
