@@ -103,7 +103,7 @@ public class Asociacion {
      * @return - copia de la instancia
      */
     public Asociacion copia() {
-        return (new Asociacion(nombreAsociacion + "Copia", titulacionesAsociacion, listaMiembrosAsociacion, personasEnCargos,
+        return (new Asociacion(nombreAsociacion, titulacionesAsociacion, listaMiembrosAsociacion, personasEnCargos,
                 fechasAlta, fechasBaja));
     }
 

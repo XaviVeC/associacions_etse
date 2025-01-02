@@ -131,7 +131,7 @@ public class Demostracion extends Accion {
      * @return - copia de la instancia
      */
     public Demostracion copia() {
-        return (new Demostracion(this.indiceFichero, this.nombreAccion + "COPIA", this.asociacionesInvolucradas,
+        return (new Demostracion(this.indiceFichero, this.nombreAccion, this.asociacionesInvolucradas,
                 this.organizadorResponsable, this.fechaCreacion, this.costoDemostracion,
                 this.demostracionValida, this.contadorVecesOfrecida));
     }

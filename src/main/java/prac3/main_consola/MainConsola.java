@@ -1,4 +1,4 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -365,6 +365,10 @@ public class MainConsola {
                     // -------------------------------
 
                     System.out.println("Vas a añadir una nueva asociación");
+                    System.out.println("Asociaciones existentes:");
+                    for (int i = 0; i < listaDeTodasLasAsociaciones.getIndiceAsociaciones(); i++) {
+                        System.out.println("\t\t\t" +listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
+                    }
                     System.out.println("Introduce el nombre del la asociación:");
                     do {
                         nombreAsociacionOp7 = introducirPorTeclado.nextLine();
@@ -404,6 +408,9 @@ public class MainConsola {
                     boolean miembroValido = false, miembroRepetido;
                     System.out.println(
                             "El orden de los miembros introducidos corresponde con los cargos Presidente/a, Secretario/a y Tesorero/a.");
+                    for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i ++) {
+                        System.out.println("\t\t\t" +listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias());
+                    }
                     do {
                         System.out.println("Introduce el alias del miembro " + (indice + 1) + " :");
 
@@ -539,6 +546,10 @@ public class MainConsola {
                     // ---------------------------------------------------------------------------------
                     String nomAsocOp8 = "";
                     Asociacion asociacionAuxiliarOp8 = null;
+                    System.out.println("Asociaciones existentes:");
+                    for (int i = 0; i < listaDeTodasLasAsociaciones.getIndiceAsociaciones(); i++) {
+                        System.out.println("\t\t\t" +listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
+                    }
                     System.out.println("Escribe la asociación en la que te quieres apuntar.");
                     do {
                         nomAsocOp8 = introducirPorTeclado.nextLine();
@@ -1466,6 +1477,12 @@ public class MainConsola {
                     String nombreCharlaOp14 = "";
                     boolean formatoCorrectoOp14 = false;
                     int valoracionOp14 = 0;
+                    System.out.println("Charlas disponibles para valorar:");
+                    for (int x = 0; x < listaDeTodasLasAcciones.getNumeroAcciones(); x++) {
+                        if (listaDeTodasLasAcciones.getAccionEnXIndice(x).getTipoAccion().equals("Charla")) {
+                            System.out.println("\t\t\t" +listaDeTodasLasAcciones.getAccionEnXIndice(x).getNombreAccion());
+                        }
+                    }
                     do {
                         try {
                             System.out.println("Introduce el nombre de la charla");
@@ -1505,6 +1522,10 @@ public class MainConsola {
 
                 case 16:
                     String aliasPersonaOp16;
+                    System.out.println("Alias de todos los miembros:");
+                    for (int z = 0; z < listaDeTodosLosMiembros.getNumeroMembres(); z++) {
+                        System.out.println("\t\t\t" +listaDeTodosLosMiembros.getMiembroEnXIndice(z).getAlias());
+                    }
                     do {
                         System.out.println("Introduce el nombre de la persona");
                         aliasPersonaOp16 = introducirPorTeclado.nextLine();

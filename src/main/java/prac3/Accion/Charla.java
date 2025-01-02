@@ -139,7 +139,7 @@ public class Charla extends Accion {
      * @return - copia de la instancia
      */
     public Charla copia() {
-        return (new Charla(this.indiceFichero, this.nombreAccion + "COPIA", this.asociacionesInvolucradas,
+        return (new Charla(this.indiceFichero, this.nombreAccion, this.asociacionesInvolucradas,
                 this.organizadorResponsable, this.fechaRealizacion, this.instructoresCharla,
                 this.valoraciones, this.numeroDeAsistentes, this.indiceValoraciones));
     }
