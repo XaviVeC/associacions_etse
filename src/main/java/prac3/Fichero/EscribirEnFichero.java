@@ -21,9 +21,9 @@ import prac3.Miembro.Profesor;
 public class EscribirEnFichero {
 
     /**
-     * 
-     * @param listaAsociaciones
-     * @param nombreArchivo
+     * Método para guardar una lista de asociaciones en un fichero de tipo texto 
+     * @param listaAsociaciones - lista de las asociaciones 
+     * @param nombreArchivo - nombre del archivo de texto 
      */
     public static void guardarListaAsociacionTexto(ListaAsociaciones listaAsociaciones, String nombreArchivo) {
         try (BufferedWriter escritura = new BufferedWriter(new FileWriter(nombreArchivo))) {
@@ -46,9 +46,9 @@ public class EscribirEnFichero {
     }
 
     /**
-     * 
-     * @param listaMiembros
-     * @param nombreArchivo
+     * Método para guardar una lista de miembros en un fichero de tipo texto 
+     * @param listaMiembros - lista de los miembros 
+     * @param nombreArchivo - nombre del archivo de texto 
      */
 
     public static void guardarListaArchivoMiembros(ListaMiembros listaMiembros, String nombreArchivo) {
@@ -86,9 +86,9 @@ public class EscribirEnFichero {
     }
 
     /**
-     * 
-     * @param listaAcciones
-     * @param nombreArchivo
+     * Método para guardar una lista de acciones en un fichero de tipo texto 
+     * @param listaAcciones - lista de las acciones 
+     * @param nombreArchivo - nombre del archivo de texto 
      */
     public static void guardarArchivoAcciones(ListaAcciones listaAcciones, String nombreArchivo) {
         try (BufferedWriter escritura = new BufferedWriter(new FileWriter(nombreArchivo))) {
@@ -134,6 +134,13 @@ public class EscribirEnFichero {
         }
     }
 
+    /**
+     * Método para unir una tabla de Strings
+     * @param lista - lista de Strings 
+     * @param delimitador - delimitador con el que separamos los elementos de la lista 
+     * @return
+     */
+
     private static String unirLista(String[] lista, String delimitador) {
         String resultado = "";
         for (int i = 0; i < lista.length; i++) {
@@ -145,6 +152,12 @@ public class EscribirEnFichero {
         return resultado;
     }
 
+    /**
+     * Método para unir un vector  de enteros 
+     * @param vEnteros - vector de enteros 
+     * @param delimitador - delimitador con el que separamos los elementos de la lista 
+     * @return 
+     */
     private static String unirVector(int[] vEnteros, String delimitador) {
         String resultado = "";
         for (int i = 0; i < vEnteros.length; i++) {
@@ -156,6 +169,12 @@ public class EscribirEnFichero {
         return resultado;
     }
 
+    /**
+     * Método para unir una tabla de tipo fecha
+     * @param vFecha - fecha 
+     * @param delimitador - delimitador con el que separamos los elementos de la lista 
+     * @return
+     */
     private static String unirFecha(Fecha[] vFecha, String delimitador) {
         String resultado = "";
         for (int i = 0; i < vFecha.length; i++) {

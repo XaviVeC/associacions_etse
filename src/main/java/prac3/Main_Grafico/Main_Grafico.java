@@ -34,17 +34,21 @@ public class Main_Grafico extends JFrame {
         contenedorPrincipal.setLayout(new BorderLayout());
         panelBotones = new JPanel();
 
-        // Mostrar diálogo inicial al arrancar
+        // Mostrar diálogo inicial al iniciar
         mostrarDialogoInicial(listaDeTodasLasAsociaciones, listaDeTodasLasAcciones);
 
         this.add(contenedorPrincipal);
         this.setVisible(true);
     }
 
-    /**
-     * Muestra un cuadro de diálogo inicial para seleccionar entre ver todas las
-     * demostraciones o filtrar por asociación.
-     */
+  
+
+     /**
+      * Muestra un cuadro de diálogo inicial para seleccionar entre ver todas las
+      * demostraciones o filtrar por asociación.
+      * @param listaAsociaciones
+      * @param listaAcciones
+      */
     private void mostrarDialogoInicial(ListaAsociaciones listaAsociaciones, ListaAcciones listaAcciones) {
         Object[] opciones = { "Mostrar todas las demostraciones", "Filtrar por asociación" };
         int seleccion = JOptionPane.showOptionDialog(this,"¿Qué desea hacer?","Seleccionar acción", JOptionPane.DEFAULT_OPTION,JOptionPane.QUESTION_MESSAGE,
@@ -59,9 +63,12 @@ public class Main_Grafico extends JFrame {
         }
     }
 
+  
     /**
-     * Inicializa los botones de las asociaciones para mostrar demostraciones por
+     *  Inicializa los botones de las asociaciones para mostrar demostraciones por
      * asociación.
+     * @param listaAsociaciones
+     * @param listaAcciones
      */
     private void inicializarBotonesAsociaciones(ListaAsociaciones listaAsociaciones, ListaAcciones listaAcciones) {
 
@@ -149,8 +156,12 @@ public class Main_Grafico extends JFrame {
         contenedorPrincipal.repaint();
     }
 
+   
     /**
      * Muestra la información de las demostraciones, filtradas o no.
+     * @param listaAcciones
+     * @param listaAsociaciones
+     * @param nombreAsociacion
      */
     private void mostrarLaInformacionDeDemostraciones(ListaAcciones listaAcciones, ListaAsociaciones listaAsociaciones,
             String nombreAsociacion) {
@@ -176,7 +187,7 @@ public class Main_Grafico extends JFrame {
 
         // Mostrar el panel en un JOptionPane
         JOptionPane.showMessageDialog(this, scrollDemostraciones, 
-            nombreAsociacion == null ? "Todas las Demostraciones" : "Demostraciones - " + nombreAsociacion, 
+            nombreAsociacion == null ? "Demostraciones Activas" : "Demostraciones - " + nombreAsociacion, 
             JOptionPane.INFORMATION_MESSAGE
         );
 
@@ -187,15 +198,20 @@ public class Main_Grafico extends JFrame {
         contenedorPrincipal.revalidate();
         contenedorPrincipal.repaint();
         }else {
-             // Volver a la pantalla inicial
-        contenedorPrincipal.removeAll();
-        inicializarBotonesAsociaciones(listaAsociaciones, listaAcciones);;
-        contenedorPrincipal.revalidate();
-        contenedorPrincipal.repaint();
-        }
+            // Volver a la pantalla inicial
+       contenedorPrincipal.removeAll();
+       inicializarBotonesAsociaciones(listaAsociaciones, listaAcciones);;
+       contenedorPrincipal.revalidate();
+       contenedorPrincipal.repaint();
+       }
        
     }
 
+    /**
+     * Método para actualizar el panel de las demostraciones 
+     * @param panelDemostraciones
+     * @param demostraciones
+     */
     private void actualizarPanelDemostraciones(JPanel panelDemostraciones, ListaAcciones demostraciones) {
         panelDemostraciones.removeAll();
 
@@ -215,8 +231,14 @@ public class Main_Grafico extends JFrame {
         panelDemostraciones.repaint();
     }
 
+    /**
+     * Método para mostrar los detalles de cada demostración 
+     * @param demostracion
+     * @param listaDeTodasLasAcciones
+     * @param listaDeTodasLasAsociaciones
+     */
     private void mostrarDetallesDemostracion(Demostracion demostracion,  ListaAcciones listaDeTodasLasAcciones, ListaAsociaciones listaDeTodasLasAsociaciones) {
-        JTextArea demostracionDetalles = new JTextArea(10, 30);
+        JTextArea demostracionDetalles = new JTextArea(20, 50);
         demostracionDetalles.setLineWrap(true);
         demostracionDetalles.setWrapStyleWord(true);
         demostracionDetalles.setText(demostracion.toString());
