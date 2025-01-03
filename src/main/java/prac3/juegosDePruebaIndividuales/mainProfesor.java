@@ -1,10 +1,8 @@
 package prac3.juegosDePruebaIndividuales;
 
-import javax.sql.rowset.spi.SyncResolver;
 
 import prac3.Estructuras.ListaMiembros;
 import prac3.Fichero.LeerFichero;
-import prac3.Miembro.Alumno;
 import prac3.Miembro.Profesor;
 
 public class mainProfesor {
