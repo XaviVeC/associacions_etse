@@ -22,7 +22,7 @@ public class mainAlumno {
         // --------------------------------------------------------------
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
-
+        
         Alumno alumno = new Alumno(listaDeTodosLosMiembros.getNumeroMembres(), "Alumno", "esteban", 3, false, "GEI");
 
         System.out.println("Metodo toString:");
