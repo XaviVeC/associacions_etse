@@ -54,12 +54,14 @@ public class mainAsociacion {
         // GET FECHA ALTA
         System.out.println("Se probará el getter de la lista de las fechas de alta de los miembros de la asociación:");
         for (int i = 0; i < as1.getListaMiembrosAsociacion().length; i++) {
-            System.out.println("\tLa fecha de alta de "+ as1.getListaMiembrosAsociacion()[i]+  " es: "+as1.getFechasAlta()[i].toString() );
+            System.out.println("\tLa fecha de alta de " + as1.getListaMiembrosAsociacion()[i] + " es: "
+                    + as1.getFechasAlta()[i].toString());
         }
         // GET FECHA BAJA
         System.out.println("Se probará el getter de la lista de las fechas de alta de los miembros de la asociación:");
         for (int i = 0; i < as1.getListaMiembrosAsociacion().length; i++) {
-            System.out.println("\tLa fecha de alta de "+ as1.getListaMiembrosAsociacion()[i]+  " es: "+as1.getFechasBaja()[i].toString() );
+            System.out.println("\tLa fecha de alta de " + as1.getListaMiembrosAsociacion()[i] + " es: "
+                    + as1.getFechasBaja()[i].toString());
         }
         // COPIA Y toString para mostrarla
         Asociacion copiaAs1 = as1.copia();

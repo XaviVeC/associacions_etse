@@ -1,6 +1,5 @@
 package prac3.juegosDePruebaIndividuales;
 
-
 import prac3.Estructuras.ListaMiembros;
 import prac3.Fichero.LeerFichero;
 import prac3.Miembro.Profesor;
@@ -30,11 +29,11 @@ public class mainProfesor {
         System.out.println(profe.toString());
 
         System.out.println("Getters de la clase profesor:");
-        System.out.println("Departamento (DEEEA): "+profe.getDepartamento());
-        System.out.println("Número de despacho (124): "+profe.getNumeroDespacho());
-        System.out.println("Siglas de la carrera (null): "+profe.getSiglasCarrera());
+        System.out.println("Departamento (DEEEA): " + profe.getDepartamento());
+        System.out.println("Número de despacho (124): " + profe.getNumeroDespacho());
 
-        System.out.println("Método copia(). Se comprobará que va bien con el debug y la dirección de memoria. Capturas en la memoria");
+        System.out.println(
+                "Método copia(). Se comprobará que va bien con el debug y la dirección de memoria. Capturas en la memoria");
         Profesor pCopia = profe.copia();
         System.out.println(pCopia.toString());
     }

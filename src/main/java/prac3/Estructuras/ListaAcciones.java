@@ -6,6 +6,7 @@ import prac3.Accion.Demostracion;
 import prac3.Estructuras.ExcepcionesPropias.CharlaNoEncotradaException;
 
 public class ListaAcciones {
+
     private Accion[] listaAcciones; // lista de acciones
     private int nElem; // numero de elementos de la lista acciones
 
@@ -45,21 +46,24 @@ public class ListaAcciones {
     }
 
     /**
+     * Metodo para obtener la copia de una accion que se encuentra en un indice
+     * indicado
      * 
-     * @param indice
-     * @return
+     * @param indice - posicion de la accion
+     * @return - una copia de su informacion
      */
     public Accion getAccionEnXIndice(int indice) {
-        return this.listaAcciones[indice].copia();// habia un copia lo he quitado un momento (carla)
+        return this.listaAcciones[indice].copia();
     }
 
     /**
+     * Metodo para obtener la accion que se encuentra en un indice indicado
      * 
-     * @param indice
-     * @return
+     * @param indice - posicion de la accion
+     * @return - la direccion de la accion
      */
     public Accion getAccionEnXIndiceSinCopia(int indice) {
-        return this.listaAcciones[indice];// habia un copia lo he quitado un momento (carla)
+        return this.listaAcciones[indice];
     }
 
     /**
@@ -117,8 +121,8 @@ public class ListaAcciones {
      * Metodo que obtiene y muestra una lista de acciones de una asociacion en
      * concreto.
      * 
-     * @param
-     * @param
+     * @param listaTodasAcciones - lista de donde estan todas las asociaciones
+     * @param asociacionConcreta - nombre de la asociacion que buscamos
      */
     public static ListaAcciones accionesDeXAsociacion(ListaAcciones listaTodasAcciones, String asociacionConcreta) {
         ListaAcciones listaAccionesFinal = new ListaAcciones(listaTodasAcciones.getNumeroAcciones());
@@ -336,7 +340,9 @@ public class ListaAcciones {
     }
 
     /**
-     * Método para eliminar una Accion que sea anterior a la fecha
+     * Metodo que elimina las acciones que estén creadas antes de una cierta fecha.
+     * 
+     * @param fecha - fecha limite para elimianar
      */
 
     public void eliminarAccionPorFecha(Fecha fecha) {
@@ -417,6 +423,12 @@ public class ListaAcciones {
         return codigoResultado;
     }
 
+    /**
+     * Metodo que elimina una demostracion que este hecha antes de una fecha, y que
+     * no este activa.
+     * 
+     * @param fecha - fecha limite
+     */
     public void eliminarDemostracionPorFechaYNoActivas(Fecha fecha) {
 
         // Recorrer la lista desde el final para evitar problemas al eliminar elementos

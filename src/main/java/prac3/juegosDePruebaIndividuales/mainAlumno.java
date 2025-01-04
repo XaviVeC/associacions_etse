@@ -22,19 +22,20 @@ public class mainAlumno {
         // --------------------------------------------------------------
         listaDeTodosLosMiembros = new ListaMiembros(cantidadMaxima);
         LeerFichero.LeerFicheroMiembros(direccionesMiembros, listaDeTodosLosMiembros, cantidadMiembros);
-        
+
         Alumno alumno = new Alumno(listaDeTodosLosMiembros.getNumeroMembres(), "Alumno", "esteban", 3, false, "GEI");
 
         System.out.println("Metodo toString:");
         System.out.println(alumno.toString());
 
         System.out.println("Getters de la clase Alumno:");
-        System.out.println("Indice del fichero correcto: "+alumno.getIndiceFichero());
-        System.out.println("Tipo del miembro (Alumno): "+alumno.getTipoMiembro());
-        System.out.println("Alias (esteban): " +alumno.getAlias());
-        System.out.println("Correo del miembro (esteban@urv.cat): "+alumno.getCorreoMiembro());
-        
-        System.out.println("Método copia(). Se comprobará que va bien con el debug y la dirección de memoria. Capturas en la memoria");
+        System.out.println("Indice del fichero correcto: " + alumno.getIndiceFichero());
+        System.out.println("Tipo del miembro (Alumno): " + alumno.getTipoMiembro());
+        System.out.println("Alias (esteban): " + alumno.getAlias());
+        System.out.println("Correo del miembro (esteban@urv.cat): " + alumno.getCorreoMiembro());
+
+        System.out.println(
+                "Método copia(). Se comprobará que va bien con el debug y la dirección de memoria. Capturas en la memoria");
         Alumno alCopia = alumno.copia();
         System.out.println(alCopia.toString());
     }

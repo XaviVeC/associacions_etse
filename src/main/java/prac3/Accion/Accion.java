@@ -5,11 +5,11 @@ import prac3.Estructuras.Fecha;
 public abstract class Accion {
 
     protected String codigoAccion; // 3 primeras letras asociacion, seguidas de tres numeros a partir del 100.
-    protected String tipoAccion;
-    protected String nombreAccion;
-    protected String[] asociacionesInvolucradas;
-    protected String organizadorResponsable;
-    protected int indiceFichero;
+    protected String tipoAccion; // tipo de la acción, "demostracion" o "charla"
+    protected String nombreAccion; // nombre de la acción
+    protected String[] asociacionesInvolucradas; // nombres de las asociaciones involucradas
+    protected String organizadorResponsable; // nombre del organizador
+    protected int indiceFichero; // indice para crear el "codigoAccion"
 
     /**
      * Metodo del constructor de la clase accion
@@ -53,9 +53,10 @@ public abstract class Accion {
 
     /**
      * Getter de la variable indiceFichero
+     * 
      * @return
      */
-    public int getIndiceFichero(){
+    public int getIndiceFichero() {
         return indiceFichero;
     }
 

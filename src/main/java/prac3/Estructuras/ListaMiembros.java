@@ -3,7 +3,6 @@ package prac3.Estructuras;
 import prac3.Miembro.Alumno;
 import prac3.Miembro.Miembro;
 
-
 import prac3.Asociacion.Asociacion;
 import prac3.Estructuras.ExcepcionesPropias.MiembroEnTresAsociaciones;
 
@@ -93,10 +92,6 @@ public class ListaMiembros {
      *                         sobre la que hacer su lista de miembros
      * @return - lista de miembros de la asociacion con ese nombre
      */
-
-    // Me dan el nombre de la asociacion
-    // He de mirar en a lista de asociaciones la que tenga el mismo nombre
-    // He de mirar la lista de miembros de esa asociacion
     public static ListaMiembros miembrosDeAsociacionConcreta(String nombreAsociacion,
             ListaAsociaciones listaDeLasAsociaciones, ListaMiembros listaDeLosMiembros, String filtro) {
         ListaMiembros listaDeMiembrosDeXAsociacion = new ListaMiembros(listaDeLosMiembros.getNumeroMembres());

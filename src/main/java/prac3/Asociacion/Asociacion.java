@@ -3,11 +3,11 @@ package prac3.Asociacion;
 import prac3.Estructuras.Fecha;
 
 public class Asociacion {
-    private String nombreAsociacion;
+    private String nombreAsociacion; // nombre de la asociacion
     private String correoContactoAsociacion; // Correo de contacto de la asociacion
-    private String[] titulacionesAsociacion;
-    private String[] listaMiembrosAsociacion;
-    private Fecha[] fechasAlta, fechasBaja;
+    private String[] titulacionesAsociacion; // titulaciones que comforman la asociacion
+    private String[] listaMiembrosAsociacion; // listado de los alias de los miembros
+    private Fecha[] fechasAlta, fechasBaja; // fechas de alta y baja de miembros
     private String[] personasEnCargos; // 0-> Presidente; 1 -> Secretario; 2 -> Tesorero
 
     /**
@@ -143,7 +143,6 @@ public class Asociacion {
 
         return aux;
     }
-
 
     /**
      * Metodo para ingresar un nuevo miembro dentro de una asociacion.

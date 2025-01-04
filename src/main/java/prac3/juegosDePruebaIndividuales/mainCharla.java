@@ -1,10 +1,11 @@
 package prac3.juegosDePruebaIndividuales;
+
 import prac3.Accion.Charla;
 import prac3.Estructuras.Fecha;
 
 public class mainCharla {
     public static void main(String[] args) {
-        
+
         // CONSTRUCTOR DE CHARLA Y LO COMPROBAMOS CON EL toString
         System.out.println("Se creará una charla y se mostrará por el terminal:");
         int indiceFichero = 15;
@@ -16,7 +17,8 @@ public class mainCharla {
         int[] valoraciones = { 2, 5, 10 }; // Vector de valoraciones de la charla
         int numeroDeAsistentes = 5;
         int indiceValoraciones = 3;
-        Charla ch1 = new Charla(indiceFichero, nombreAccion, asociacionesInvolucradas, organizadorResponsable, fechaRealizacion, instructoresCharla, valoraciones, numeroDeAsistentes, indiceValoraciones);
+        Charla ch1 = new Charla(indiceFichero, nombreAccion, asociacionesInvolucradas, organizadorResponsable,
+                fechaRealizacion, instructoresCharla, valoraciones, numeroDeAsistentes, indiceValoraciones);
         System.out.println(ch1.toString());
 
         // GETTER instructoresCharla
@@ -55,6 +57,6 @@ public class mainCharla {
 
         // COMPROBAR mediaValoraciones
         System.out.println("Se probará el método que calcula la media de las valoraciones de la charla:");
-        System.out.println("\tLa media de las valoraciones de la charla es: " +ch1_copia.mediaValoraciones());
+        System.out.println("\tLa media de las valoraciones de la charla es: " + ch1_copia.mediaValoraciones());
     }
 }

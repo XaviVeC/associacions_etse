@@ -62,8 +62,4 @@ public class Profesor extends Miembro {
         Profesor p = new Profesor(indiceFichero, tipoMiembro, alias, departamento, numeroDespacho);
         return p;
     }
-
-    public String getSiglasCarrera() {
-        return null;
-    }
 }

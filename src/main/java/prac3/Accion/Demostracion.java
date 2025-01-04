@@ -3,10 +3,10 @@ package prac3.Accion;
 import prac3.Estructuras.Fecha;
 
 public class Demostracion extends Accion {
-    private Fecha fechaCreacion;
-    private boolean demostracionValida;
-    private int contadorVecesOfrecida;
-    private double costoDemostracion;
+    private Fecha fechaCreacion; // fecha de creacion de la demostracion
+    private boolean demostracionValida; // estado de la demostracion
+    private int contadorVecesOfrecida; // veces que se ha ofrecido la demo.
+    private double costoDemostracion; // coste de la demstracion
 
     /**
      * Constructor de la classe Demostracio

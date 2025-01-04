@@ -367,7 +367,8 @@ public class MainConsola {
                     System.out.println("Vas a añadir una nueva asociación");
                     System.out.println("Asociaciones existentes:");
                     for (int i = 0; i < listaDeTodasLasAsociaciones.getIndiceAsociaciones(); i++) {
-                        System.out.println("\t\t\t" +listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
+                        System.out.println("\t\t\t"
+                                + listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
                     }
                     System.out.println("Introduce el nombre del la asociación:");
                     do {
@@ -408,8 +409,8 @@ public class MainConsola {
                     boolean miembroValido = false, miembroRepetido;
                     System.out.println(
                             "El orden de los miembros introducidos corresponde con los cargos Presidente/a, Secretario/a y Tesorero/a.");
-                    for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i ++) {
-                        System.out.println("\t\t\t" +listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias());
+                    for (int i = 0; i < listaDeTodosLosMiembros.getNumeroMembres(); i++) {
+                        System.out.println("\t\t\t" + listaDeTodosLosMiembros.getMiembroEnXIndice(i).getAlias());
                     }
                     do {
                         System.out.println("Introduce el alias del miembro " + (indice + 1) + " :");
@@ -548,7 +549,8 @@ public class MainConsola {
                     Asociacion asociacionAuxiliarOp8 = null;
                     System.out.println("Asociaciones existentes:");
                     for (int i = 0; i < listaDeTodasLasAsociaciones.getIndiceAsociaciones(); i++) {
-                        System.out.println("\t\t\t" +listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
+                        System.out.println("\t\t\t"
+                                + listaDeTodasLasAsociaciones.getElementoListaAsociacion(i).getNombreAsociacion());
                     }
                     System.out.println("Escribe la asociación en la que te quieres apuntar.");
                     do {
@@ -1480,7 +1482,8 @@ public class MainConsola {
                     System.out.println("Charlas disponibles para valorar:");
                     for (int x = 0; x < listaDeTodasLasAcciones.getNumeroAcciones(); x++) {
                         if (listaDeTodasLasAcciones.getAccionEnXIndice(x).getTipoAccion().equals("Charla")) {
-                            System.out.println("\t\t\t" +listaDeTodasLasAcciones.getAccionEnXIndice(x).getNombreAccion());
+                            System.out.println(
+                                    "\t\t\t" + listaDeTodasLasAcciones.getAccionEnXIndice(x).getNombreAccion());
                         }
                     }
                     do {
@@ -1524,7 +1527,7 @@ public class MainConsola {
                     String aliasPersonaOp16;
                     System.out.println("Alias de todos los miembros:");
                     for (int z = 0; z < listaDeTodosLosMiembros.getNumeroMembres(); z++) {
-                        System.out.println("\t\t\t" +listaDeTodosLosMiembros.getMiembroEnXIndice(z).getAlias());
+                        System.out.println("\t\t\t" + listaDeTodosLosMiembros.getMiembroEnXIndice(z).getAlias());
                     }
                     do {
                         System.out.println("Introduce el nombre de la persona");
@@ -1815,10 +1818,10 @@ public class MainConsola {
             }
         } while (!respuestaValida);
         if (respuesta.equalsIgnoreCase("s")) {
-            EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "Acciones.txt");
+            EscribirEnFichero.guardarArchivoAcciones(listaDeTodasLasAcciones, "src/main/java/prac3/Fichero/Acciones.csv");
             // EscribirEnFichero.guardarListaAsociacionTexto(listaDeTodasLasAsociaciones,
             // "Asociaciones.txt");
-            EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "Miembros.txt");
+            EscribirEnFichero.guardarListaArchivoMiembros(listaDeTodosLosMiembros, "src/main/java/prac3/Fichero/Miembros.csv");
             EscribirEnFichero.EscribirListaAsociacionesBin(
                     "src/main/java/prac3/Fichero/AsociacionesSerializadas.bin",
                     listaDeTodasLasAsociaciones);

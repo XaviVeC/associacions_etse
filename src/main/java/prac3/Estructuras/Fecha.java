@@ -1,7 +1,7 @@
 package prac3.Estructuras;
 
 public class Fecha {
-    private int dia;
+    private int dia; 
     private int mes;
     private int year;
 
@@ -53,7 +53,6 @@ public class Fecha {
     public int getYear() {
         return year;
     }
-
 
     /**
      * Metodo que comprueba que el dia este entre 1 y 31

@@ -41,6 +41,13 @@ public class ListaAsociaciones {
         return this.nElem;
     }
 
+    /**
+     * Getter que devuelve la instancia de la asociacion en la posicion que se
+     * indica.
+     * 
+     * @param indice - posicion de la asociacion
+     * @return - direccion de la asociacion
+     */
     public Asociacion getElementoListaAsociacion(int indice) {
         return this.listaAsociaciones[indice];
     }
@@ -176,10 +183,12 @@ public class ListaAsociaciones {
     }
 
     /**
+     * Metodo para comprobar si el alias de un miembro esta dentro del string con
+     * los alias de una asociacion
      * 
-     * @param nombreMiembro
-     * @param nombresAsociaciones
-     * @return
+     * @param nombreMiembro       - alias del miembro
+     * @param nombresAsociaciones - lista de miembros (alias) de la asociacion
+     * @return - true si esta, o false si no
      */
     public boolean existeMiembroEnListaAsociaciones(String nombreMiembro, String[] nombresAsociaciones) {
         boolean siEsta = false;
@@ -207,7 +216,5 @@ public class ListaAsociaciones {
 
         return siEsta;
     }
-
- 
 
 }

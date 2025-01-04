@@ -1,4 +1,5 @@
 package prac3.juegosDePruebaIndividuales;
+
 import prac3.Accion.Demostracion;
 import prac3.Estructuras.Fecha;
 
@@ -14,7 +15,8 @@ public class mainDemostracion {
         int costoDemostracion = 1000;
         boolean estadoDemostracion = true;
         int vecesOfrecida = 3;
-        Demostracion demo1 = new Demostracion(indiceFichero, nombreAccion, asociacionesInvolucradas, organizadorResponsable, fechaRealizacion, costoDemostracion, estadoDemostracion, vecesOfrecida);
+        Demostracion demo1 = new Demostracion(indiceFichero, nombreAccion, asociacionesInvolucradas,
+                organizadorResponsable, fechaRealizacion, costoDemostracion, estadoDemostracion, vecesOfrecida);
         System.out.println(demo1.toString());
 
         // GETTER estado
@@ -44,7 +46,8 @@ public class mainDemostracion {
         System.out.println("\tEstá activa la demostración? " + demo1.getEstado());
 
         // COMPROBACIÓN MÉTODO ofrecidaDeNuevo
-        System.out.println("Se probará que el método que aumenta las veces que se ha ofrecido la demostración funciona:");
+        System.out
+                .println("Se probará que el método que aumenta las veces que se ha ofrecido la demostración funciona:");
         demo1.ofrecidaDeNuevo();
         System.out.println("\tVeces que se ha ofrecido la demostración: " + demo1.getVecesOfrecida());
 

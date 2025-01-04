@@ -4,10 +4,10 @@ import prac3.Estructuras.Fecha;
 
 public class Charla extends Accion {
     private final int MAXIMO_INSTRUCTORES = 3; // Limite maximo de las personas que imparten la charla
-    private Fecha fechaRealizacion;
+    private Fecha fechaRealizacion; // Fecha en la que se realiza o está prevista la charla
     private String[] instructoresCharla = new String[MAXIMO_INSTRUCTORES];
     private int[] valoraciones; // Vector de valoraciones de la charla
-    private int numeroDeAsistentes;
+    private int numeroDeAsistentes; // Numero de personas que asistieron.
     private int indiceValoraciones; // Indice de las valoraciones realizadas para guardar el tamaño del vector
 
     /**
@@ -152,23 +152,23 @@ public class Charla extends Accion {
     public void hacerValoracion(int valoracion) {
         if (this.indiceValoraciones < this.numeroDeAsistentes && (valoracion > 0 && valoracion <= 10)) {
             valoraciones[this.indiceValoraciones] = valoracion;
-            this.indiceValoraciones++; 
+            this.indiceValoraciones++;
         }
     }
 
     /**
      * Metodo que retorna la media de las valoraciones
+     * 
      * @return - Media de las valoraciones
      */
-    public double mediaValoraciones(){
+    public double mediaValoraciones() {
         double acumulado = 0.0;
         if (this.indiceValoraciones > 0) {
             for (int i = 0; i < this.indiceValoraciones; i++) {
                 acumulado += this.valoraciones[i];
             }
         }
-        return acumulado/this.indiceValoraciones;
+        return acumulado / this.indiceValoraciones;
     }
 
-    
 }

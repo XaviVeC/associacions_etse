@@ -124,66 +124,6 @@ public class LeerFichero {
     }
 
     /**
-     * Metodo para leer las asociaciones que hay guardadas dentro del fichero
-     * 
-     * @param nombreFichero        - Nombre del fichero que contiene las
-     *                             asociaciones
-     * @param listaARellenar       - Nombre de la lista donde almacenaremos las
-     *                             leerSerializadotintas asociaciones
-     * @param cantidadAsociaciones - Cantidad de asociaciones que debemos leer
-     */
-    public static void LeerFicheroAsociaciones(String nombreFichero, ListaAsociaciones listaARellenar,
-            int cantidadAsociaciones) {
-
-        try (BufferedReader lectura = new BufferedReader(new FileReader(nombreFichero))) {
-
-            String informacionUnaAsociacion;
-            String[] campo, campoTitulaciones, campoIntegrantes, campoCargos, fechasAlta, fechasBaja, altaTemp,
-                    bajaTemp;
-            int indiceLectura = 0;
-            Asociacion asociacion;
-
-            Fecha[] alta, baja;
-            do {
-                informacionUnaAsociacion = lectura.readLine();
-                campo = informacionUnaAsociacion.split(";");
-                campoTitulaciones = campo[1].split("/");
-                campoIntegrantes = campo[2].split("-");
-                fechasAlta = campo[3].split("/");
-                fechasBaja = campo[4].split("/");
-                campoCargos = campo[5].split("-");
-                alta = new Fecha[fechasAlta.length];
-                baja = new Fecha[fechasBaja.length];
-                // llena la fechaAlta
-                // primero separarla
-                for (int i = 0; i < fechasAlta.length; i++) {
-                    altaTemp = fechasAlta[i].split("-");
-                    alta[i] = new Fecha(Integer.parseInt(altaTemp[0]), Integer.parseInt(altaTemp[1]),
-                            Integer.parseInt(altaTemp[2]));
-                }
-
-                // llena la fechaAlta
-                // primero separarla
-                for (int i = 0; i < fechasAlta.length; i++) {
-                    bajaTemp = fechasBaja[i].split("-");
-                    baja[i] = new Fecha(Integer.parseInt(bajaTemp[0]), Integer.parseInt(bajaTemp[1]),
-                            Integer.parseInt(bajaTemp[2]));
-                }
-
-                asociacion = new Asociacion(campo[0], campoTitulaciones, campoIntegrantes, campoCargos, alta, baja);
-                listaARellenar.addAsociacion(asociacion);
-                indiceLectura++;
-            } while (indiceLectura < cantidadAsociaciones);
-
-            lectura.close();
-        } catch (FileNotFoundException e) {
-            System.out.println("El fichero actividades no se ha encontrado" + e.toString());
-        } catch (IOException ex) {
-            System.err.println("Error en la lectura " + ex.toString());
-        }
-    }
-
-    /**
      * Metodo para contar las entidades de un fichero
      * 
      * @param nombreFichero - Nombre del fichero del cual queremos contar las
@@ -212,10 +152,10 @@ public class LeerFichero {
     }
 
     /**
+     * Metodo para leer las asociaciones que estan dentro del fichero binario
      * 
-     * @param nombreFichero
-     * @param listaAsociaciones
-     * @throws IOException
+     * @param nombreFichero     - direccion del fichero
+     * @param listaAsociaciones - lista donde se guardan
      */
     public static void LeerListaAsociacionesBin(String nombreFichero, ListaAsociaciones listaAsociaciones)
             throws IOException {
