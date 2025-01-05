@@ -22,6 +22,7 @@ public class ListaAcciones {
         nElem = 0;
     }
 
+
     /**
      * Metodo que ingresa una accion que se pase por parametro en la ultima posicion
      * de la lista
