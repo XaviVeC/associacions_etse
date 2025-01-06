@@ -1,4 +1,4 @@
-package prac3.Main_Consola;
+package prac3.main_consola;
 
 import java.io.IOException;
 import java.util.Scanner;
